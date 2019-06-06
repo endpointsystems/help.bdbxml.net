@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Locks </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Locks ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="locks.md">
+<h1 id="locks">Locks</h1>
+
+<p>When one thread of control wants to obtain access to an object, it requests a lock for that object. This lock is what allows Figaro to provide your application with its transactional isolation guarantees by ensuring that:</p>
+<ul>
+<li>no other thread of control can read that object (in the case of an exclusive lock)</li>
+<li>no other thread of control can modify that object (in the case of an exclusive or non-exclusive lock)</li>
+</ul>
+<h2 id="lock-resources">Lock Resources</h2>
+<p>When locking occurs, there are three resources in use:</p>
+<ul>
+<li><strong>The locker.</strong> This is the thing that holds the lock. In a transactional application, the locker is a transaction handle. For non-transactional operations, the locker is a cursor or a Container, Database, or some document management handle.</li>
+<li><strong>The lock.</strong> This is the actual data structure that locks the object. In Figaro, a locked object structure in the lock manager is representative of the object that is locked.
+( <strong>The locked object.</strong> The thing that your application actually wants to lock. In a Figaro application, the locked object is usually a database page, which in turn contains multiple database entries (key and data). Note that if you use node-level containers, your documents are split into multiple database records. Therefore, when you read or write an XML document that is stored in a node container, you may be locking multiple database pages.</li>
+</ul>
+<p>You can configure how many total lockers, locks, and locked objects your application is allowed to support. See <a class="xref" href="configuring-the-locking-subsystem.html">Configuring the Locking Subsystem</a> for details.</p>
+<p>The following figure shows a transaction handle, <code>Txn A</code>, that is holding a lock on database page 002. In this graphic, <code>Txn A</code> is the locker, and the locked object is page 002. Only a single lock is in use in this operation.</p>
+<p><strong>A sample lock</strong>
+<img src="/images/simplelock.jpg" alt="a sample lock"></p>
+<h2 id="types-of-locks">Types of Locks</h2>
+<p>Figaro applications support both exclusive and non-exclusive locks. Exclusive locks are granted when a locker wants to write to an object. For this reason, exclusive locks are also sometimes called write locks.</p>
+<p>An exclusive lock prevents any other locker from obtaining any sort of a lock on the object. This provides isolation by ensuring that no other locker can observe or modify an exclusively locked object until the locker is done writing to that object.</p>
+<p>Non-exclusive locks are granted for read-only access. For this reason, non-exclusive locks are also sometimes called <em>read locks</em>. Since multiple lockers can simultaneously hold read locks on the same object, read locks are also sometimes called <em>shared locks</em>.</p>
+<p>A non-exclusive lock prevents any other locker from modifying the locked object while the locker is still reading the object. This is how transactional cursors are able to achieve repeatable reads; by default, the cursor&#39;s transaction holds a read lock on any object that the cursor has examined until such a time as the transaction is committed or aborted. You can avoid these read locks by using snapshot isolation. See <a class="xref" href="snapshot-isolation.html">Snapshot Isolation</a> for details.</p>
+<p>In the following figure, <code>Txn A</code> and <code>Txn B</code> are both holding read locks on page 002, while <code>Txn C</code> is holding a write lock on page 003:</p>
+<p><img src="/images/rwlocks1.jpg" alt="Read write locks"></p>
+<h2 id="lock-lifetime">Lock Lifetime</h2>
+<p>A locker holds its locks until such a time as it does not need the lock any more. What this means is:</p>
+<p>A transaction holds any locks that it obtains until the transaction is committed or aborted.
+All non-transaction operations hold locks until such a time as the operation is completed. For cursor operations, the lock is held until the cursor is moved to a new position or closed.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="locks-blocks-and-deadlocks.html">Locks, Blocks and Deadlocks</a></li>
+<li><a class="xref" href="concurrency.html">Concurrency</a></li>
+<li><a class="xref" href="snapshot-isolation.html">Snapshot Isolation</a></li>
+<li><a class="xref" href="configuring-the-locking-subsystem.html">Configuring the Locking Subsystem</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/locks.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

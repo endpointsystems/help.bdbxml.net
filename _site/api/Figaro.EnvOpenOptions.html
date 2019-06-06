@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum EnvOpenOptions
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum EnvOpenOptions
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.EnvOpenOptions">
+  
+  
+  <h1 id="Figaro_EnvOpenOptions" data-uid="Figaro.EnvOpenOptions" class="text-break">Enum EnvOpenOptions
+  </h1>
+  <div class="markdown level0 summary"><p>Specifies the subsystems that are initialized and how the application&apos;s environment affects
+Figaro file naming, among other things.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_EnvOpenOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum EnvOpenOptions</code></pre>
+  </div>
+  <h5 id="Figaro_EnvOpenOptions_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The choice of subsystems initialized for a Figaro database environment is specified by the thread of control
+initially creating the environment. Any subsequent thread of control joining the environment will automatically be
+configured to use the same subsystems as were created in the environment (unless the thread of control requests
+a subsystem not available in the environment, which will fail). Applications joining an environment, able to
+adapt to whatever subsystems have been configured in the environment, should open the environment without
+specifying any subsystem flags. Applications joining an environment, requiring specific subsystems from their
+environments, should open the environment specifying those specific subsystem flags.
+<p>
+This enumeration can be bitwise OR&apos;d together with multiple values where it is used.
+</p></p>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_ConcurrentDataStoreDefaults">ConcurrentDataStoreDefaults</td>
+        <td><p>Initialize the Concurrent Data Store (CDS) defaults (<a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitConcurrentDataStore">InitConcurrentDataStore</a> and <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitMemoryBufferPool">InitMemoryBufferPool</a>).
+Note that <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_AllConcurrentDatabases">AllConcurrentDatabases</a> will automatically be set with this flag enabled.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Create">Create</td>
+        <td><p>Cause Figaro subsystems to create any underlying files, as necessary.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Failcheck">Failcheck</td>
+        <td><p>Run a failcheck operation against the environment, which checks for threads of control (either a true thread or a process) 
+that have exited while manipulating Berkeley DB library data structures, while holding a logical database lock, or 
+with an unresolved transaction (that is, a transaction that was never aborted or committed). </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_InitConcurrentDataStore">InitConcurrentDataStore</td>
+        <td><p>Initialize locking for the Figaro Concurrent Data Store subsystem.
+<p>
+In this mode, Figaro provides multiple reader/single writer access. The only other subsystem that should be
+specified with the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitConcurrentDataStore">InitConcurrentDataStore</a>
+flag is <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitMemoryBufferPool">InitMemoryBufferPool</a>.
+</p></p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_InitLock">InitLock</td>
+        <td><p>Initialize the locking subsystem.Use when multiple processes or threads are reading and writing a
+database so that they do not interfere with each other. If all threads are accessing the database(s)
+read-only, locking is unnecessary. When the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLog">InitLog</a> flag
+is specified, it is usually necessary to run a deadlock detector, as well.
+See <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a> for more information.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_InitLog">InitLog</td>
+        <td><p>Initialize the logging subsystem. Used when recovery from application or system failure is necessary. If the log region is
+being created and log files are already present, the log files are reviewed and writes are appended to the
+end of the log, rather than overwriting current log entries.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_InitMemoryBufferPool">InitMemoryBufferPool</td>
+        <td><p>Initialize the shared memory buffer pool subsystem. Used whenever an application is using any Figaro access method.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_InitTransaction">InitTransaction</td>
+        <td><p>Initialize the transaction subsystem. This subsystem should be used when recovery and atomicity of
+multiple operations are important. The <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a> flag implies the
+<a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLog">InitLog</a> flag.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Lockdown">Lockdown</td>
+        <td><p>Lock shared Figaro environment files and memory-mapped databases into memory.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_None">None</td>
+        <td><p>No options.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Private">Private</td>
+        <td><p>Allocate region memory from the heap instead of from memory backed by the file system or system shared memory.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Recover">Recover</td>
+        <td><p>Run normal recovery on this environment before opening it for normal use.
+If this flag is set, the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Create">Create</a> and
+<a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a> flags must also be set because the regions
+will be removed and re-created, and transactions are required for application recovery.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_RecoverFatal">RecoverFatal</td>
+        <td><p>Run catastrophic recovery on this environment before opening it for normal use.
+If this flag is set, the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Create">Create</a> and <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a> flags must also
+be set, because the regions will be removed and re-created, and transactions are required for application recovery.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Register">Register</td>
+        <td><p>Check to see if recovery needs to be performed before opening the database environment.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Replication">Replication</td>
+        <td><p>Initialize the replication subsystem. This subsystem should be used whenever an application 
+plans on using replication. This flag requires the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a> 
+and <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLock">InitLock</a> flags also be configured. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_ReplicationDefaults">ReplicationDefaults</td>
+        <td><p>Initializes the Replication subsystem with the <code>Create</code>, <code>InitLock</code>, <code>InitLog</code>, <code>InitMemoryBufferPool</code>, <code>InitTransaction</code>, <code>Recover</code>, and <code>Thread</code> values set.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_SystemSharedMem">SystemSharedMem</td>
+        <td><p>Allocate region memory from system shared memory instead of from heap memory or memory backed by
+the file system. See <a class="xref" href="../articles/figaro/shared-memory-regions.html">Shared Memory Regions</a> for more information.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_Thread">Thread</td>
+        <td><p>Cause the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle returned by
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> to be free-threaded;
+that is, concurrently usable by multiple threads in the address space. This flag should be specified if the
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle will be concurrently used by more than one thread in the process, or if any Db handles opened in the scope of
+the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle will be concurrently used by more than one thread in the process.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_TransactionDefaults">TransactionDefaults</td>
+        <td><p>Combines the most commonly used transaction flags:
+<a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLock">InitLock</a>, <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLog">InitLog</a>, <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitMemoryBufferPool">InitMemoryBufferPool</a>, and <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_UseEnvironment">UseEnvironment</td>
+        <td><p>The Figaro process&apos; environment may be permitted to specify information to be used when naming files; see @file-naming.md.
+Because permitting users to specify which files are used can create security problems, environment information will
+be used in file naming for all users only if the <a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_UseEnvironment">UseEnvironment</a> flag is set.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvOpenOptions_UseEnvironmentRoot">UseEnvironmentRoot</td>
+        <td><p>The Figaro process&apos; environment may be permitted to specify information to be used when naming files; see @file-naming.md.
+Because permitting users to specify which files are used can create security problems, if the
+<a class="xref" href="Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_UseEnvironmentRoot">UseEnvironmentRoot</a> flag is set,
+environment information will be used for file naming only for users with appropriate permissions
+(for example, users with a user-ID of 0 on UNIX systems).</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Enums.cs&amp;version=GBmaster&amp;line=376" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

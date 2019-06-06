@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Implementing XQueryResolver </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Implementing XQueryResolver ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="implementing-xqueryresolver.md">
+<h1 id="implementing-xqueryresolver">Implementing XQueryResolver</h1>
+
+<p>The <a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a> class is used to provide a handle to the appropriate external function, when a given XQuery statement requires an external function. For this reason, your <a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a> implementation must have knowledge of every external function you have implemented.</p>
+<p>The resolver is responsible for instantiating an instance of the required external function. It is also responsible for destroying that instance, either once the query has been process or when the resolver instance itself is being destroyed. Which is the correct option for your application is an implementation detail that is up to you.</p>
+<p>It is possible for your code to have multiple instances of an <a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a> class, each instance of which can potentially be responsible for different collections of external functions. For this reason, you uniquely identify each resolver class with a URI.</p>
+<p>In order to call a specific external function, your XQueries must provide a URI as identification, as well as a function name. You can decide which external function to return based on the URI, the function name, and/or the number of arguments provided in the XQuery. Which of these are necessary for you to match the correct external function is driven by how many external functions you have implemented, how many resolver classes you have implemented, and how many variations on functions with the same name you have implemented. In theory, a very simple implementation could return an external function instance based only on the function name. Other implementation may need to match based on all possible criteria.</p>
+<p>For the absolute most correct and safest implementation, you should match on all three criteria: URI, function name, and number of arguments.</p>
+<p>For example, suppose you had two external functions: <code>SmallFunction</code> and <code>BigFunction</code>. <code>SmallFunction</code> is a small function that requires few resources to instantiate and is called infrequently; <code>BigFunction</code> is a larger function that opens containers, obtains lots of memory and from a performance perspective is something that is best instantiated once and then not destroyed until program shutdown. Further, <code>SmallFunction</code> takes two arguments while <code>BigFunction</code> takes five.</p>
+<p>An <a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a> implementation for this example would be as follows:</p>
+<pre><code class="lang-C#">/// &lt;summary&gt;
+/// Resolve our small and large functions
+/// &lt;/summary&gt;
+public class MyFunResolver : XQueryResolver
+{
+    public MyFunResolver() : base(new Uri(&quot;my://my.fun.resolver&quot;))
+    {            
+    }
+
+    public override bool ResolveCollection(XmlTransaction txn, XmlManager mgr, string uri, XmlResults collection)
+    {
+        return false;
+    }
+
+    public override XmlDocument ResolveDocument(XmlTransaction txn, XmlManager mgr, string uri)
+    {
+        return null;
+    }
+
+    public override XmlInputStream ResolveEntity(XmlTransaction txn, XmlManager mgr, string systemId, string publicId)
+    {
+        return null;
+    }
+
+    public override XmlExternalFunction ResolveExternalFunction(XmlTransaction txn, XmlManager mgr, string uri, string name, uint numArgs)
+    {
+        if (uri != Uri.ToString()) return null;
+        switch (numArgs)
+        {
+            case 5:
+                Trace.WriteLine(&quot;resolving big function...&quot;);
+                return new BigFunction();
+            case 2:
+                Trace.WriteLine(&quot;resolving small function...&quot;);
+                return new SmallFunction();
+        }
+
+        return null;
+
+    }
+
+    public override XmlInputStream ResolveModule(XmlTransaction txn, XmlManager mgr, string moduleLocation, string nameSpace)
+    {
+        return null;
+    }
+
+    public override bool ResolveModuleLocation(XmlTransaction txn, XmlManager mgr, string nameSpace, XmlResults moduleLocations)
+    {
+        return false;
+    }
+
+    public override XmlInputStream ResolveSchema(XmlTransaction txn, XmlManager mgr, string schemaLocation, string nameSpace)
+    {
+        return null;
+    }
+}
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a></li>
+<li><a class="xref" href="../api/Figaro.Container.html">Container</a></li>
+<li><a class="xref" href="../api/Figaro.XmlExternalFunction.html">XmlExternalFunction</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="working-with-external-functions.html">Working with External Functions</a></li>
+<li><a class="xref" href="implementing-xmlexternalfunction.html">Implementing XmlExternalFunction</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/implementing-xqueryresolver.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

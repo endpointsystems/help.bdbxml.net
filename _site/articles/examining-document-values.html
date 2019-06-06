@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examining Document Values </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Examining Document Values ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="examining-document-values.md">
+<h1 id="examining-document-values">Examining Document Values</h1>
+
+<p>It is frequently useful to retrieve a document from Figaro and then perform follow-on queries to retrieve individual values from the document itself. You do this by creating and executing a query, except that you pass the specific <a class="xref" href="../api/Figaro.XmlValue.html">XmlValue</a> object that you want to query to the @Figaro.XQueryExpression.Execute method. You must then iterate over a result set exactly as you would when retrieving information from a container.</p>
+<p>For example, suppose you have an address book product that manages individual contacts using XML documents such as:</p>
+<pre><code class="lang-XML">&lt;contact&gt;
+  &lt;familiarName&gt;John&lt;/familiarName&gt;
+  &lt;surname&gt;Doe&lt;/surname&gt;
+  &lt;phone work=&quot;555 555 5555&quot; home=&quot;555 666 777&quot; /&gt;
+  &lt;address&gt;
+    &lt;street&gt;1122 Somewhere Lane&lt;/street&gt;
+    &lt;city&gt;Nowhere&lt;/city&gt;
+    &lt;state&gt;Minnesota&lt;/state&gt;
+    &lt;zipcode&gt;11111&lt;/zipcode&gt;
+  &lt;/address&gt;
+&lt;/contact&gt;
+</code></pre><p>Then you could retrieve individual documents and pull data off of them like this:</p>
+<pre><code class="lang-C#">        private const string data = &quot;&lt;contact&gt;&lt;familiarName&gt;John&lt;/familiarName&gt;&lt;surname&gt;Doe&lt;/surname&gt;&lt;phone work=\&quot;555 555 5555\&quot; home=\&quot;555 666 777\&quot; /&gt;&lt;address&gt;&lt;street&gt;1122 Somewhere Lane&lt;/street&gt;&lt;city&gt;Nowhere&lt;/city&gt;&lt;state&gt;Minnesota&lt;/state&gt;&lt;zipcode&gt;11111&lt;/zipcode&gt;&lt;/address&gt;&lt;/contact&gt;&quot;;
+
+        var mgr = new XmlManager(ManagerInitOptions.AllowAutoOpen);
+        var cfg = new ContainerConfig
+                      {
+                          AllowCreate = true,
+                          Alias = &quot;contacts&quot;
+                      };
+        var container = mgr.OpenContainer(&quot;&quot;, cfg);
+        var doc = mgr.CreateDocument();
+        doc.SetContent(data);
+        doc.Name = &quot;test&quot;;
+        container.PutDocument(doc, mgr.CreateUpdateContext());
+
+        // Declare the query string. Retrieves all the documents
+        // for people with the last name &#39;Doe&#39;.
+        const string myQuery = &quot;collection()/contact&quot;;
+
+        // Query to get the familiar name from the
+        // document.
+        const string fn = &quot;distinct-values(collection()/contact/familiarName)&quot;;
+
+        // Query to get the surname from the
+        // document.
+        const string sn = &quot;distinct-values(collection()/contact/surname)&quot;;
+
+        // Work phone number
+        const string wrkPhone = &quot;distinct-values(collection()/contact/phone/@work)&quot;;
+
+        // Get the context for the XmlManager query
+        QueryContext managerContext = mgr.CreateQueryContext();
+        managerContext.DefaultCollection = &quot;&quot;;
+        // Get a context for the document queries
+        QueryContext documentContext = mgr.CreateQueryContext();
+        documentContext.DefaultCollection = &quot;&quot;;
+
+        // Prepare the XmlManager query
+        XQueryExpression managerQuery = mgr.Prepare(myQuery, managerContext);
+
+        // Prepare the individual document queries
+        XQueryExpression fnExpr = mgr.Prepare(fn, documentContext);
+        XQueryExpression snExpr = mgr.Prepare(sn, documentContext);
+
+        XQueryExpression wrkPhoneExpr =
+            mgr.Prepare(wrkPhone, documentContext);
+
+        // Perform the query.
+        XmlResults results = managerQuery.Execute(managerContext, 0);
+
+        // Display the result set
+        while (results.HasNext())
+        {
+            // Get the individual values
+            var value = results.NextValue();
+            XmlResults fnResults = fnExpr.Execute(value, documentContext, QueryOptions.None);
+            XmlResults snResults = snExpr.Execute(value, documentContext, QueryOptions.None);
+            XmlResults phoneResults = wrkPhoneExpr.Execute(value, documentContext, QueryOptions.None);
+
+            if (fnResults.HasNext() &amp;amp;&amp;amp; snResults.HasNext() &amp;amp;&amp;amp; phoneResults.HasNext())
+            {
+                trace(&quot;fnResults: {0}, snResults: {1}, phoneResults: {2}&quot;,
+                      fnResults.NextValue().AsString,
+                      snResults.NextValue().AsString,
+                      phoneResults.NextValue().AsString);
+            }
+                continue;
+        }
+</code></pre><p>Note that you can use the same basic mechanism to pull information out of very long documents, except that in this case you need to maintain the query&#39;s focus; that is, the location in the document that the result set item is referencing. For example suppose you have a document with 2,000 contact nodes and you want to get the name attribute from some particular contact in the document.</p>
+<p>There are several ways to perform this query. You could, for example, ask for the node based on the value of some other attribute or element in the node:</p>
+<pre><code class="lang-XML">/document/contact[category=&#39;personal&#39;]
+</code></pre><p>Or you could create a result set that holds all of the document&#39;s contact nodes:</p>
+<pre><code class="lang-XML">/document/contact
+</code></pre><p>Regardless of how you get your result set, you can then go ahead and query each value in the result set for information contained in the value. To do this:</p>
+<p>Iterate over the result set as normal.
+Query for document information as described above.
+However, in this case change the query so that you reference the self access. That is, for the surname query described above, you would use the following query instead so as to reference nodes relative to the current node (notice the self-access (<code>.</code>) in use in the following query):</p>
+<pre><code class="lang-XML">distinct-values(./surname)
+</code></pre><h2 id="see-also">See Also</h2>
+<p><a class="xref" href="examining-query-results.html">Examining Query Results</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/examining-document-values.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

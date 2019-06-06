@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Running the Shell </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Running the Shell ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="running-the-shell.md">
+<h1 id="running-the-shell">Running the Shell</h1>
+
+<p>The <a class="xref" href="the-dbxml-shell.html">dbxml shell command</a> is located in the Figaro NuGet packages. To run the shell, simply type <code>dbxml</code> at the command prompt for your operating system. Assuming that you have the dbxml shell in your operating system&#39;s command line path, you&#39;ll then be greeted by the <code>dbxml&gt;</code> prompt.</p>
+<pre><code>C:\ dbxml
+dbxml&gt;
+</code></pre><p>In the examples that follow, you&#39;ll see the <code>dbxml&gt;</code> prompt followed by the command that should be entered. Most commands are simple one line commands. However, some are more complicated XQuery examples that will span multiple lines. Each example will show both the command to enter and the resulting output. When the output is too long, ellipsis (...) will be used to abbreviate the intermediate results.</p>
+<p>When using Figaro you will find that document content is stored in a container. This is the first basic concept in Figaro XML database development:</p>
+<ul>
+<li>Containers hold collections of XML documents.</li>
+<li>The documents within a container may or may not share the same schema.</li>
+</ul>
+<p>To begin exploring Figaro, create a container. Our first example models a simple phone book database. The container&#39;s name will be <code>phone.dbxml</code>.</p>
+<pre><code>dbxml&gt; createContainer phone.dbxml      
+
+Creating node storage container with nodes indexed
+</code></pre><p>The command and output in this case was very simple. It was meant to merely confirm command execution. Note that a file named <code>phone.dbxml</code> was created in your working directory. This is the new node storage container. Containers hold the XML data, indices, document metadata, and any other useful information, and are managed by Figaro. Never edit a container directly - always allow the Figaro library to manage it for you. The <code>.dbxml</code> extension helps to identify the database on disk, but is simply a naming convention that is not strictly required.</p>
+<div class="NOTE"><h5>Note</h5><p>In addition to creating the container, the <code>dbxml</code> shell also automatically opened it and made it ready for us to use.</p>
+</div>
+<p>This phone book example&#39;s data model uses XML entries of the following format:</p>
+<pre><code class="lang-XML">    &lt;phonebook&gt;
+    &lt;name&gt;
+        &lt;first&gt;Tom&lt;/first&gt;
+        &lt;last&gt;Jones&lt;/last&gt;
+    &lt;/name&gt;   
+    &lt;phone type=&quot;home&quot;&gt;420-203-2032&lt;/phone&gt;
+&lt;/phonebook&gt;
+</code></pre><p>Now add a few phone book entries to the container in the following manner:</p>
+<pre><code>dbxml&gt; putDocument phone1 &#39;&lt;phonebook&gt;
+    &lt;name&gt;
+        &lt;first&gt;Tom&lt;/first&gt;
+        &lt;last&gt;Jones&lt;/last&gt;
+    &lt;/name&gt;   
+    &lt;phone type=&quot;home&quot;&gt;420-203-2032&lt;/phone&gt;
+&lt;/phonebook&gt;&#39; s
+
+Document added, name = phone1
+
+dbxml&gt; putDocument phone2 &#39;&lt;phonebook&gt;
+    &lt;name&gt;
+        &lt;first&gt;Lisa&lt;/first&gt;
+        &lt;last&gt;Smith&lt;/last&gt;
+    &lt;/name&gt;   
+    &lt;phone type=&quot;home&quot;&gt;420-992-4801&lt;/phone&gt;
+    &lt;phone type=&quot;cell&quot;&gt;390-812-4292&lt;/phone&gt;
+&lt;/phonebook&gt;&#39; s
+
+Document added, name = phone2
+</code></pre><div class="NOTE"><h5>Note</h5><p>The XML document content is wrapped in single quote characters and the command is terminated by an <code>s</code> character. This indicates that we are adding a new document using a string. The single quote characters are used for any command parameter that either contains spaces or needs to span multiple lines.</p>
+</div>
+<p>Now the container has a few phone book entries. The following few examples demonstrate some basic XQuery queries based solely on XPath statements. Subsequent sections will demonstrate more complex XQuery statements.</p>
+<div class="NOTE"><h5>Note</h5><p>XPath is a central part of the XQuery specification. It serves much the same function as the <code>SELECT</code> statement does in SQL. It is essentially used to identify a subset of data within the data set.
+To retrieve all the last names stored in the container:</p>
+</div>
+<pre><code>dbxml&gt; query &#39;collection(&quot;phone.dbxml&quot;)/phonebook/name/last/string()&#39;
+
+2 objects returned for eager expression &#39;collection(&quot;phone.dbxml&quot;)/phonebook/name/last/string()&#39;
+
+dbxml&gt; print
+Jones
+Smith
+</code></pre><p>To find Lisa&#39;s home phone number:</p>
+<pre><code>dbxml&gt; query &#39;
+collection(&quot;phone.dbxml&quot;)/phonebook[name/first = &quot;Lisa&quot;]/phone[@type = &quot;home&quot;]/string()&#39;
+
+1 objects returned for eager expression &#39;collection(&quot;phone.dbxml&quot;)/phonebook[name/first = &quot;Lisa&quot;]/phone[@type = &quot;home&quot;]/string()&#39;
+
+dbxml&gt; print
+420-992-4801
+</code></pre><p>To find all phone numbers in the 420 area code:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;phone.dbxml&quot;)/phonebook/phone[starts-with(., &quot;420&quot;)]/string()&#39;
+
+2 objects returned for eager expression &#39;collection(&quot;phone.dbxml&quot;)/phonebook/phone[starts-with(., &quot;420&quot;)]/string()&#39;
+
+dbxml&gt; print
+420-203-2032
+420-992-4801
+</code></pre><p>These queries simply retrieve subsets of data, just like a basic <code>SELECT</code> statement would in a relational database. Each query consists of two parts. The first part of the query identifies the set of documents to be examined (equivalent to a projection). This is done with an XQuery navigation function such as <code>collection()</code>. In this example, <code>collection(&quot;phone.dbxml&quot;)</code> specifies the container against which we want to apply our query. The second part is an XPath statement (equivalent to a selection). The first example&#39;s XPath statement was <code>/phonebook/name/last/string()</code> which, based on our document structure, will retrieve all last names and present them as a string.</p>
+<p>Understanding XPath is the first step toward understanding XQuery.</p>
+<div class="NOTE"><h5>Note</h5><p>You can perform a query against multiple containers using the union operator (&quot;|&quot;) with the <code>collection()</code> function. For example, to query against containers <code>c1.dbxml</code> and <code>c2.dbxml</code>, you would use the following expression: </p>
+</div>
+<pre><code>(collection(&quot;c1.dbxml&quot;) | collection(&quot;c2.dbxml&quot;))/name/string()
+</code></pre><h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="intro.html">Introducing Figaro</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/running-the-shell.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

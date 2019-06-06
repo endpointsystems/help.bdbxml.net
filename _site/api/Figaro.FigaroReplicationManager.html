@@ -1,0 +1,684 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FigaroReplicationManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FigaroReplicationManager
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.FigaroReplicationManager">
+  
+  
+  <h1 id="Figaro_FigaroReplicationManager" data-uid="Figaro.FigaroReplicationManager" class="text-break">Class FigaroReplicationManager
+  </h1>
+  <div class="markdown level0 summary"><p>The replication manager for Figaro High Availability (HA).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FigaroReplicationManager</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_FigaroReplicationManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FigaroReplicationManager</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=40">View Source</a>
+  </span>
+  <h4 id="Figaro_FigaroReplicationManager_ReplicationView" data-uid="Figaro.FigaroReplicationManager.ReplicationView">ReplicationView</h4>
+  <div class="markdown level1 summary"><p>Create a replication view and specify the function to determine
+whether a database file is replicated to the local site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventHandler&lt;ReplicationViewArgs&gt; ReplicationView</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Figaro.ReplicationViewArgs.html">ReplicationViewArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_ReplicationView_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If it is null, the replication view is a full view and all database
+files are replicated to the local site. Otherwise it is a partial
+view and only some database files are replicated to the local site.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=182">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_AcknowledgmentPolicy_" data-uid="Figaro.FigaroReplicationManager.AcknowledgmentPolicy*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_AcknowledgmentPolicy" data-uid="Figaro.FigaroReplicationManager.AcknowledgmentPolicy">AcknowledgmentPolicy</h4>
+  <div class="markdown level1 summary"><p>Gets the acknowledgment policy of the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RecordAcknowledgmentPolicy AcknowledgmentPolicy { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.RecordAcknowledgmentPolicy.html">RecordAcknowledgmentPolicy</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_AcknowledgmentPolicy_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.RecordAcknowledgmentPolicy.html">RecordAcknowledgmentPolicy</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=176">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_Priority_" data-uid="Figaro.FigaroReplicationManager.Priority*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_Priority" data-uid="Figaro.FigaroReplicationManager.Priority">Priority</h4>
+  <div class="markdown level1 summary"><p>Gets the replication manager priority.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Priority { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_Priority_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroReplicationManager.html#Figaro_FigaroReplicationManager_SetPriority_System_UInt32_">SetPriority(UInt32)</a></div>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=147">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_AddSite_" data-uid="Figaro.FigaroReplicationManager.AddSite*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_AddSite_Figaro_DBSite_" data-uid="Figaro.FigaroReplicationManager.AddSite(Figaro.DBSite)">AddSite(DBSite)</h4>
+  <div class="markdown level1 summary"><p>Add a replication site to the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSite(DBSite replicationSite)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.DBSite.html">DBSite</a></td>
+        <td><span class="parametername">replicationSite</span></td>
+        <td><p>The site to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=64">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_GetConfiguration_" data-uid="Figaro.FigaroReplicationManager.GetConfiguration*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_GetConfiguration" data-uid="Figaro.FigaroReplicationManager.GetConfiguration">GetConfiguration()</h4>
+  <div class="markdown level1 summary"><p>Retrieve the replication configuration settings from the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReplicationConfig GetConfiguration()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationConfig.html">ReplicationConfig</a></td>
+        <td><p>The current replication configuration settings.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=128">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_GetDBSites_" data-uid="Figaro.FigaroReplicationManager.GetDBSites*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_GetDBSites" data-uid="Figaro.FigaroReplicationManager.GetDBSites">GetDBSites()</h4>
+  <div class="markdown level1 summary"><p>Gets a list of sites configured to interact with the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;DBSite&gt; GetDBSites()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Figaro.DBSite.html">DBSite</a>&gt;</td>
+        <td><p>The configured list of sites.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=18">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_GetStatistics_" data-uid="Figaro.FigaroReplicationManager.GetStatistics*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_GetStatistics_System_Boolean_" data-uid="Figaro.FigaroReplicationManager.GetStatistics(System.Boolean)">GetStatistics(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets replication statistics for the database environment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReplicationManagerStatistics GetStatistics(bool clear)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clear</span></td>
+        <td><p>If <code>true</code>, resets the statistics within the environment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationManagerStatistics.html">ReplicationManagerStatistics</a></td>
+        <td><p>A new <code>ReplicationStatistics</code> data set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=137">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_ListSites_" data-uid="Figaro.FigaroReplicationManager.ListSites*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_ListSites" data-uid="Figaro.FigaroReplicationManager.ListSites">ListSites()</h4>
+  <div class="markdown level1 summary"><p>List a read-only list of site addresses and ports.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;ReplicationHostAddress&gt; ListSites()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="Figaro.ReplicationHostAddress.html">ReplicationHostAddress</a>&gt;</td>
+        <td><p>A read-only list of addresses and ports.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=27">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_PrintStatistics_" data-uid="Figaro.FigaroReplicationManager.PrintStatistics*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_PrintStatistics_System_Boolean_" data-uid="Figaro.FigaroReplicationManager.PrintStatistics(System.Boolean)">PrintStatistics(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Prints replication statistics to the standard output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PrintStatistics(bool clear)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clear</span></td>
+        <td><p>If <code>true</code>, resets the statistics within the environment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=164">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_SetAcknowledgmentPolicy_" data-uid="Figaro.FigaroReplicationManager.SetAcknowledgmentPolicy*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_SetAcknowledgmentPolicy_Figaro_RecordAcknowledgmentPolicy_" data-uid="Figaro.FigaroReplicationManager.SetAcknowledgmentPolicy(Figaro.RecordAcknowledgmentPolicy)">SetAcknowledgmentPolicy(RecordAcknowledgmentPolicy)</h4>
+  <div class="markdown level1 summary"><p>Specify the policy for how master and client sites will handle acknowledgment of replication messages 
+which are necessary for &quot;permanent&quot; records. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAcknowledgmentPolicy(RecordAcknowledgmentPolicy policy)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.RecordAcknowledgmentPolicy.html">RecordAcknowledgmentPolicy</a></td>
+        <td><span class="parametername">policy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_SetAcknowledgmentPolicy_Figaro_RecordAcknowledgmentPolicy__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>View sites never send these acknowledgments and are not counted by any acknowledgment policy. The current 
+implementation requires all sites in a replication group to configure the same acknowledgment policy.
+<p>
+Waiting for client acknowledgments is always limited by the <a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_ElectionTimeout">ElectionTimeout</a>. If 
+an insufficient number of client acknowledgments have been received, then the master will invoke the 
+event callback function, if set, with the <a class="xref" href="Figaro.EnvironmentEvent.html#Figaro_EnvironmentEvent_ReplicationAckFailure">ReplicationAckFailure</a> value.
+</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=46">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_SetConfiguration_" data-uid="Figaro.FigaroReplicationManager.SetConfiguration*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_SetConfiguration_Figaro_ReplicationConfig_" data-uid="Figaro.FigaroReplicationManager.SetConfiguration(Figaro.ReplicationConfig)">SetConfiguration(ReplicationConfig)</h4>
+  <div class="markdown level1 summary"><p>Configure the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetConfiguration(ReplicationConfig config)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationConfig.html">ReplicationConfig</a></td>
+        <td><span class="parametername">config</span></td>
+        <td><p>The replication configuration properties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=121">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_SetPriority_" data-uid="Figaro.FigaroReplicationManager.SetPriority*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_SetPriority_System_UInt32_" data-uid="Figaro.FigaroReplicationManager.SetPriority(System.UInt32)">SetPriority(UInt32)</h4>
+  <div class="markdown level1 summary"><p>Sets the database environment&apos;s priority in replication group elections. A special value of 0 indicates that 
+this environment cannot be a replication group master.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPriority(uint priority)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">priority</span></td>
+        <td><p>The environment&apos;s priority.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_SetPriority_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Each database environment included in a replication group must have a priority, which specifies a relative ordering 
+among the different environments in a replication group. This ordering is a factor in determining which environment 
+will be selected as a new master in case the existing master fails. Applications should specify environment priorities.
+</p>
+<p>
+Priorities are an unsigned integer, but do not need to be unique throughout the replication group. A priority of 0 
+means the system can never become a master. Otherwise, larger valued priorities indicate a more desirable master. 
+For example, if a replication group consists of three database environments, two of which are connected by an OC3 
+and the third of which is connected by a T1, the third database environment should be assigned a priority value which 
+is lower than either of the other two.</p>
+<p>
+Desirability of the master is first determined by the client having the most recent log records. Ties in log records are 
+broken with the client priority. If both sites have the same log and the same priority, one is selected at random.
+</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=55">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_SetReplicationView_" data-uid="Figaro.FigaroReplicationManager.SetReplicationView*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_SetReplicationView_Figaro_ReplicationViewOptions_" data-uid="Figaro.FigaroReplicationManager.SetReplicationView(Figaro.ReplicationViewOptions)">SetReplicationView(ReplicationViewOptions)</h4>
+  <div class="markdown level1 summary"><p>Configure the site as a replication view using the specified option.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetReplicationView(ReplicationViewOptions viewOption)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationViewOptions.html">ReplicationViewOptions</a></td>
+        <td><span class="parametername">viewOption</span></td>
+        <td><p>The specified replication view option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=96">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_Start_" data-uid="Figaro.FigaroReplicationManager.Start*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_Start_System_UInt16_Figaro_ReplicationStartOptions_" data-uid="Figaro.FigaroReplicationManager.Start(System.UInt16,Figaro.ReplicationStartOptions)">Start(UInt16, ReplicationStartOptions)</h4>
+  <div class="markdown level1 summary"><p>Starts the replication manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Start(ushort threads, ReplicationStartOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">threads</span></td>
+        <td><p>The number of threads of control created and dedicated to processing replication messages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationStartOptions.html">ReplicationStartOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>The replication manager start options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_Start_System_UInt16_Figaro_ReplicationStartOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method can only be called after <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> has been called.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.FigaroReplicationException.html">FigaroReplicationException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_FigaroReplicationManager_Start_System_UInt16_Figaro_ReplicationStartOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.ReplicationStartOptions.html">ReplicationStartOptions</a></div>
+      <div><a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=82">View Source</a>
+  </span>
+  <a id="Figaro_FigaroReplicationManager_Sync_" data-uid="Figaro.FigaroReplicationManager.Sync*"></a>
+  <h4 id="Figaro_FigaroReplicationManager_Sync" data-uid="Figaro.FigaroReplicationManager.Sync">Sync()</h4>
+  <div class="markdown level1 summary"><p>Forces synchronization to begin between master and client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Sync()</code></pre>
+  </div>
+  <h5 id="Figaro_FigaroReplicationManager_Sync_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If an application has configured delayed master synchronization, the application must synchronize 
+explicitly (otherwise the client will remain out-of-date and will ignore all database changes 
+forwarded from the replication group master).
+<p>
+This method may also be called after the client application learns a new master has 
+been established via the <a class="xref" href="Figaro.EnvironmentEvent.html#Figaro_EnvironmentEvent_ReplicationNewMaster">ReplicationNewMaster</a> flag.
+</p></p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/FigaroReplicationManager.cs&amp;version=GBmaster&amp;line=11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

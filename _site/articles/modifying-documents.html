@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Modifying Documents </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Modifying Documents ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="modifying-documents.md">
+<h1 id="modifying-documents">Modifying Documents</h1>
+
+<p>The best way to modify a document in a container is to use <a href="http://xqilla.sourceforge.net/XQueryUpdate">XQuery Update</a> statements. Update statements allow you to insert, delete, replace and rename information in XML. In this section, we provide a very brief overview of this aspect of the XQuery language.</p>
+<h2 id="modifying-documents-1">Modifying Documents</h2>
+<p>First, let&#39;s create a container and then a couple of documents that we can use for our Update queries:</p>
+<pre><code>dbxml&gt; createContainer modify.dbxml
+Creating node storage container with nodes indexed
+
+dbxml&gt; putDocument &quot;mod1.xml&quot; &#39;&lt;mod1&gt;
+    &lt;nodeOne&gt;Sample text&lt;/nodeOne&gt;
+    &lt;nodeTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/nodeTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;&#39; s
+Document added, name = mod1.xml
+
+dbxml&gt; putDocument &quot;mod2.xml&quot; &#39;&lt;mod2&gt;
+    &lt;nodeA&gt;A sample text&lt;/nodeA&gt;
+    &lt;nodeB&gt;
+        &lt;nodeBA&gt;B A text&lt;/nodeBA&gt;
+        &lt;nodeBB&gt;B B text&lt;/nodeBB&gt;
+        &lt;nodeBC&gt;B C text&lt;/nodeBC&gt;
+    &lt;/nodeB&gt;
+&lt;/mod2&gt;&#39; s
+Document added, name = mod2.xml
+</code></pre><p>Now let&#39;s insert some content into <code>mod1.xml</code>. There&#39;s a few basic rules that are good to keep in mind at this point:</p>
+<ul>
+<li>Update queries never return a result; they just modify the document and then quit.</li>
+<li>The queries that you use to select a document for updating must not themselves be an update query.</li>
+<li>Update queries can only work on one document at a time, although they can be used in FLWOR expressions and so operate on multiple documents and containers as the expression iterates.</li>
+</ul>
+<p>Here&#39;s how you insert a node, specifying it as a simple text argument on the query:</p>
+<pre><code>dbxml&gt; query &#39;insert nodes
+       &lt;newNode&gt;Some new text&lt;/newNode&gt;
+       after
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeOne&#39;
+0 objects returned for eager expression &#39;insert nodes
+       &lt;newNode&gt;Some new text&lt;/newNode&gt;
+       after
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeOne&#39;
+</code></pre><p>Notice that no data returned as a result of the query. This is required by the XQuery Update specification.</p>
+<p>Also, notice the keyword <code>after</code> in the query. This causes the new data to be inserted after the selected node. Other keywords are available: <code>before</code>, <code>into</code>, <code>as first into</code> and <code>as last into</code>.</p>
+<p>The results of this query is:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeOne&gt;Sample text&lt;/nodeOne&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;nodeTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/nodeTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>It is also possible to identify new content using a selection query, instead of providing it as a string. For example:</p>
+<pre><code>dbxml&gt; query &#39;insert nodes
+       doc(&quot;dbxml:/modify.dbxml/mod2.xml&quot;)/mod2/nodeB
+       before
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeThree&#39;
+0 objects returned for eager expression &#39;insert nodes
+       doc(&quot;dbxml:/modify.dbxml/mod2.xml&quot;)/mod2/nodeB
+       before
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeThree&#39;
+</code></pre><p>As a result of this query, we now have:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeOne&gt;Sample text&lt;/nodeOne&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;nodeTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/nodeTwo&gt;
+    &lt;nodeB&gt;
+        &lt;nodeBA&gt;B A text&lt;/nodeBA&gt;
+        &lt;nodeBB&gt;B B text&lt;/nodeBB&gt;
+        &lt;nodeBC&gt;B C text&lt;/nodeBC&gt;
+    &lt;/nodeB&gt;&lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>You can delete a node, and when you do the selected node and all its children are also deleted:</p>
+<pre><code>dbxml&gt; query &#39;delete nodes doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB&#39;
+0 objects returned for eager expression &#39;delete nodes doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB&#39;
+
+dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeOne&gt;Sample text&lt;/nodeOne&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;nodeTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/nodeTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>You can also rename a node:</p>
+<pre><code>dbxml&gt; query &#39;rename node doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeTwo as &quot;renamedTwo&quot;&#39;
+0 objects returned for eager expression &#39;rename node
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeTwo
+       as &quot;renamedTwo&quot;&#39;
+
+dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeOne&gt;Sample text&lt;/nodeOne&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>Finally, you can replace document content. Here you can either replace an entire node, or just the node&#39;s content. Also, just as is the case with content insertion, you can either specify the new content as a string, or use a selection query to obtain the content from some other document.</p>
+<p>To replace a node:</p>
+<pre><code>dbxml&gt; query &#39;replace node doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeOne
+       with doc(&quot;dbxml:/modify.dbxml/mod2.xml&quot;)/mod2/nodeB&#39;
+
+0 objects returned for eager expression &#39;replace node doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeOne
+       with doc(&quot;dbxml:/modify.dbxml/mod2.xml&quot;)/mod2/nodeB&#39;
+
+dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeB&gt;
+        &lt;nodeBA&gt;B A text&lt;/nodeBA&gt;
+        &lt;nodeBB&gt;B B text&lt;/nodeBB&gt;
+        &lt;nodeBC&gt;B C text&lt;/nodeBC&gt;
+    &lt;/nodeB&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>To replace a node&#39;s contents, use replace value of node instead of replace node:</p>
+<pre><code>dbxml&gt; query &#39;replace value of node
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB
+       with
+       &quot;replacement text&quot;&#39;
+0 objects returned for eager expression &#39;replace value of node
+       doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB
+       with
+       &quot;replacement text&quot;&#39;
+
+dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeB&gt;replacement text&lt;/nodeB&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>It is possible to create an update function that groups multiple update statements together in a single query. When this is done, there are series of rules that govern the order in which the statements are applied to the targeted document, and the conditions under which an error will automatically be raised.</p>
+<p>For example, notice that in the following updating function, both the rename and replace operations operate on the same target. However, the rename appears before the replace operation. If these operations were applied strictly in the order that they are supplied, then the replace should fail because the node that it operates on has been replaced. However, this is not the case. The reason why is that XQuery Update always applies replace operations to a document before it applies rename operations.</p>
+<pre><code>dbxml&gt; query &#39;declare updating function 
+    local:myUpdate($target as element(),
+                   $repVal as xs:string,
+                   $rep as xs:string)
+{
+    rename node $target as $rep,
+    replace value of node $target with $repVal
+};
+
+local:myUpdate(
+    doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB,
+    &quot;nodeZ content&quot;,
+    &quot;nodeZ&quot;)&#39;
+0 objects returned for eager expression &#39;declare updating function 
+     local:myUpdate($target as element(),
+                    $repVal as xs:string,
+                    $rep as xs:string)
+{
+    rename node $target as $rep,
+    replace value of node $target with $repVal
+};
+
+local:myUpdate(doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1/nodeB, &quot;nodeZ content&quot;, &quot;nodeZ&quot;)&#39;
+
+
+dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeZ&gt;nodeZ content&lt;/nodeZ&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>Finally, while it is not possible to perform an update and return a result in the same operation, it is possible to create a function that creates a copy of a document, modifies the copy, and then returns that copy to you. Note that this copy is not stored permanently in the container; the update operations are simply applied to the result of copy operation. All other rules applying to Update operations still apply.</p>
+<p>These sort of functions are called <em>transform functions</em>. For example:</p>
+<pre><code>dbxml&gt; query &#39;copy $c := doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1      
+modify (rename node $c/nodeZ as &quot;nodeB&quot;,
+        replace value of node $c/nodeZ with &quot;replacement text&quot;)
+return $c&#39;
+1 objects returned for eager expression &#39;copy $c := 
+doc(&quot;dbxml:/modify.dbxml/mod1.xml&quot;)/mod1
+modify (rename node $c/nodeZ as &quot;nodeB&quot;,
+        replace value of node $c/nodeZ with &quot;replacement text&quot;)
+return $c&#39;
+
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeB&gt;replacement text&lt;/nodeB&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><p>However, if we query for <code>mod1.xml</code>, we see that it has not been modified by the copy and modify operation:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+1 objects returned for eager expression &#39;collection(&quot;modify.dbxml&quot;)/mod1&#39;
+
+
+dbxml&gt; print
+&lt;mod1&gt;
+    &lt;nodeZ&gt;nodeZ content&lt;/nodeZ&gt;&lt;newNode&gt;Some new text&lt;/newNode&gt;
+    &lt;renamedTwo&gt;
+        &lt;nodeTwoOne&gt;Two One text&lt;/nodeTwoOne&gt;
+        &lt;nodeTwoTwo&gt;Two Two text&lt;/nodeTwoTwo&gt;
+        &lt;nodeTwoThree&gt;Two Three text&lt;/nodeTwoThree&gt;
+    &lt;/renamedTwo&gt;
+    &lt;nodeThree&gt;Node three text&lt;/nodeThree&gt;
+&lt;/mod1&gt;
+</code></pre><h3 id="references">References</h3>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Fiagro and XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-flwor.html">Using FLWOR</a></li>
+<li><a class="xref" href="retrieving-data-using-xquery.html">Retrieving Data using XQuery</a></li>
+<li><a class="xref" href="performing-queries.html">Performing Queries</a></li>
+<li><a href="http://xqilla.sourceforge.net/XQueryUpdate">XQuery Update</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/modifying-documents.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

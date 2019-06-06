@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XmlMetadataIterator
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XmlMetadataIterator
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlMetadataIterator">
+  
+  
+  <h1 id="Figaro_XmlMetadataIterator" data-uid="Figaro.XmlMetadataIterator" class="text-break">Class XmlMetadataIterator
+  </h1>
+  <div class="markdown level0 summary"><p>Provides an iterator over an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>&apos;s metadata. Metadata is set
+on a document with <a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_SetMetadata_System_String_System_String_Figaro_XmlData_">SetMetadata(String, String, XmlData)</a>. You can also
+use <a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlData_System_String_System_String_">GetMetadataXmlData(String, String)</a> or
+<a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlValue_System_String_System_String_">GetMetadataXmlValue(String, String)</a> to return
+a specific metadata item.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XmlMetadataIterator</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlMetadataIterator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XmlMetadataIterator : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XmlMetadataIterator_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This object is instantiated using <a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataIterator">GetMetadataIterator()</a>.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=38">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Name_" data-uid="Figaro.XmlMetadataIterator.Name*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Name" data-uid="Figaro.XmlMetadataIterator.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the metadata item at the current position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the name of the metadata item at the current position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=33">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Uri_" data-uid="Figaro.XmlMetadataIterator.Uri*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Uri" data-uid="Figaro.XmlMetadataIterator.Uri">Uri</h4>
+  <div class="markdown level1 summary"><p>Gets the URI of the metadata item at the current position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Uri { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the URI of the metadata item at the current position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=43">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Value_" data-uid="Figaro.XmlMetadataIterator.Value*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Value" data-uid="Figaro.XmlMetadataIterator.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the metadata item at the current position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the value of the metadata item at the current position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=67">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Dispose_" data-uid="Figaro.XmlMetadataIterator.Dispose*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Dispose" data-uid="Figaro.XmlMetadataIterator.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=51">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Next_" data-uid="Figaro.XmlMetadataIterator.Next*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Next" data-uid="Figaro.XmlMetadataIterator.Next">Next()</h4>
+  <div class="markdown level1 summary"><p>Navigates to the next metadata item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Next()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if it successfully moved to the next item, otherwise it returns <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=58">View Source</a>
+  </span>
+  <a id="Figaro_XmlMetadataIterator_Reset_" data-uid="Figaro.XmlMetadataIterator.Reset*"></a>
+  <h4 id="Figaro_XmlMetadataIterator_Reset" data-uid="Figaro.XmlMetadataIterator.Reset">Reset()</h4>
+  <div class="markdown level1 summary"><p>Sets the iterator to the beginning of the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>&apos;s metadata list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataIterator">GetMetadataIterator()</a></div>
+      <div><a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_SetMetadata_System_String_System_String_Figaro_XmlData_">SetMetadata(String, String, XmlData)</a></div>
+      <div><a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlData_System_String_System_String_">GetMetadataXmlData(String, String)</a></div>
+      <div><a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlValue_System_String_System_String_">GetMetadataXmlValue(String, String)</a></div>
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlMetadataIterator.cs&amp;version=GBmaster&amp;line=22" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

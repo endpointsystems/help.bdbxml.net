@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Anatomy of a Transactional Application </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Anatomy of a Transactional Application ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="anatomy-of-a-transactional-application.md">
+<h1 id="anatomy-of-a-transactional-application">Anatomy of a Transactional Application</h1>
+
+<p>Transactional applications are characterized by performing the following activities:</p>
+<p>Create your environment handle.
+Open your environment, specifying that the following subsystems be used:</p>
+<ul>
+<li>Transactional Subsystem (this also initializes the logging subsystem).</li>
+<li>Memory pool (the in-memory cache).</li>
+<li>Logging subsystem.</li>
+<li>Locking subsystem (if your application is multi-process or multi-threaded).</li>
+</ul>
+<p>It is also highly recommended that you run normal recovery upon first environment open. Normal recovery examines only those logs required to ensure your container files are consistent relative to the information found in your log files.</p>
+<p>Open your manager, passing to it your opened environment.</p>
+<p>Optionally spawn off any utility threads that you might need. Utility threads can be used to run checkpoints periodically, or to periodically run a deadlock detector if you do not want to use Figaro&#39;s built-in deadlock detector.</p>
+<p>Open whatever container handles that you need.</p>
+<p>Spawn off worker threads. How many of these you need and how they split their Figaro workload is entirely up to your application&#39;s requirements. However, any worker threads that perform write operations against your containers will do the following:</p>
+<ul>
+<li>Begin a transaction.</li>
+<li>Perform one or more read and write operations against your containers.</li>
+<li>Commit the transaction if all goes well.</li>
+<li>Abort and retry the operation if a deadlock is detected.</li>
+<li>Abort the transaction for most other errors.</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>If you have read-only threads that are operating concurrently with read-write or write-only threads, then you should also transaction-protect the read operations in these threads.</p>
+</div>
+<p>On application shutdown:</p>
+<ul>
+<li>Make sure there are no active transactions. Either abort or commit all transactions before shutting down.</li>
+<li>Close your environment if you did not allow your manager to adopt it.</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>Robust applications should monitor their container worker threads to make sure they have not died unexpectedly. If a thread does terminate abnormally, you must shutdown all your worker threads and then run normal recovery (you will have to reopen your environment to do this). This is the only way to clear any resources (such as a lock or a mutex) that the abnormally exiting worker thread might have been holding at the time that it died.</p>
+</div>
+<p>Failure to perform this recovery can cause your still-functioning worker threads to eventually block forever while waiting for a lock that will never be released.</p>
+<p>In addition to these activities, which are all entirely handled by code within your application, there are some administrative activities that you should perform:</p>
+<ul>
+<li>Periodically checkpoint your application. Checkpoints will reduce the time to run recovery in the event that one is required. See <a class="xref" href="checkpoints.html">Checkpoints</a> for details.</li>
+<li>Periodically back up your container and log files. This is required in order to fully obtain the durability guarantee made by Figaro&#39;s transaction ACID support. See <a class="xref" href="backup-procedures.html">Backup Procedures</a> for more information.</li>
+</ul>
+<p>You may want to maintain a hot failover if 24x7 processing with rapid restart in the face of a disk hit is important to you. See <a class="xref" href="using-hot-failovers.html">Using Hot Failovers</a> for more information.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="backup-procedures.html">Backup Procedures</a></li>
+<li><a class="xref" href="checkpoints.html">Checkpoints</a></li>
+<li><a class="xref" href="using-hot-failovers.html">Using Hot Failovers</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/anatomy-of-a-transactional-application.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

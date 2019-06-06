@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Working with Data from a Specific Document </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Working with Data from a Specific Document ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="working-with-data-from-a-specific-document.md">
+<h1 id="working-with-data-from-a-specific-document">Working with Data from a Specific Document</h1>
+
+<p>Previous queries have executed against all the documents in a container, but there are cases where access to data in a single document is the goal. It is possible to isolate a single document component based on the name we assigned to it, and then perform XQuery expressions against it alone.</p>
+<p>For example, to select the number attribute from a document named <code>component1</code> in the <code>components.dbxml</code> container:</p>
+<pre><code>dbxml&gt; query &#39;
+doc(&quot;components.dbxml/component1&quot;)/component/@number&#39;
+1 objects returned for eager expression &#39;
+doc(&quot;components.dbxml/component1&quot;)/component/@number&#39;
+
+dbxml&gt; print
+{}number=&quot;1&quot;
+</code></pre><div class="NOTE"><h5>Note</h5><p>The <code>doc</code> XQuery function shown here can be used to access XML data external to any managed container. For instance, to integrate with a web service that returns XML over HTTP use the <code>doc</code> function to execute that web service and then use the resulting data as part of an XQuery query.</p>
+</div>
+<p>An API or microservice that can look up the price of a particular part could be knit into a HTML page as it&#39;s built in a single XQuery FLWOR expression, and this page can then be hosted under any web server. It is then possible to access that pricing data using the <code>doc</code> function in an XQuery expression.</p>
+<p>For example, suppose you had this page, which provide the prices of the parts of our components:</p>
+<pre><code>&lt;prices&gt;
+&lt;part number=&quot;87&quot;&gt;29.95&lt;/part&gt;
+&lt;part number=&quot;89&quot;&gt;19.95&lt;/part&gt;
+&lt;part number=&quot;150&quot;&gt;24.95&lt;/part&gt;
+&lt;part number=&quot;189&quot;&gt;5.00&lt;/part&gt;
+&lt;part number=&quot;899&quot;&gt;9.95&lt;/part&gt;
+&lt;part number=&quot;901&quot;&gt;15.00&lt;/part&gt;
+&lt;/prices&gt;
+</code></pre><p>And suppose this page was available from at the following location:</p>
+<pre><code>http://www.oracle.com/fakefile.html
+</code></pre><p>In this case, we can enhance our earlier parts query to add prices for all the parts. At the same time we&#39;ll also convert it to use an HTML table to display the data.</p>
+<pre><code>dbxml&gt; query &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $component in collection(&quot;dbxml:components.dbxml&quot;)/component
+return
+&lt;li&gt;
+&lt;b&gt;Component number: {$component/@number/string()}&lt;/b&gt;&lt;br/&gt;
+&lt;table&gt;
+{
+for $part-ref in $component/uses-part
+return
+for $part in collection(&quot;dbxml:parts.dbxml&quot;)/part[@number =
+$part-ref cast as xs:decimal]
+return
+&lt;tr&gt;&lt;td&gt;{$part/description/string()}&lt;/td&gt;
+&lt;td&gt;{
+doc(&quot;http://www.oracle.com/fakefile.html&quot;)//part[
+@number = $part/@number]/string()
+}&lt;/td&gt;&lt;/tr&gt;
+}
+&lt;/table&gt;
+&lt;/li&gt;
+}
+&lt;/ul&gt;
+&lt;/body&gt;&lt;/html&gt;&#39;
+1 objects returned for eager expression &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $component in collection(&quot;dbxml:components.dbxml&quot;)/component
+return
+&lt;li&gt;
+&lt;b&gt;Component number: {$component/@number/string()}&lt;/b&gt;&lt;br/&gt;
+&lt;table&gt;
+{
+for $part-ref in $component/uses-part
+return
+for $part in collection(&quot;dbxml:parts.dbxml&quot;)/part[@number =
+$part-ref cast as xs:decimal]
+return
+&lt;tr&gt;&lt;td&gt;{$part/description/string()}&lt;/td&gt;
+&lt;td&gt;{
+doc(&quot;http://www.oracle.com/fakefile.html&quot;)//part[
+@number = $part/@number]/string()
+}&lt;/td&gt;&lt;/tr&gt;
+}
+&lt;/table&gt;
+&lt;/li&gt;
+}
+&lt;/ul&gt;
+&lt;/body&gt;&lt;/html&gt;&#39;
+</code></pre><p>And the result with formatting for readability:</p>
+<pre><code>dbxml&gt; print
+&lt;html&gt;
+&lt;body&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;b&gt;Component number: 1&lt;/b&gt;
+&lt;br/&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 89&lt;/td&gt;
+&lt;td&gt;19.95&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 150&lt;/td&gt;
+&lt;td&gt;24.95&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 899&lt;/td&gt;
+&lt;td&gt;9.95&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;b&gt;Component number: 2&lt;/b&gt;
+&lt;br/&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 901&lt;/td&gt;
+&lt;td&gt;15.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 87&lt;/td&gt;
+&lt;td&gt;29.95&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description of 189&lt;/td&gt;
+&lt;td&gt;5.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>The following shows the previous HTML as displayed in a web browser:</p>
+<p><img src="/images/working-with-data.png" alt="The result set in HTML"></p>
+<p>This ability to bring in data from outside the containers as part of any query from a web service or other source of XML data provides tremendous power and flexibility when building applications.</p>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Fiagro and XQuery</a></li>
+<li><a class="xref" href="working-with-external-functions.html">Working with External Functions</a></li>
+<li><a class="xref" href="calling-external-functions-from-xquery.html">Calling External Functions from XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-flwor.html">Using FLWOR</a></li>
+<li><a class="xref" href="retrieving-data-using-xquery.html">Retrieving Data using XQuery</a></li>
+<li><a class="xref" href="performing-queries.html">Performing Queries</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/working-with-data-from-a-specific-document.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

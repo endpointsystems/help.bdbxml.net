@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using Hot Failovers </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using Hot Failovers ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="using-hot-failovers.md">
+<h1 id="using-hot-failovers">Using Hot Failovers</h1>
+
+<p>You can maintain a backup that can be used for failover purposes. Hot failovers differ from the backup and restore procedures described previously in this section in that data used for traditional backups is typically copied to offline storage. Recovery time for a traditional backup is determined by:</p>
+<ul>
+<li>How quickly you can retrieve that storage media. Typically storage media for critical backups is moved to a safe facility in a remote location, so this step can take a relatively long time.</li>
+<li>How fast you can read the backup from the storage media to a local disk drive. If you have very large backups, or if your storage media is very slow, this can be a lengthy process.</li>
+<li>How long it takes you to run catastrophic recovery against the newly restored backup. As described earlier in this chapter, this process can be lengthy because every log file must be examined during the recovery process.</li>
+<li>When you use a hot failover, the backup is maintained at a location that is reasonably fast to access. Usually, this is a second disk drive local to the machine. In this situation, recovery time is very quick because you only have to reopen your environment and database, using the failover environment for the environment open.</li>
+</ul>
+<p>Hot failovers obviously do not protect you from truly catastrophic disasters (such as a fire in your machine room) because the backup is still local to the machine. However, you can guard against more mundane problems (such as a broken disk drive) by keeping the backup on a second drive that is managed by an alternate disk controller.</p>
+<p>To maintain a hot failover:</p>
+<ul>
+<li>Copy all the active database files to the failover directory. Use the <code>db_archive</code> command line utility with the <code>-s</code> option to identify all the active database files.</li>
+<li>Identify all the inactive log files in your production environment and move these to the failover directory. Use the <code>db_archive</code> command with no command line options to obtain a list of these log files.</li>
+<li>Identify the active log files in your production environment, and copy these to the failover directory. Use the <code>db_archive</code> command with the <code>-l</code> option to obtain a list of these log files.</li>
+<li>Run catastrophic recovery against the failover directory. Use the <code>db_recover</code> command with the <code>-c</code> option to do this.</li>
+<li>Optionally copy the backup to an archival location.</li>
+</ul>
+<p>Once you have performed this procedure, you can maintain an active hot backup by repeating steps 2 - 5 as often as is required by your application.</p>
+<div class="NOTE"><h5>Note</h5><p>If you perform step 1, you must follow steps 2-5 in order to ensure consistency of your hot backup.</p>
+</div>
+<p>Rather than use the previous procedure, you can use the <code>db_hotbackup</code> command line utility to do the same thing. This utility will (optionally) run a checkpoint and then copy all necessary files to a target directory for you.</p>
+<p>To actually perform a failover, simply:</p>
+<ul>
+<li>Shut down all processes which are running against the original environment.
+*If you have an archival copy of the backup environment, you can optionally try copying the remaining log files from the original environment and running catastrophic recovery against that backup environment. Do this only if you have a an archival copy of the backup environment.</li>
+</ul>
+<p>This step can allow you to recover data created or modified in the original environment, but which did not have a chance to be reflected in the hot backup environment.</p>
+<p>Reopen your environment and containers as normal, but use the backup environment instead of the production environment.</p>
+<h4 id="see-also">See Also</h4>
+<ul>
+<li><a class="xref" href="db_archive.html">db_archive</a></li>
+<li><a class="xref" href="db_hotbackup.html">db_hotbackup</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/using-hot-failovers.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

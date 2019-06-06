@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Debugging XQuery </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Debugging XQuery ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="debugging-xquery.md">
+<h1 id="debugging-xquery">Debugging XQuery</h1>
+
+<p>Figaro provides an <a class="xref" href="../../api/Figaro.XmlDebugListener.html">XmlDebugListener</a> object that allows developers to listen for debug events against the query optimizer when performing XQuery operations against containers.</p>
+<h2 id="code-sample">Code Sample</h2>
+<p>The following sample code demonstrates the <a class="xref" href="../../api/Figaro.XmlDebugListener.html">XmlDebugListener</a> configuration and setup in a .NET application:</p>
+<pre><code class="lang-C#">private const string query = &quot;for $x in collection(&#39;simpleContainer&#39;) where $x/products[category = $cat] return $x&quot;;
+public void DebugListenerTest()
+    {
+        using (var mgr = new XmlManager(ManagerInitOptions.AllowAutoOpen))
+        {
+            using (var container = mgr.OpenContainer(Path.Combine(homePath, simpleContainer)))
+            {
+                //add an alias to the container for the query
+                container.AddAlias(&quot;simpleContainer&quot;);
+
+                using (var ctx = mgr.CreateQueryContext())
+                {
+                    //create a new debug listener that listens for the specified query
+                    var listener = new XmlDebugListener(query);
+
+                    //set the debug events
+                    listener.Debug_Enter += listener_Debug_Enter;
+                    listener.Debug_Error += listener_Debug_Error;
+                    listener.Debug_Exit += listener_Debug_Exit;
+                    listener.Debug_Start += listener_Debug_Start;
+                    listener.Debug_Stop += listener_Debug_Stop;
+
+                    //set the listener on the query context
+                    ctx.SetDebugListener(listener);
+
+                    //set the &#39;cat&#39; query variable
+                    ctx.SetVariableValue(&quot;cat&quot;, &quot;fruits&quot;);
+
+                    using (var results = mgr.Query(query, ctx))
+                    {
+                        while (results.HasNext())
+                        {
+                            var value = results.NextValue();
+                            trace(&quot;query results : {0}&quot;, value.AsString);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    static void listener_Debug_Stop(object sender, StackFrameEventArgs args)
+    {
+       trace(&quot;Debug_Stop&quot;);
+    }
+
+    static void listener_Debug_Start(object sender, StackFrameEventArgs args)
+    {
+        trace(&quot;Debug_Start&quot;);
+    }
+
+    static void listener_Debug_Exit(object sender, StackFrameEventArgs args)
+    {
+        trace(&quot;Debug_Exit&quot;);
+    }
+
+    static void listener_Debug_Error(object sender, StackFrameExceptionEventArgs args)
+    {
+        trace(&quot;Debug_Error&quot;);
+    }
+
+    static void listener_Debug_Enter(object sender, StackFrameEventArgs args)
+    {
+        trace(&quot;Debug_Enter&quot;);
+    }
+</code></pre><h2 id="see-also">See Also</h2>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a class="xref" href="../../api/Figaro.XmlDebugListener.html">XmlDebugListener</a></li>
+<li><a class="xref" href="exception-handling-and-debugging.html">Exception Handling and Debugging</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/debugging-xquery.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

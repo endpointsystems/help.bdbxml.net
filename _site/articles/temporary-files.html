@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Temporary Files </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Temporary Files ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="temporary-files.md">
+<h1 id="temporary-files">Temporary Files</h1>
+
+<p>All Figaro .NET applications are capable of writing temporary files to disk. This happens when the disk cache fills up and so Figaro is forced to write overflow pages. For the most part, these temporary files can be safely ignored.</p>
+<p>However, for some class of applications, the presence of the temporary overflow files can be problematic. You can prevent temporary files from being created on your hard drive by creating your disk cache large enough that it can contain your entire working set of data. You do this using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetCacheSize_Figaro_EnvCacheSize_System_Int32_">SetCacheSize(EnvCacheSize, Int32)</a> method prior to opening your environment.</p>
+<div class="NOTE"><h5>Note</h5><p>It is always safe to delete temporary overflow files written by Figaro after the application has shutdown.</p>
+</div>
+<p>Temporary database files are placed in the directory identified by the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_TempDirectory">TempDirectory</a> property. If this method is not called by the application, then the application will use the directory identified on an environment variable, if your application is configured to do this. Assuming that it is appropriately configured, then the following environment variables are checked to see if they have been set. The following order of precedence matters; the first of the following environment variables found to be set is used to determine the location of the temporary directory:</p>
+<ul>
+<li><code>TMPDIR</code></li>
+<li><code>TEMP</code></li>
+<li><code>TMP</code></li>
+<li><code>TempFolder</code></li>
+</ul>
+<p>If none of these environment variables are set, Figaro checks the value returned by the <code>GetTempPath</code> interface to see if that is set. If not, then the default location identified above are attempted.</p>
+<div class="NOTE"><h5>Note</h5><p>Environment variables are not used by Figaro applications unless the <a class="xref" href="../api/Figaro.EnvOpenOptions.html">EnvOpenOptions</a> or <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_UseEnvironmentRoot">UseEnvironmentRoot</a> flags are set when the environment is opened.</p>
+</div>
+<p>If no other method of determining the location of the temporary file directory can be found, then Figaro will resort to using built-in default values. That is, the first of the following locations found to exist is used, if a temporary file directory is not otherwise identified for Figaro:</p>
+<ul>
+<li>The directory <code>C:\Temp</code></li>
+<li>The directory <code>C:\Tmp</code></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.EnvOpenOptions.html">EnvOpenOptions</a></li>
+<li>@administering-figaro-applications.md</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/temporary-files.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

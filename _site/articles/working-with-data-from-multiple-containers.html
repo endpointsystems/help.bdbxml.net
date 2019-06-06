@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Working with Data from Multiple Containers </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Working with Data from Multiple Containers ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="working-with-data-from-multiple-containers.md">
+<h1 id="working-with-data-from-multiple-containers">Working with Data from Multiple Containers</h1>
+
+<p>An application may use one or more containers. Figaro and XQuery provide excellent support for this situation. First, create a second container and add some additional data. A few simple documents will be enough to demonstrate this feature. To begin, we add them the new container:</p>
+<pre><code>dbxml&gt; createContainer components.dbxml
+
+Creating node storage container with nodes indexed
+
+dbxml&gt; putDocument component1 &#39;&lt;component number=&quot;1&quot;&gt;
+&lt;uses-part&gt;89&lt;/uses-part&gt;
+&lt;uses-part&gt;150&lt;/uses-part&gt;
+&lt;uses-part&gt;899&lt;/uses-part&gt;
+&lt;/component&gt;&#39;
+
+Document added, name = component1
+
+dbxml&gt; putDocument component2 &#39;&lt;component number=&quot;2&quot;&gt;
+&lt;uses-part&gt;901&lt;/uses-part&gt;
+&lt;uses-part&gt;87&lt;/uses-part&gt;
+&lt;uses-part&gt;189&lt;/uses-part&gt;
+&lt;/component&gt;&#39;
+
+Document added, name = component2
+
+dbxml&gt; preload parts.dbxml
+
+dbxml&gt; preload components.dbxml
+</code></pre><p>These new documents are intended to represent a larger component consisting of several of the parts defined earlier. To output an XHTML view of all the components and their associated parts across containers, use:</p>
+<pre><code>dbxml&gt; query &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $component in collection(&quot;components.dbxml&quot;)/component
+return
+&lt;li&gt;
+&lt;b&gt;Component number: {$component/@number/string()}&lt;/b&gt;&lt;br/&gt;
+{
+for $part-ref in $component/uses-part
+return
+for $part in collection(&quot;parts.dbxml&quot;)/part[@number =
+$part-ref cast as xs:decimal]
+return
+&lt;p&gt;{$part/description/string()}&lt;/p&gt;
+}
+&lt;/li&gt;
+}
+&lt;/ul&gt;
+&lt;/body&gt;&lt;/html&gt;&#39;
+1 objects returned for eager expression &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $component in collection(&quot;components.dbxml&quot;)/component
+return
+&lt;li&gt;
+&lt;b&gt;Component number: {$component/@number/string()}&lt;/b&gt;&lt;br/&gt;
+{
+for $part-ref in $component/uses-part
+return
+for $part in collection(&quot;parts.dbxml&quot;)/part[@number =
+$part-ref cast as xs:decimal]
+return
+&lt;p&gt;{$part/description/string()}&lt;/p&gt;
+}
+&lt;/li&gt;
+}
+&lt;/ul&gt;
+&lt;/body&gt;&lt;/html&gt;&#39;
+</code></pre><p>This query will take advantage of one of the indices we created earlier. XQuery assigns the variable <code>$part-ref</code> the very general XPath number type. The index we defined earlier applies only to decimal values which is a more specific numeric type than number. To get the query to use that index we need to provide some help to the query optimizer by using the cast as <code>xs:decimal</code> clause. This provides more specific type information about the data we are comparing. If we do not use this, the query optimizer cannot use the decimal index because the type XQuery is using and the type of the index is using do not match.</p>
+<p>The output of the query, reformatted for readability, is:</p>
+<pre><code>dbxml&gt; print
+&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;b&gt;Component number: 1&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;Description of 89&lt;/p&gt;
+&lt;p&gt;Description of 150&lt;/p&gt;
+&lt;p&gt;Description of 899&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;b&gt;Component number: 2&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;Description of 901&lt;/p&gt;
+&lt;p&gt;Description of 87&lt;/p&gt;
+&lt;p&gt;Description of 189&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;&lt;/html&gt;
+</code></pre><p>The following shows the previous HTML as displayed in a web browser:</p>
+<p><img src="/images/working-with-data.png" alt="working with data"></p>
+<p>The container model provided by Berkeley DB provides a great deal of flexibility because there is no specific XML schema associated with a container. XML documents of varying structures can coexist in a single container . Alternatively, separate containers can contain XML documents that are identical along conceptual lines, or for other purposes. Container and document organization should be tailored to the needs of your application.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Figaro and XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-flwor.html">Using FLWOR</a></li>
+<li><a class="xref" href="retrieving-data-using-xquery.html">Retrieving Data Using XQuery</a></li>
+<li><a class="xref" href="performing-queries.html">Performing Queries</a></li>
+<li><a class="xref" href="introducing-figaro.html">Introducing Figaro</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/working-with-data-from-multiple-containers.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

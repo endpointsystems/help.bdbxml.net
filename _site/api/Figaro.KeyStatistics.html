@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class KeyStatistics
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class KeyStatistics
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.KeyStatistics">
+  
+  
+  <h1 id="Figaro_KeyStatistics" data-uid="Figaro.KeyStatistics" class="text-break">Class KeyStatistics
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates statistical information about the number of keys in existence for a given index.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">KeyStatistics</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_KeyStatistics_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class KeyStatistics : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_KeyStatistics_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Statistics are available for the total number of keys currently in use by the index, as well as the total number
+of unique keys in use by the index. Use <a class="xref" href="Figaro.KeyStatistics.html#Figaro_KeyStatistics_IndexedKeys">IndexedKeys</a>
+and <a class="xref" href="Figaro.KeyStatistics.html#Figaro_KeyStatistics_UniqueKeys">UniqueKeys</a>, respectively, to retrieve these values.
+<p>
+Be aware that the number the number of keys maintained for an index is a function of the number and size
+of documents stored in the container, and of the type of index being examined.
+</p><p>
+<a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a> objects are instantiated
+by <a class="xref" href="Figaro.Container.html#Figaro_Container_LookupStatistics_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue_">LookupStatistics(String, String, String, String, String, XmlValue)</a>.
+</p></p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=33">View Source</a>
+  </span>
+  <a id="Figaro_KeyStatistics_IndexedKeys_" data-uid="Figaro.KeyStatistics.IndexedKeys*"></a>
+  <h4 id="Figaro_KeyStatistics_IndexedKeys" data-uid="Figaro.KeyStatistics.IndexedKeys">IndexedKeys</h4>
+  <div class="markdown level1 summary"><p>Gets the total number of keys contained by the index for which statistics are being reported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double IndexedKeys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The total key count in the reported index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=47">View Source</a>
+  </span>
+  <a id="Figaro_KeyStatistics_SumKeyValueSize_" data-uid="Figaro.KeyStatistics.SumKeyValueSize*"></a>
+  <h4 id="Figaro_KeyStatistics_SumKeyValueSize" data-uid="Figaro.KeyStatistics.SumKeyValueSize">SumKeyValueSize</h4>
+  <div class="markdown level1 summary"><p>Gets the size of the key value in the index for which statistics are being reported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double SumKeyValueSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The size of the key value for the reported index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=41">View Source</a>
+  </span>
+  <a id="Figaro_KeyStatistics_UniqueKeys_" data-uid="Figaro.KeyStatistics.UniqueKeys*"></a>
+  <h4 id="Figaro_KeyStatistics_UniqueKeys" data-uid="Figaro.KeyStatistics.UniqueKeys">UniqueKeys</h4>
+  <div class="markdown level1 summary"><p>Gets the number of unique keys contained in the index for which statistics are being reported. There
+are likely to be many more keys than unique keys in the index because a given key can appear multiple times,
+once for each document feature on each document that it is referencing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double UniqueKeys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The total unique key count for the reported index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=67">View Source</a>
+  </span>
+  <a id="Figaro_KeyStatistics_Dispose_" data-uid="Figaro.KeyStatistics.Dispose*"></a>
+  <h4 id="Figaro_KeyStatistics_Dispose" data-uid="Figaro.KeyStatistics.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=59">View Source</a>
+  </span>
+  <a id="Figaro_KeyStatistics_Dispose_" data-uid="Figaro.KeyStatistics.Dispose*"></a>
+  <h4 id="Figaro_KeyStatistics_Dispose_System_Boolean_" data-uid="Figaro.KeyStatistics.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If disposing equals <code>true</code>, the method has been called directly or 
+indirectly by a user&apos;s code. Managed and unmanaged resources can be disposed. If disposing equals 
+<code>false</code>, the method has been called by the runtime from inside the 
+finalizer and you should not reference other objects. Only unmanaged resources can be disposed. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/KeyStatistics.cs&amp;version=GBmaster&amp;line=22" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

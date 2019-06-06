@@ -1,0 +1,637 @@
+- name: Berkeley DB Documentation
+  items:
+  - name: Introduction to Berkeley DB
+    href: bdb\berkeley-db-intro.md
+    items:
+    - name: Berkeley DB Concepts
+      href: bdb\concepts.md
+    - name: Access Methods
+      href: bdb\access-methods.md
+    - name: Database Limits and Portability
+      href: bdb\db-limits-and-portability.md
+    - name: Environments
+      href: bdb\environments.md
+    - name: Exception Handling
+      href: bdb\exception-handling.md
+  - name: Databases
+    href: bdb\databases.md
+    items:
+    - name: Closing Databases
+      href: bdb\closing-dbs.md
+    - name: Database Open Flags
+      href: bdb\db-open-flags.md
+    - name: Error Reporting
+      href: bdb\db-error-reporting.md
+    - name: Managing Databases in Environments
+      href: bdb\managing-dbs-in-environments.md
+    - name: Database Example
+      href: bdb\db-example.md
+  - name: Database Records
+    href: bdb\db-records.md
+    items:
+      - name: Reading and Writing Database Records
+        href: bdb\reading-and-writing-db-records.md
+      - name: Database Usage Sample
+        href: bdb\db-usage-sample.md
+  - name: Using Cursors
+    href: bdb\using-cursors.md
+    items:
+      - name: Getting Records Using the Cursor
+        href: bdb\getting-records-using-the-cursor.md
+      - name: Putting Records Using Cursors
+        href: bdb\putting-records-using-cursors.md
+      - name: Deleting Records Using Cursors
+        href: bdb\deleting-records-using-cursors.md
+      - name: Replacing Records using Cursors
+        href: bdb\replacing-records-using-cursors.md
+      - name: Cursor Example
+        href: bdb\cursor-example.md
+  - name: Secondary Databases
+    href: bdb\secondary-databases.md
+    items:
+      - name: Implementing Key Extractors
+        href: bdb\implementing-key-extractors.md
+- name: Berkeley DB Programmer's Guide
+  items:   
+    - name: Introduction
+      items: 
+      - name: "Mapping the terrain: theory and practice"
+        href: bdb-pg\mapping-the-terrain.md
+        items:
+          - name: "Data Access and Data management"
+            href: bdb-pg\data-access-data-mgmt.md
+          - name: Relational Databases
+            href: bdb-pg\relational-databases.md
+          - name: Clients and Servers
+            href: bdb-pg\clients-and-servers.md
+      - name: "What is Berkeley DB?"
+        href: bdb-pg\what-is-berkeley-db.md
+        items:
+          - name: Data Access Services
+            href: bdb-pg\data-access-services.md
+          - name: Data Management Services
+            href: bdb-pg\data-management-services.md
+          - name: Design
+            href: bdb-pg\design.md
+      - name: What Berkeley DB Is Not
+        href: bdb-pg\what-bdb-is-not.md    
+        items:
+          - name: Berkeley DB is not a Relational Database
+            href: bdb-pg\not-a-relational-db.md  
+          - name: Berkeley DB is not a Database Server
+            href: bdb-pg\not-a-server.md
+      - name: "Do you need Berkeley DB?"
+        href: bdb-pg\do-you-need-bdb.md
+      - name: "What Other Services does Berkeley DB Provide?"
+        href: bdb-pg\other-services.md
+      - name: The Berkeley DB Products
+        href: bdb-pg\berkeley-db-products.md
+    - name: Access Method Configuration
+      items:
+        - name: "What are the available access methods?"
+          href: bdb-pg\what-are-the-access-methods.md
+        - name: Selecting an Access Method
+          href: bdb-pg\selecting-an-access-method.md
+          items:
+            - name: "Btree or Heap?"
+              href: bdb-pg\btree-or-heap.md
+            - name: "Hash or Btree?"
+              href: bdb-pg\hash-or-btree.md
+            - name: "Queue or Recno?"
+              href: bdb-pg\queue-or-recno.md
+        - name: Logical Record Numbers
+          href: bdb-pg\logical-record-numbers.md
+        - name: General Access Method Configuration
+          href: bdb-pg\general-access-method-configuration.md
+        - name: Btree access method specific configuration
+          href: bdb-pg\btree-access-method-specific-configuration.md
+        - name: Hash access method specific configuration
+          href: bdb-pg\hash-access-method-specific-configuration.md
+        - name: Heap access method specific configuration
+          href: bdb-pg\heap-access-method-specific-configuration.md
+        - name: Queue and Recno method specific configuration
+          href: bdb-pg\queue-recno-access-method-specific-configuration.md
+        - name: Access Method Operations
+          href: bdb-pg\access-method-operations.md
+          items:
+            - name: Opening Multiple Databases in a Single File
+              href: bdb-pg\opening-multiple-dbs-in-a-single-file.md
+            - name: Partitioning Databases
+              href: bdb-pg\partitioning-databases.md
+            - name: Retrieving Records
+              href: bdb-pg\retrieving-records.md
+            - name: Storing Records
+              href: bdb-pg\storing-records.md
+            - name: Deleting Records
+              href: bdb-pg\deleting-records.md
+            - name: Database Statistics
+              href: bdb-pg\database-statistics.md
+            - name: Database Truncation
+              href: bdb-pg\database-truncation.md
+            - name: Database Upgrade
+              href: bdb-pg\database-upgrade.md
+            - name: Database Verification and Salvage
+              href: bdb-pg\verification-and-salvage.md
+            - name: Flushing the Database Cache
+              href: bdb-pg\flushing-the-cache.md
+            - name: Closing the Database
+              href: bdb-pg\closing-the-database.md
+            - name: Secondary Indexes
+              href: bdb-pg\secondary-indexes.md
+            - name: Foreign Key Indexes
+              href: bdb-pg\foreign-key-indexes.md
+
+
+
+
+
+- name: Figaro Documentation
+  items:
+  - name: Introducing Figaro
+    href: figaro\intro.md
+    items:
+      - name: Basic Concepts
+        href: figaro\basic-concepts.md
+      - name: Product Editions
+        href: figaro\product-editions.md
+      - name: XML Features
+        href: figaro\xml-features.md
+      - name: Database Features
+        href: figaro\database-features.md
+      - name: Languages and Platforms
+        href: figaro\languages-and-platforms.md
+      - name: Library Dependencies
+        href: figaro\library-dependencies.md
+      - name: Benefits
+        href: figaro\benefits.md
+      - name: XML Resources
+        href: figaro\xml-resources.md
+      - name: XQuery Resources
+        href: figaro\xquery-resources.md
+  - name: Exploring Figaro and XQuery Using the dbxml Shell
+    href: figaro\figaro-and-xquery.md
+    items:
+      - name: Running the Shell
+        href: figaro\running-the-shell.md
+      - name: Adding Data
+        href: figaro\adding-data.md
+      - name: Queries Involving Document Structure
+        href: figaro\queries-involving-document-structure.md
+      - name: Value Queries
+        href: figaro\value-queries.md
+      - name: Introducing Indices
+        href: figaro\introducing-indices.md
+      - name: Reshaping the Result
+        href: figaro\reshaping-the-result.md
+      - name: Sorting the Result
+        href: figaro\sorting-the-result.md
+      - name: Working with Data from Containers
+        href: figaro\working-with-data-from-containers.md
+      - name: Working with Data from a Specific Document
+        href: figaro\working-with-data-from-a-specific-document.md
+      - name: Using Metadata
+        href: figaro\using-metadata.md
+      - name: Modifying Documents
+        href: figaro\modifying-documents.md
+      - name: Schema Constraints
+        href: figaro\schema-constraints.md      
+  - name: Developing .NET Applications with Figaro
+    href: figaro\developing-dotnet-apps-with-figaro.md
+    items:
+        - name: Project Setup
+          href: figaro\project-setup.md
+        - name: XML Manager and Environments
+          href: figaro\xml-manager-and-environments.md
+          items:
+            - name: XmlManager
+              href: figaro\xmlmanager.md
+            - name: Berkeley DB Environments
+              href: figaro\berkeley-db-environments.md
+            - name: Environment Open Flags
+              href: figaro\environment-open-flags.md
+            - name: Opening and Closing Environments
+              href: figaro\opening-and-closing-environments.md
+            - name: XmlManager Instantiation and Destruction
+              href: figaro\xmlmanager-instantiation-and-destruction.md
+        - name: XmlManager and Containers
+          href: figaro\xmlmanager-and-containers.md
+          items:
+            - name: Managing Containers 
+              href: figaro\managing-containers.md
+            - name: Container Properties 
+              href: figaro\container-properties.md
+            - name: Container Types 
+              href: figaro\container-types.md
+            - name: Deleting and Renaming Containers 
+              href: figaro\deleting-and-renaming-containers.md
+            - name: Adding XML Documents to Containers 
+              href: figaro\adding-xml-documents-to-containers.md
+            - name: Input Streams and Strings 
+              href: figaro\input-streams-and-strings.md
+            - name: Adding Documents 
+              href: figaro\adding-documents.md
+            - name: Adding Metadata 
+              href: figaro\adding-metadata.md
+        - name: Using XQuery 
+          href: figaro\using-xquery.md
+          items:
+            - name: "XQuery: A Brief Introduction"
+              href: figaro\xquery-a-brief-introduction.md
+            - name: Referencing Portions of Documents Using XQuery 
+              href: figaro\referencing-portions-of-documents-using-xquery.md
+            - name: Using FLWOR 
+              href: figaro\using-flwor.md
+            - name: Retrieving Data Using XQuery 
+              href: figaro\retrieving-data-using-xquery.md
+              items:
+              - name: The Query Context 
+                href: figaro\the-query-context.md
+              - name: Defining Namespaces 
+                href: figaro\defining-namespaces.md
+              - name: Defining Variables 
+                href: figaro\defining-variables.md
+              - name: Defining the Evaluation Type 
+                href: figaro\defining-the-evaluation-type.md
+            - name: Performing Queries 
+              href: figaro\performing-queries.md
+              items:
+              - name: Metadata Based Queries 
+                href: figaro\metadata-based-queries.md
+              - name: Examining Query Results
+                href: figaro\examining-query-results.md
+            - name: Working with External Functions 
+              href: figaro\working-with-external-functions.md
+              items:
+              - name: Implementing XmlExternalFunction 
+                href: figaro\implementing-xmlexternalfunction.md
+              - name: Implementing XQueryResolver 
+                href: figaro\implementing-xqueryresolver.md
+              - name: Calling External Functions from XQuery 
+                href: figaro\calling-external-functions-from-xquery.md
+            - name: Examining Document Query Results 
+              href: figaro\examining-document-query-results.md
+              items:
+                - name: Examining Document Values 
+                  href: figaro\examining-document-values.md
+                - name: Examining Metadata 
+                  href: figaro\examining-metadata.md
+            - name: Managing XML Data in Containers 
+              href: figaro\managing-xml-data-in-containers.md
+              items:
+                - name: Deleting Records 
+                  href: figaro\deleting-records.md
+                - name: Replacing XML in Records 
+                  href: figaro\replacing-xml-in-records.md
+            - name: Modifying XML Data 
+              href: figaro\modifying-xml-data.md
+              items:
+                - name: Using XQuery Update 
+                  href: figaro\using-xquery-update.md
+                - name: Inserting Nodes 
+                  href: figaro\inserting-nodes.md
+                - name: Position Keywords 
+                  href: figaro\position-keywords.md
+                - name: Insertion Rules 
+                  href: figaro\insertion-rules.md
+                - name: Deleting Nodes 
+                  href: figaro\deleting-nodes.md
+                - name: Replacing Nodes 
+                  href: figaro\replacing-nodes.md
+                - name: Replacement Rules 
+                  href: figaro\replacement-rules.md
+                - name: Renaming Nodes 
+                  href: figaro\renaming-nodes.md
+                - name: Updating Functions 
+                  href: figaro\updating-functions.md
+                - name: Transform Functions 
+                  href: figaro\transform-functions.md
+            - name: Resolving Conflicting Updates 
+              href: figaro\resolving-conflicting-updates.md
+        - name: Using Container Compression 
+          href: figaro\using-container-compression.md
+        - name: Using Indices 
+          href: figaro\using-indices.md
+          items:
+            - name: Index Types 
+              href: figaro\index-types.md
+              items:
+                - name: Uniqueness 
+                  href: figaro\uniqueness.md
+                - name: Path Types 
+                  href: figaro\path-types.md
+                - name: Node Types 
+                  href: figaro\node-types.md
+                - name: Key Types 
+                  href: figaro\key-types.md
+                - name: Syntax Types 
+                  href: figaro\syntax-types.md
+            - name: Specifying Index Nodes 
+              href: figaro\specifying-index-nodes.md
+            - name: Specifying Index Strategies 
+              href: figaro\specifying-index-strategies.md
+            - name: Indexer Processing Notes 
+              href: figaro\indexer-processing-notes.md
+            - name: Managing Indices 
+              href: figaro\managing-indices.md
+              items:
+                - name: Using the Query Plan Optimizer Log Output
+                  href: figaro\using-the-query-plan.md
+                - name: Adding Indices 
+                  href: figaro\adding-indices.md
+                - name: Deleting Indices 
+                  href: figaro\deleting-indices.md
+                - name: Replacing Indices 
+                  href: figaro\replacing-indices.md
+                - name: Verifying Indices Using Query Plans 
+                  href: figaro\verifying-indices-using-query-plans.md
+                - name: Examining Indices 
+                  href: figaro\examining-indices.md
+                - name: Working with Default Indices 
+                  href: figaro\working-with-default-indices.md
+                - name: Looking Up Indexed XML Data 
+                  href: figaro\looking-up-indexed-xml-data.md
+        - name: Administering Apps   
+          href: figaro\administering-apps.md
+          items:
+            - name: Temporary Files 
+              href: figaro\temporary-files.md
+            - name: A Note on Snapshot Isolation (MVCC) 
+              href: figaro\a-note-on-snapshot-isolation-mvcc.md
+            - name: Upgrading Databases 
+              href: figaro\upgrading-databases.md
+        - name: Cache and Locking Size Considerations
+          href: figaro\cache-and-locking-size-considerations.md
+          items:
+              - name: Selecting a Cache Size
+                href: figaro\selecting-a-cache-size.md
+              - name: "Configuring Locking: Sizing the System"
+                href: figaro\configuring-locking-sizing-the-system.md
+  - name: Getting Started with Concurrent and Transactional Processing 
+    href: figaro\getting-started-with-concurrent-and-transactional-processing.md
+    items:
+    - name: Introduction 
+      href: figaro\introduction.md
+    - name: Why Transactions? 
+      href: figaro\why-transactions.md
+      items:
+        - name: Atomicity 
+          href: figaro\atomicity.md
+        - name: Consistency 
+          href: figaro\consistency.md
+        - name: Isolation 
+          href: figaro\isolation.md
+        - name: Durability 
+          href: figaro\durability.md
+    - name: Terminology 
+      href: figaro\terminology.md
+    - name: Application Requirements 
+      href: figaro\application-requirements.md
+    - name: A Note on System Failure 
+      href: figaro\a-note-on-system-failure.md
+    - name: Enabling Transactions 
+      href: figaro\enabling-transactions.md    
+    - name: Environments 
+      href: figaro\environments.md
+      items:
+        - name: File Naming 
+          href: figaro\file-naming.md
+        - name: Shared Memory Regions   
+          href: figaro\shared-memory-regions.md
+        - name: Security Considerations 
+          href: figaro\security-considerations.md
+    - name: System Shared Memory on Windows 
+      href: figaro\system-shared-memory-on-windows.md
+    - name: Opening a Transactional Environment and Container 
+      href: figaro\opening-a-transactional-environment-and-container.md
+    - name: Opening Berkeley DB Databases 
+      href: figaro\opening-berkeley-db-databases.md
+    - name: Transaction Basics 
+      href: figaro\transaction-basics.md
+      items:
+      - name: Committing a Transaction 
+        href: figaro\committing-a-transaction.md
+      - name: Non-Durable Transactions 
+        href: figaro\non-durable-transactions.md
+      - name: Aborting a Transaction 
+        href: figaro\aborting-a-transaction.md
+      - name: AutoCommit 
+        href: figaro\autocommit.md
+      - name: Nested Transactions 
+        href: figaro\nested-transactions.md
+    - name: Configuring the Transaction Subsystem 
+      href: figaro\configuring-the-transaction-subsystem.md
+    - name: Transactional Data Store Applications 
+      href: figaro\transactional-data-store-applications.md
+      items:
+      - name: Database Recoverability 
+        href: figaro\database-recoverability.md
+      - name: Architecting Figaro TDS Applications 
+        href: figaro\architecting-figaro-tds-applications.md
+      - name: Transaction Throughput 
+        href: figaro\transaction-throughput.md
+      - name: Handling Failure in Figaro TDS Applications 
+        href: figaro\handling-failure-in-figaro-tds-applications.md
+    - name: Performance Tuning 
+      href: figaro\performance-tuning.md
+      items:
+      - name: Transaction Tuning 
+        href: figaro\transaction-tuning.md
+      - name: Environment Tuning 
+        href: figaro\environment-tuning.md
+    - name: Concurrency 
+      href: figaro\concurrency.md
+      items:
+      - name: Which Handles are Free-Threaded? 
+        href: figaro\which-handles-are-free-threaded.md
+      - name: Locks, Blocks, and Deadlocks 
+        href: figaro\locks-blocks-and-deadlocks.md
+        items:
+        - name: Locks 
+          href: figaro\locks.md
+        - name: Blocks 
+          href: figaro\blocks.md
+        - name: Deadlocks 
+          href: figaro\deadlocks.md
+      - name: The Locking Subsystem 
+        href: figaro\the-locking-subsystem.md
+        items:
+        - name: Configuring the Locking Subsystem 
+          href: figaro\configuring-the-locking-subsystem.md
+        - name: Configuring Deadlock Detection 
+          href: figaro\configuring-deadlock-detection.md
+        - name: Resolving Deadlocks 
+          href: figaro\resolving-deadlocks.md
+      - name: Isolation 
+        href: figaro\tx-isolation.md
+        items:
+        - name: Supported Degrees of Isolation 
+          href: figaro\supported-degrees-of-isolation.md
+        - name: Reading Uncommitted Data 
+          href: figaro\reading-uncommitted-data.md
+        - name: Committed Reads   
+          href: figaro\committed-reads.md
+        - name: Snapshot Isolation 
+          href: figaro\snapshot-isolation.md
+      - name: Read/Modify/Write 
+        href: figaro\readmodifywrite.md
+      - name: No Wait on Transaction Blocks 
+        href: figaro\no-wait-on-transaction-blocks.md
+    - name: Managing Database Files 
+      href: figaro\managing-database-files.md
+      items:
+      - name: Checkpoints 
+        href: figaro\checkpoints.md
+      - name: Backup Procedures 
+        href: figaro\backup-procedures.md
+        items:
+        - name: Offline Backups 
+          href: figaro\offline-backups.md
+        - name: Hot Backup 
+          href: figaro\hot-backup.md
+        - name: Incremental Backups 
+          href: figaro\incremental-backups.md
+      - name: Database Recovery Procedures 
+        href: figaro\database-recovery-procedures.md
+        items:
+        - name: Normal Recovery 
+          href: figaro\normal-recovery.md
+        - name: Catastrophic Recovery 
+          href: figaro\catastrophic-recovery.md
+      - name: Recoverability and Deadlock Handling 
+        href: figaro\recoverability-and-deadlock-handling.md
+      - name: Designing Your Application for Recovery 
+        href: figaro\designing-your-application-for-recovery.md
+        items:
+        - name: Recovery for Multi-Threaded Applications 
+          href: figaro\recovery-for-multi-threaded-applications.md
+        - name: Recovery for Multi-Process Applications 
+          href: figaro\recovery-for-multi-process-applications.md
+      - name: Using Hot Failovers 
+        href: figaro\using-hot-failovers.md
+      - name: Removing Log Files 
+        href: figaro\removing-log-files.md
+      - name: Configuring the Logging Subsystem 
+        href: figaro\configuring-the-logging-subsystem.md
+        items:
+        - name: Setting the Log File Size 
+          href: figaro\setting-the-log-file-size.md
+        - name: Configuring the Logging Region Size   
+          href: figaro\configuring-the-logging-region-size.md
+        - name: Configuring In-Memory Logging 
+          href: figaro\configuring-in-memory-logging.md
+        - name: Setting the In-Memory Log Buffer Size 
+          href: figaro\setting-the-in-memory-log-buffer-size.md
+        - name: Log File Limits 
+          href: figaro\log-file-limits.md
+    - name: Environment Administrative Infrastructure 
+      href: figaro\environment-administrative-infrastructure.md
+      items:
+      - name: Deadlock Detection 
+        href: figaro\deadlock-detection.md
+      - name: Checkpoints 
+        href: figaro\using-checkpoints.md
+      - name: Database and Log File Archival 
+        href: figaro\database-and-log-file-archival.md
+      - name: Recovery Procedures 
+        href: figaro\recovery-procedures.md
+    - name: Summary and Examples 
+      href: figaro\summary-and-examples.md
+      items:
+      - name: Anatomy of a Transactional Application 
+        href: figaro\anatomy-of-a-transactional-application.md
+      - name: Transaction Example 
+        href: figaro\transaction-example.md
+      - name: The In-Memory Transaction Example 
+        href: figaro\the-in-memory-transaction-example.md
+      - name: Runtime Analysis 
+        href: figaro\runtime-analysis.md
+        items:
+        - name: Default Program Run 
+          href: figaro\default-program-run.md
+        - name: Varying the Node Size 
+          href: figaro\varying-the-node-size.md
+        - name: Using Wholedoc Storage 
+          href: figaro\using-wholedoc-storage.md
+        - name: Using ReadCommitted Isolation 
+          href: figaro\using-readcommitted-isolation.md
+        - name: Read Committed with Wholedoc Storage 
+          href: figaro\read-committed-with-wholedoc-storage.md
+    - name: Transaction FAQ 
+      href: figaro\transaction-faq.md
+  - name: Replication Overview 
+    href: figaro\replication-overview.md
+    items:
+    - name: Introduction to Replication 
+      href: figaro\introduction-to-replication.md
+      items:
+      - name: Replication Benefits 
+        href: figaro\replication-benefits.md
+      - name: Replication Manager Overview 
+        href: figaro\replication-manager-overview.md
+      - name: Replication Elections 
+        href: figaro\replication-elections.md
+      - name: Permanent Message Handling 
+        href: figaro\permanent-message-handling.md
+      - name: Event Handling 
+        href: figaro\event-handling.md
+    - name: The Replication Manager 
+      href: figaro\the-replication-manager.md
+      items:
+      - name: The DBSite Handle 
+        href: figaro\the-dbsite-handle.md
+      - name: Managing Election Policies 
+        href: figaro\managing-election-policies.md
+      - name: Replication Manager Permanent Message Handling Policies 
+        href: figaro\replication-manager-permanent-message-handling-policies.md
+      - name: Managing Election Times 
+        href: figaro\managing-election-times.md
+      - name: Managing Connection Retries 
+        href: figaro\managing-connection-retries.md
+      - name: Managing Heartbeats 
+        href: figaro\managing-heartbeats.md
+    - name: Replica vs. Master Processes 
+      href: figaro\replica-vs-master-processes.md
+    - name: Additional Features 
+      href: figaro\additional-features.md
+      items:
+      - name: Client to Client Transfer 
+        href: figaro\client-to-client-transfer.md
+      - name: Delayed Synchronization 
+        href: figaro\delayed-synchronization.md
+      - name: Managing Blocking Operations 
+        href: figaro\managing-blocking-operations.md
+      - name: Stop Auto-Initialization 
+        href: figaro\stop-auto-initialization.md
+      - name: Bulk Transfers  
+        href: figaro\bulk-transfers.md
+  - name: Utilities 
+    href: figaro\utilities.md
+    items:
+    - name: The dbxml Shell 
+      href: figaro\the-dbxml-shell.md
+    - name: The XQilla Command-Line Tool  
+      href: figaro\the-xqilla-command-line-tool.md
+    - name: db_archive 
+      href: figaro\db_archive.md
+    - name: db_checkpoint 
+      href: figaro\db_checkpoint.md
+    - name: db_deadlock 
+      href: figaro\db_deadlock.md
+    - name: dbxml_dump 
+      href: figaro\dbxml_dump.md
+    - name: dbxml_load 
+      href: figaro\dbxml_load.md
+    - name: db_printlog 
+      href: figaro\db_printlog.md
+    - name: db_recover 
+      href: figaro\db_recover.md
+    - name: db_stat 
+      href: figaro\db_stat.md
+    - name: db_upgrade 
+      href: figaro\db_upgrade.md
+    - name: db_verify 
+      href: figaro\db_verify.md
+    - name: dbxml_load_container 
+      href: figaro\dbxml_load_container.md
+    - name: db_hotbackup 
+      href: figaro\db_hotbackup.md

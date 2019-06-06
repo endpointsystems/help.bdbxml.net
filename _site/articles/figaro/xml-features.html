@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>XML Features </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="XML Features ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="xml-features.md">
+<h1 id="xml-features">XML Features</h1>
+
+<p>The database engine is designed to conform to the W3C standards for XML, XML Namespaces, and the latest available XQuery standards, in addition to the evolution of the .NET Framework itself. The following additional features specifically designed to support XML data management and queries go above and beyond any existing standard, and serve to set Figaro further ahead of similar solutions:</p>
+<h2 id="containers">Containers</h2>
+<p>A container is a single file that contains one or more XML documents, and their metadata and indices. You use containers to add, delete, and modify documents, and to manage indices.</p>
+<h2 id="indices">Indices</h2>
+<p>Figaro indices greatly enhance the performance of queries against the corresponding XML data set. Figaro indices are based on the structure of your XML documents, and as such you declare indices based on the nodes that appear in your documents as well the data that appears on those nodes.</p>
+<div class="NOTE"><h5>Note</h5><p>You can also declare indices against metadata. See <a class="xref" href="using-indices.html">Using Indices</a> for more information.</p>
+</div>
+<h2 id="queries">Queries</h2>
+<p>Figaro XQuery queries are performed using the XQuery 3.0 language. XQuery is a W3C  specification; for more information, visit the specification website at <a href="http://www.w3.org/XML/Query">http://www.w3.org/XML/Query</a> .</p>
+<h2 id="query-results">Query Results</h2>
+<p>Figaro retrieves documents that match a given XQuery query or API function call. Figaro query results are always returned as a set, typically of the <a class="xref" href="../../api/Figaro.XmlResults.html">XmlResults</a> data type. The set can contain either matching documents, or a set of values from those matching documents.</p>
+<h2 id="storage">Storage</h2>
+<p>If you use node-level storage for you documents (see <a class="xref" href="container-types.html">Container Types</a>), then Figaro automatically trans codes your documents to Unicode UTF-8. If you use whole document storage, then the document is stored in whatever encoding that it uses. Note that in either case, your documents must use an encoding supported by the Xerces XML parser (see <a class="xref" href="library-dependencies.html">Library Dependencies</a> before they can be stored in Figaro containers.</p>
+<div class="NOTE"><h5>Note</h5><p>Beyond the encoding, documents are stored (and retrieved) in their native format with all whitespace preserved.</p>
+</div>
+<h2 id="metadata-attribute-support">Metadata Attribute Support</h2>
+<p>Each document stored in Figaro can have metadata attributes associated with it. This allows information to be associated with the document without actually storing that information in the data itself. For example, metadata attributes might identify the last accessed and last modified timestamps for the document. See <a class="xref" href="using-metadata.html">Using Metadata</a> for more information and examples.</p>
+<h2 id="document-modification">Document Modification</h2>
+<p>Figaro provides robust API and XQuery mechanisms for modifying documents. Using this mechanism, you can add, replace, and delete nodes from your document. This mechanism allows you to modify both element and attribute nodes, as well as processing instructions and comments. See <a class="xref" href="modifying-documents.html">Modifying Documents</a> for more information and examples.</p>
+<h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="using-indices.html">Using Indices</a></li>
+<li><a class="xref" href="container-types.html">Container Types</a></li>
+<li><a class="xref" href="library-dependencies.html">Library Dependencies</a></li>
+<li><a class="xref" href="modifying-documents.html">Modifying Documents</a></li>
+<li><a class="xref" href="using-metadata.html">Using Metadata</a></li>
+<li><a href="http://www.w3.org/XML/Query">http://www.w3.org/XML/Query</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/xml-features.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

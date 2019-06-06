@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Partitioning Databases </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Partitioning Databases ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="partitioning-databases">Partitioning Databases</h1>
+
+<p>You can improve concurrency on your database reads and writes by splitting access to a single database into multiple databases. This helps to avoid contention for internal database pages, as well as allowing you to spread your databases across multiple disks, which can help to improve disk I/O.</p>
+<p>While you can manually do this by creating and using more than one database for your data, DB is capable of partitioning your database for you. When you use DB&#39;s built-in database partitioning feature, your access to your data is performed in exactly the same way as if you were only using one database; all the work of knowing which database to use to access a particular record is handled for you under the hood.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>Only the BTree and Hash access methods are supported for partitioned databases.</p>
+</div>
+<p>There are two ways to indicate what key/data pairs should go on which partition. The first is by specifying an array of DBTs that indicate the minimum key value for a given partition by using &lt;xref:DatabaseConfig.SetPartitionByKeys&gt;. The second is by providing a callback that returns the number of the partition on which a specified key is placed in the &lt;xref:DatabaseConfig.SetPartitionByCallback&gt; method.</p>
+<p>Once you have partitioned a database, you cannot change your partitioning scheme.</p>
+<h2 id="specifying-partition-keys">Specifying Partition Keys</h2>
+<p>For simple cases, you can partition your database by providing an array of &lt;xref:DatabaseEntry&gt;, each element of which provides the minimum key value to be placed on a partition. There must be one fewer elements in this array than you have partitions. The first element of the array indicates the minimum key value for the second partition in your database. Key values that are less than the first key value provided in this array are placed on the first partition (partition 0).</p>
+<div class="NOTE"><h5>Note</h5><p>You can only use partition keys if you are using the <strong>Btree</strong> access method.</p>
+</div>
+<p>For example, suppose you had a database of fruit, and you want three partitions for your database. Then you need a &lt;xref:DatabaseEntry&gt; array of size two. The first element in this array indicates the minimum keys that should be placed on partition 1. The second element in this array indicates the minimum key value placed on partition 2. Keys that compare less than the first &lt;xref:DatabaseEntry&gt; in the array are placed on partition 0.</p>
+<p>All comparisons are performed according to the lexicographic comparison used by your platform.</p>
+<p>In our GettingStarted.Btree.Partitioning example, we take the vendor and inventory databases and partition them. For vendor, we partition by VendorId which is an <code>int</code>:</p>
+<pre><code class="lang-cs">    // we have 50k vendors, so we&#39;re going to split into two equal partitions of 25k
+    cfg.SetPartitionByKeys(new[] {new DatabaseEntry(BitConverter.GetBytes(25000))});
+</code></pre><h2 id="partitioning-callback">Partitioning callback</h2>
+<p>In some cases, a simple lexicographical comparison of key data will not sufficiently support a partitioning scheme. For those situations, you should write a &lt;xref:PartitionDelegate&gt; lambda in the &lt;xref:DatabaseConfig.SetPartitionByCallback&gt; method, taking a key and returning a partition number where the key belongs. This function accepts a pointer to the DB and the DBT, and it returns the number of the partition on which the key belongs.</p>
+<p>Note that DB actually places the key on the partition calculated by:</p>
+<pre><code>returned_partition modulo number_of_partitions
+</code></pre><p>For example, if you have three partitions and you want your data to go into the first, you could return <code>0</code>, because <code>0 % 3 = 0</code>; to get into the first, you&#39;d enter <code>1</code>, and to get into the third you&#39;d return <code>2</code>.</p>
+<h2 id="placing-partition-files">Placing partition files</h2>
+<p>When you partition a database, a database file is created on disk in the same way as if you were not partitioning the database. That is, this file uses the name you provide to the &lt;xref:Database.Open&gt; file parameter.</p>
+<p>However, DB then also creates a series of database files on disk, one for each partition that you want to use. These partition files share the same name as the database file name, but are also number sequentially. So if you create a database named <code>mydb.db</code>, and you create 3 partitions for it, then you will see the following database files on disk:</p>
+<pre><code class="lang-shell">mydb.db
+__dbp.mydb.db.000
+__dbp.mydb.db.001
+__dbp.mydb.db.002 
+</code></pre><div class="NOTE"><h5>Note</h5><p>Berkeley DB for .NET Core doesn&#39;t currently support partition directories. </p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb-pg/partitioning-databases.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

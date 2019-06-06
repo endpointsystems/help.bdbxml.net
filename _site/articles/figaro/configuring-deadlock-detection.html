@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuring Deadlock Detection </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuring Deadlock Detection ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="configuring-deadlock-detection.md">
+<h1 id="configuring-deadlock-detection">Configuring Deadlock Detection</h1>
+
+<p>In order for Figaro to know that a deadlock has occurred, some mechanism must be used to perform deadlock detection. There are three ways that deadlock detection can occur:</p>
+<p>Allow Figaro to internally detect deadlocks as they occur.</p>
+<p>To do this, you use the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a> property. This setting causes Figaro to walk its internal lock table looking for a deadlock whenever a lock request is blocked. This method also identifies how Figaro decides which lock requests are rejected when deadlocks are detected. For example, Figaro can decide to reject the lock request for the transaction that has the most number of locks, the least number of locks, holds the oldest lock, holds the most number of write locks, and so forth (see the API reference documentation for a complete list of the lock detection policies).</p>
+<p>You can call this method at any time during your application&#39;s lifetime, but typically it is used before you open your environment.</p>
+<p>Note that how you want Figaro to decide which thread of control should break a deadlock is extremely dependent on the nature of your application. It is not unusual for some performance testing to be required in order to make this determination. That said, a transaction that is holding the maximum number of locks is usually indicative of the transaction that has performed the most amount of work. Frequently you will not want a transaction that has performed a lot of work to abandon its efforts and start all over again. It is not therefore uncommon for application developers to initially select the transaction with the <em>minimum</em> number of write locks to break the deadlock.</p>
+<p>Using this mechanism for deadlock detection means that your application will never have to wait on a lock before discovering that a deadlock has occurred. However, walking the lock table every time a lock request is blocked can be expensive from a performance perspective.</p>
+<p><em>Use a dedicated thread or external process to perform deadlock detection</em>. Note that this thread must be performing no other container operations beyond deadlock detection.</p>
+<p>To externally perform lock detection, you can use either the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a> property, or use the <code>db_deadlock</code> command line utility. This method (or command) causes Figaro to walk the lock table looking for deadlocks.</p>
+<p>Note that like <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a>, you also use this method (or command line utility) to identify which lock requests are rejected in the event that a deadlock is detected.</p>
+<p>Applications that perform deadlock detection in this way typically run deadlock detection between every few seconds and a minute. This means that your application may have to wait to be notified of a deadlock, but you also save the overhead of walking the lock table every time a lock request is blocked.
+Lock timeouts.</p>
+<p>You can configure your locking subsystem such that it times out any lock that is not released within a specified amount of time. To do this, use the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetTimeout_System_UInt32_Figaro_EnvironmentTimeoutType_">SetTimeout(UInt32, EnvironmentTimeoutType)</a> method. Note that lock timeouts are only checked when a lock request is blocked or when deadlock detection is otherwise performed. Therefore, a lock can have timed out and still be held for some length of time until Figaro has a reason to examine its locking tables.</p>
+<p>Be aware that extremely long-lived transactions, or operations that hold locks for a long time, may be inappropriately timed out before the transaction or operation has a chance to complete. You should therefore use this mechanism only if you know your application will hold locks for very short periods of time.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a></li>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetTimeout_System_UInt32_Figaro_EnvironmentTimeoutType_">SetTimeout(UInt32, EnvironmentTimeoutType)</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="the-locking-subsystem.html">The Locking Subsystem</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/configuring-deadlock-detection.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

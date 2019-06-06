@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Container Types </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Container Types ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="container-types.md">
+<h1 id="container-types">Container Types</h1>
+
+<p>At creation time, every container must have a type defined for it. This container type identifies how XML documents are stored in the container. As such, the container type can only be determined at container creation time; you cannot change it on subsequent container opens.</p>
+<p>Containers can have one of the following types specified for them:</p>
+<h2 id="wholedoc-containers">Wholedoc containers</h2>
+<p>The container contains entire documents; the documents are stored &quot;as is&quot; without any manipulation of line breaks or whitespace. To cause the container to hold whole documents, set <a class="xref" href="../../api/Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a> on the call to <a class="xref" href="../../api/Figaro.XmlManager.html#Figaro_XmlManager_CreateContainer_Figaro_ContainerConfig_">CreateContainer(ContainerConfig)</a>.</p>
+<h2 id="node-containers">Node containers</h2>
+<p><a class="xref" href="../../api/Figaro.XmlDocument.html">XmlDocument</a> documents are stored as individual nodes in the container. That is, each record in the underlying database contains a single leaf node, its attributes and attribute values if any, and its text nodes, if any. Figaro also keeps the information it needs to reassemble the document from the individual nodes stored in the underlying databases.</p>
+<div class="NOTE"><h5>Note</h5><p>This is the default, and preferred, container type.</p>
+</div>
+<p>Note that node containers are generally faster to query than <code>Wholedoc</code> containers. On the other hand, <code>Wholedoc</code> provides faster document loading times into the container than does NodeContainer because Figaro does not have to deconstruct the document into its individual leaf nodes. For the same reason, <code>Wholedoc</code> containers are faster at retrieving whole documents for the same reason — the document does not have to be reassembled.</p>
+<p>Because of this, you should use node containers unless one of the following conditions are true:</p>
+<ul>
+<li>Load performance is more important to you than is query performance.</li>
+<li>You want to frequently retrieve the entire XML document (as opposed to just a portion of the document).</li>
+<li>Your documents are so small in size that the query advantage offered by node containers is negligible or vanishes entirely. The size at which this threshold is reached is of course dependent on the physical resources available to your .NET application (memory, CPU, disk speeds, and so forth).</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>You should avoid using <code>Wholedoc</code> containers if your documents tend to be greater than a megabyte in size. <code>Wholedoc</code> containers are tuned for small documents and you will pay increasingly heavy performance penalties as your documents grow larger.</p>
+</div>
+<p>For example:</p>
+<pre><code class="lang-C#">        var mgr = new XmlManager();
+        mgr.DefaultContainerType = XmlContainerType.WholeDocContainer;
+        var container = mgr.CreateContainer(&quot;docContainer.dbxml&quot;);
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.XmlContainerType.html">XmlContainerType</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="xmlmanager-and-containers.html">XmlManager and Containers</a></li>
+<li><a class="xref" href="developing-dotnet-apps-with-figaro.html">Developing .NET Applications with Figaro</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/container-types.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

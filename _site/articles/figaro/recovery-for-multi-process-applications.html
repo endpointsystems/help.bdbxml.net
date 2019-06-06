@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Recovery for Multi-Process Applications </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Recovery for Multi-Process Applications ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="recovery-for-multi-process-applications.md">
+<h1 id="recovery-for-multi-process-applications">Recovery for Multi-Process Applications</h1>
+
+<p>Frequently, Figaro applications use multiple processes to interact with the containers. For example, you may have a long-running process, such as some kind of server, and then a series of administrative tools that you use to inspect and administer the underlying containers. Or, in some web-based architectures, different services are run as independent processes that are managed by the server.</p>
+<p>In any case, recovery for a multi-process environment is complicated for two reasons:</p>
+<ul>
+<li>In the event that recovery must be run, you might want to notify processes interacting with the environment that recovery is about to occur and give them a chance to gracefully terminate. Whether it is worthwhile for you to do this is entirely dependent upon the nature of your application. Some long-running applications with multiple processes performing meaningful work might want to do this. Other applications with processes performing container operations that are likely to be harmed by error conditions in other processes will likely find it to be not worth the effort. For this latter group, the chances of performing a graceful shutdown may be low anyway.</li>
+<li>Unlike single process scenarios, it can quickly become wasteful for every process interacting with the containers to run recovery when it starts up. This is partly because recovery does take some amount of time to run, but mostly you want to avoid a situation where your server must reopen all its environment handles just because you fire up a command line container administrative utility that always runs recovery.</li>
+</ul>
+<p>Figaro offers you two methods by which you can manage recovery for multi-process Figaro applications. Each has different strengths and weaknesses, and they are described in the next sections.</p>
+<h2 id="effects-of-multi-process-recovery">Effects of Multi-Process Recovery</h2>
+<p>Before continuing, it is worth noting that the following sections describe recovery processes than can result in one process running recovery while other processes are currently actively performing container operations.</p>
+<p>When this happens, the current container operation will abnormally fail, throwing <a class="xref" href="../../api/Figaro.RunRecoveryException.html">RunRecoveryException</a>. This means that your application should immediately abandon any container operations that it may have on-going, discard any environment handles it has opened, and obtain and open new handles.</p>
+<p>The net effect of this is that any writes performed by unresolved transactions will be lost. For persistent applications (servers, for example), the services it provides will also be unavailable for the amount of time that it takes to complete a recovery and for all participating processes to reopen their environment handles.</p>
+<h2 id="process-registration">Process Registration</h2>
+<p>One way to handle multi-process recovery is for every process to &quot;register&quot; its environment. In doing so, the process gains the ability to see if any other applications are using the environment and, if so, whether they have suffered an abnormal termination. If an abnormal termination is detected, the process runs recovery; otherwise, it does not.</p>
+<p>Note that using process registration also ensures that recovery is serialized across applications. That is, only one process at a time has a chance to run recovery. Generally this means that the first process to start up will run recovery, and all other processes will silently not run recovery because it is not needed.</p>
+<p>To cause your application to register its environment, you specify the <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> flag when you open your environment. Note that you must also specify <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> or <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_RecoverFatal">RecoverFatal</a> for your environment open. If during the open, Figaro determines that recovery must be run, this indicates the type of recovery that is run. If you do not specify either type of recovery, then no recovery is run if the registration process identifies a need for it. In this case, the environment open simply fails by throwing <a class="xref" href="../../api/Figaro.RunRecoveryException.html">RunRecoveryException</a>.</p>
+<p>Be aware that there are some limitations/requirements if you want your various processes to coordinate recovery using this registration process:</p>
+<ul>
+<li>There can be only one environment handle per environment per process. In the case of multi-threaded processes, the environment handle must be shared across threads.</li>
+<li>All processes sharing the environment must use registration. If registration is not uniformly used across all participating processes, then you can see inconsistent results in terms of your application&#39;s ability to recognize that recovery must be run.</li>
+<li>You can not use this mechanism with the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> mechanism.</li>
+</ul>
+<h2 id="failure-checking">Failure Checking</h2>
+<p>For very large and robust multi-process applications, the most common way to ensure all the processes are working as intended is to make use of a watchdog process. To assist a watchdog process, Figaro offers a failure checking mechanism.</p>
+<p>When a thread of control fails with open environment handles, the result is that there may be resources left locked or corrupted. Other threads of control may encounter these unavailable resources quickly or not at all, depending on data access patterns.</p>
+<p>In any case, the Figaro failure checking mechanism allows a watchdog to detect if an environment is unusable as a result of a thread of control failure. It should be called periodically (for example, once a minute) from the watchdog process. If the environment is deemed unusable, then the watchdog process is notified that recovery should be run. It is then up to the watchdog to actually run recovery. It is also the watchdog&#39;s responsibility to decide what to do about currently running processes before running recovery. The watchdog could, for example, attempt to gracefully shutdown or kill all relevant processes before running recovery.</p>
+<p>Note that failure checking need not be run from a separate process, although conceptually that is how the mechanism is meant to be used. This same mechanism could be used in a multi-threaded application that wants to have a watchdog thread.</p>
+<p>To use failure checking you must:</p>
+<ul>
+<li>Enable the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnIsAlive">OnIsAlive</a> event using the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_IsAliveEnabled">IsAliveEnabled</a> method. Figaro uses this method to determine whether a specified process and thread is alive when the failure checking is performed.</li>
+<li>Call the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> method periodically. You can do this either periodically (once per minute, for example), or whenever a thread of control exits for your application.</li>
+</ul>
+<p>If this method determines that a thread of control exited holding read locks, those locks are automatically released. If the thread of control exited with an unresolved transaction, that transaction is aborted. If any other problems exist beyond these such that the environment must be recovered, the method will throw <a class="xref" href="../../api/Figaro.RunRecoveryException.html">RunRecoveryException</a>.</p>
+<p>Note that this mechanism should not be mixed with the process registration method of multi-process recovery described in the previous section.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnIsAlive">OnIsAlive</a></li>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_IsAliveEnabled">IsAliveEnabled</a></li>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a></li>
+<li><a class="xref" href="../../api/Figaro.RunRecoveryException.html">RunRecoveryException</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="designing-your-application-for-recovery.html">Designing Your Application For Recovery</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/recovery-for-multi-process-applications.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

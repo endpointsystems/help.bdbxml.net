@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Database Usage Sample </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Database Usage Sample ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="database-usage-sample">Database Usage Sample</h1>
+
+<p>In the first <a href="db-example.html">database example</a> we created a class that opens and closes a database for us. In this example we expand and formalize our data access through the use of a <a href="https://msdn.microsoft.com/en-us/library/ff649690.aspx">repository pattern</a>, abstracting our database operations for us. </p>
+<div class="NOTE"><h5>Note</h5><p>Full source code this and other examples can be found at our GitHub repository at <a href="https://github.com/endpointsystems/BerkeleyDB.Core.Examples">https://github.com/endpointsystems/BerkeleyDB.Core.Examples</a> </p>
+</div>
+<p>In this example we have two item types we&#39;re trying to store - vendors and vendor inventory. Using the random data generator at <a href="http://generatedata.com/">generatedata.com</a>, we generate 50,000 vendors with five inventory items for each vendor, for a total of 250k items. Our incoming data is stored in CSV format, so we&#39;ll use the <a href="https://www.nuget.org/packages/CsvHelper/">CsvHelper</a> NuGet package as well.</p>
+<p>Let&#39;s take a look at our data structures:</p>
+<pre><code>using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using CsvHelper.Configuration;
+
+namespace GettingStarted.Writing
+{
+    [Serializable]
+    public class Vendor
+    {
+      public string VendorName;
+      public string Street;
+      public string City;
+      public string State;
+      public string Zip;
+      public string PhoneNumber;
+      public string SalesRep;
+      public string SalesRepPhone;
+    }
+
+  public class VendorMap : ClassMap&lt;Vendor&gt;
+  {
+    public VendorMap()
+    {
+      Map(m =&gt; m.VendorName);
+      Map(m =&gt; m.Street);
+      Map(m =&gt; m.City);
+      Map(m =&gt; m.State);
+      Map(m =&gt; m.Zip);
+      Map(m =&gt; m.PhoneNumber);
+      Map(m =&gt; m.SalesRep);
+      Map(m =&gt; m.SalesRepPhone);
+    }
+  }
+
+  [Serializable]
+  public class Inventory
+  {
+    public Inventory(string vendor)
+    {
+      Vendor = vendor;
+    }
+
+    public double Price;
+    public int Quantity;
+    public string Name;
+    //this will also be our key, so we won&#39;t store it here
+    //public string Sku;
+    public string Category;
+    public string Vendor;
+  }
+
+  public static class Extensions
+  {
+    public static byte[] ToByteArray(this string value)
+    {
+      return Encoding.Default.GetBytes(value);
+    }
+
+    public static byte[] ToByteArray(this Vendor vendor)
+    {
+      BinaryFormatter formatter = new BinaryFormatter();
+      using (var ms = new MemoryStream())
+      {
+        formatter.Serialize(ms,vendor);
+        //ms.Seek(0, SeekOrigin.Begin);
+        return ms.ToArray();
+      }
+    }
+    public static byte[] ToByteArray(this Inventory inv)
+    {
+      BinaryFormatter formatter = new BinaryFormatter();
+      using (var ms = new MemoryStream())
+      {
+        formatter.Serialize(ms,inv);
+        ms.Seek(0, SeekOrigin.Begin);
+        return ms.ToArray();
+      }
+    }
+  }
+}
+</code></pre><p>As you can see, we have two data types - Vendor and Inventory.  There are a couple of other things to take notice of:</p>
+<ul>
+<li>We use the Vendor name for the key in the Vendor database, and we use the product SKU for the key in our Inventory database.</li>
+<li>All of our data is saved into the system as byte arrays. Fortunately, this is easy to mark up in our data objects by using extension methods. </li>
+<li>We&#39;re currently using <a href="https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netcore-2.0">System.Runtime.Serialization.BinaryFormatter</a> to serialize our objects, but we don&#39;t have to - we could use any formatter we please, or even save it in the original CSV format. </li>
+<li>There isnt&#39; much structure or logic to our application so far - we&#39;re just storing data as we pick it up. </li>
+</ul>
+<p>Let&#39;s take a look at our data repositories.</p>
+<pre><code>using System;
+using System.IO;
+using System.Text;
+using BerkeleyDB.Core;
+
+namespace GettingStarted.Writing
+{
+  public abstract class Repository: IDisposable
+  {
+    protected string path;
+    protected BTreeDatabase db;
+    protected Repository(string dataPath, string databaseName)
+    {
+      path = dataPath;
+      var cfg = new BTreeDatabaseConfig
+      {
+        Creation = CreatePolicy.IF_NEEDED, CacheSize = new CacheInfo(1, 0, 1),
+        ErrorFeedback = (prefix, message) =&gt;
+        {
+          var fg = Console.ForegroundColor;
+          Console.ForegroundColor = ConsoleColor.Red;
+          Console.WriteLine($&quot;{prefix}: {message}&quot;);
+          Console.ForegroundColor = fg;
+        },
+        ErrorPrefix = databaseName,Duplicates = DuplicatesPolicy.SORTED,        
+      };
+      db = BTreeDatabase.Open(Path.Combine(dataPath,databaseName +&quot;.db&quot;),cfg);
+    }
+
+    ~Repository()
+    {
+      Dispose(false);
+    }
+
+    protected void AddToDb(string keyval, byte[] dataval)
+    {
+      var key = new DatabaseEntry(Encoding.UTF8.GetBytes(keyval));
+      var data = new DatabaseEntry(dataval);
+      db.Put(key, data);
+    }
+
+    public void Sync()
+    {
+      Console.WriteLine(&quot;I&#39;m syncing!&quot;);
+      db.Sync();
+    }
+
+    private void Dispose(bool disposing)
+    {
+      if (!disposing) return;
+      db?.Close(true);
+      db?.Dispose();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
+      GC.SuppressFinalize(this);
+    }
+  }
+  /// &lt;summary&gt;
+  /// The data repository for our Vendor database.
+  /// &lt;/summary&gt;
+  public class VendorRepository: Repository
+  {
+    public VendorRepository(string dataPath) : base(dataPath, &quot;vendor&quot;){}
+
+    public void AddVendor(Vendor v){AddToDb(v.VendorName,v.ToByteArray());}
+  }
+
+  /// &lt;summary&gt;
+  /// The repository for our inventory database.
+  /// &lt;/summary&gt;
+  public class InventoryRepository: Repository
+  {
+    public InventoryRepository(string dataPath) : base(dataPath,&quot;inventory&quot;){}
+    public void AddInventory(string sku, Inventory inv){AddToDb(sku,inv.ToByteArray());}
+  }
+}
+</code></pre><ul>
+<li>All databases are of type @BTreeDatabase</li>
+<li>We implement the @System.IDisposable interface to make sure we synchronize <strong>and</strong> close our databases as we free up our resources. This is important!</li>
+<li>We make the <code>Sync</code> method public so that we can be sure to manually flush our data to disk once we write it. We&#39;re going to need to do this manually since we&#39;re not using <a href="environments.html">Environments</a> and/or the other settings that enable this to be done automatically, so we need to make sure it&#39;s done.</li>
+</ul>
+<p>Lastly, let&#39;s take a look at our main code.</p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using CsvHelper;
+
+namespace GettingStarted.Writing
+{
+    class Program
+    {
+        static void Main()
+        {
+          List&lt;long&gt; commitTimes = new List&lt;long&gt;();
+
+          //this value was set in the project settings. We&#39;ll read CSVs and write DB files there.
+          var dataPath = Environment.GetEnvironmentVariable(&quot;DATA_DIR&quot;);
+          var vendorRepo = new VendorRepository(dataPath);
+          var invRepo = new InventoryRepository(dataPath);
+
+          var readTimer = new Stopwatch();
+          readTimer.Start();
+          var vr = new CsvReader(File.OpenText(Path.Combine(dataPath,&quot;vendor-master.csv&quot;)));
+          vr.Configuration.HasHeaderRecord = false;
+          vr.Configuration.RegisterClassMap&lt;VendorMap&gt;();
+          vr.Configuration.DetectColumnCountChanges = true;
+          var ir = new CsvReader(File.OpenText(Path.Combine(dataPath,&quot;inv-master.csv&quot;)));
+          ir.Configuration.HasHeaderRecord = false;
+          ir.Configuration.DetectColumnCountChanges = true;
+
+          int z = 0;
+          var writeTimer = new Stopwatch();
+          Vendor vendor;
+          Inventory inv;
+          while (vr.Read())
+          {
+            writeTimer.Start();
+            int y = z + 5;
+            vendor = vr.GetRecord&lt;Vendor&gt;();
+            vendorRepo.AddVendor(vendor);
+
+            for (int x = z; x &lt; y; x++)
+            {
+              if (ir.Read())
+              {
+                inv = new Inventory(vendor.VendorName)
+                {
+                  Category = ir.GetField(2),
+                  Name = ir.GetField(3),
+                  Price = ir.GetField&lt;double&gt;(0),
+                  Quantity = ir.GetField&lt;int&gt;(1)
+                };
+                invRepo.AddInventory(ir.GetField(5), inv);
+              }
+              else
+              {
+                Console.WriteLine($&quot;{DateTime.Now}\tno more inventory&quot;);
+              }
+            }
+            z = y;
+            writeTimer.Stop();
+            commitTimes.Add(writeTimer.ElapsedTicks);
+            writeTimer.Reset();
+          }
+
+
+          readTimer.Stop();
+          Console.WriteLine(&quot;-----------------------------&quot;);
+          Console.WriteLine();
+          Console.WriteLine($&quot;Read of CSV files took {readTimer.Elapsed.Minutes}:{readTimer.Elapsed.Seconds}.{readTimer.Elapsed.Milliseconds}.&quot;);
+          readTimer.Reset();
+          readTimer.Start();
+          vendorRepo.Sync();
+          invRepo.Sync();
+          readTimer.Stop();
+          Console.WriteLine($&quot;syncing databases took {readTimer.ElapsedMilliseconds} milliseconds.&quot;);
+          Console.WriteLine();
+          Console.WriteLine($&quot; Average write for each iteration (1 vendor, 5 inventory) averaged {commitTimes.Average()} ticks. Min: {commitTimes.Min()} Max: {commitTimes.Max()}&quot;);
+          Console.WriteLine(&quot;Press any key to exit.&quot;);
+
+          vendorRepo.Dispose();
+          invRepo.Dispose();
+
+          Console.ReadLine();
+        }
+    }
+}
+</code></pre><p>In this code we simply load the CSV files, parse them, and submit their data into the repositories for storage. We set up some timers so we can see how fast it takes us. On a Surface 4 Pro running 64-bit Windows 10 with 16GB of RAM and a 2.2 GhZ Intel i7-6650U processor, we were able to load all of the data in roughly 12 seconds, with an average write (one vendor record and 5 inventory records) taking an average of 500 ticks (there are 10,000 ticks in a millisecond). </p>
+<p>Now let&#39;s take a look at retrieving data from our database.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb/db-usage-sample.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

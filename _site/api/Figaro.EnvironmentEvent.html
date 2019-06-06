@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum EnvironmentEvent
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum EnvironmentEvent
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.EnvironmentEvent">
+  
+  
+  <h1 id="Figaro_EnvironmentEvent" data-uid="Figaro.EnvironmentEvent" class="text-break">Enum EnvironmentEvent
+  </h1>
+  <div class="markdown level0 summary"><p>Used to describe the Figaro events raised by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_ProcessEventEnabled">ProcessEventEnabled</a>
+property.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_EnvironmentEvent_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum EnvironmentEvent</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_Panic">Panic</td>
+        <td><p>The database environment has failed. All threads of control in the database environment
+should exit the environment, and recovery should be run.
+Errors can occur in the database library where the only solution is to shut down the application and run recovery
+(for example, if Figaro is unable to allocate heap memory). In such cases, the database methods will throw
+<a class="xref" href="Figaro.RunRecoveryException.html">RunRecoveryException</a>. It is often easier to simply exit the application
+when such errors occur rather than gracefully return up the stack.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationAckFailure">ReplicationAckFailure</td>
+        <td><p>The replication manager did not receive enough acknowledgments (based on the acknowledgment policy configured with DB_ENV-&gt;repmgr_set_ack_policy) to ensure a transaction&apos;s durability within the replication group. The transaction will be flushed to the master&apos;s local disk storage for durability. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationClient">ReplicationClient</td>
+        <td><p>The local site is now a replication client.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationLocalSiteRemoved">ReplicationLocalSiteRemoved</td>
+        <td><p>The local Replication Manager site has been removed from the group.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationMaster">ReplicationMaster</td>
+        <td><p>The local site is now the master site of its replication group. It is the application&apos;s responsibility to begin acting as the master environment.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationNewMaster">ReplicationNewMaster</td>
+        <td><p>The replication group of which this site is a member has just established a new master; the local site is not the new master. The event_info parameter points to an integer containing the environment ID of the new master.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationSiteAdded">ReplicationSiteAdded</td>
+        <td><p>A new Replication Manager site has joined the replication group.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationSiteElected">ReplicationSiteElected</td>
+        <td><p>The local replication site has just won an election.
+An application using the Base replication API should arrange for a call to the DB_ENV-&gt;rep_start method after receiving this event
+to reconfigure the local environment as a replication master.
+Replication XmlManager applications may safely ignore this event. The Replication XmlManager calls <code>StartReplication</code>
+automatically on behalf of the application when appropriate (resulting in firing of the<code> ReplicationMaster</code> event).</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationSiteRemoved">ReplicationSiteRemoved</td>
+        <td><p>An existing Replication Manager site has been removed from the replication group.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_ReplicationStartupDone">ReplicationStartupDone</td>
+        <td><p>The client has completed startup synchronization and is now processing live log records received from the master. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvironmentEvent_WriteEventFailure">WriteEventFailure</td>
+        <td><p>A database write to stable storage failed.</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+  <h5 id="Figaro_EnvironmentEvent_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_ProcessEventEnabled">ProcessEventEnabled</a></div>
+      <div><a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Enums.cs&amp;version=GBmaster&amp;line=555" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

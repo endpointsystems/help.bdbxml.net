@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shared Memory Regions </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shared Memory Regions ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="shared-memory-regions.md">
+<h1 id="shared-memory-regions">Shared Memory Regions</h1>
+
+<p>The subsystems that you enable for an environment (in our case, transaction, logging, locking, and the memory pool) are described by one or more regions. The regions contain all of the state information that needs to be shared among threads and/or processes using the environment.</p>
+<p>Regions may be backed by the file system, by heap memory, or by system shared memory.</p>
+<h2 id="regions-backed-by-files">Regions Backed by Files</h2>
+<p>By default, shared memory regions are created as files in the environment&#39;s home directory (not the environment&#39;s data directory). If it is available, the POSIX <code>mmap</code> interface is used to map these files into your application&#39;s address space. If <code>mmap</code> is not available, then the UNIX <code>shmget</code> interfaces are used instead (again, if they are available).</p>
+<p>In this default case, the region files are named <code>__db.###</code> (for example, <code>__db.001</code>, <code>__db.002</code>, and so on).</p>
+<h2 id="regions-backed-by-heap-memory">Regions Backed by Heap Memory</h2>
+<p>If heap memory is used to back your shared memory regions, the environment may only be accessed by a single process, although that process may be multi-threaded. In this case, the regions are managed only in memory, and they are not written to the file system. You indicate that heap memory is to be used for the region files by specifying <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Private">Private</a> to the @Figaro.FigaroEnv.Open method.</p>
+<p>(For an example of an entirely in-memory transactional application, see <a class="xref" href="the-in-memory-transaction-example.html">The In-Memory Transaction Example</a>.)</p>
+<h2 id="regions-backed-by-system-memory">Regions Backed by System Memory</h2>
+<p>Finally, you can cause system memory to be used for your regions instead of memory-mapped files. You do this by providing <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_SystemSharedMem">SystemSharedMem</a> to the @Figaro.FigaroEnv.Open method.</p>
+<p>When region files are backed by system memory, Figaro creates a single file in the environment&#39;s home directory. This file contains information necessary to identify the system shared memory in use by the environment. By creating this file, Figaro enables multiple processes to share the environment.</p>
+<p>On Windows platforms, the use of system memory for the region files is problematic because the operating system uses reference counting to clean up shared objects in the paging file automatically. In addition, the default access permissions for shared objects are different from files, which may cause problems when an environment is accessed by multiple processes running as different users. See <a class="xref" href="system-shared-memory-on-windows.html">System Shared Memory on Windows</a> for more information.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="environments.html">Environments</a></li>
+<li><a class="xref" href="the-in-memory-transaction-example.html">The In-Memory Transaction Example</a></li>
+<li><a class="xref" href="system-shared-memory-on-windows.html">System Shared Memory on Windows</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/shared-memory-regions.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

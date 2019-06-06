@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Log File Limits </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Log File Limits ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="log-file-limits.md">
+<h1 id="log-file-limits">Log File Limits</h1>
+
+<p>Log filenames and sizes impose a limit on how long databases may be used in a database environment. It is quite unlikely that an application will reach this limit; however, if the limit is reached, the environment&#39;s databases must be dumped and reloaded.</p>
+<p>The log filename consists of <strong>log.</strong> followed by 10 digits, with a maximum of 2,000,000,000 log files. Consider an application performing 6000 transactions per second for 24 hours a day, logged into 10MB log files, in which each transaction is logging approximately 500 bytes of data. The following calculation:</p>
+<pre><code>(10 * 2^20 * 2000000000) / (6000 * 500 * 365 * 60 * 60 * 24) = ~221
+</code></pre><p>indicates that the system will run out of log filenames in roughly 221 years.</p>
+<p>There is no way to reset the log filename space in Figaro. If your application is reaching the end of its log filename space, you must do the following:</p>
+<p>Archive your databases as if to prepare for catastrophic failure (see Database and log file archival for more information).
+Remove all of the log files from your environment. Note that this is the only situation in which all of the log files are removed from an environment; in all other cases, at least a single log file is retained.
+Restart your application.</p>
+<h2 id="configuring-the-logging-region-size">Configuring the Logging Region Size</h2>
+<p>he logging subsystem&#39;s default region size is 60 KB. The logging region is used to store filenames, and so you may need to increase its size if a large number of files (that is, if you have a very large number of databases) will be opened and registered with Figaro&#39;s log manager.</p>
+<p>You can set the size of your logging region by using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetMaxLogRegion_System_UInt32_">SetMaxLogRegion(UInt32)</a> method. Note that this method can only be called before the first environment handle for your application is opened.</p>
+<h2 id="configuring-in-memory-logging">Configuring In-Memory Logging</h2>
+<p>It is possible to configure your logging subsystem such that logs are maintained entirely in memory. When you do this, you give up your transactional durability guarantee. Without log files, you have no way to run recovery so any system or software failures that you might experience can corrupt your containers.</p>
+<p>However, by giving up your durability guarantees, you can greatly improve your application&#39;s throughput by avoiding the disk I/O necessary to write logging information to disk. In this case, you still retain your transactional atomicity, consistency, and isolation guarantees.</p>
+<p>To configure your logging subsystem to maintain your logs entirely in-memory:</p>
+<ul>
+<li>Make sure your log buffer is capable of holding all log information that can accumulate during the longest running transaction. See <a class="xref" href="setting-the-in-memory-log-buffer-size.html">Setting the In-Memory Log Buffer Size</a> for details.</li>
+<li>Do not run normal recovery when you open your environment. In this configuration, there are no log files available against which you can run recovery. As a result, if you specify recovery when you open your environment, it is ignored.</li>
+<li>Specify <a class="xref" href="../api/Figaro.EnvLogOptions.html#Figaro_EnvLogOptions_InMemory">InMemory</a> to the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetLogOptions_Figaro_EnvLogOptions_System_Boolean_">SetLogOptions(EnvLogOptions, Boolean)</a> method. Note that you must specify this before your application opens its first environment handle.</li>
+</ul>
+<h2 id="setting-the-in-memory-log-buffer-size">Setting the In-Memory Log Buffer Size</h2>
+<p>When your application is configured for on-disk logging (the default behavior for transactional applications), log information is stored in-memory until the storage space fills up, or a transaction commit forces the log information to be flushed to disk. It is possible to increase the amount of memory available to your file log buffer. Doing so improves throughput for long-running transactions, or for transactions that produce a large amount of data.</p>
+<p>When you have your logging subsystem configured to maintain your log entirely in memory (see <a class="xref" href="configuring-in-memory-logging.html">Configuring In-Memory Logging</a>), it is very important to configure your log buffer size because the log buffer must be capable of holding all log information that can accumulate during the longest running transaction. You must make sure that the in-memory log buffer size is large enough that no transaction will ever span the entire buffer. You must also avoid a state where the in-memory buffer is full and no space can be freed because a transaction that started the first log &quot;file&quot; is still active.</p>
+<p>When your logging subsystem is configured for on-disk logging, the default log buffer space is 32 KB. When in-memory logging is configured, the default log buffer space is 1 MB. You can increase your log buffer space by using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetLogBufferSize_System_UInt32_">SetLogBufferSize(UInt32)</a> method. Note that this method can only be called before the first environment handle for your application is opened.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetMaxLogRegion_System_UInt32_">SetMaxLogRegion(UInt32)</a></li>
+<li><a class="xref" href="../api/Figaro.EnvLogOptions.html">EnvLogOptions</a></li>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetLogOptions_Figaro_EnvLogOptions_System_Boolean_">SetLogOptions(EnvLogOptions, Boolean)</a></li>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetLogBufferSize_System_UInt32_">SetLogBufferSize(UInt32)</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="setting-the-in-memory-log-buffer-size.html">Setting the In-Memory Log Buffer Size</a></li>
+<li><a class="xref" href="configuring-in-memory-logging.html">Configuring In-Memory Logging</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/log-file-limits.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

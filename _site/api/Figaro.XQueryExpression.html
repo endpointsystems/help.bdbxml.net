@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XQueryExpression
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XQueryExpression
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XQueryExpression">
+  
+  
+  <h1 id="Figaro_XQueryExpression" data-uid="Figaro.XQueryExpression" class="text-break">Class XQueryExpression
+  </h1>
+  <div class="markdown level0 summary"><p><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a> represents a parsed
+XQuery expression, and is created by a call to
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XQueryExpression</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XQueryExpression_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XQueryExpression : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XQueryExpression_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Parsed XQuery expressions are useful because they allow the cost of query parsing and optimization
+to be amortized over many evaluations. If indices of a container that may be referenced
+by a parsed XQuery expression are modified (e.g. add/drop an index) the
+<a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a> object should be
+regenerated by the application.
+<p>
+This object is free threaded, and can be safely shared among threads in an application.
+</p></p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=141">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_IsUpdateExpression_" data-uid="Figaro.XQueryExpression.IsUpdateExpression*"></a>
+  <h4 id="Figaro_XQueryExpression_IsUpdateExpression" data-uid="Figaro.XQueryExpression.IsUpdateExpression">IsUpdateExpression</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the query is an updating expression.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUpdateExpression { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the boolean value determining whether or not the query is an updating expression.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=133">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Query_" data-uid="Figaro.XQueryExpression.Query*"></a>
+  <h4 id="Figaro_XQueryExpression_Query" data-uid="Figaro.XQueryExpression.Query">Query</h4>
+  <div class="markdown level1 summary"><p>Gets the query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Query { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Show the query associated with the <a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Query_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=149">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_QueryPlan_" data-uid="Figaro.XQueryExpression.QueryPlan*"></a>
+  <h4 id="Figaro_XQueryExpression_QueryPlan" data-uid="Figaro.XQueryExpression.QueryPlan">QueryPlan</h4>
+  <div class="markdown level1 summary"><p>Gets the query plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string QueryPlan { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Show the query plan prepared by the <a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_QueryPlan_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></div>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=158">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Dispose_" data-uid="Figaro.XQueryExpression.Dispose*"></a>
+  <h4 id="Figaro_XQueryExpression_Dispose" data-uid="Figaro.XQueryExpression.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=42">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Execute_" data-uid="Figaro.XQueryExpression.Execute*"></a>
+  <h4 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext_" data-uid="Figaro.XQueryExpression.Execute(Figaro.QueryContext)">Execute(QueryContext)</h4>
+  <div class="markdown level1 summary"><p>Evaluates (runs) an XQuery query that was previously prepared by
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(QueryContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> to use for this evaluation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>XQuery must restrict the scope of this query using either the <code>collection()</code> or the <code>doc()</code>
+XQuery navigation functions, or an exception is thrown.</p>
+</div>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=63">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Execute_" data-uid="Figaro.XQueryExpression.Execute*"></a>
+  <h4 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext_Figaro_QueryOptions_" data-uid="Figaro.XQueryExpression.Execute(Figaro.QueryContext,Figaro.QueryOptions)">Execute(QueryContext, QueryOptions)</h4>
+  <div class="markdown level1 summary"><p>Evaluates (runs) an XQuery query that was previously prepared by
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(QueryContext context, QueryOptions queryOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> to use for this evaluation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></td>
+        <td><span class="parametername">queryOptions</span></td>
+        <td><p>One or more options for querying containers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext_Figaro_QueryOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>XQuery must restrict the scope of this query using either the <code>collection()</code> or the <code>doc()</code>
+XQuery navigation functions, or an exception is thrown.</p>
+</div>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_QueryContext_Figaro_QueryOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=121">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Execute_" data-uid="Figaro.XQueryExpression.Execute*"></a>
+  <h4 id="Figaro_XQueryExpression_Execute_Figaro_XmlTransaction_Figaro_QueryContext_Figaro_QueryOptions_" data-uid="Figaro.XQueryExpression.Execute(Figaro.XmlTransaction,Figaro.QueryContext,Figaro.QueryOptions)">Execute(XmlTransaction, QueryContext, QueryOptions)</h4>
+  <div class="markdown level1 summary"><p>Evaluates (runs) an XQuery query that was previously prepared by
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(XmlTransaction transaction, QueryContext context, QueryOptions queryOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> to use for this evaluation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></td>
+        <td><span class="parametername">queryOptions</span></td>
+        <td><p>One or more options for querying containers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_XmlTransaction_Figaro_QueryContext_Figaro_QueryOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=102">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Execute_" data-uid="Figaro.XQueryExpression.Execute*"></a>
+  <h4 id="Figaro_XQueryExpression_Execute_Figaro_XmlTransaction_Figaro_XmlValue_Figaro_QueryContext_Figaro_QueryOptions_" data-uid="Figaro.XQueryExpression.Execute(Figaro.XmlTransaction,Figaro.XmlValue,Figaro.QueryContext,Figaro.QueryOptions)">Execute(XmlTransaction, XmlValue, QueryContext, QueryOptions)</h4>
+  <div class="markdown level1 summary"><p>Evaluates (runs) an XQuery query that was previously prepared by
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a> in a transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(XmlTransaction transaction, XmlValue contextItem, QueryContext context, QueryOptions queryOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">contextItem</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object to perform the query against.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> to use for this evaluation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></td>
+        <td><span class="parametername">queryOptions</span></td>
+        <td><p>One or more options for querying containers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_XmlTransaction_Figaro_XmlValue_Figaro_QueryContext_Figaro_QueryOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=82">View Source</a>
+  </span>
+  <a id="Figaro_XQueryExpression_Execute_" data-uid="Figaro.XQueryExpression.Execute*"></a>
+  <h4 id="Figaro_XQueryExpression_Execute_Figaro_XmlValue_Figaro_QueryContext_Figaro_QueryOptions_" data-uid="Figaro.XQueryExpression.Execute(Figaro.XmlValue,Figaro.QueryContext,Figaro.QueryOptions)">Execute(XmlValue, QueryContext, QueryOptions)</h4>
+  <div class="markdown level1 summary"><p>Evaluates (runs) an XQuery query that was previously prepared by
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(XmlValue contextItem, QueryContext context, QueryOptions queryOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">contextItem</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object to perform the query against.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> to use for this evaluation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></td>
+        <td><span class="parametername">queryOptions</span></td>
+        <td><p>One or more options for querying containers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryExpression_Execute_Figaro_XmlValue_Figaro_QueryContext_Figaro_QueryOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryExpression.cs&amp;version=GBmaster&amp;line=21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

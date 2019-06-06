@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Database Features </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Database Features ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="database-features.md">
+<h1 id="database-features">Database Features</h1>
+
+<p>Beyond XML-specific features, Figaro leverages many features from Oracle Berkeley DB, which allows Figaro to provide the same fast, reliable, and scalable database support as does Berkeley DB. The result is that Figaro is an ideal candidate for mission-critical applications that must manage XML data.</p>
+<h2 id="in-process-data-access">In-Process Data Access</h2>
+<p>Figaro is compiled and linked in the same way as any library. It runs in the same process space as your application. The result is database support in a small footprint without the IPC-overhead required by traditional client/server-based database implementations.</p>
+<h2 id="size-limitations">Size Limitations</h2>
+<p>Berkeley DB XML can manage databases up to 256 terabytes in size.</p>
+<h2 id="database-environment-support">Database Environment Support</h2>
+<p>Figaro database environments support all of the same features as Berkeley DB environments, including multiple databases, transactions, deadlock detection, lock and page control, and encryption. In particular, this means that Figaro databases can share an environment with Berkeley DB databases, thus allowing an application to gracefully use both. See <a class="xref" href="berkeley-db-environments.html">Berkeley DB Environments</a> for an introduction to environments.</p>
+<h2 id="atomic-operations">Atomic Operations</h2>
+<p>Complex sequences of read and write access can be grouped together into a single atomic operation using Figaro&#39;s transaction support. Either all of the read and write operations within a transaction succeed, or none of them succeed. See <a class="xref" href="why-transactions.html">Why Transactions?</a> for more information.</p>
+<h2 id="isolated-operations">Isolated Operations</h2>
+<p>Operations performed inside a transaction see all XML documents as if no other transactions are currently operating on them. See <a class="xref" href="isolation.html">Isolation</a> for more information.</p>
+<h2 id="recoverability">Recoverability</h2>
+<p>Figaro&#39;s transaction support ensures that all committed data is available no matter how the application or system might subsequently fail. See <a class="xref" href="recovery-procedures.html">Recovery Procedures</a> for more details.</p>
+<h2 id="concurrent-access">Concurrent Access</h2>
+<p>Through the combined use of isolation mechanisms built into Figaro, plus deadlock handling supplied by the application, multiple threads and processes can concurrently access the XML data set in a safe manner. See <a class="xref" href="concurrency.html">Concurrency</a> for more information.</p>
+<h2 id="replication">Replication</h2>
+<p>Figaro provides the ability to distribute updates made to a master database to multiple replica databases. This provides the application with the ability to support fail-over for High Availability applications, as well as scalability for load balancing of queries across multiple systems.</p>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="berkeley-db-environments.html">Berkeley DB Environments</a></li>
+<li><a class="xref" href="why-transactions.html">Why Transactions?</a></li>
+<li><a class="xref" href="isolation.html">Isolation</a></li>
+<li><a class="xref" href="recovery-procedures.html">Recovery Procedures</a></li>
+<li><a class="xref" href="concurrency.html">Concurrency</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/database-features.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

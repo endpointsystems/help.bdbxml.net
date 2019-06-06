@@ -1,0 +1,6 @@
+# Database Limits and Portability
+Berkeley DB provides support for managing everything from very small databases that fit entirely in memory, to extremely large databases holding millions of records and terabytes of data. An individual DB database can store up to 256 terabytes of data. By using multiple databases, it is possible to use DB to store and manage petabytes of information. Within a single database, individual record keys or record data can be used to store up to 4 gigabytes of data. 
+
+DB's databases store data in a binary format that is portable across platforms, even of differing endian-ness. Be aware, however, that portability aside, some performance issues can crop up in the event that you are using little endian architecture. See Setting Comparison Functions for more information. 
+
+Also, DB's databases and data structures are designed for concurrent access — they are thread-safe, and they share well across multiple processes. That said, in order to allow multiple processes to share databases and the cache, DB makes use of mechanisms that do not work well on some network-shared drives (NFS or Windows networks shares, for example). For more information, see the _Remote filesystems_ section in _The Berkeley DB Environment_ chapter of the _Berkeley DB Programmer's Reference Guide_. 

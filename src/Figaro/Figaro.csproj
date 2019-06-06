@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{912C1549-32FC-4E6E-8C0E-F7F7814A11B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figaro</RootNamespace>
+    <AssemblyName>Figaro</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>bin\Release\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\Release\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseTDS|x86'">
+    <OutputPath>bin\x86\ReleaseTDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseTDS|x64'">
+    <OutputPath>bin\x64\ReleaseTDS\</OutputPath>
+    <DefineConstants>FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\ReleaseTDS\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugDS|x86'">
+    <OutputPath>bin\x86\DebugDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugDS|x64'">
+    <OutputPath>bin\x64\DebugDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\DebugDS\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugCDS|x86'">
+    <OutputPath>bin\x86\DebugCDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugCDS|x64'">
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>FigaroStub.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugHA|x86'">
+    <OutputPath>bin\x86\DebugHA\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugHA|x64'">
+    <OutputPath>bin\x64\DebugHA\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\DebugHA\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseCDS|x86'">
+    <OutputPath>bin\x86\ReleaseCDS\</OutputPath>
+    <WarningLevel>0</WarningLevel>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseCDS|x64'">
+    <OutputPath>bin\x64\ReleaseCDS\</OutputPath>
+    <WarningLevel>0</WarningLevel>
+    <DocumentationFile>bin\x64\ReleaseCDS\Figaro.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseDS|x86'">
+    <OutputPath>bin\x86\ReleaseDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseDS|x64'">
+    <OutputPath>bin\x64\ReleaseDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\ReleaseDS\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseHA|x86'">
+    <OutputPath>bin\x86\ReleaseHA\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x86\ReleaseHA\Figaro.XML</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseHA|x64'">
+    <OutputPath>bin\x64\ReleaseHA\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\ReleaseHA\Figaro.xml</DocumentationFile>
+    <Optimize>false</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugTDS|x86'">
+    <OutputPath>bin\x86\DebugTDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS</DefineConstants>
+    <DocumentationFile>$(OutputPath)\Figaro.XML</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugTDS|x64'">
+    <OutputPath>bin\x64\DebugTDS\</OutputPath>
+    <DefineConstants>TRACE;FIGARO25;TDS;HA</DefineConstants>
+    <DocumentationFile>bin\x64\DebugTDS\Figaro.xml</DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackupConfig.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="ContainerConfig.cs" />
+    <Compile Include="DBSite.cs" />
+    <Compile Include="FigaroBase.cs" />
+    <Compile Include="FigaroEnv.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="FigaroReplicationManager.cs" />
+    <Compile Include="IndexingStrategy.cs" />
+    <Compile Include="KeyStatistics.cs" />
+    <Compile Include="LockStatistics.cs" />
+    <Compile Include="LogConfiguration.cs" />
+    <Compile Include="LogStatistics.cs" />
+    <Compile Include="MemoryPoolStatistics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryContext.cs" />
+    <Compile Include="ReplicationConfig.cs" />
+    <Compile Include="ReplicationHostAddress.cs" />
+    <Compile Include="SiteConfig.cs" />
+    <Compile Include="Statistics.cs" />
+    <Compile Include="Structs.cs" />
+    <Compile Include="UpdateContext.cs" />
+    <Compile Include="XmlData.cs" />
+    <Compile Include="XmlDocument.cs" />
+    <Compile Include="XmlExternalFunction.cs" />
+    <Compile Include="XmlIndex.cs" />
+    <Compile Include="XmlIndexLookup.cs" />
+    <Compile Include="XmlIndexSpecification.cs" />
+    <Compile Include="XmlInputStream.cs" />
+    <Compile Include="XmlManager.cs" />
+    <Compile Include="XmlMetadataIterator.cs" />
+    <Compile Include="XQueryResolver.cs" />
+    <Compile Include="XmlResults.cs" />
+    <Compile Include="XmlStackFrame.cs" />
+    <Compile Include="XmlTransaction.cs" />
+    <Compile Include="XmlValue.cs" />
+    <Compile Include="XQueryExpression.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

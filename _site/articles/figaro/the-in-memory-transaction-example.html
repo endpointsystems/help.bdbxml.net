@@ -1,0 +1,461 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The In-Memory Transaction Example </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The In-Memory Transaction Example ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="the-in-memory-transaction-example.md">
+<h1 id="the-in-memory-transaction-example">The In-Memory Transaction Example</h1>
+
+<p>Some applications use XML documents in a transient manner. That is, they create and store XML documents as a part of their run time, but there is no need for the documents to persist between application restarts. For these class of applications, overall throughput can be improved by abandoning the transactional durability guarantee. To do this, you keep your environment, containers, and logs entirely in-memory so as to avoid the performance impact of unneeded disk I/O.</p>
+<p>To do this:</p>
+<ul>
+<li>Refrain from specifying a home directory when you open your environment.</li>
+<li>Configure your environment to back your regions from system memory instead of the file system.</li>
+<li>Configure your logging subsystem such that log files are kept entirely in-memory.</li>
+<li>Increase the size of your in-memory log buffer so that it is large enough to hold the largest set of concurrent write operations.</li>
+<li>Increase the size of your in-memory cache so that it can hold your entire data set. You do not want your cache to page to disk.</li>
+<li>Specify an empty string when you open your container. Note that for in-memory operations, you are limited to just one container.</li>
+</ul>
+<p>As an example, this section takes the transaction example provided in <a class="xref" href="transaction-example.html">Transaction Example</a> and it updates that example so that the environment, container, log files, and regions are all kept entirely in-memory.</p>
+<pre><code class="lang-C#">using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Threading;
+using Figaro;
+using Wintellect.Threading.AsyncProgModel;
+using Wintellect.CommandArgumentParser;
+
+namespace Figaro.Documentation.Examples
+{
+
+internal class InMemoryTransApp
+{
+#region envOpenOptions
+// Set the normal flags for a transactional subsystem. Note that
+// we DO NOT specify Recover.
+private const EnvOpenOptions envOpenOptions =
+//create the environment if it doesn&#39;t exist
+EnvOpenOptions.Create |
+//run normal recovery
+EnvOpenOptions.Recover |
+//initialize locking
+EnvOpenOptions.InitLock |
+//initialize logging
+EnvOpenOptions.InitLog |
+//initialize the cache
+EnvOpenOptions.InitMemoryBufferPool |
+//Region files are not backed by the file system.
+//Instead, they are backed by heap memory.
+EnvOpenOptions.Private |
+//free-threaded environment handle
+EnvOpenOptions.Thread |
+//initialize transactions
+EnvOpenOptions.InitTransaction;
+#endregion
+
+public struct ThreadInfo
+{
+public Container container;
+public bool useReadCommitted;
+public int numNodes;
+} ;
+
+#region containerSettings
+private const ContainerSettings containerSettings =
+//Create if it doesn&#39;t exist.
+ContainerSettings.Create |
+//Support transactions.
+ContainerSettings.Transactional |
+//Create a free-threaded container
+ContainerSettings.Thread;
+#endregion
+
+private static XmlContainerType containerType = XmlContainerType.NodeContainer;
+private static CmdArgOpts cmdArgs;
+public delegate void TransactionWorkDelegate(ThreadInfo info);
+private static void Main(string[] args)
+{
+cmdArgs = CmdArgOpts.Parse(args);
+
+if (cmdArgs.ShowUsage) return;
+
+//show our command-line settings
+//cmdArgs.Validate();
+
+if (cmdArgs.WholeDocStorage)
+containerType = XmlContainerType.WholeDocContainer;
+else
+containerType = XmlContainerType.NodeContainer;
+
+//if our environment already exists, delete everything and rebuild it
+//BuildDir(cmdArgs.HomeDirectory, true);
+FigaroEnv environment = new FigaroEnv();
+try
+{
+//specify in-memory logging
+environment.SetEnvironmentOption(EnvConfig.LogInMemory, true);
+//set the size of the in-memory log buffer
+environment.LogBufferSize = 10*1024*1024;
+
+//specify the size of the in-memory cache
+environment.SetCacheSize(new EnvCacheSize(0,10*1024*1024),1);
+
+// Indicate that we want to internally perform deadlock
+// detection.  Using the Random policy will ensure you have
+// the best chance of deadlock detection and management --
+// keeping in mind that we&#39;re performing some pretty static
+// behavior in this test application.
+environment.DeadlockDetectPolicy = DeadlockDetectType.Random;
+
+environment.Open(string.Empty, envOpenOptions);
+using (XmlManager mgr = new XmlManager(environment))
+{
+if (mgr.ExistsContainer(testdb))
+mgr.RemoveContainer(testdb);
+
+using (Container myContainer =
+mgr.CreateContainer(testdb, containerSettings,
+containerType))
+{
+try
+{
+ThreadInfo threadInfo = new ThreadInfo();
+threadInfo.container = myContainer;
+threadInfo.numNodes = cmdArgs.NodesPerDocument;
+ThreadPool.SetMinThreads(cmdArgs.NumThreads, cmdArgs.NumThreads);
+AsyncEnumerator ae = new AsyncEnumerator();
+ae.Execute(RunWriterThreads(ae,threadInfo));
+}
+catch (FigaroException)
+{
+Debugger.Break();
+}
+finally
+{
+myContainer.Close();
+}
+}
+}
+}
+catch (FigaroException)
+{
+Debugger.Break();
+}
+}
+
+public static IEnumerator&lt;Int32&gt; RunWriterThreads(AsyncEnumerator ae, ThreadInfo info)
+{
+for (int i = 0; i &lt; cmdArgs.NumThreads; i++)
+{
+TransactionWorkDelegate twd = writerThread;
+twd.BeginInvoke(info, ae.End(), null);
+}
+yield return cmdArgs.NumThreads;
+
+for (int i = 0; i &lt; cmdArgs.NumThreads; i++)
+{
+ae.DequeueAsyncResult();
+}
+}
+
+/// &lt;summary&gt;
+/// A function that performs a series of writes to a
+/// Figaro container.
+/// The mechanism of transactional commit/abort and
+/// deadlock detection is illustrated here.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;threadInfo&quot;&gt; The Figaro objects used to insert documents.&lt;/param&gt;
+private static void writerThread(ThreadInfo threadInfo)
+{
+int maxRetries = 30;
+int numDeadlocks = 0;
+
+XmlManager mgr = threadInfo.container.GetManager();
+TransactionType transType = threadInfo.useReadCommitted
+? TransactionType.ReadCommitted
+: TransactionType.None;
+StringBuilder contents = new StringBuilder();
+System.Random random = new Random();
+Console.WriteLine(&quot;thread start thread id: {0}&quot;, Thread.CurrentThread.ManagedThreadId);
+for (int h = 0; h &lt; 50; h++)
+{
+bool retry = true;
+int retryCount = 0;
+while (retry)
+{
+try
+{
+XmlTransaction transaction = mgr.CreateTransaction(transType);
+try
+{
+UpdateContext updateContext = mgr.CreateUpdateContext();
+for (int i = 0; i &lt; 10; i++)
+{
+contents = new StringBuilder();
+string fileName = Guid.NewGuid().ToString(&quot;N&quot;);
+contents.Append(&quot;&lt;testDoc&gt;&quot;);
+for (int k = 0; k &lt; threadInfo.numNodes; k++)
+{
+contents.AppendFormat(&quot;&lt;payload&gt;{0}{1}{2}&lt;/payload&gt;&quot;, random.Next(), k, i);
+}
+contents.Append(&quot;&lt;/testDoc&gt;&quot;);
+//Console.WriteLine(&quot;contents: {0}&quot;,contents);
+threadInfo.container.PutDocument(transaction, fileName, contents.ToString(),
+updateContext,
+PutDocumentOptions.None);
+}
+transaction.Commit();
+retry = false;
+}
+catch (XmlException xxe)
+{
+//first thing we MUST do is abort the transaction
+if (transaction != null) transaction.Abort();
+
+if (xxe.ExceptionCategory == FigaroExceptionCategory.Deadlock)
+{
+
+// Now we decide if we want to retry the operation.
+// If we have retried less than max_retries,
+// increment the retry count and goto retry.
+if (retryCount &lt; maxRetries)
+{
+Console.WriteLine(&quot;{0} a deadlock occured - we must retry the transaction&quot;,
+DateTime.Now);
+retryCount++;
+retry = true;
+}
+else
+{
+retry = false;
+}
+numDeadlocks++;
+}
+else
+{
+Console.WriteLine(xxe.Message);
+if (transaction != null)
+{
+transaction.Abort();
+transaction = null;
+}
+retry = false;
+}
+}
+catch (NullReferenceException)
+{
+//first thing we MUST do is abort the transaction
+if (transaction != null) transaction.Abort();
+Console.WriteLine(&quot;Ran out of memory allocation transaction; adjust the transaction subsystem&quot;);
+return;
+}
+catch (Exception)
+{
+//first thing we MUST do is abort the transaction
+if (transaction != null) transaction.Abort();
+Debugger.Break();
+}
+}
+catch (NullReferenceException)
+{
+Console.WriteLine(&quot;Ran out of memory allocation transaction; adjust the transaction subsystem&quot;);
+return;
+}
+catch(XmlException xe)
+{
+Debugger.Break();
+}
+catch (Exception)
+{
+Debugger.Break();
+}
+}
+}
+
+Console.WriteLine(&quot;total deadlocks in thread {0}: {1}&quot;, Thread.CurrentThread.ManagedThreadId,numDeadlocks);
+}
+}
+
+internal sealed class CmdArgOpts: ICmdArgs
+{
+
+#region ICmdArgs Members
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description = &quot;Number of threads&quot;,
+ArgName = &quot;t&quot;, RequiredArg = false)]
+public int NumThreads = 5;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description=&quot;Number of nodes per document&quot;,
+ArgName = &quot;n&quot;, RequiredArg = false)]
+public int NodesPerDocument= 3;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional,Description = &quot;Use Read Committed isolation&quot;,
+ArgName = &quot;2&quot;,RequiredArg = false)]
+public bool UseReadCommitted;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description = &quot;Use Wholedoc storage&quot;,
+ArgName = &quot;w&quot;, RequiredArg = false)]
+public bool WholeDocStorage ;
+
+[CmdArg(ArgName = &quot;?&quot;, Description = &quot;Show this usage help&quot;)]
+public Boolean ShowUsage;   // Default to not show usage
+
+public void ProcessStandAloneArgument(string arg)
+{
+throw new NotImplementedException();
+}
+
+public void Usage(string errorInfo)
+{
+if (!string.IsNullOrEmpty(errorInfo))
+{
+// A command-line argument error occurred, report it to user
+// errorInfo identifies the argument that is in error.
+Console.WriteLine(&quot;Command-line switch error: {0}{1}&quot;, errorInfo,
+Environment.NewLine);
+}
+Console.WriteLine(CmdArgParser.Usage(typeof(CmdArgOpts)));
+}
+
+public void Validate()
+{
+if (ShowUsage) return;
+NumThreads = NumThreads &lt; 1 ? 1 : NumThreads;
+Console.WriteLine(&quot;number of threads: {0}&quot;, NumThreads);
+
+NodesPerDocument = NodesPerDocument &lt; 1 ? 1 : NodesPerDocument;
+Console.WriteLine(&quot;nodes per document: {0}&quot;, NodesPerDocument);
+
+string iso = UseReadCommitted ? &quot;read committed&quot; : &quot;default&quot;;
+Console.WriteLine(&quot;Isolation level: {0}&quot;, iso);
+
+string storage = WholeDocStorage ? &quot;Wholedoc storage&quot; : &quot;node storage&quot;;
+Console.WriteLine(&quot;Container type: {0}&quot;, storage);
+
+}
+// Called to construct an instance of this class populating the fields from command-line arguments
+public static CmdArgOpts Parse(String[] args)
+{
+CmdArgOpts options = new CmdArgOpts();
+try
+{
+CmdArgParser.Parse(options, args);
+}
+catch(Exception e)//catch (Exception&lt;InvalidCmdArgumentExceptionArgs&gt; e)
+{
+if (!options.ShowUsage)
+{
+options.Usage(e.Message);
+throw;
+}
+}
+if (options.ShowUsage) options.Usage(null);
+return options;
+}
+#endregion
+}
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/the-in-memory-transaction-example.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

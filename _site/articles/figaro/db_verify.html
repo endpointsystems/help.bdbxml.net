@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>db_verify </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="db_verify ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="db_verify.md">
+<h1 id="dbverify">db_verify</h1>
+
+<p>The <code>db_verify</code> utility verifies the structure of one or more files and the databases they contain.</p>
+<pre><code>db_verify [-NoqV] [-h home] [-P password] db_file ...
+</code></pre><p><strong>The <code>db_verify</code> utility does not perform any locking, even in environments that are configured with a locking subsystem. As such, it should only be used on files that are not being modified by another thread of control.</strong></p>
+<p>The <code>db_verify</code> utility may be used with an environment (as described for the <code>-h</code> option, the environment variable <code>DB_HOME</code>, or because the utility was run in a directory containing an existing environment). In order to avoid environment corruption, <code>db_verify</code> should always be given the chance to detach from the environment and exit gracefully. To cause <code>db_verify</code> to release all environment resources and exit cleanly, send it an interrupt signal (SIGINT, or ^C).</p>
+<h4 id="-h">-h</h4>
+<p>Specify the target directory for the backup, that is, the database environment home directory.</p>
+<h4 id="-o">-o</h4>
+<p>Skip the database checks for <code>Btree</code>and duplicate sort order and for hashing.</p>
+<p>If the file being verified contains databases with non-default comparison or hashing configurations, calling the <code>db_verify</code> utility without the <code>-o</code> flag will usually return failure. The <code>-o</code> flag causes <code>db_verify</code> to ignore database sort or hash ordering and allows <code>db_verify</code> to be used on these files.</p>
+<h4 id="-"></h4>
+<p>Do not acquire shared region mutexes while running. Other problems, such as potentially fatal errors, will be ignored as well. This option is intended only for debugging errors, and should not be used under any other circumstances.</p>
+<h4 id="-p">-P</h4>
+<p>Specify an environment password. Although the utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<h4 id="-q">-q</h4>
+<p>Suppress the printing of any error descriptions, simply exit success or failure.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="environment-variables">Environment Variables</h4>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home, as described in <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>.</p>
+<h2 id="see-also">See Also</h2>
+<p><a class="xref" href="utilities.html">Utilities</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/db_verify.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

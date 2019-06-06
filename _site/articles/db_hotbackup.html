@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>db_hotbackup </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="db_hotbackup ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="db_hotbackup.md">
+<h1 id="dbhotbackup">db_hotbackup</h1>
+
+<p>The <code>db_hotbackup</code> utility creates &quot;hot backup&quot; or &quot;hot failover&quot; snapshots of database environments.</p>
+<pre><code>db_hotbackup [-cDuVv] [-d data_dir ...] [-h home] [-l log_dir] [-P password] -b backup_dir
+</code></pre><p>The db_hotbackup utility performs the following steps:</p>
+<ul>
+<li>If the <code>-c</code> option is specified, checkpoint the source home database environment, and remove any unnecessary log files.</li>
+<li>If the target directory for the backup does not exist, it is created with mode read-write-execute for the owner.</li>
+<li><p>If the target directory for the backup does exist and the -u option was specified, all log files in the target directory are removed; if the <code>-u</code> option was not specified, all files in the target directory are removed.</p>
+</li>
+<li><p>If the <code>-u</code> option was not specified, copy application-specific files found in the database environment home directory, and any directories specified using the -d option, into the target directory for the backup.</p>
+</li>
+<li>Copy all log files found in the directory specified by the -l option (or in the database environment home directory, if no <code>-l</code> option was specified), into the target directory for the backup.</li>
+<li>Perform catastrophic recovery in the target directory for the backup.</li>
+<li>Remove any unnecessary log files from the target directory for the backup.</li>
+</ul>
+<p>The <code>db_hotbackup</code> utility does not resolve pending transactions that are in the prepared state. Applications should specify <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_RecoverFatal">RecoverFatal</a> when opening the environment when failing over to the backup.</p>
+<h4 id="-b">-b</h4>
+<p>Specify the target directory for the backup.</p>
+<h4 id="-c">-c</h4>
+<p>Before performing the backup, checkpoint the source database environment and remove any log files that are no longer required in that environment. <strong>To avoid making catastrophic recovery impossible, log file removal must be integrated with log file archival.</strong></p>
+<h4 id="-d">-d</h4>
+<p>Specify one or more directories that contain data files to be copied to the target directory.</p>
+<p><strong>As all database files are copied into a single target directory, files named the same, stored in different source directories, would overwrite each other when copied to the target directory.</strong></p>
+<p>Please note the database environment recovery log references database files as they are named by the application program. <strong>If the application uses absolute or relative pathnames to name database files, running recovery in the target directory may not properly find the copies of the files or might even find the source files, potentially resulting in corruption.</strong></p>
+<h4 id="-h">-h</h4>
+<p>Specify the target directory for the backup, that is, the database environment home directory.</p>
+<h4 id="-l">-l</h4>
+<p>Specify a source directory that contains log files; if none is specified, the database environment home directory will be searched for log files.</p>
+<h4 id="-p">-P</h4>
+<p>Specify an environment password. Although the utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<h4 id="-u">-u</h4>
+<p>Update a pre-existing hot backup snapshot by copying in new log files. If the <code>-u</code> option is specified, no databases will be copied into the target directory.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="-v-1">-v</h4>
+<p>Run in verbose mode, listing operations as they are done.</p>
+<h4 id="environment-variables">Environment Variables</h4>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home, as described in <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>.</p>
+<h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<p><a class="xref" href="utilities.html">Utilities</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/db_hotbackup.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

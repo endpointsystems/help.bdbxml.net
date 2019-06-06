@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Recoverability and Deadlock Handling </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Recoverability and Deadlock Handling ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="recoverability-and-deadlock-handling.md">
+<h1 id="recoverability-and-deadlock-handling">Recoverability and Deadlock Handling</h1>
+
+<p>The primary reason for using transactions is recoverability. Any logical change to a database may require multiple changes to underlying data structures. For example, a single write operation call can potentially require that multiple physical database pages be written. If only some of those pages are written and then the system or application fails, the database is left inconsistent and cannot be used until it has been recovered; that is, until the partially completed changes have been undone.</p>
+<p><em>Write-ahead logging</em> is the term that describes the underlying implementation that Figaro uses to ensure recoverability. What it means is that before any change is made to a database, information about the change is written to a database log. During recovery, the log is read, and databases are checked to ensure that changes described in the log for committed transactions appear in the database. Changes that appear in the database but are related to aborted or unfinished transactions in the log are undone from the database.</p>
+<p>For recoverability after application or system failure, operations that modify the database must be protected by transactions. More specifically, operations are not recoverable unless a transaction is begun and each operation is associated with the transaction via the Figaro interfaces, and then the transaction successfully committed. This is true even if logging is turned on in the database environment.</p>
+<p>Figaro also uses transactions to recover from deadlock. Database operations are usually performed on behalf of a unique locker. Transactions can be used to perform multiple calls on behalf of the same locker within a single thread of control. For example, consider the case in which an application uses a cursor scan to locate a record and then the application accesses another other item in the database, based on the key returned by the cursor, without first closing the cursor. If these operations are done using default locker IDs, they may conflict. If the locks are obtained on behalf of a transaction, using the transaction&#39;s locker ID instead of the database handle&#39;s locker ID, the operations will not conflict.</p>
+<p>In transactional (not Concurrent Data Store) applications supporting both readers and writers, or just multiple writers, Figaro functions have an additional possible exception: <a class="xref" href="../../api/Figaro.DBDeadlockException.html">DBDeadlockException</a>. This means two threads of control deadlocked, and the thread receiving the <a class="xref" href="../../api/Figaro.DBDeadlockException.html">DBDeadlockException</a> has been selected to discard its locks in order to resolve the problem. When an application receives a <a class="xref" href="../../api/Figaro.DBDeadlockException.html">DBDeadlockException</a>, the correct action is to close any cursors involved in the operation and abort any enclosing transaction. In the sample code, any time the database operation throws <a class="xref" href="../../api/Figaro.DBDeadlockException.html">DBDeadlockException</a>, <a class="xref" href="../../api/Figaro.XmlTransaction.html#Figaro_XmlTransaction_Abort">Abort()</a> is called (which releases the transaction&#39;s resources and undoes any partial changes to the databases), and then the transaction is retried from the beginning.</p>
+<p>There is no requirement that the transaction be attempted again, but that is a common course of action for applications. Applications may want to set an upper bound on the number of times an operation will be retried because some operations on some data sets may simply be unable to succeed. For example, updating all of the pages on a large Web site during prime business hours may simply be impossible because of the high access rate to the database.</p>
+<p>The <a class="xref" href="../../api/Figaro.XmlTransaction.html#Figaro_XmlTransaction_Abort">Abort()</a> method is called in error cases other than deadlock. Any time an error occurs, such that a transactionally protected set of operations cannot complete successfully, the transaction must be aborted. While deadlock is by far the most common of these errors, there are other possibilities; for example, running out of disk space for the file system. In transactional applications, there are three classes of error returns: &quot;expected&quot; errors, &quot;unexpected but recoverable&quot; errors, and a single &quot;unrecoverable&quot; error. Applications may want to explicitly test for and handle Figaro exceptions, or, in the case where logic implies the enclosing transaction should fail, simply call <a class="xref" href="../../api/Figaro.XmlTransaction.html#Figaro_XmlTransaction_Abort">Abort()</a>. Applications must immediately call <a class="xref" href="../../api/Figaro.XmlTransaction.html">XmlTransaction</a> when these returns occur, as it is not possible to proceed otherwise. The only unrecoverable exception is <a class="xref" href="../../api/Figaro.RunRecoveryException.html">RunRecoveryException</a>, which indicates that the system must stop and recovery must be run.</p>
+<p>Figaro also uses transactions to recover from deadlock. Database operations (that is, any call to a function underlying the container handles returned by @Figaro.XmlManager.OpenContainer are usually performed on behalf of a unique locker. Transactions can be used to perform multiple calls on behalf of the same locker within a single thread of control. For example, consider the case in which an application uses a cursor scan to locate a record and then the application accesses another other item in the database, based on the key returned by the cursor, without first closing the cursor. If these operations are done using default locker IDs, they may conflict. If the locks are obtained on behalf of a transaction, using the transaction&#39;s locker ID instead of the database handle&#39;s locker ID, the operations will not conflict.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.DBDeadlockException.html">DBDeadlockException</a></li>
+<li><a class="xref" href="../../api/Figaro.XmlTransaction.html">XmlTransaction</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="managing-database-files.html">Managing Database Files</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/recoverability-and-deadlock-handling.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

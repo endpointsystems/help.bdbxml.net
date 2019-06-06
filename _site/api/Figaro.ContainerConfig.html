@@ -1,0 +1,963 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ContainerConfig
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ContainerConfig
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.ContainerConfig">
+  
+  
+  <h1 id="Figaro_ContainerConfig" data-uid="Figaro.ContainerConfig" class="text-break">Class ContainerConfig
+  </h1>
+  <div class="markdown level0 summary"><p>Container configuration settings.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ContainerConfig</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_ContainerConfig_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ContainerConfig : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_ContainerConfig_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The ContainerConfig class encapsulates all the properties with which a 
+container can be created or opened. It is passed as an argument to 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateContainer_System_String_">CreateContainer(String)</a> and 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_OpenContainer_System_String_">OpenContainer(String)</a> as well as other  methods that
+previously accepted flag parameters.
+<p>
+ContainerConfig conforms to the properties found in the <code>ContainerElement</code> found in 
+the  <code>Figaro.Configuration</code> namespace. This allows for fast, factory-style <a class="xref" href="Figaro.Container.html">Container</a> 
+creation while minimizing the amount of parameters needed for <a class="xref" href="Figaro.Container.html">Container</a> creation and open
+operations.
+<div class="NOTE"><h5>implementnotes</h5><p>
+If a <code>ContainerConfig</code> object is passed to an <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object where a parameter in the 
+method signature is also found in the <code>ContainerConfig</code> properties, the parameter will be used and the <code>ContainerConfig</code>
+property will be ignored.
+</p></div>
+</p></p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=64">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig__ctor_" data-uid="Figaro.ContainerConfig.#ctor*"></a>
+  <h4 id="Figaro_ContainerConfig__ctor" data-uid="Figaro.ContainerConfig.#ctor">ContainerConfig()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the ContainerConfig class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContainerConfig()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=77">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_AllowCreate_" data-uid="Figaro.ContainerConfig.AllowCreate*"></a>
+  <h4 id="Figaro_ContainerConfig_AllowCreate" data-uid="Figaro.ContainerConfig.AllowCreate">AllowCreate</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether a container can be created during a call to <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_OpenContainer_System_String_">OpenContainer(String)</a> if 
+it does not already exist. The default value is <code>false</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowCreate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_AllowCreate_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>false</code> an exception will be thrown when
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_OpenContainer_System_String_">OpenContainer(String)</a> is 
+called for a container that does not exist.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=88">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_AllowValidation_" data-uid="Figaro.ContainerConfig.AllowValidation*"></a>
+  <h4 id="Figaro_ContainerConfig_AllowValidation" data-uid="Figaro.ContainerConfig.AllowValidation">AllowValidation</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to validate XML if it refers to a DTD or XML Schema. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowValidation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_AllowValidation_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If enabled validation is only performed on document insertion or update and 
+not when modified via XQuery Update expressions. The default value is <code>false</code> 
+and is used by container open.
+<p>Set to <code>true</code> to do validation.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=98">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Checksum_" data-uid="Figaro.ContainerConfig.Checksum*"></a>
+  <h4 id="Figaro_ContainerConfig_Checksum" data-uid="Figaro.ContainerConfig.Checksum">Checksum</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to do checksum verification of pages read into the cache 
+from the backing file store. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Checksum { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Checksum_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Figaro uses the SHA1 Secure Hash 
+Algorithm if encryption is configured and a general hash algorithm if it 
+is not. The default value is <code>false</code>.        /// </p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=108">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_CompressionEnabled_" data-uid="Figaro.ContainerConfig.CompressionEnabled*"></a>
+  <h4 id="Figaro_ContainerConfig_CompressionEnabled" data-uid="Figaro.ContainerConfig.CompressionEnabled">CompressionEnabled</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether or not to enable container compression. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CompressionEnabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_CompressionEnabled_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Compression is only used by whole document storage containers. Compression can only be 
+set at creation time; afterward, the container must always be open with the 
+same setting.    </p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=59">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_ConfigurationName_" data-uid="Figaro.ContainerConfig.ConfigurationName*"></a>
+  <h4 id="Figaro_ContainerConfig_ConfigurationName" data-uid="Figaro.ContainerConfig.ConfigurationName">ConfigurationName</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the container configuration instance name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ConfigurationName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_ConfigurationName_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property is set and used by the <code>Figaro.Configuration</code> and <code>Figaro.Web.Configuration</code> 
+library objects at creation, and used for reference purposes only. This property is not required 
+and can safely be set to <code>null</code> if <a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a> is created programmatically.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=296">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_ContainerType_" data-uid="Figaro.ContainerConfig.ContainerType*"></a>
+  <h4 id="Figaro_ContainerConfig_ContainerType" data-uid="Figaro.ContainerConfig.ContainerType">ContainerType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets whether the container was built to handle documents or nodes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlContainerType ContainerType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlContainerType.html">XmlContainerType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_ContainerType_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Sets the type of container to be created. The default value is <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a>. This value is 
+ignored if the container already exists.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=117">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Encrypted_" data-uid="Figaro.ContainerConfig.Encrypted*"></a>
+  <h4 id="Figaro_ContainerConfig_Encrypted" data-uid="Figaro.ContainerConfig.Encrypted">Encrypted</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to encrypt the database using the cryptographic 
+password specified to <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEncryption_System_String_System_Boolean_">SetEncryption(String, Boolean)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Encrypted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Encrypted_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default setting is <code>false</code>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=129">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_ExclusiveCreate_" data-uid="Figaro.ContainerConfig.ExclusiveCreate*"></a>
+  <h4 id="Figaro_ContainerConfig_ExclusiveCreate" data-uid="Figaro.ContainerConfig.ExclusiveCreate">ExclusiveCreate</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to throw an exception if the container is already created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExclusiveCreate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_ExclusiveCreate_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code> <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_OpenContainer_System_String_">OpenContainer(String)</a> and 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateContainer_System_String_">CreateContainer(String)</a> will throw exceptions if 
+the container already exists and <a class="xref" href="Figaro.ContainerConfig.html#Figaro_ContainerConfig_AllowCreate">AllowCreate</a> has been set to 
+<code>true</code>. 
+<p>The default value is <code>false</code>.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=231">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_IndexNodes_" data-uid="Figaro.ContainerConfig.IndexNodes*"></a>
+  <h4 id="Figaro_ContainerConfig_IndexNodes" data-uid="Figaro.ContainerConfig.IndexNodes">IndexNodes</h4>
+  <div class="markdown level1 summary"><p>Gets or sets configuration state for setting up node or document indexing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConfigurationState IndexNodes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ConfigurationState.html">ConfigurationState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_IndexNodes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Sets whether the index targets reference nodes or documents. The default setting is <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_UseDefault">UseDefault</a>. This value is ignored 
+unless the container is being created or re-indexed.
+<p> If set to <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_On">On</a> it causes the indexer to create index targets that reference nodes rather than documents. This 
+allows index lookups during query processing to more efficiently find target nodes and avoid walking the document tree. It can apply 
+to both container types, and is the default for containers of type <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a>.</p>
+<p> If set to <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_Off">Off</a> it causes the indexer to create index targets that reference documents 
+rather than nodes. This can be more desirable for simple queries that only need to return documents and 
+do relatively little navigation during querying. It can apply to both container types, and is the 
+default for containers of type <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a>.</p>
+<p>
+If set to <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_Off">Off</a>, then the container type will decide whether 
+nodes or documents are referenced.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=146">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_MultiVersion_" data-uid="Figaro.ContainerConfig.MultiVersion*"></a>
+  <h4 id="Figaro_ContainerConfig_MultiVersion" data-uid="Figaro.ContainerConfig.MultiVersion">MultiVersion</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to open the container with multi-version currency control (MVCC).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MultiVersion { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_MultiVersion_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code> then the database will be opened with 
+support for multi-version concurrency control. This will cause updates to 
+the container to follow a copy-on-write protocol which is required to 
+support snapshot isolation. 
+<p>
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_MultiVersion">MultiVersion</a> flag requires that the container 
+be transactionally protected during its open. </p>
+<p>
+The default value is <code>false</code>.
+</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=153">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_NoMMap_" data-uid="Figaro.ContainerConfig.NoMMap*"></a>
+  <h4 id="Figaro_ContainerConfig_NoMMap" data-uid="Figaro.ContainerConfig.NoMMap">NoMMap</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the container will be mapped into process memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool NoMMap { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_NoMMap_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code> then the container will not be mapped into 
+process memory (see the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_MaxFileMapSize">MaxFileMapSize</a> property for further information).</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=262">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_PageSize_" data-uid="Figaro.ContainerConfig.PageSize*"></a>
+  <h4 id="Figaro_ContainerConfig_PageSize" data-uid="Figaro.ContainerConfig.PageSize">PageSize</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the size, in bytes, of the database pages used to store node and document data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort PageSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_PageSize_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <a class="xref" href="Figaro.ContainerConfig.html#Figaro_ContainerConfig_PageSize">PageSize</a> property gets/sets the size of the pages used to store documents in the database. The size 
+is specified in bytes in the range 512 bytes to 64K bytes. If no page size is specified the system will create 
+containers with page size 8192 for <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a> storage containers and 16384 for 
+<a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a> storage containers. 
+<p> Page size affects the amount of 
+I/O performed as well as granularity of locking as Figaro performs page-level locking. These needs 
+are often at odds with one another. </p>
+<p>The page size cannot be changed once a container has been created. This value is ignored unless the container is being created.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=50">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Path_" data-uid="Figaro.ContainerConfig.Path*"></a>
+  <h4 id="Figaro_ContainerConfig_Path" data-uid="Figaro.ContainerConfig.Path">Path</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the container path and file name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Path { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Path_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property can be set using the <code>Figaro.Configuration</code> namespace, or when manually creating a 
+new <a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a> instance. 
+<div class="NOTE"><h5>implementnotes</h5><p>
+If a <code>ContainerConfig</code> object is passed to an <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object where a parameter in the 
+method signature is also found in the <code>ContainerConfig</code> properties, the parameter will be used and the <code>ContainerConfig</code>
+property will be ignored.
+</p></div></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=163">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_ReadOnly_" data-uid="Figaro.ContainerConfig.ReadOnly*"></a>
+  <h4 id="Figaro_ContainerConfig_ReadOnly" data-uid="Figaro.ContainerConfig.ReadOnly">ReadOnly</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to open the container with read-only access.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadOnly { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_ReadOnly_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code>, the container is opened for reading only. 
+<p>Any attempt to modify items in the container will fail regardless of the 
+permissions of the underlying files. If set to <code>false</code> then the container 
+can be modified. The default value is <code>false</code> and can only be set to <code>true</code> for existing containers.
+</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=173">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_ReadUncommitted_" data-uid="Figaro.ContainerConfig.ReadUncommitted*"></a>
+  <h4 id="Figaro_ContainerConfig_ReadUncommitted" data-uid="Figaro.ContainerConfig.ReadUncommitted">ReadUncommitted</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether or not to enable &apos;dirty&apos; reads.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadUncommitted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_ReadUncommitted_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code> then the container will support degree 1 isolation; that is, read operations 
+may return information that has been modified by another transaction but has not yet been 
+committed. This setting should be used rarely if at all. The default value is <code>false</code>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=287">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_SequenceIncrement_" data-uid="Figaro.ContainerConfig.SequenceIncrement*"></a>
+  <h4 id="Figaro_ContainerConfig_SequenceIncrement" data-uid="Figaro.ContainerConfig.SequenceIncrement">SequenceIncrement</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the integer increment to be used when pre-allocating document ids for new documents 
+created by <a class="xref" href="Figaro.Container.html#Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_">PutDocument(String, UpdateContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint SequenceIncrement { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_SequenceIncrement_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Every document added to a <a class="xref" href="Figaro.Container.html">Container</a> is assigned an internal unique ID, and BDB XML performs an 
+internal database operation to obtain these IDs. In order to increase database concurrency and improve 
+performance of ID allocation, BDB XML pre-allocates a sequence of these numbers. The size of this sequence 
+is determined by the value specified here. The default ID sequence size is 5.
+<p>
+Be aware that when a container is closed, any unused IDs in the current sequence are lost. Under some extreme 
+cases, this can result in a container to which documents can no longer be added. For example, setting this value 
+to a very large number (such as, say, 1 million) and then repeatedly opening and closing the container while 
+adding a few documents may eventually cause the container to run out of IDs. Once out of IDs, the container 
+will never again be able to accept new documents. However, document IDs are 64-bit 
+quantities so this is extremely unlikely.
+</p><p>
+You should almost always leave this value alone. However, if you are loading a large number of documents to a 
+container all at once, you may find a small performance benefit to setting the sequence number to a larger value. 
+If you do this, be aware that this value is persistent across container opens, so you should take care to reset the 
+value to its default once you are done loading the documents.
+</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=247">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Statistics_" data-uid="Figaro.ContainerConfig.Statistics*"></a>
+  <h4 id="Figaro_ContainerConfig_Statistics" data-uid="Figaro.ContainerConfig.Statistics">Statistics</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the container structural statistics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConfigurationState Statistics { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ConfigurationState.html">ConfigurationState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Statistics_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Gets or sets whether the structural statistics are stored in the container. These statistics are used in query optimization. The default 
+setting is <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_UseDefault">UseDefault</a> and the default is to use statistics. This value is ignored unless the 
+container is being created or re-indexed.
+<p> Structural statistics information is very useful for cost based query optimization. Containers created with these statistics 
+will take slightly longer to load and update, since the statistics must also be updated. In addition the statistics 
+affect the concurrent behavior in the face of updates.</p>
+<p> If the state is set to <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_Off">Off</a> then the container is created without structural 
+statistics. If the state is set to <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_On">On</a> or <a class="xref" href="Figaro.ConfigurationState.html#Figaro_ConfigurationState_UseDefault">UseDefault</a> the container 
+is created with structural statistics.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=183">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Threaded_" data-uid="Figaro.ContainerConfig.Threaded*"></a>
+  <h4 id="Figaro_ContainerConfig_Threaded" data-uid="Figaro.ContainerConfig.Threaded">Threaded</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the container handle is marked as free-threaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Threaded { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Threaded_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code>, this property causes the container handle to be free-threaded; that is, concurrently usable by 
+multiple threads in the address space. If multiple threads access a container that does not have this 
+property set the results are unpredictable. The default value is <code>false</code>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=201">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Transactional_" data-uid="Figaro.ContainerConfig.Transactional*"></a>
+  <h4 id="Figaro_ContainerConfig_Transactional" data-uid="Figaro.ContainerConfig.Transactional">Transactional</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether or not to enable container transactions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Transactional { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_Transactional_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code> it causes the container to use transactions. Even if the environment has been configured for transactions, 
+this property must be used in order to create or open a transactional container. In other words, a transactional 
+environment can support both transactional and non-transactional containers. If the environment has not also been 
+configured for transactions then use of this property when opening a container will result in an exception. 
+<p>If this 
+property is set an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object can and should be passed to any method that supports 
+it. If a container is transactional and an explicit <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object is not passed to a 
+modifying method (e.g. <a class="xref" href="Figaro.Container.html#Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_">PutDocument(String, UpdateContext)</a>), an 
+exception will occur indicating an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object is required. 
+</p><p>
+The default value for this property is <code>false</code> and it affects containers being created and containers that already exist.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=212">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_TransactionNotDurable_" data-uid="Figaro.ContainerConfig.TransactionNotDurable*"></a>
+  <h4 id="Figaro_ContainerConfig_TransactionNotDurable" data-uid="Figaro.ContainerConfig.TransactionNotDurable">TransactionNotDurable</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether transactions are durable for the specified container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TransactionNotDurable { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ContainerConfig_TransactionNotDurable_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If set to <code>true</code>, Figaro will not write log records for this database. This means that updates of this database exhibit the 
+ACI (atomicity, consistency, and isolation) properties, but not D (durability); that is, database integrity will be maintained, but 
+if the application or system fails, integrity will not persist. The database file must be verified and/or restored from backup after 
+a failure. The default value is <code>false</code>.</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=313">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Dispose_" data-uid="Figaro.ContainerConfig.Dispose*"></a>
+  <h4 id="Figaro_ContainerConfig_Dispose" data-uid="Figaro.ContainerConfig.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=305">View Source</a>
+  </span>
+  <a id="Figaro_ContainerConfig_Dispose_" data-uid="Figaro.ContainerConfig.Dispose*"></a>
+  <h4 id="Figaro_ContainerConfig_Dispose_System_Boolean_" data-uid="Figaro.ContainerConfig.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If disposing equals <code>true</code>, the method has been called directly or 
+indirectly by a user&apos;s code. Managed and unmanaged resources can be disposed. If disposing equals 
+<code>false</code>, the method has been called by the runtime from inside the 
+finalizer and you should not reference other objects. Only unmanaged resources can be disposed. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ContainerConfig.cs&amp;version=GBmaster&amp;line=31" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

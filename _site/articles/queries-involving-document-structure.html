@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Queries Involving Document Structure </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Queries Involving Document Structure ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="queries-involving-document-structure.md">
+<h1 id="queries-involving-document-structure">Queries Involving Document Structure</h1>
+
+<p>Notice that the parts container can contain documents with different structures. The ability to manage structured data in a flexible manner is one of the fundamental differences between XML and relational databases. In this example, a single container manages documents of two different structures sharing certain common elements. The fact that the documents partially overlap in structure allows for efficient queries and common indices. This can be used to model a union of related data. Structural queries exploit such natural unions in XML data. Here are some example structural queries.</p>
+<p>First, select all part records containing parent-part nodes in their document structure. In English, the following XQuery would read: <strong>from the container named parts select all part elements that also contain a parent-part element as a direct child of that element</strong>. </p>
+<p>As XQuery code, it is:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+
+10000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+</code></pre><p>To examine the query results, use the <code>print</code> command:</p>
+<pre><code>dbxml&gt; print
+&lt;part number=&quot;0&quot;&gt;&lt;description&gt;Description of 0&lt;/description&gt;
+&lt;category&gt;0&lt;/category&gt;&lt;parent-part&gt;0&lt;/parent-part&gt;&lt;/part&gt;
+&lt;part number=&quot;10&quot;&gt;&lt;description&gt;Description of 10&lt;/description&gt;
+&lt;category&gt;0&lt;/category&gt;&lt;parent-part&gt;0&lt;/parent-part&gt;&lt;/part&gt;
+...
+&lt;part number=&quot;99980&quot;&gt;&lt;description&gt;Description of 99980&lt;/description&gt;
+&lt;category&gt;0&lt;/category&gt;&lt;parent-part&gt;0&lt;/parent-part&gt;&lt;/part&gt;
+&lt;part number=&quot;99990&quot;&gt;&lt;description&gt;Description of 99990&lt;/description&gt;
+&lt;category&gt;0&lt;/category&gt;&lt;parent-part&gt;0&lt;/parent-part&gt;&lt;/part&gt;
+</code></pre><p>To display only the <code>parent-part</code> element without displaying the rest of the document, the query changes only slightly:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;parts.dbxml&quot;)/part/parent-part&#39;
+
+10000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part/parent-part&#39;
+
+dbxml&gt; print
+&lt;parent-part&gt;0&lt;/parent-part&gt;
+&lt;parent-part&gt;1&lt;/parent-part&gt;
+&lt;parent-part&gt;2&lt;/parent-part&gt;
+...
+&lt;parent-part&gt;1&lt;/parent-part&gt;
+&lt;parent-part&gt;2&lt;/parent-part&gt;
+&lt;parent-part&gt;0&lt;/parent-part&gt;
+</code></pre><p>Alternately, to retrieve the value of the <code>parent-part</code> element, the query becomes:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;parts.dbxml&quot;)/part/parent-part/string()&#39;
+
+10000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part/parent-part/string()&#39;
+
+dbxml&gt; print
+0
+1
+2
+...
+1
+2
+0
+</code></pre><p>Invert the earlier example to select all documents that do not have <code>parent-part</code> elements:</p>
+<pre><code>dbxml&gt; query &#39;collection(&quot;parts.dbxml&quot;)/part[not(parent-part)]&#39;
+
+90000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part[not(parent-part)]&#39;
+
+dbxml&gt; print
+...
+&lt;part number=&quot;99989&quot;&gt;&lt;description&gt;Description of 99989&lt;/description&gt;
+&lt;category&gt;9&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99991&quot;&gt;&lt;description&gt;Description of 99991&lt;/description&gt;
+&lt;category&gt;1&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99992&quot;&gt;&lt;description&gt;Description of 99992&lt;/description&gt;
+&lt;category&gt;2&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99993&quot;&gt;&lt;description&gt;Description of 99993&lt;/description&gt;
+&lt;category&gt;3&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99994&quot;&gt;&lt;description&gt;Description of 99994&lt;/description&gt;
+&lt;category&gt;4&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99995&quot;&gt;&lt;description&gt;Description of 99995&lt;/description&gt;
+&lt;category&gt;5&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99996&quot;&gt;&lt;description&gt;Description of 99996&lt;/description&gt;
+&lt;category&gt;6&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99997&quot;&gt;&lt;description&gt;Description of 99997&lt;/description&gt;
+&lt;category&gt;7&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99998&quot;&gt;&lt;description&gt;Description of 99998&lt;/description&gt;
+&lt;category&gt;8&lt;/category&gt;&lt;/part&gt;
+&lt;part number=&quot;99999&quot;&gt;&lt;description&gt;Description of 99999&lt;/description&gt;
+&lt;category&gt;9&lt;/category&gt;&lt;/part&gt;
+</code></pre><p>Structural queries are somewhat like relational joins, except that they are easier to express and manage over time. Some structural queries are even impossible or impractical to model with more traditional relational databases. This is in part due to the nature of XML as a self describing, yet flexible, data representation.</p>
+<p>Collections of XML documents attain commonality based on the similarity in their structures just as much as the similarity in their content. Essentially, relationships are implicitly expressed within the XML structure itself. The utility of this feature becomes more apparent when you start combining structural queries with value based queries.</p>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Fiagro and XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-flwor.html">Using FLWOR</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/queries-involving-document-structure.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

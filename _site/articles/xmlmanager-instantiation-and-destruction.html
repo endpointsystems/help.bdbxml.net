@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>XmlManager Instantiation and Destruction </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="XmlManager Instantiation and Destruction ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="xmlmanager-instantiation-and-destruction.md">
+<h1 id="xmlmanager-instantiation-and-destruction">XmlManager Instantiation and Destruction</h1>
+
+<p>You create an <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> object by calling its constructor. You destroy a <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> object by calling its destructor, either by using the delete operator or by allowing the object to go out of scope (if it was created on the stack). Note that <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> is closed and all of its resources released when the last open handle to the object is destroyed.</p>
+<p>To construct an <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> object, you may or may not provide the destructor with an open <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> object. If you do instantiate <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> with an opened environment handle, then <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> will close and destroy that <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> object for you if you specify <a class="xref" href="../api/Figaro.ManagerInitOptions.html#Figaro_ManagerInitOptions_AdoptFigaroEnv">AdoptFigaroEnv</a> for the <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> constructor.</p>
+<p>If you provide a <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> object to the constructor, then you can use that object to use whatever subsystems that you application may require (see <a class="xref" href="environment-open-flags.html">Environment Open Flags</a> for some common subsystems).</p>
+<p>If you do not provide an environment object, then <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> will implicitly create an environment for you. In this case, the environment will not be configured to use any subsystems and it is only capable of being shared by multiple threads from within the same process. Also, in this case you must identify the on-disk location where you want your containers to reside using one of the following mechanisms:
+Specify the path to the on-disk location in the container&#39;s name.Specify the environment&#39;s data location using the <code>DB_HOME</code> environment variable.
+In either case, you can pass the <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> constructor a <a class="xref" href="../api/Figaro.ManagerInitOptions.html">ManagerInitOptions</a> argument that controls that object&#39;s behavior with regard to the underlying containers (the flag is NOT passed directly to the underlying environment or databases). Valid values are:</p>
+<ul>
+<li><a class="xref" href="../api/Figaro.ManagerInitOptions.html#Figaro_ManagerInitOptions_AllowAutoOpen">AllowAutoOpen</a></li>
+<li><a class="xref" href="../api/Figaro.ManagerInitOptions.html#Figaro_ManagerInitOptions_AdoptFigaroEnv">AdoptFigaroEnv</a></li>
+<li><a class="xref" href="../api/Figaro.ManagerInitOptions.html#Figaro_ManagerInitOptions_AllowExternalAccess">AllowExternalAccess</a></li>
+</ul>
+<p>For example, to instantiate <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> with a default environment: </p>
+<pre><code class="lang-C#">using (var mgr = new XmlManager())
+{
+    //do something here
+}
+</code></pre><p> And to instantiate an XmlManager using an explicit environment object: </p>
+<pre><code class="lang-C#">const EnvOpenOptions flags = EnvOpenOptions.Create |
+                              EnvOpenOptions.InitLock |
+                              EnvOpenOptions.InitLog |
+                              EnvOpenOptions.InitMemoryBufferPool |
+                              EnvOpenOptions.InitTransaction |
+                              EnvOpenOptions.Recover;
+var env = new FigaroEnv();
+
+env.Open(homePath, flags);
+const ManagerInitOptions mgrFlags = ManagerInitOptions.AdoptFigaroEnv |
+                                ManagerInitOptions.AllowAutoOpen |
+                                ManagerInitOptions.AllowExternalAccess;
+var mgr = new XmlManager(env, mgrFlags);
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a></li>
+<li><a class="xref" href="../api/Figaro.ManagerInitOptions.html">ManagerInitOptions</a></li>
+<li><a class="xref" href="xml-manager-and-environments.html">XML Manager and Environments</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/xmlmanager-instantiation-and-destruction.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

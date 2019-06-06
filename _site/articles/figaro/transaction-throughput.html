@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Transaction Throughput </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Transaction Throughput ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="transaction-throughput.md">
+<h1 id="transaction-throughput">Transaction Throughput</h1>
+
+<p>Generally, the speed of a database system is measured by the transaction throughput, expressed as a number of transactions per second. The two gating factors for Figaro DB performance in a transactional system are usually the underlying database files and the log file. Both are factors because they require disk I/O, which is slow relative to other system resources such as CPU.</p>
+<h2 id="transaction-throughput-1">Transaction Throughput</h2>
+<p>In the worst-case scenario:</p>
+<ul>
+<li>Database access is truly random and the database is too large for any significant percentage of it to fit into the cache, resulting in a single I/O per requested key/data pair.</li>
+<li><p>Both the database and the log are on a single disk.
+This means that for each transaction, Figaro is potentially performing several file system operations:</p>
+</li>
+<li><p>Disk seek to database file</p>
+</li>
+<li>Database file read</li>
+<li>Disk seek to log file</li>
+<li>Log file write</li>
+<li>Flush log file information to disk</li>
+<li>Disk seek to update log file metadata (for example, <code>inode</code> information)</li>
+<li>Log metadata write</li>
+<li>Flush log file metadata to disk</li>
+</ul>
+<p>There are a number of ways to increase transactional throughput, all of which attempt to decrease the number of file system operations per transaction. First, the Berkeley DB software includes support for group commit. Group commit simply means that when the information about one transaction is flushed to disk, the information for any other waiting transactions will be flushed to disk at the same time, potentially amortizing a single log write over a large number of transactions. There are additional tuning parameters which may be useful to application writers:</p>
+<ul>
+<li>Tune the size of the database cache. If the Figaro DB key/data pairs used during the transaction are found in the database cache, the seek and read from the database are no longer necessary, resulting in two fewer file system operations per transaction. To determine whether your cache size is too small, see <a class="xref" href="selecting-a-cache-size.html">Selecting a Cache Size</a>.</li>
+<li>Put the database and the log files on different disks. This allows reads and writes to the log files and the database files to be performed concurrently.</li>
+<li>Set the file system configuration so that file access and modification times are not updated. Note that although the file access and modification times are not used by Figaro, this may affect other programs -- so be careful.</li>
+<li>Upgrade your hardware. When considering the hardware on which to run your application, however, it is important to consider the entire system. The controller and bus can have as much to do with the disk performance as the disk itself. It is also important to remember that throughput is rarely the limiting factor, and that disk seek times are normally the true performance issue for Figaro DB.</li>
+<li>Turn on the <a class="xref" href="../../api/Figaro.EnvConfig.html#Figaro_EnvConfig_WriteNoSyncTransaction">WriteNoSyncTransaction</a> flag. This changes the behavior so that the log files are not written and/or flushed when transactions are committed. Although this change will greatly increase your transaction throughput, it means that transactions will exhibit the ACI (atomicity, consistency, and isolation) properties, but not D (durability). Database integrity will be maintained, but it is possible that some number of the most recently committed transactions may be undone during recovery instead of being redone.</li>
+</ul>
+<p>If you are bottlenecked on logging, the following test will help you confirm that the number of transactions per second that your application does is reasonable for the hardware on which you&#39;re running. Your test program should repeatedly perform the following operations:</p>
+<ul>
+<li>Seek to the beginning of the file</li>
+<li>Write to the file</li>
+<li>Flush the file write to disk</li>
+</ul>
+<p>The number of times that you can perform these three operations per second is a rough measure of the minimum number of transactions per second of which the hardware is capable. This test simulates the operations applied to the log file. (As a simplifying assumption in this experiment, we assume that the database files are either on a separate disk; or that they fit, with some few exceptions, into the database cache.) We do not have to directly simulate updating the log file directory information because it will normally be updated and flushed to disk as a result of flushing the log file write to disk.</p>
+<p>Note that the number of bytes being written to the log as part of each transaction can dramatically affect the transaction throughput. The test run used 256, which is a reasonable size log write. Your log writes may be different. To determine your average log write size, use the db_stat utility to display your log statistics.</p>
+<p>As a quick sanity check, the average seek time is 9.4 ms for this particular disk, and the average latency is 4.17 ms. That results in a minimum requirement for a data transfer to the disk of 13.57 ms, or a maximum of 74 transfers per second. This is close enough to the previous 60 operations per second (which wasn&#39;t done on a quiescent disk) that the number is believable.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="selecting-a-cache-size.html">Selecting a Cache Size</a></li>
+<li><a class="xref" href="../../api/Figaro.EnvConfig.html">EnvConfig</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/transaction-throughput.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

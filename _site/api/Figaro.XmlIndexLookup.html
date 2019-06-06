@@ -1,0 +1,992 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XmlIndexLookup
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XmlIndexLookup
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlIndexLookup">
+  
+  
+  <h1 id="Figaro_XmlIndexLookup" data-uid="Figaro.XmlIndexLookup" class="text-break">Class XmlIndexLookup
+  </h1>
+  <div class="markdown level0 summary"><p>The <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> class encapsulates the context within which an
+index lookup operation can be performed on a <a class="xref" href="Figaro.Container.html">Container</a> object.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XmlIndexLookup</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlIndexLookup_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XmlIndexLookup : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XmlIndexLookup_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The lookup is performed using an <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object, and a series
+of methods of that object that specify how the lookup is to be performed. Using these methods, it is possible to
+specify inequality lookups, range lookups, and simple value lookups, as well as the sort order of the results.
+<p>
+By default, results are returned in the sort order of the index.
+<a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> objects are created
+using <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateIndexLookup_Figaro_Container_System_String_System_String_System_String_Figaro_XmlValue_Figaro_IndexLookupOperation_">CreateIndexLookup(Container, String, String, String, XmlValue, IndexLookupOperation)</a>.
+</p><p>
+A constructed, read-only object may be shared among threads for multiple calls
+to <a class="xref" href="Figaro.XmlIndexLookup.html#Figaro_XmlIndexLookup_Execute_Figaro_QueryContext_">Execute(QueryContext)</a>.
+</p></p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=126">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_HighBoundOperation_" data-uid="Figaro.XmlIndexLookup.HighBoundOperation*"></a>
+  <h4 id="Figaro_XmlIndexLookup_HighBoundOperation" data-uid="Figaro.XmlIndexLookup.HighBoundOperation">HighBoundOperation</h4>
+  <div class="markdown level1 summary"><p>Gets the operation to be used for the upper bound for a range index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HighboundOperationLookup HighBoundOperation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.HighboundOperationLookup.html">HighboundOperationLookup</a></td>
+        <td><p>The operation to be used for the upper bound for a range index lookup operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_HighBoundOperation_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The high bound must be specified to indicate a range lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_HighBoundOperation_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.HighboundOperationLookup.html">HighboundOperationLookup</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=114">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_HighBoundValue_" data-uid="Figaro.XmlIndexLookup.HighBoundValue*"></a>
+  <h4 id="Figaro_XmlIndexLookup_HighBoundValue" data-uid="Figaro.XmlIndexLookup.HighBoundValue">HighBoundValue</h4>
+  <div class="markdown level1 summary"><p>Gets the value to be used for the upper bound for a range index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue HighBoundValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>The value to be used for the upper bound for a range index lookup operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_HighBoundValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The high bound must be specified to indicate a range lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_HighBoundValue_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=174">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_LowBoundOperation_" data-uid="Figaro.XmlIndexLookup.LowBoundOperation*"></a>
+  <h4 id="Figaro_XmlIndexLookup_LowBoundOperation" data-uid="Figaro.XmlIndexLookup.LowBoundOperation">LowBoundOperation</h4>
+  <div class="markdown level1 summary"><p>Gets the operation to be used for the index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IndexLookupOperation LowBoundOperation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexLookupOperation.html">IndexLookupOperation</a></td>
+        <td><p>The operation to be used for the index lookup operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_LowBoundOperation_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the operation is a simple inequality lookup, the lower bound is used as the
+single value and operation for the lookup. If the operation is a range lookup, in
+which an upper bound is specified, the lower bound is used as the lower boundary value and
+operation for the lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_LowBoundOperation_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexLookupOperation.html">IndexLookupOperation</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=161">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_LowBoundValue_" data-uid="Figaro.XmlIndexLookup.LowBoundValue*"></a>
+  <h4 id="Figaro_XmlIndexLookup_LowBoundValue" data-uid="Figaro.XmlIndexLookup.LowBoundValue">LowBoundValue</h4>
+  <div class="markdown level1 summary"><p>Gets the value to be used for the index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue LowBoundValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>The value to be used for the index lookup operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_LowBoundValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the operation is a simple inequality lookup, the lower bound is used as the single value
+and operation for the lookup. If the operation is a range lookup, in which an upper bound is
+specified, the lower bound is used as the lower boundary value and operation for the lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_LowBoundValue_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=198">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Namespace_" data-uid="Figaro.XmlIndexLookup.Namespace*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Namespace" data-uid="Figaro.XmlIndexLookup.Namespace">Namespace</h4>
+  <div class="markdown level1 summary"><p>Gets The namespace of the node to be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Namespace { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The namespace of the node to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=204">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_NodeName_" data-uid="Figaro.XmlIndexLookup.NodeName*"></a>
+  <h4 id="Figaro_XmlIndexLookup_NodeName" data-uid="Figaro.XmlIndexLookup.NodeName">NodeName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the element or attribute node to be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NodeName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the element or attribute node to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=144">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_ParentContainer_" data-uid="Figaro.XmlIndexLookup.ParentContainer*"></a>
+  <h4 id="Figaro_XmlIndexLookup_ParentContainer" data-uid="Figaro.XmlIndexLookup.ParentContainer">ParentContainer</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the container containing the index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParentContainer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The parent container name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=220">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_ParentName_" data-uid="Figaro.XmlIndexLookup.ParentName*"></a>
+  <h4 id="Figaro_XmlIndexLookup_ParentName" data-uid="Figaro.XmlIndexLookup.ParentName">ParentName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the element or attribute node to be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParentName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the element or attribute node to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=149">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_ParentUri_" data-uid="Figaro.XmlIndexLookup.ParentUri*"></a>
+  <h4 id="Figaro_XmlIndexLookup_ParentUri" data-uid="Figaro.XmlIndexLookup.ParentUri">ParentUri</h4>
+  <div class="markdown level1 summary"><p>Gets the URI of the parent index lookup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParentUri { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=37">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Transactional_" data-uid="Figaro.XmlIndexLookup.Transactional*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Transactional" data-uid="Figaro.XmlIndexLookup.Transactional">Transactional</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the object is configured for transactions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Transactional { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if configured for transactions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=240">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Dispose_" data-uid="Figaro.XmlIndexLookup.Dispose*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Dispose" data-uid="Figaro.XmlIndexLookup.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=48">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Execute_" data-uid="Figaro.XmlIndexLookup.Execute*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Execute_Figaro_QueryContext_" data-uid="Figaro.XmlIndexLookup.Execute(Figaro.QueryContext)">Execute(QueryContext)</h4>
+  <div class="markdown level1 summary"><p>Executes the index lookup operation specified by the configuration
+of the <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object without specifying any additional options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(QueryContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The query context to execute under.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> results set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_Execute_Figaro_QueryContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=60">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Execute_" data-uid="Figaro.XmlIndexLookup.Execute*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Execute_Figaro_QueryContext_Figaro_IndexLookupOptions_" data-uid="Figaro.XmlIndexLookup.Execute(Figaro.QueryContext,Figaro.IndexLookupOptions)">Execute(QueryContext, IndexLookupOptions)</h4>
+  <div class="markdown level1 summary"><p>Executes the index lookup operation specified by the configuration
+of the <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(QueryContext context, IndexLookupOptions indexLookup)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The query context to execute under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexLookupOptions.html">IndexLookupOptions</a></td>
+        <td><span class="parametername">indexLookup</span></td>
+        <td><p>The index lookup options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> results set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_Execute_Figaro_QueryContext_Figaro_IndexLookupOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=72">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Execute_" data-uid="Figaro.XmlIndexLookup.Execute*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Execute_Figaro_XmlTransaction_Figaro_QueryContext_" data-uid="Figaro.XmlIndexLookup.Execute(Figaro.XmlTransaction,Figaro.QueryContext)">Execute(XmlTransaction, QueryContext)</h4>
+  <div class="markdown level1 summary"><p>Transactionally executes the index lookup operation specified by the configuration
+of the <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(XmlTransaction transaction, QueryContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The transaction to execute with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The query context to execute under.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> results set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_Execute_Figaro_XmlTransaction_Figaro_QueryContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=84">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_Execute_" data-uid="Figaro.XmlIndexLookup.Execute*"></a>
+  <h4 id="Figaro_XmlIndexLookup_Execute_Figaro_XmlTransaction_Figaro_QueryContext_Figaro_IndexLookupOptions_" data-uid="Figaro.XmlIndexLookup.Execute(Figaro.XmlTransaction,Figaro.QueryContext,Figaro.IndexLookupOptions)">Execute(XmlTransaction, QueryContext, IndexLookupOptions)</h4>
+  <div class="markdown level1 summary"><p>Executes the index lookup operation specified by the configuration
+of the <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Execute(XmlTransaction transaction, QueryContext context, IndexLookupOptions indexLookup)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The transaction to execute with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The query context to execute under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexLookupOptions.html">IndexLookupOptions</a></td>
+        <td><span class="parametername">indexLookup</span></td>
+        <td><p>The index lookup options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> results set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_Execute_Figaro_XmlTransaction_Figaro_QueryContext_Figaro_IndexLookupOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=92">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_GetIndex_" data-uid="Figaro.XmlIndexLookup.GetIndex*"></a>
+  <h4 id="Figaro_XmlIndexLookup_GetIndex" data-uid="Figaro.XmlIndexLookup.GetIndex">GetIndex()</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a> representation of the current index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IndexingStrategy GetIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><p>An <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a> of the index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_GetIndex_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=138">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_SetHighBound_" data-uid="Figaro.XmlIndexLookup.SetHighBound*"></a>
+  <h4 id="Figaro_XmlIndexLookup_SetHighBound_Figaro_XmlValue_Figaro_HighboundOperationLookup_" data-uid="Figaro.XmlIndexLookup.SetHighBound(Figaro.XmlValue,Figaro.HighboundOperationLookup)">SetHighBound(XmlValue, HighboundOperationLookup)</h4>
+  <div class="markdown level1 summary"><p>Sets the operation and value to be used for the upper bound for a range index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHighBound(XmlValue value, HighboundOperationLookup op)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to be used for the upper bound. Use of an empty value results in an inequality lookup, rather than a range lookup.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.HighboundOperationLookup.html">HighboundOperationLookup</a></td>
+        <td><span class="parametername">op</span></td>
+        <td><p>The operation to be used on the upper bound.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_SetHighBound_Figaro_XmlValue_Figaro_HighboundOperationLookup__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The high bound must be specified to indicate a range lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_SetHighBound_Figaro_XmlValue_Figaro_HighboundOperationLookup__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.HighboundOperationLookup.html">HighboundOperationLookup</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=101">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_SetIndex_" data-uid="Figaro.XmlIndexLookup.SetIndex*"></a>
+  <h4 id="Figaro_XmlIndexLookup_SetIndex_Figaro_IndexingStrategy_" data-uid="Figaro.XmlIndexLookup.SetIndex(Figaro.IndexingStrategy)">SetIndex(IndexingStrategy)</h4>
+  <div class="markdown level1 summary"><p>Sets a new index using <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndex(IndexingStrategy index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a> of the new index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_SetIndex_Figaro_IndexingStrategy__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=190">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_SetLowBound_" data-uid="Figaro.XmlIndexLookup.SetLowBound*"></a>
+  <h4 id="Figaro_XmlIndexLookup_SetLowBound_Figaro_XmlValue_Figaro_IndexLookupOperation_" data-uid="Figaro.XmlIndexLookup.SetLowBound(Figaro.XmlValue,Figaro.IndexLookupOperation)">SetLowBound(XmlValue, IndexLookupOperation)</h4>
+  <div class="markdown level1 summary"><p>Sets the operation and value to be used for the index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetLowBound(XmlValue value, IndexLookupOperation op)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to be used for the lower bound. An empty value is specified using an
+uninitialized <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexLookupOperation.html">IndexLookupOperation</a></td>
+        <td><span class="parametername">op</span></td>
+        <td><p>The operation to be performed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_SetLowBound_Figaro_XmlValue_Figaro_IndexLookupOperation__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the operation is a simple inequality lookup, the lower bound is used as the
+single value and operation for the lookup. If the operation is a range lookup, in
+which an upper bound is specified, the lower bound is used as the lower boundary
+value and operation for the lookup.</p>
+</div>
+  <h5 id="Figaro_XmlIndexLookup_SetLowBound_Figaro_XmlValue_Figaro_IndexLookupOperation__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.IndexLookupOperation.html">IndexLookupOperation</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=214">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_SetNode_" data-uid="Figaro.XmlIndexLookup.SetNode*"></a>
+  <h4 id="Figaro_XmlIndexLookup_SetNode_System_String_System_String_" data-uid="Figaro.XmlIndexLookup.SetNode(System.String,System.String)">SetNode(String, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the name of the node to be used along with the indexing strategy for the index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetNode(string nodeNamespace, string nodeName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the element or attribute node to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_SetNode_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default namespace is selected by passing an empty string for the namespace.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=231">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexLookup_SetParent_" data-uid="Figaro.XmlIndexLookup.SetParent*"></a>
+  <h4 id="Figaro_XmlIndexLookup_SetParent_System_String_System_String_" data-uid="Figaro.XmlIndexLookup.SetParent(System.String,System.String)">SetParent(String, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the name of the parent node to be used for an edge index lookup operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParent(string parentNamespace, string parentNodeName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentNamespace</span></td>
+        <td><p>The namespace of the parent node to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentNodeName</span></td>
+        <td><p>The name of the element or attribute node to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexLookup_SetParent_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the index is not an edge index, this configuration is ignored.The default namespace
+is used by passing an empty string for the namespace.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexLookup.cs&amp;version=GBmaster&amp;line=26" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum EnvConfig
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum EnvConfig
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.EnvConfig">
+  
+  
+  <h1 id="Figaro_EnvConfig" data-uid="Figaro.EnvConfig" class="text-break">Enum EnvConfig
+  </h1>
+  <div class="markdown level0 summary"><p>Used by
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a>
+to set the different
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> subsystems and
+settings for each of the following below.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_EnvConfig_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum EnvConfig</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Figaro_EnvConfig_AllConcurrentDatabases">AllConcurrentDatabases</td>
+        <td><p>If set, Figaro CDS applications will perform locking on an environment-wide basis
+rather than on a per-database basis.
+Calling
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with
+the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_AllConcurrentDatabases">AllConcurrentDatabases</a> flag only affects the specified
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any other database handles
+opened within the scope of that handle). For consistent behavior across
+the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handles opened in the
+environment must also set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_AllConcurrentDatabases">AllConcurrentDatabases</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_AllConcurrentDatabases">AllConcurrentDatabases</a> flag may be used only before the
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method is called.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_AutoCommit">AutoCommit</td>
+        <td><p>If set, operations with no explicit transaction handle specified that modifies databases in the database environment will 
+get a transaction handle automatically.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_DirectDB">DirectDB</td>
+        <td><p>Turn off system buffering of database files to avoid double caching.
+Calling  <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_DirectDB">DirectDB</a> flag only affects the
+specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any other database handles opened within the scope of that handle).
+For consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handles opened in the
+environment must set this flag.
+The<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_DirectDB">DirectDB</a> flag may be used at any time during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_HotBackupInProgress">HotBackupInProgress</td>
+        <td><p>Set this flag prior to creating a hot backup of a database environment.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_MultiVersion">MultiVersion</td>
+        <td><p>Open the database with support for multi-version concurrency control. This will cause updates to the
+database to follow a copy-on-write protocol, which is required to support snapshot isolation.This
+flag requires that the database be transactionally protected during its open and is not supported
+by the queue format.
+If set, all databases in the environment will be opened with this flag.
+This flag may be used at any time during the
+life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_NoLocking">NoLocking</td>
+        <td><p>If set, Figaro will grant all requested mutual exclusion mutexes and database locks without regard for their actual availability.
+This functionality should never be used for purposes other than debugging.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a>
+with the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoLocking">NoLocking</a> flag only affects the
+specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any other database handles opened within
+the scope of that handle).
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoLocking">NoLocking</a> flag may be used at any time during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_None">None</td>
+        <td><p>No flags set.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_NoPanic">NoPanic</td>
+        <td><p>If set, Figaro will ignore any panic state in the database environment
+(Database environments in a panic state normally refuse all attempts to call Berkeley
+DB functions, throwing <a class="xref" href="Figaro.RunRecoveryException.html">RunRecoveryException</a>). This functionality should never be used for
+purposes other than debugging.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoPanic">NoPanic</a> flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoPanic">NoPanic</a> flag may be used at any time during the
+life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_NoProcessMemoryMap">NoProcessMemoryMap</td>
+        <td><p>Figaro will copy read-only database files into the local cache instead of potentially mapping
+them into process memory.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoProcessMemoryMap">NoProcessMemoryMap</a> flag
+may be used at any time during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_NoSyncTransaction">NoSyncTransaction</td>
+        <td><p>If set, Figaro will not write or synchronously flush the log on transaction
+commit. This means that transactions exhibit the ACI (atomicity, consistency, and
+isolation) properties, but not D (durability) {} that is, database integrity will be
+maintained, but if the application or system fails, it is possible some number of
+the most recently committed transactions may be undone during recovery.
+The number of transactions at risk is governed by how many log updates can fit into the log
+buffer, how often the operating system flushes dirty buffers to disk, and how often
+the log is checkpointed.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoSyncTransaction">NoSyncTransaction</a> flag only affects the
+specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+For consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handles opened in the environment must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoSyncTransaction">NoSyncTransaction</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoSyncTransaction">NoSyncTransaction</a> flag may be used at any time during the
+life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_NoWaitTransaction">NoWaitTransaction</td>
+        <td><p>If set and a lock is unavailable for any database operation performed in the
+context of a transaction, cause the operation to throw a <a class="xref" href="Figaro.DBDeadlockException.html">DBDeadlockException</a>
+exception (or throw a <a class="xref" href="Figaro.DBLockNotGrantedException.html">DBLockNotGrantedException</a> exception if configured using
+the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_TimeNotGranted">TimeNotGranted</a> flag).
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoWaitTransaction">NoWaitTransaction</a> flag only affects the
+specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+For consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handles opened in the environment must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoWaitTransaction">NoWaitTransaction</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_NoWaitTransaction">NoWaitTransaction</a> flag may be used at any time during
+the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_Overwrite">Overwrite</td>
+        <td><p>Overwrite files stored in encrypted formats before deleting them.
+Figaro overwrites files using alternating <code>0xff</code>, <code>0x00</code> and <code>0xff</code> byte patterns. For file
+overwriting to be effective, the underlying file must be stored on a fixed-block
+file system. Systems with journaling or logging file systems will require operating
+system support and probably modification of the database sources.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_Overwrite">Overwrite</a> flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_Overwrite">Overwrite</a> flag may be used at any time
+during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_PanicEnvironment">PanicEnvironment</td>
+        <td><p>If set, Figaro will set the panic state for the database environment.
+(Database environments in a panic state normally refuse all attempts to call
+Figaro functions, throwing <a class="xref" href="Figaro.RunRecoveryException.html">RunRecoveryException</a>.)
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_PanicEnvironment">PanicEnvironment</a> flag affects the database environment, including
+all threads of control accessing the database environment.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_PanicEnvironment">PanicEnvironment</a> flag may be used only
+after the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method is called.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_RegionInit">RegionInit</td>
+        <td><p>In some applications, the expense of page-faulting the underlying shared memory
+regions can affect performance. (For example, if the page-fault occurs while holding
+a lock, other lock requests can convoy, and overall throughput may decrease.)
+If set, Figaro will page-fault shared regions into memory when initially creating
+or joining a database environment. In addition, Figaro will write the shared
+regions when creating an environment, forcing the underlying virtual memory and
+file systems to instantiate both the necessary memory and the necessary disk space.
+This can also avoid out-of-disk space failures later on.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_RegionInit">RegionInit</a> flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle). For
+consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handles opened in the environment must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_RegionInit">RegionInit</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_RegionInit">RegionInit</a> flag may be used at any time
+during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_SnapshotTransaction">SnapshotTransaction</td>
+        <td><p>If set, all transactions in the environment will be started as if it
+were passed to the
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> transaction
+subsystem.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a>
+with the this flag only affects the specified
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any
+other database handles opened within the scope of that handle).
+This flag may be used at any time
+during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_SyncDB">SyncDB</td>
+        <td><p>Configure Figaro to flush database writes to the backing disk before returning from the
+write system call, rather than flushing database writes explicitly in a separate system call,
+as necessary.
+This is only available on some systems (for example, systems supporting the
+IEEE/ANSI Std 1003.1 (POSIX) standard O_DSYNC flag, or systems supporting the Windows
+FILE_FLAG_WRITE_THROUGH flag). This flag may result in inaccurate file modification times and
+other file-level information for database files. This flag will almost certainly
+result in a performance decrease on most systems. This flag is only applicable to certain
+file systems (for example, the Veritas VxFS file system), where the file system&apos;s support for
+trickling writes back to stable storage behaves badly (or more likely, has been misconfigured).
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_SyncDB">SyncDB</a> flag only affects the
+specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any other handles opened within the scope of
+that handle). For consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handles opened
+in the environment must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_SyncDB">SyncDB</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_SyncDB">SyncDB</a> flag may be used at any time during the life of
+the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_TimeNotGranted">TimeNotGranted</td>
+        <td><p>If set, database calls timing out based on lock or transaction timeout values will
+throw a <a class="xref" href="Figaro.DBLockNotGrantedException.html">DBLockNotGrantedException</a> exception instead of
+<a class="xref" href="Figaro.DBDeadlockException.html">DBDeadlockException</a>. This
+allows applications to distinguish between operations which have deadlocked and
+operations which have exceeded their time limits.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_TimeNotGranted">TimeNotGranted</a> flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_TimeNotGranted">TimeNotGranted</a> flag may be used at any time
+during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_WriteNoSyncTransaction">WriteNoSyncTransaction</td>
+        <td><p>If set, Figaro will write, but will not synchronously flush, the log on
+transaction commit. This means that transactions exhibit the ACI (atomicity, consistency,
+and isolation) properties, but not D (durability) that is, database integrity will
+be maintained, but if the system fails, it is possible some number of the most
+recently committed transactions may be undone during recovery.
+The number of transactions at risk is governed by how often the system flushes dirty buffers to
+disk and how often the log is checkpointed.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> with the
+<a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_WriteNoSyncTransaction">WriteNoSyncTransaction</a> flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handle (and any other database handles opened within the scope of that handle).
+For consistent behavior across the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>
+handles opened in the environment must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_WriteNoSyncTransaction">WriteNoSyncTransaction</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_WriteNoSyncTransaction">WriteNoSyncTransaction</a> flag may be used at any time
+during the life of the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_EnvConfig_YieldCpu">YieldCpu</td>
+        <td><p>If set, Figaro will yield the processor immediately after each page or mutex
+acquisition. This functionality should never be used for purposes other than stress
+testing.
+Calling <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a>
+with the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_YieldCpu">YieldCpu</a>
+flag only affects the specified <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle (and any other
+database handles opened within the scope of that handle). For consistent behavior
+the environment, all <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handles opened in the environment
+must set the <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_YieldCpu">YieldCpu</a> flag.
+The <a class="xref" href="Figaro.EnvConfig.html#Figaro_EnvConfig_YieldCpu">YieldCpu</a> flag may be used at any time during the
+life of the application.</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+  <h5 id="Figaro_EnvConfig_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Enums.cs&amp;version=GBmaster&amp;line=752" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

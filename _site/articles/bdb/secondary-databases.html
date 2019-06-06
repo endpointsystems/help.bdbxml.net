@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Secondary Databases </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Secondary Databases ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="secondary-databases">Secondary Databases</h1>
+
+<p>Usually you find database records by means of the record&#39;s key. However, the key that you use for your record will not always contain the information required to provide you with rapid access to the data that you want to retrieve. For example, suppose your database contains records related to users. The key might be a string that is some unique identifier for the person, such as a user ID. Each record&#39;s data, however, would likely contain a complex object containing details about people such as names, addresses, phone numbers, and so forth. While your application may frequently want to query a person by user ID (that is, by the information stored in the key), it may also on occasion want to locate people by, say, their name. </p>
+<p>Rather than iterate through all of the records in your database, examining each in turn for a given person&#39;s name, you create indexes based on names and then just search that index for the name that you want. You can do this using <strong>secondary databases</strong>. In DB, the database that contains your data is called a <strong>primary database</strong>. A database that provides an alternative set of keys to access that data is called a <strong>secondary database</strong>. In a secondary database, the keys are your alternative (or secondary) index, and the data corresponds to a primary record&#39;s key. </p>
+<p>You create a secondary database by creating the database, opening it, and then <strong>associating</strong> the database with the primary database (that is, the database for which you are creating the index). As a part of associating the secondary database to the primary, you must provide a callback that is used to create the secondary database keys. Typically this callback creates a key based on data found in the primary database record&#39;s key or data. </p>
+<p>Once opened, DB manages secondary databases for you. Adding or deleting records in your primary database causes DB to update the secondary as necessary. Further, changing a record&#39;s data in the primary database may cause DB to modify a record in the secondary, depending on whether the change forces a modification of a key in the secondary database. </p>
+<div class="NOTE"><h5>Note</h5><p>You can not write directly to a secondary database. Any attempt to write to a secondary database results in a non-zero status return. To change the data referenced by a secondary record, modify the primary database instead. The exception to this rule is that delete operations are allowed on the secondary database. See <a href="deleting-secondary-database-records.md">Deleting Secondary Database Records</a> for more information. </p>
+</div>
+<div class="NOTE"><h5>Note</h5><p>Secondary database records are updated/created by DB only if the key creator callback function returns 0. If a value other than 0 is returned, then DB will not add the key to the secondary database, and in the event of a record update it will remove any existing key. Note that the callback can use either DB_DONOTINDEX or some error code outside of DB&#39;s name space to indicate that the entry should not be indexed. </p>
+</div>
+<p>See <a href="implementing-key-extractors.html">Implementing Key Extractors</a> for more information.</p>
+<p>When you read a record from a secondary database, DB automatically returns the data and optionally the key from the corresponding record in the primary database. </p>
+<h2 id="opening-and-closing-secondary-databases">Opening and Closing Secondary Databases</h2>
+<p>You manage secondary database opens and closes in the same way as you would any normal database. The only difference is that: </p>
+<ul>
+<li>You must associate the secondary to a primary database using the <code>SecondaryBTreeDatabaseConfig</code> constructor.</li>
+<li>When closing your databases, it is a good idea to make sure you close your secondaries before closing your primaries. This is particularly true if your database closes are not single threaded. </li>
+</ul>
+<p>When you associate a secondary to a primary database, you must provide a callback that is used to generate the secondary&#39;s keys. These callbacks are described in the next section. </p>
+<p>For example, to open a secondary database and associate it to a primary database: </p>
+<pre><code>      db = BTreeDatabase.Open(Path.Combine(dataPath,databaseName +&quot;.db&quot;),cfg);
+
+      //set up secondary database
+      var scfg = new SecondaryBTreeDatabaseConfig(db, KeyGenFunc){Creation = CreatePolicy.IF_NEEDED}; 
+      indexDb = SecondaryBTreeDatabase.Open(Path.Combine(dataPath,databaseName +&quot;-index.db&quot;),scfg);
+</code></pre><p>Closing the primary and secondary databases is accomplished exactly as you would for any database: </p>
+<pre><code>private void Dispose(bool disposing)
+{
+    if (!disposing) return;
+    cursor?.Close();
+    indexDb?.Close(true);
+    indexDb?.Dispose();
+    db?.Close(true);
+    db?.Dispose();
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb/secondary-databases.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

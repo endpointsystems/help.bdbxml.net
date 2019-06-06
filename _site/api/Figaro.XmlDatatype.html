@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum XmlDatatype
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum XmlDatatype
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlDatatype">
+  
+  
+  <h1 id="Figaro_XmlDatatype" data-uid="Figaro.XmlDatatype" class="text-break">Enum XmlDatatype
+  </h1>
+  <div class="markdown level0 summary"><p>The basic data types recognized by <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlDatatype_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum XmlDatatype</code></pre>
+  </div>
+  <h5 id="Figaro_XmlDatatype_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Note that if  <a class="xref" href="Figaro.IndexingStrategy.html#Figaro_IndexingStrategy_KeyType">KeyType</a> is set to
+<a class="xref" href="Figaro.IndexKeyType.html#Figaro_IndexKeyType_Presence">Presence</a>, then
+<a class="xref" href="Figaro.XmlDatatype.html">XmlDatatype</a> must be set to <a class="xref" href="Figaro.XmlDatatype.html#Figaro_XmlDatatype_None">None</a>.</p>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Figaro_XmlDatatype_Base64Binary">Base64Binary</td>
+        <td><p>Base64-encoded arbitrary binary data.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Boolean">Boolean</td>
+        <td><p>Binary-valued logic legal literals <code>{true,false,0,1}</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Date">Date</td>
+        <td><p>Calendar date. Format: <code>CCYY-MM-DD</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_DateTime">DateTime</td>
+        <td><p>Specific instance of time. ISO 8601 extended format: <code>CCYY-MM-DDThh:mm:ss</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_DayTimeDuration">DayTimeDuration</td>
+        <td><p>A duration of time. ISO 8601 of extended format <code>PnYn MnDTnH nMn S</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Decimal">Decimal</td>
+        <td><p>Arbitrary precision decimal numbers.
+Sign omitted, “+” is assumed. Leading and trailing
+zeros are optional. If the fractional part is
+zero, the period and following zero(es) can be
+omitted.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Double">Double</td>
+        <td><p>Double-precision 64-bit floating point type - legal literals <code>{0, -0, INF, -INF and NaN}</code>. For example: <code>-1E4, 12.78e-2, 12</code> and <code>INF</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Duration">Duration</td>
+        <td><p>A duration of time, in ISO 8601 extended format <code>PnYn MnDTnH nMn S</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Float">Float</td>
+        <td><p>32-bit floating point type - legal literals <code>{0, -0,INF, -INF and NaN}</code>.
+Example: <code> -1E4, 1267.43233E12, 12.78e-2, 12 and INF</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_GDay">GDay</td>
+        <td><p>Gregorian day. For example, a day such as the 5th of the month is <code>--05</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_GMonth">GMonth</td>
+        <td><p>Gregorian month. For example: the month of May is expressed as <code>--05--</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_GMonthDay">GMonthDay</td>
+        <td><p>Gregorian specific day in a month. For example, Feb 5 is expressed as <code>--02-05</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_GYear">GYear</td>
+        <td><p>Gregorian calendar year. For example, for year <code>1999</code> write: <code>1999</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_GYearMonth">GYearMonth</td>
+        <td><p>Specific Gregorian month and year. For example, to express May 1999 write: <code>1999-05</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_HexBinary">HexBinary</td>
+        <td><p>Arbitrary hex-encoded binary data. For example, <code>0FB7</code> is a hex encoding for 16-bit int <code>4023</code> (binary <code>111110110111</code>).</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Integer">Integer</td>
+        <td><p>Integer type. Note: This data type maps to Untyped Atomic in the Berkeley DB XML library.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_None">None</td>
+        <td><p>No XML data type.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_String">String</td>
+        <td><p>Character strings in XML.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_Time">Time</td>
+        <td><p>An instant of time that recurs every day. For example, 1:20 pm for Eastern Standard Time,
+which is 5 hours behind Coordinated Universal Time (UTC), would
+be <code>13:20:00-05:00</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_UntypedAtomic">UntypedAtomic</td>
+        <td><p>An arbitrary, generic data type that can be used as other types.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_XmlDatatype_YearMonthDuration">YearMonthDuration</td>
+        <td><p>A year month duration derived from <a class="xref" href="Figaro.XmlDatatype.html#Figaro_XmlDatatype_Duration">Duration</a> in the format <code>PnYnM</code>.
+For example, to indicate a year month duration of 2 years and 3 months, you would
+write: <code>P2Y3M</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+  <h5 id="Figaro_XmlDatatype_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexingStrategy.html#Figaro_IndexingStrategy_IndexValueSyntax">IndexValueSyntax</a></div>
+      <div><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Enums.cs&amp;version=GBmaster&amp;line=2024" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Recovery Procedures </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Recovery Procedures ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="recovery-procedures.md">
+<h1 id="recovery-procedures">Recovery Procedures</h1>
+
+<p>The fifth component of the administrative infrastructure, recovery procedures, concerns the recoverability of the database. After any application or system failure, there are two possible approaches to database recovery:</p>
+<ul>
+<li>There is no need for recoverability, and all databases can be re-created from scratch. _ Although these applications may still need transaction protection for other reasons, recovery usually consists of removing the Figaro environment home directory and all files it contains, and then restarting the application. Such an application may use the <a class="xref" href="../../api/Figaro.ContainerConfig.html#Figaro_ContainerConfig_TransactionNotDurable">TransactionNotDurable</a> flag to avoid writing log records.</li>
+<li><em>It is necessary to recover information after system or application failure.</em> In this case, recovery processing must be performed on any database environments that were active at the time of the failure. Recovery processing involves running the <a class="xref" href="db_recover.html">db_recover</a> utility or calling the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method with the <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> or <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_RecoverFatal">RecoverFatal</a> flags.</li>
+</ul>
+<p>During recovery processing, all database changes made by aborted or unfinished transactions are undone, and all database changes made by committed transactions are redone, as necessary. Database applications must not be restarted until recovery completes. After recovery finishes, the environment is properly initialized so that applications may be restarted.</p>
+<p>If performing recovery, there are two types of recovery processing: normal and catastrophic. Which you choose depends on the source for the database and log files you are using to recover.</p>
+<p>If up-to-the-minute database and log files are accessible on a stable file system, normal recovery is sufficient. Run the <a class="xref" href="db_recover.html">db_recover</a> utility or call the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method specifying the <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> flag. However, the normal recovery case never includes recovery using hot backups of the database environment. For example, you cannot perform a hot backup of databases and log files, restore the backup and then run normal recovery -- you must always run catastrophic recovery when using hot backups.</p>
+<p>If the database or log files have been destroyed or corrupted, or normal recovery fails, catastrophic recovery is required. For example, catastrophic failure includes the case where the disk drive on which the database or log files are stored has been physically destroyed, or when the underlying file system is corrupted and the operating system&#39;s normal file system checking procedures cannot bring that file system to a consistent state. This is often difficult to detect, and a common sign of the need for catastrophic recovery is when normal recovery procedures fail, or when checksum errors are displayed during normal database procedures. When catastrophic recovery is necessary, take the following steps:</p>
+<ul>
+<li>Restore the most recent snapshots of the database and log files from the backup media into the directory where recovery will be performed.</li>
+<li>If any log files were archived since the last snapshot was made, they should be restored into the directory where recovery will be performed.</li>
+<li>If any log files are available from the database environment that failed (for example, the disk holding the database files crashed, but the disk holding the log files is fine), those log files should be copied into the directory where recovery will be performed. Be sure to restore all log files in the order they were written. The order is important because it&#39;s possible the same log file appears on multiple backups, and you want to run recovery using the most recent version of each log file.</li>
+<li>Run the <a class="xref" href="db_recover.html">db_recover</a> utility, specifying its <code>-c</code> option; or call the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method, specifying the <a class="xref" href="../../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_RecoverFatal">RecoverFatal</a> flag. The catastrophic recovery process will review the logs and database files to bring the environment databases to a consistent state as of the time of the last uncorrupted log file that is found. It is important to realize that only transactions committed before that date will appear in the databases.</li>
+</ul>
+<p>It is possible to re-create the database in a location different from the original by specifying appropriate pathnames to the <code>-h</code> option of the <a class="xref" href="db_recover.html">db_recover</a> utility. In order for this to work properly, it is important that your application refer to files by names relative to the database home directory or the pathname(s) specified in calls to <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_AddDataDirectory_System_String_">AddDataDirectory(String)</a>, instead of using full pathnames.</p>
+<h2 id="see-also">See Also</h2>
+<p><a class="xref" href="../../api/Figaro.FigaroEnv.html">FigaroEnv</a></p>
+<h4 id="other-resources">Other Resources</h4>
+<p><a class="xref" href="db_recover.html">db_recover</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/recovery-procedures.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,725 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XmlIndexSpecification
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XmlIndexSpecification
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlIndexSpecification">
+  
+  
+  <h1 id="Figaro_XmlIndexSpecification" data-uid="Figaro.XmlIndexSpecification" class="text-break">Class XmlIndexSpecification
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates the indexing specification of a container.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XmlIndexSpecification</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlIndexSpecification_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XmlIndexSpecification : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XmlIndexSpecification_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>An indexing specification can be retrieved with
+the <a class="xref" href="Figaro.Container.html#Figaro_Container_GetIndexSpecification">GetIndexSpecification()</a> method, and modified
+using the <a class="xref" href="Figaro.Container.html#Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext_">SetIndexSpecification(XmlIndexSpecification, UpdateContext)</a> method.
+<p>
+The <a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a> class provides an interface
+for manipulating the indexing specification through the
+XmlIndexSpecification.addIndex, XmlIndexSpecification.deleteIndex,
+and XmlIndexSpecification.replaceIndex methods. The class interface
+also provides the XmlIndexSpecification.next and
+XmlIndexSpecification.reset methods for iterating through
+the specified indices. The XmlIndexSpecification.find method can
+be used to search for the indexing strategy for a known node.
+</p><p>
+Finally, you can set a default index specification for a container
+using XmlIndexSpecification.addDefaultIndex. You can replace and delete
+the default index using XmlIndexSpecification.replaceDefaultIndex
+and XmlIndexSpecification.deleteDefaultIndex.
+</p><p>
+Note that adding an index to a container results in re-indexing all of the
+documents in that container, which can take a very long time. It is good practice to
+design an application to add useful indices before populating a container.
+</p><p>
+The class is implemented using a handle-body idiom. When a handle is copied, both handles
+maintain a reference to the same body.
+</p></p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=63">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_AutoIndexing_" data-uid="Figaro.XmlIndexSpecification.AutoIndexing*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_AutoIndexing" data-uid="Figaro.XmlIndexSpecification.AutoIndexing">AutoIndexing</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the auto-indexing state which will affect the container when set using <a class="xref" href="Figaro.Container.html#Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext_">SetIndexSpecification(XmlIndexSpecification, UpdateContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AutoIndexing { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_AutoIndexing_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the value on the container is <code>true</code> (the default for newly-created containers) then indexes are added automatically 
+for leaf elements and attributes. The indexes added are &quot;node-equality-string&quot; and &quot;node-equality-double&quot; for 
+elements and attributes. If auto-indexing is not desired it should be disabled using this interface upon container creation. 
+</p>
+<p>
+Auto-indexing is recognized by insertion of new documents as well as updates of existing documents, including modification via XQuery Update. 
+The auto-indexing state is persistent and will remain stable across container close/re-open operations. Indexes added via 
+auto-indexing are normal indexes and can be removed using the normal mechanisms.</p>
+<p>
+A significant implication of auto-indexing is that any operation that may add an 
+index (e.g. <a class="xref" href="Figaro.Container.html#Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_">PutDocument(String, UpdateContext)</a>) can have the side effect of 
+re-indexing the entire container. For this reason auto-indexing is not recommended for containers 
+of heterogeneous documents and that it be disabled once a representative set of documents has been inserted.</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=93">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_AddDefaultIndex_" data-uid="Figaro.XmlIndexSpecification.AddDefaultIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_AddDefaultIndex_Figaro_IndexingStrategy_" data-uid="Figaro.XmlIndexSpecification.AddDefaultIndex(Figaro.IndexingStrategy)">AddDefaultIndex(IndexingStrategy)</h4>
+  <div class="markdown level1 summary"><p>Adds an indexing strategy to the default index specification. That is, the index provided
+on this method is applied to all nodes in a container, except for those for which an
+explicit index is already declared.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddDefaultIndex(IndexingStrategy index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to specify as the default index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_AddDefaultIndex_Figaro_IndexingStrategy__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For more information on specifying indexing strategies,
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=82">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_AddDefaultIndex_" data-uid="Figaro.XmlIndexSpecification.AddDefaultIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_AddDefaultIndex_System_String_" data-uid="Figaro.XmlIndexSpecification.AddDefaultIndex(System.String)">AddDefaultIndex(String)</h4>
+  <div class="markdown level1 summary"><p>Adds an indexing strategy to the default index specification. That is, the index provided
+on this method is applied to all nodes in a container, except for those for which an
+explicit index is already declared.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddDefaultIndex(string index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to specify as the default index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_AddDefaultIndex_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For more information on specifying indexing strategies,
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=70">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_AddIndex_" data-uid="Figaro.XmlIndexSpecification.AddIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_" data-uid="Figaro.XmlIndexSpecification.AddIndex(Figaro.XmlIndex)">AddIndex(XmlIndex)</h4>
+  <div class="markdown level1 summary"><p>Adds an indexing strategy to set for the identified node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddIndex(XmlIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to add to the specification.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=125">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_DeleteDefaultIndex_" data-uid="Figaro.XmlIndexSpecification.DeleteDefaultIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_DeleteDefaultIndex_System_String_" data-uid="Figaro.XmlIndexSpecification.DeleteDefaultIndex(System.String)">DeleteDefaultIndex(String)</h4>
+  <div class="markdown level1 summary"><p>Delete the identified index from the default index specification.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDefaultIndex(string index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The string representation of the default index to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_DeleteDefaultIndex_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>You can add additional indices to the default index specification
+using <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddDefaultIndex_System_String_">AddDefaultIndex(String)</a>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=103">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_DeleteIndex_" data-uid="Figaro.XmlIndexSpecification.DeleteIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_DeleteIndex_Figaro_XmlIndex_" data-uid="Figaro.XmlIndexSpecification.DeleteIndex(Figaro.XmlIndex)">DeleteIndex(XmlIndex)</h4>
+  <div class="markdown level1 summary"><p>Deletes indexing strategies for a named document or metadata node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteIndex(XmlIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The named index to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_DeleteIndex_Figaro_XmlIndex__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>To delete an index set for metadata, specify the URI and name used when the
+metadata was added to the document.</p>
+</div>
+  <h5 id="Figaro_XmlIndexSpecification_DeleteIndex_Figaro_XmlIndex__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=115">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_DeleteIndex_" data-uid="Figaro.XmlIndexSpecification.DeleteIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_DeleteIndex_System_String_System_String_System_String_" data-uid="Figaro.XmlIndexSpecification.DeleteIndex(System.String,System.String,System.String)">DeleteIndex(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Deletes an index for a named document or metadata node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteIndex(string nodeNamespace, string nodeName, string index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node for which you want the index deleted. The default
+namespace is selected by passing an empty string for the namespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the indexed element or attribute node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The indexing strategy of the index to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_DeleteIndex_System_String_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>To delete an index set for metadata, specify the URI and name used when the
+metadata was added to the document.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=212">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_Dispose_" data-uid="Figaro.XmlIndexSpecification.Dispose*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_Dispose" data-uid="Figaro.XmlIndexSpecification.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=134">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_Find_" data-uid="Figaro.XmlIndexSpecification.Find*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_Find_Figaro_XmlIndex_" data-uid="Figaro.XmlIndexSpecification.Find(Figaro.XmlIndex)">Find(XmlIndex)</h4>
+  <div class="markdown level1 summary"><p>Returns the indexing strategies for a named document or metadata node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Find(XmlIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The named index to find.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>This method returns <code>true</code> if an index for the node is found; otherwise, it returns <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=148">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_GetDefaultIndex_" data-uid="Figaro.XmlIndexSpecification.GetDefaultIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_GetDefaultIndex" data-uid="Figaro.XmlIndexSpecification.GetDefaultIndex">GetDefaultIndex()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the default index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetDefaultIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The string representation of the default index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_GetDefaultIndex_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default index is the index used by all nodes in the document in the absence of any other index.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=161">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_Next_" data-uid="Figaro.XmlIndexSpecification.Next*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_Next" data-uid="Figaro.XmlIndexSpecification.Next">Next()</h4>
+  <div class="markdown level1 summary"><p>Obtains the next index in the <a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlIndex Next()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></td>
+        <td><p>Returns an <a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a> containing the index information. If
+no additional exists, this method will return a <code>null</code> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_Next_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=192">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_ReplaceDefaultIndex_" data-uid="Figaro.XmlIndexSpecification.ReplaceDefaultIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_ReplaceDefaultIndex_System_String_" data-uid="Figaro.XmlIndexSpecification.ReplaceDefaultIndex(System.String)">ReplaceDefaultIndex(String)</h4>
+  <div class="markdown level1 summary"><p>Replace the default index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceDefaultIndex(string index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The new default index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=186">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_ReplaceIndex_" data-uid="Figaro.XmlIndexSpecification.ReplaceIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex_" data-uid="Figaro.XmlIndexSpecification.ReplaceIndex(Figaro.XmlIndex)">ReplaceIndex(XmlIndex)</h4>
+  <div class="markdown level1 summary"><p>Replaces the indexing strategies for a named document or metadata node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceIndex(XmlIndex index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to replace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>All existing indexing strategies for that node are deleted, and the indexing strategy
+identified by this method is set for the node.</p>
+</div>
+  <h5 id="Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=176">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_ReplaceIndex_" data-uid="Figaro.XmlIndexSpecification.ReplaceIndex*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_ReplaceIndex_System_String_System_String_Figaro_IndexingStrategy_" data-uid="Figaro.XmlIndexSpecification.ReplaceIndex(System.String,System.String,Figaro.IndexingStrategy)">ReplaceIndex(String, String, IndexingStrategy)</h4>
+  <div class="markdown level1 summary"><p>Replaces the indexing strategies for a typed document for metadata node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceIndex(string nodeNamespace, string nodeName, IndexingStrategy strategy)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the node whose index is being replaced.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><span class="parametername">strategy</span></td>
+        <td><p>The indexing strategy containing the type information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlIndexSpecification_ReplaceIndex_System_String_System_String_Figaro_IndexingStrategy__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>All existing indexing strategies for that node are deleted, and the indexing strategy
+identified by this method is set for the node.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=203">View Source</a>
+  </span>
+  <a id="Figaro_XmlIndexSpecification_Reset_" data-uid="Figaro.XmlIndexSpecification.Reset*"></a>
+  <h4 id="Figaro_XmlIndexSpecification_Reset" data-uid="Figaro.XmlIndexSpecification.Reset">Reset()</h4>
+  <div class="markdown level1 summary"><p>Resets the index specification iterator to the beginning of the index list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <h5 id="Figaro_XmlIndexSpecification_Reset_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_Next">Next()</a> to iterate
+through the indices contained in the index specification.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlIndexSpecification.cs&amp;version=GBmaster&amp;line=37" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

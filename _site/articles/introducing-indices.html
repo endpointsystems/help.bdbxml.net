@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Introducing Indices </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Introducing Indices ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="introducing-indices.md">
+<h1 id="introducing-indices">Introducing Indices</h1>
+
+<p>One major advantage of modern native XML databases is their ability to index the XML documents they contain. Proper use of indices can significantly reduce the time required to execute a particular XQuery expression. The previous examples likely executed in a perceptible amount of time, because Figaro was evaluating each and every document in the container against the query. Without indices, Figaro has no choice but to review each document in turn. With indices, Figaro can find a subset of matching documents with a single, or significantly reduced, set of lookups. By carefully applying indexing strategies we can improve retrieval performance considerably.</p>
+<h2 id="introducing-indices-1">Introducing Indices</h2>
+<p>To examine the usefulness of our indices, we will use the <code>time</code> command with each of our queries. This will report how long it takes for each operation to complete.</p>
+<div class="NOTE"><h5>Note</h5><p>The following query execution times are relative to the computer and operating system used by the author. Your query times will differ as they depend on many qualities of your system. However, the percentage in improvement in query execution time should be relatively similar.
+Recall the first structural query:</p>
+</div>
+<pre><code>time query &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+10000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+
+Time in seconds for command &#39;query&#39;: 0.437096
+</code></pre><p>Notice the query execution time. This query takes almost a half a second to execute because the query is examining each document in turn as it searches for the presence of a<code>parent-part</code> element. To improve our performance, we want to specify an index that allows Figaro to identify the subset of documents containing the <code>parent-part</code> element without actually examining each document.</p>
+<p>Indices are specified in four parts: <code>path type</code>, <code>node type</code>, <code>key type</code>, and <code>uniqueness</code>. This query requires an index of the node elements to determine if something is present or not. Because the pattern is not expected to be unique, we do not want to turn on uniqueness. Therefore, the Figaro index type that we should use is <code>node-element-presence-none</code>.</p>
+<pre><code>dbxml&gt; addIndex &quot;&quot; parent-part node-element-presence-none
+Adding index type: node-element-presence-none to node: {}:parent-part
+
+dbxml&gt; time query &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+10000 objects returned for eager expression &#39;collection(&quot;parts.dbxml&quot;)/part[parent-part]&#39;
+</code></pre><p>Our query time improved from .4 seconds to .02 seconds. As containers grow in size or complexity, indices increase performance even more dramatically.</p>
+<p>The previous index will also improve the performance of the value query designed to search for the value of the parent-part element. But for better results, we should index the node as a double value. (You use <code>double</code> here instead of decimal because the XQuery specification indicates that implicit numerical casts should be cast to <code>double</code>).</p>
+<p>To do this, use a <code>node-element-equality-double</code> index.</p>
+<pre><code>dbxml&gt; time query &#39;
+collection(&quot;parts.dbxml&quot;)/part[parent-part = 1]&#39;
+3333 objects returned for eager expression &#39;
+collection(&quot;parts.dbxml&quot;)/part[parent-part = 1]&#39;
+
+Time in seconds for command &#39;query&#39;: 0.511752
+
+dbxml&gt; addIndex &quot;&quot; parent-part node-element-equality-double
+
+Adding index type: node-element-equality-decimal to node: {}:parent-part
+dbxml&gt; time query &#39;
+collection(&quot;parts.dbxml&quot;)/part[parent-part = 1]&#39;
+3333 objects returned for eager expression &#39;
+collection(&quot;parts.dbxml&quot;)/part[parent-part = 1]&#39;
+
+Time in seconds for command &#39;query&#39;: 0.070674
+</code></pre><p>Additional indices will improve performance for the other value queries.</p>
+<pre><code>dbxml&gt; time query &#39;
+collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105]&#39;
+4 objects returned for eager expression
+&#39;collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105]&#39;
+
+Time in seconds for command &#39;query&#39;: 5.06106
+</code></pre><p>At over 5 seconds there is plenty of room for improvement. To improve our range query, we can provide an index for the number attribute:</p>
+<pre><code>dbxml&gt;  addIndex &quot;&quot; number node-attribute-equality-double
+
+Adding index type: node-attribute-equality-double to node: {}:number
+
+dbxml&gt; time query &#39;
+collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105]&#39;
+4 objects returned for eager expression &#39;
+collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105]&#39;
+
+Time in seconds for command &#39;query&#39;: 3.33212
+</code></pre><p>As you can see, proper use of indices can dramatically effect query performance.</p>
+<h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Fiagro and XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-indices.html">Using Indices</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/introducing-indices.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

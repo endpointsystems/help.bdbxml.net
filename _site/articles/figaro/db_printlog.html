@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>db_printlog </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="db_printlog ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="db_printlog.md">
+<h1 id="dbprintlog">db_printlog</h1>
+
+<p>The <code>db_printlog</code> utility is a debugging utility that dumps log files in a human-readable format.</p>
+<pre><code>db_printlog [-NrV] [-b start-LSN] [-e stop-LSN] [-h home] [-P password]
+</code></pre><p>The <code>db_printlog</code> utility uses a Figaro BDB environment (as described for the <code>-h</code> option, the environment variable <code>DB_HOME</code>, or because the utility was run in a directory containing an existing environment). In order to avoid environment corruption when using an existing environment, <code>db_printlog</code> should always be given the chance to detach from the environment and exit gracefully. To cause <code>db_printlog</code> to release all environment resources and exit cleanly, send it an interrupt signal (SIGINT, or ^C).</p>
+<h4 id="-b">-b</h4>
+<p>Display log records starting at log sequence number (LSN) <em>start-LSN</em>; <em>start-LSN</em> is specified as a file number, followed by a slash (/) character, followed by an offset number, with no intervening whitespace.</p>
+<h4 id="-e">-e</h4>
+<p>Stop displaying log records at log sequence number (LSN) <em>stop-LSN</em>; <em>stop-LSN</em> is specified as a file number, followed by a slash (/) character, followed by an offset number, with no intervening whitespace.</p>
+<h4 id="-h">-h</h4>
+<p>Specify a home directory for the database environment; by default, the current working directory is used.</p>
+<h4 id="-n">-N</h4>
+<p>Do not acquire shared region mutexes while running. Other problems, such as potentially fatal errors, will be ignored as well. This option is intended only for debugging errors, and should not be used under any other circumstances.</p>
+<h4 id="-p">-P</h4>
+<p>Specify an environment password. Although utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<h4 id="-r">-r</h4>
+<p>Read the log files in reverse order.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="environment-variables">Environment Variables</h4>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home, as described in <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>.</p>
+<h2 id="reviewing-log-files">Reviewing Log Files</h2>
+<p>If you are running with transactions and logging, the <code>db_printlog</code> utility can be a useful debugging aid. The <code>db_printlog</code> utility will display the contents of your log files in a human readable (and machine-readable) format.</p>
+<p>The <code>db_printlog</code> utility will attempt to display any and all log files present in a designated <em>db_home</em> directory. For each log record, <code>db_printlog</code> will display a line of the form:</p>
+<pre><code>[22][28]db_big: rec: 43 txnid 80000963 prevlsn [21][10483281]
+</code></pre><p>The opening numbers in square brackets are the log sequence number (LSN) of the log record being displayed. The first number indicates the log file in which the record appears, and the second number indicates the offset in that file of the record.</p>
+<p>The first character string identifies the particular log operation being reported. The log records corresponding to particular operations are described following. The rest of the line consists of name/value pairs.</p>
+<p>The <em>rec</em> field indicates the record type (this is used to dispatch records in the log to appropriate recovery functions).</p>
+<p>The <code>txnid</code> field identifies the transaction for which this record was written. A <code>txnid</code> of 0 means that the record was written outside the context of any transaction. You will see these most frequently for checkpoints.</p>
+<p>Finally, the <code>prevlsn</code> contains the LSN of the last record for this transaction. By following <code>prevlsn</code> fields, you can accumulate all the updates for a particular transaction. During normal abort processing, this field is used to quickly access all the records for a particular transaction.</p>
+<p>After the initial line identifying the record type, each field of the log record is displayed, one item per line. There are several fields that appear in many different records and a few fields that appear only in some records.</p>
+<p>The following table presents each currently written log record type with a brief description of the operation it describes.</p>
+<p>Log Record Type | Description
+bam_adj | Used when we insert/remove an index into/from the page header of a <code>Btree</code> page.
+bam_cadjust | Keeps track of record counts in a <code>Btree</code> or <code>Recno</code> database.
+bam_cdel | Used to mark a record on a page as deleted.
+bam_curadj | Used to adjust a cursor location when a nearby record changes in a <code>Btree</code> database.
+bam_merge | Used to merge two <code>Btree</code> database pages during compaction.
+bam_pgno | Used to replace a page number in a <code>Btree</code> record.
+bam_rcuradj | Used to adjust a cursor location when a nearby record changes in a <code>Recno</code> database.
+bam_relink | Fix leaf page prev/next chain when a page is removed.
+bam_repl | Describes a replace operation on a record.
+bam_root | Describes an assignment of a root page.
+bam_rsplit | Describes a reverse page split.
+bam_split | Describes a page split.
+crdel_inmem_create | Record the creation of an in-memory named database.
+crdel_inmem_remove | Record the removal of an in-memory named database.
+crdel_inmem_rename | Record the rename of an in-memory named database.
+crdel_metasub | Describes the creation of a metadata page for a sub-database.
+db_addrem | Add or remove an item from a page of duplicates.
+db_big | Add an item to an overflow page (overflow pages contain items too large to place on the main page)
+db_cksum | Unable to checksum a page.
+db_debug | Log debugging message.
+db_noop | This marks an operation that did nothing but update the LSN on a page.
+db_ovref | Increment or decrement the reference count for a big item.
+db_pg_alloc | Indicates we allocated a page to a database.
+db_pg_free | Indicates we freed a page (freed pages are added to a free list and reused).
+db_pg_freedata | Indicates we freed a page that still contained data entries (freed pages are added to a free list and reused.)
+db_pg_init | Indicates we reinitialized a page during a truncate.
+db_pg_new | Indicates that a page was allocated and put on the free list.
+db_pg_prepare | Indicates a new page was allocated during a child transaction of a prepared transaction.
+db_pg_sort | Sort the free page list and free pages at the end of the file.
+dbreg_register | Records an open of a file (mapping the filename to a log-id that is used in subsequent log operations).
+fop_create | Create a file in the file system.
+fop_file_remove | Remove a name in the file system.
+fop_remove | Remove a file in the file system.
+fop_rename | Rename a file in the file system.
+fop_write | Write bytes to an object in the file system.
+ham_chgpg | Used to adjust a cursor location when a Hash page is removed, and its elements are moved to a different Hash page.
+ham_copypage | Used when we empty a bucket page, but there are overflow pages for the bucket; one needs to be copied back into the actual bucket.
+ham_curadj | Used to adjust a cursor location when a nearby record changes in a Hash database.
+ham_groupalloc | Allocate some number of contiguous pages to the Hash database.
+ham_insdel | Insert/delete an item on a Hash page.
+ham_metagroup | Update the metadata page to reflect the allocation of a sequence of contiguous pages.
+ham_newpage | Adds or removes overflow pages from a Hash bucket.
+ham_replace | Handle updates to records that are on the main page.
+ham_splitdata | Record the page data for a split.
+qam_add | Describes the actual addition of a new record to a Queue.
+qam_del | Delete a record in a Queue.
+qam_delext | Delete a record in a Queue with extents.
+qam_incfirst | Increments the record number that refers to the first record in the database.
+qam_mvptr | Indicates we changed the reference to either or both of the first and current records in the file.
+txn_child | Commit a child transaction.
+txn_ckp | Transaction checkpoint.
+txn_recycle | Transaction IDs wrapped.
+txn_regop | Logs a regular (non-child) transaction commit.
+txn_xa_regop | Logs a prepare message.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="utilities.html">Utilities</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/db_printlog.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

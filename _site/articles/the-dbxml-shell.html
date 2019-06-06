@@ -1,0 +1,1276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The dbxml Shell </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The dbxml Shell ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="the-dbxml-shell.md">
+<h1 id="the-dbxml-shell">The dbxml Shell</h1>
+
+<p>The <code>dbxml</code> shell is a .NET console application that allows users to run the most common administrative and maintenance tasks, such as creating containers and querying content. This version is based on the original Oracle <a href="http://docs.oracle.com/cd/E17276_01/html/api_reference/XML_CXX/dbxml.html">dbxml</a> console, but rewritten in C# to use the Figaro library and extended with several new commands designed to help facilitate .NET development. Use the <a href="https://github.com/bdbxml/figaro-dbxml-shell">GitHub</a> repository to download the source code, request a feature, or report an issue.</p>
+<p>The <code>dbxml</code> utility provides an interactive shell that you can use to manipulate containers, documents and indices, and to perform XQuery queries against those containers.</p>
+<div class="NOTE"><h5>Note</h5><p>You can build scripts for <code>dbxml</code> by passing them in with the <code>-s</code> option.</p>
+</div>
+<p><code>dbxml</code> uses an optional Berkeley DB home (environment) directory, which defaults to the current directory. An attempt is made to join an existing environment; if that fails, a private environment is created in the specified location. dbxml has a concept of a <code>default</code> open container; that is, the container upon which container operations such as adding and deleting indices are performed. The default container is set by use of the  <code>createContainer</code> and  <code>openContainer</code> commands. An in-memory container can be created using the command,  <code>createContainer &quot;&quot;</code>. This is useful for using dbxml without file system side effects.</p>
+<p>For a list of the commands available in the shell, use the  <code>help</code> command. For help on a specific command, pass the command&#39;s name to the <code>help</code> command. For example:</p>
+<pre><code>dbxml&gt; help createContainer
+
+        dbxml [-c] [-h homeDirectory]  [-P password] [-s script] [-t] [-V] [-v]  [-x] [-z] [-?]
+</code></pre><h2 id="parameters">Parameters</h2>
+<p><code>-c</code></p>
+<p>Create a new environment in the directory specified by the <code>-h</code> option. This option should only be used for debugging, since it does not allow you to specify important environment configuration options.</p>
+<p><code>-h &lt;homeDirectory&gt;</code></p>
+<p>Specify a home directory for the database environment; by default, the current working directory is used.</p>
+<p><code>-P &lt;password&gt;</code></p>
+<p>Specify an environment password. Although BDB utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<p><code>-s &lt;script&gt;</code></p>
+<p>Execute the dbxml commands contained in the <code>script</code> file upon shell startup. The commands must be specified one to a line in the script file. If any of the commands contained in the script file fail, the shell will not start.</p>
+<p>For example, the following is the contents of a script that creates a container, loads several files into it, performs a query, and then prints the results:</p>
+<pre><code>dbxml&gt; createContainer myContainer.dbxml 
+dbxml&gt; putDocument a {&lt;a&gt;&lt;b name=&amp;quot;doc1&amp;quot;&gt;doc1 n1&lt;/b&gt;&lt;c&gt;doc1 n2&lt;/c&gt;&lt;/a&gt;} 
+dbxml&gt; putDocument Avocado D:\dev\data\xmlData\nsData\Avocado.xml f 
+dbxml&gt; putDocument a {&lt;a&gt;&lt;b name=&amp;quot;doc3&amp;quot;&gt;doc3 n1&lt;/b&gt;&lt;c&gt;doc3 n2&lt;/c&gt;&lt;/a&gt;} 
+dbxml&gt; query collection(&amp;quot;myContainer.dbxml&amp;quot;)/a/b 
+dbxml&gt; print
+</code></pre><div class="NOTE"><h5>Note</h5><p>When using the <code>putDocument</code> command, be sure to use forward slashes (&#39;/&#39;) in your paths, and not the backslash (&#39;&#39;), or you may get a streaming error.</p>
+</div>
+<p>If you are using dbxml to manipulate containers that are managed by an existing database environment, you must specify the path to that existing database environment. dbxml cannot be used to create environment files that can be shared with other applications. It will either create a private environment, or join an existing, shareable environment created by another application.</p>
+<p><code>-t</code></p>
+<p>Transaction mode. Transactions are automatically used by the console for every operation that accepts a <a class="xref" href="../api/Figaro.XmlTransaction.html">XmlTransaction</a> object.</p>
+<p><code>-V</code></p>
+<p>Print software version.</p>
+<p><code>-v</code></p>
+<p>Verbose option. Specifying this option twice will increase the verbosity output.</p>
+<p><code>-x</code></p>
+<p>Secure mode - disallow access to the local file system and the Internet.</p>
+<p><code>-z &lt;size&gt;</code></p>
+<p>If an environment is created, set the cache size to <code>&lt;size&gt;</code> Mb (default: 64)</p>
+<p><code>-?</code></p>
+<p>Print the help message.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<p><code>DB_HOME</code></p>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home.</p>
+<h2 id="dbxml-interactive-shell-commands">dbxml Interactive Shell Commands</h2>
+<p>The <code>dbxml</code> shell includes the following commands:</p>
+<ul>
+<li><a href="#comment">Comment (<code>#</code>)</a></li>
+<li><a href="#addalias">addAlias</a></li>
+<li><a href="#addindex">addIndex</a></li>
+<li><a href="#close">close</a></li>
+<li><a href="#commit">commit</a></li>
+<li><a href="#compactcontainer">compactContainer</a></li>
+<li><a href="#contextquery">contextQuery</a></li>
+<li><a href="#cquery">cquery</a></li>
+<li><a href="#createcontainer">createContainer</a></li>
+<li><a href="#delindex">delIndex</a></li>
+<li><a href="#echo">echo</a></li>
+<li><a href="#getdocuments">getDocuments</a></li>
+<li><a href="#getmetadata">getMetadata</a></li>
+<li><a href="#help">help</a></li>
+<li><a href="#info">info</a></li>
+<li><a href="#listindexes">listIndexes</a></li>
+<li><a href="#lookupedgeindex">lookupEdgeIndex</a></li>
+<li><a href="#lookupindex">lookupIndex</a></li>
+<li><a href="#lookupstats">lookupStats</a></li>
+<li><a href="#opencontainer">openContainer</a></li>
+<li><a href="#preload">preload</a></li>
+<li><a href="#prepare">prepare</a></li>
+<li><a href="#print">print</a></li>
+<li><a href="#putdocument">putDocument</a></li>
+<li><a href="#putdocuments">putDocuments</a></li>
+<li><a href="#query">query</a></li>
+<li><a href="#queryplan">queryPlan</a></li>
+<li><a href="#quit">quit</a></li>
+<li><a href="#reindexcontainer">reindexContainer</a></li>
+<li><a href="#removealias">removeAlias</a></li>
+<li><a href="#removecontainer">removeContainer</a></li>
+<li><a href="#removedocument">removeDocument</a></li>
+<li><a href="#run">run</a></li>
+<li><a href="#setautoindexing">setAutoIndexing</a></li>
+<li><a href="#setbaseuri">setBaseUri</a></li>
+<li><a href="#setignore">setIgnore</a></li>
+<li><a href="#setlazy">setLazy</a></li>
+<li><a href="#setmetadata">setMetaData</a></li>
+<li><a href="#setnamespace">setNamespace</a></li>
+<li><a href="#setprojection">setProjection</a></li>
+<li><a href="#setquerytimeout">setQueryTimeout</a></li>
+<li><a href="#setvariable">setVariable</a></li>
+<li><a href="#setverbose">setVerbose</a></li>
+<li><a href="#sync">sync</a></li>
+<li><a href="#time">time</a></li>
+<li><a href="#transaction">transaction</a></li>
+<li><a href="#upgradecontainer">upgradeContainer</a></li>
+</ul>
+<h3 id="comment">Comment</h3>
+<p>Comment. Does nothing.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; #this is a comment
+</code></pre><h3 id="addalias">addAlias</h3>
+<p>Add an alias to the default container. You can refer to this alias, instead of the container&#39;s name, when referencing the container in queries.</p>
+<p>Usage: </p>
+<pre><code>addAlias &lt;alias&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alias</td>
+<td>The alias to use for the container.</td>
+</tr>
+</tbody>
+</table>
+<p>Use <a href="#opencontainer">openContainer</a> for opening the default container.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; opencontainer clients.dbxml
+dbxml&gt; addalias clients
+Added alias: clients
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="addindex">addIndex</h3>
+<p>Add an index to the container.</p>
+<p>If the <code>namespaceUri</code> and <code>name</code> are not set, then this command adds to the default index.</p>
+<p>Usage: </p>
+<pre><code>addIndex [&lt;nodeNamespaceUri&gt; &lt;nodeName&gt;] &lt;indexDescription&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodeNamespaceUri</td>
+<td>Optional. The namespace URI of the indexed node or attribute. You can specify using the default namespace by entering <code>&quot;&quot;</code> for this value.</td>
+</tr>
+<tr>
+<td>nodeName</td>
+<td>Optional. The name of the node or attribute to be indexed.</td>
+</tr>
+<tr>
+<td>indexDescription</td>
+<td>The index, in <code>[unique]-{path type}-{node type}-{key type}-{syntax type}</code> format. See <a href="using-indices.html">Using Indices</a> for more information.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>dbxml&gt; addIndex &quot;&quot; Key unique-node-element-equality-string
+Adding index type: unique-node-element-equality-string to node: {}:Key
+</code></pre><p>This command uses <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_AddIndex_Figaro_XmlTransaction_System_String_System_String_Figaro_IndexingStrategy_Figaro_UpdateContext_">Figaro.Container.AddIndex</a> and <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_AddDefaultIndex_System_String_Figaro_UpdateContext_">Figaro.Container.AddDefaultIndex</a>.</p>
+<p><a href="#">to top</a></p>
+<h3 id="close">close</h3>
+<p>Closes a container opened by the <code>dbxml</code> shell.</p>
+<p>Usage: </p>
+<pre><code>close &lt;containerName&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containerName</td>
+<td>Optional. The container to close. If a container isn&#39;t specified, all open containers are closed.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; close testdb.dbxml
+Container testdb.dbxml closed.
+You have 2 containers open.
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="commit">commit</h3>
+<p>Commits the current transaction in a transactional <code>dbxml</code> shell environment, and starts a new one.</p>
+<p>Usage: </p>
+<pre><code>commit
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="compactcontainer">compactContainer</h3>
+<p>Compacts a container to shrink its size.</p>
+<p>Usage: </p>
+<pre><code>openContainer &lt;containerName&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containerName</td>
+<td>The container to compact.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>dbxml&gt; compactContainer testdb.dbxml
+Container compacted: testdb.dbxml
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="contextquery">contextQuery</h3>
+<p>Execute the query expression using the last results as the context item.</p>
+<p>Usage: </p>
+<pre><code>contextQuery &lt;queryExpression&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryExpression</td>
+<td>The query to run against the current results.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; getDocuments
+4 documents found
+dbxml&gt; contextQuery &quot;let $doc:= . where $doc/node1=7 return $doc&quot;
+1 objects returned for expression  &#39;let $doc:= . where $doc/node1=7 return $doc&#39;
+</code></pre><p>This command uses @Figaro.XmlManager.Prepare to create a <a class="xref" href="../api/Figaro.XQueryExpression.html">XQueryExpression</a>, then loops through the <a class="xref" href="../api/Figaro.XmlValue.html">XmlValue</a> objects in the results, calling @Figaro.XQueryExpression.Execute.</p>
+<p><a href="#">to top</a></p>
+<h3 id="cquery">cquery</h3>
+<p>Execute the query expression in the context of the default (current) container.</p>
+<p>Usage: </p>
+<pre><code>cquery &lt;queryExpression&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryExpression</td>
+<td>The query to run against the container. This is useful for scenarios where you don&#39;t want to explicitly use the <code>collection()</code> function in your query.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; opencontainer shelltest.dbxml
+dbxml&gt; setnamespace &quot;&quot; &quot;http://schemas.endpoint-systems.net/samples/figaro/v1/&quot;
+Binding -&gt; http://schemas.endpoint-systems.net/samples/figaro/v1/
+dbxml&gt; cquery &quot;for $f in /StoredTableData/Table return $f&quot;
+48 objects returned for eager expression &#39;for $f in /StoredTableData/Table return $f&#39;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="createcontainer">createContainer</h3>
+<p>Creates a new container, which then becomes the new container.</p>
+<p>Usage: </p>
+<pre><code>createContainer &lt;contaiNername&gt; [n|in|d|id] [[no]validate]`
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containerName</td>
+<td>The name of the container to create.</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Creates a node storage container.</td>
+</tr>
+<tr>
+<td>in</td>
+<td>Creates a node storage container with node indexes.</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Creates a document storage container.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Creates a document storage container with node indexes.</td>
+</tr>
+<tr>
+<td>[no]validate</td>
+<td>Create the container with (or without) Xml validation support.</td>
+</tr>
+</tbody>
+</table>
+<p>If another container is open before this command is run, the container will be closed.</p>
+<p>The default is to create a node storage container, with node indexes.</p>
+<p>A container name of &quot;&quot; creates an in-memory container.</p>
+<p>Example:</p>
+<pre><code>createContainer edi834.dbxml d novalidate
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="delindex">delIndex</h3>
+<p>Deletes an index from the default container.</p>
+<p>Usage: </p>
+<pre><code>delIndex [&lt;nodeNamespaceUri&gt; &lt;nodeName&gt;] &lt;indexDescription&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodeNamespaceUri</td>
+<td>The namespace of the deleted index&#39;s node.</td>
+</tr>
+<tr>
+<td>nodeName</td>
+<td>The name of the deleted index&#39;s node.</td>
+</tr>
+<tr>
+<td>indexDescription</td>
+<td>The indexing strategy, in <code>unique-node-metadata-equality-string</code> format.</td>
+</tr>
+</tbody>
+</table>
+<p>If the <code>namespaceUri</code> and <code>nodeName</code> are not set, then this command deletes from the default index.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; delindex http://schemas.endpointsystems.net/samples/figaro/v1/ id unique-node-element-equality-string
+Deleting index type: unique-node-element-equality-string from node: {http://schemas.endpointsystems.net/samples/figaro/v1/}:id
+dbxml&gt;
+</code></pre><p>This command uses the <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_DeleteIndex_System_String_System_String_System_String_Figaro_UpdateContext_">Figaro.Container.DeleteIndex</a> and <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_DeleteDefaultIndex_System_String_Figaro_UpdateContext_">Figaro.XmlIndexSpecification.DeleteDefaultIndex</a> methods.</p>
+<div class="NOTE"><h5>Note</h5><p>You cannot delete the default node index in a container.</p>
+</div>
+<p><a href="#">to top</a></p>
+<h3 id="echo">echo</h3>
+<p>This command echoes the (optional) text, followed by a newline.</p>
+<p>Usage: </p>
+<pre><code>echo [text]
+</code></pre><p>Example:</p>
+<pre><code>dbxml&gt; echo &quot;hi there&quot;
+hi there
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="getdocuments">getDocuments</h3>
+<p>Gets document(s) by name from the default container</p>
+<p>Usage: </p>
+<pre><code>getDocuments [&lt;docName&gt;]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docName</td>
+<td>Optional. The document to look up in the default container.</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>docName</code> is set, it is looked up in the default container. If no arguments are used, all documents in the container are looked up, and placed in the results.</p>
+<p>The resulting document names and/or content can be displayed using the <code>print</code> command.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; getdocuments instance1
+1 documents found
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="getmetadata">getMetaData</h3>
+<p>Get metadata item from the named content.</p>
+<p>Usage: </p>
+<pre><code>getMetaData &lt;docName&gt; [&lt;metaDataUri&gt; &lt;metaDataName&gt;]
+</code></pre><p>Get a metadata item or a list of named metadata items from the named document. This method resets the default results to the returned value. This command, when used to return a specific item, is equivalent to the query expression:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docName</td>
+<td>The name of the document to retrieve metadata for.</td>
+</tr>
+<tr>
+<td>metaDataUri</td>
+<td>(Optional) The URI of the referenced metadata.</td>
+</tr>
+<tr>
+<td>metaDataName</td>
+<td>The name of the referenced metadata to look up.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>for $i in doc(&#39;containerName/docName&#39;) return dbxml:metadata(&#39;metaDataUri:metaDataName&#39;, $i)
+
+dbxml&gt; getmetadata instance1
+Metadata for document: instance1 http://www.sleepycat.com/2002/dbxml:name
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="help">help</h3>
+<p>Print help information. Use <code>help &lt;commandName&gt;</code> for extended help.</p>
+<p><a href="#">to top</a></p>
+<h3 id="info">info</h3>
+<p>Get info on the default container.</p>
+<p>Usage: </p>
+<pre><code>info [preload]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preload</td>
+<td>If specified, return information on any preloaded containers.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; info
+Version: Oracle: Berkeley DB XML 2.4.16: (October 21, 2008)
+Berkeley DB 4.6.21: (September 27, 2007)
+Default container name: shelltest.dbxml
+Type of default container: NodeContainer
+Index Nodes: on Shell and XmlManager
+state: Not transactional
+Verbose: on Query context
+state: LiveValues,Eager
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="listindexes">listIndexes</h3>
+<p>List all indexes in the default container.</p>
+<p>Usage: </p>
+<pre><code>listIndexes
+</code></pre><p>This command calls <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_GetIndexSpecification">Figaro.Container.GetIndexSpecification</a> and iterates over the indexes in the <a class="xref" href="../api/Figaro.XmlIndexSpecification.html">Figaro.XmlIndexSpecification</a>.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; listindexes
+Index: unique-node-metadata-equality-string for node {http://www.sleepycat.com/2002/dbxml}:name
+1 indexes found.
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="lookupedgeindex">lookupEdgeIndex</h3>
+<p>Performs an edge lookup in the default container</p>
+<p>Usage: </p>
+<pre><code>lookupEdgeIndex &lt;indexDescription&gt; &lt;namespaceUri&gt; &lt;nodeName&gt; &lt;parentNamespaceUri&gt; &lt;parentNodeName&gt; [[&lt;operation&gt;] &lt;value&gt;]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>indexDescription</td>
+<td>The indexing strategy, in <code>unique-node-metadata-equality-string</code> format.</td>
+</tr>
+<tr>
+<td>namespaceUri</td>
+<td>The URI of the referenced node.</td>
+</tr>
+<tr>
+<td>nodeName</td>
+<td>The name of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNamespaceUri</td>
+<td>The URI of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNodeName</td>
+<td>The name of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>Optional. Valid operations are &#39;&gt;&#39;, &#39;&lt;&#39;, &#39;&gt;=&#39;, &#39;&lt;=&#39;, or the default value of &#39;=&#39;.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Optional. The name of the parent of the referenced node.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#">to top</a></p>
+<h3 id="lookupindex">lookupIndex</h3>
+<p>Performs an index lookup in the default container</p>
+<p>Usage: </p>
+<pre><code>lookupIndex &lt;indexDescription&gt; &lt;namespaceUri&gt; &lt;nodeName&gt; [[&lt;operation&gt;] &lt;value&gt;]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>indexDescription</td>
+<td>The indexing strategy, in <code>unique-node-metadata-equality-string</code> format.</td>
+</tr>
+<tr>
+<td>namespaceUri</td>
+<td>The URI of the referenced node.</td>
+</tr>
+<tr>
+<td>nodeName</td>
+<td>The name of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNamespaceUri</td>
+<td>The URI of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNodeName</td>
+<td>The name of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>Optional. Valid operations are &#39;&gt;&#39;, &#39;&lt;&#39;, &#39;&gt;=&#39;, &#39;&lt;=&#39;, or the default value of &#39;=&#39;.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Optional. The name of the parent of the referenced node.</td>
+</tr>
+</tbody>
+</table>
+<p>Available indexes can be found using the <a href="#listindexes">listIndexes</a> command.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; listindexes
+Index: unique-node-metadata-equality-string for node {http://www.sleepycat.com/2002/dbxml}:name
+1 indexes found.
+dbxml&gt; lookupIndex node-metadata-equality-string http://www.sleepycat.com/2002/dbxml name avocado
+1 objects returned for eager index lookup &#39;node-metadata-equality-string&#39;
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="lookupstats">lookupStats</h3>
+<p>Look up statistics on the default container.</p>
+<p>Usage:</p>
+<pre><code>lookupStats &lt;inDexdescription&gt; &lt;namespaceUri&gt; &lt;nodeName&gt; [&lt;parentNamespaceUri&gt; &lt;parentNodeName&gt; &lt;value&gt;]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>indexDescription</td>
+<td>The indexing strategy, in <code>unique-node-metadata-equality-string</code> format.</td>
+</tr>
+<tr>
+<td>namespaceUri</td>
+<td>The URI of the referenced node.</td>
+</tr>
+<tr>
+<td>nodeName</td>
+<td>he name of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNamespaceUri</td>
+<td>Optional. The URI of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>parentNodeName</td>
+<td>Optional. The name of the parent of the referenced node.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Optional. The name of the parent of the referenced node.</td>
+</tr>
+</tbody>
+</table>
+<!-- operation | Valid operations are Valid operations are '>', '<', '>=', '<=', or the default value of '='. -->
+<p>The optional parent URI and name are used for edge indexes.</p>
+<p>Available indexes can be found using the <a href="#listindexes">listIndexes</a> command.</p>
+<pre><code>dbxml&gt; lookupStats node-metadata-equality-string http://www.sleepycat.com/2002/dbxml name
+Number of  Indexed Keys: 1 Number of Unique Keys: 1 Sum Key Value Size: 12
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="opencontainer">openContainer</h3>
+<p>Open a container, and use it as the default container.</p>
+<p>Usage: </p>
+<pre><code>openContainer &lt;container&gt; [[no]validate]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>container</td>
+<td>The container to open.</td>
+</tr>
+<tr>
+<td>[no]validate</td>
+<td>Open the container with (or without) XML validation support.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; openContainer clients.dbxml validate
+</code></pre><h3 id="preload">preload</h3>
+<p>Preloads (opens) a container.</p>
+<p>Usage: </p>
+<pre><code>preload &lt;container&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>container</td>
+<td>The container to preload.</td>
+</tr>
+</tbody>
+</table>
+<p>This command calls the @Figaro.XmlManager.OpenContainer method to open the container and store the resulting object in a vector. This holds the container open for the lifetime of the program. There is no corresponding <code>unload</code> or <code>close</code> command.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; preload test2.dbxml
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="prepare">prepare</h3>
+<p>Prepare the given query expression as the default pre-parsed query.</p>
+<p>Usage: </p>
+<pre><code>prepare &lt;queryExpression&gt; [[no]validate]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryExpression</td>
+<td>The query expression to prepare.</td>
+</tr>
+<tr>
+<td>[no]validate</td>
+<td>Query the container with (or without) XML validation support.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; prepare &quot;for $veg in collection(&#39;shelltest.dbxml&#39;)/vegetables:item return $veg&quot;
+Prepared expression &#39;for $veg in collection(&#39;shelltest.dbxml&#39;)/vegetables:item return $veg&#39;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="print">print</h3>
+<p>Prints most recent results, optionally to a file</p>
+<p>Usage: </p>
+<pre><code>print | printNames [n Number] [pathToFile]
+</code></pre><p>If <code>printNames</code> is used, the results are turned into document names and printed if possible. If the results cannot be converted, the command will fail. If the optional argument <code>n</code> is specified followed by a number, then only the specified number of results are printed. If the optional <code>pathToFile</code> parameter is specified, the output is written to the named file rather than <code>stdout</code>.</p>
+<h3 id="putdocument">putDocument</h3>
+<p>Insert a document into the default container.</p>
+<p>Usage: </p>
+<pre><code>putDocument &lt;nameprefix&gt; &lt;string&gt; [f|s|q]
+</code></pre><p>Insert a document one of three ways:</p>
+<ul>
+<li>By string content (the default, specify <code>s</code>)</li>
+<li>By filename. String is a file name, specify <code>f</code></li>
+<li>By XQuery. String is an XQuery expression, specify <code>q</code></li>
+</ul>
+<h3 id="putdocuments">putDocuments</h3>
+<p>Put a collection of documents found in the specified directory, with the optional file filter, into the default container.</p>
+<div class="NOTE"><h5>Note</h5><p>This command incorporates the files names, without the file extensions, from the file system when inserting into the container. If a file already exists with the same name in the container, an exception will be thrown and processing will stop.</p>
+</div>
+<p>Usage: </p>
+<pre><code>putDocuments &lt;directory&gt; [filter]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>directory</td>
+<td>The directory containing the XML files you wish to put into the default container.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>The file filter. The default value is <code>*.xml</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>In this example we&#39;re inserting XML files with the default file filter into the default container:</p>
+<pre><code>dbxml&gt;putdocuments C:\dev\db\xmldata\simpledata\
+298 documents inserted into groceries.dbxml container.
+dbxml&gt;
+</code></pre><h3 id="query">query</h3>
+<p>Execute the given query expression, or the default pre-parsed query.</p>
+<p>Usage: </p>
+<pre><code>query [queryExpression]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryExpression</td>
+<td>Optional query expression to execute. If you previously prepared a query, you do not have to enter an expression.</td>
+</tr>
+</tbody>
+</table>
+<p>In this example we are executing the query we prepared in the <a href="#prepare">prepare</a> command.</p>
+<p>Example (using prepared command):</p>
+<pre><code>dbxml&gt; query
+100 objects returned for eager expression &#39;for $veg in collection(&#39;shelltest.dbxml&#39;)/vegetables:item return $veg&#39;
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="queryplan">queryPlan</h3>
+<p>Prints the query plan for the specified query expression.</p>
+<p>Usage: </p>
+<pre><code>queryPlan &lt;queryExpression&gt; [pathToFile]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryExpression</td>
+<td>The query expression to evaluate the query plan for.</td>
+</tr>
+<tr>
+<td>pathToFile</td>
+<td>The optional file path to save the query plan to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; queryPlan &quot;for $veg in collection(&#39;shelltest.dbxml&#39;)/vegetables:item return $veg&quot;
+
+&lt;XQuery&gt; &lt;Return&gt; &lt;ForTuple uri=&amp;quot;&amp;quot; name=&amp;quot;veg&amp;quot;&gt; &lt;ContextTuple/&gt; &lt;QueryPlanToAST&gt; &lt;StepQP axis=&amp;quot;child&amp;quot; prefix=&amp;quot;vegetables&amp;quot; uri=&amp;quot;http://groceryItem.dbxml/vegetables&amp;quot; name=&amp;quot;item&amp;quot; nodeType=&amp;quot;element&amp;quot;&gt; &lt;SequentialScanQP container=&amp;quot;shelltest.dbxml&amp;quot; nodeType=&amp;quot;document&amp;quot;/&gt; &lt;/StepQP&gt; &lt;/QueryPlanToAST&gt; &lt;/ForTuple&gt; &lt;QueryPlanToAST&gt; &lt;VariableQP name=&amp;quot;veg&amp;quot;/&gt; &lt;/QueryPlanToAST&gt; &lt;/Return&gt; &lt;/XQuery&gt;
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="quit">quit</h3>
+<p>Quits the dbxml shell.</p>
+<p>Usage: </p>
+<pre><code>quit
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="reindexcontainer">reindexContainer</h3>
+<p>Re-index a container, optionally changing index type.</p>
+<p>Usage: </p>
+<pre><code>reindexContainer &lt;containerName&gt; &lt;d|n&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containerName</td>
+<td>The container name.</td>
+</tr>
+<tr>
+<td>[d/n]</td>
+<td>Optional. Change the indexing type from nodes (&#39;n&#39;) to documents (&#39;d&#39;), or vice versa, if required.</td>
+</tr>
+</tbody>
+</table>
+<p>This command can take a long time on large containers.</p>
+<p>Containers must be closed, and should be backed up before executing this command.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; reindexcontainer shelltest.dbxml
+Container reindexed: shelltest.dbxml
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="removealias">removeAlias</h3>
+<p>Remove an alias from the default container.</p>
+<p>Usage: </p>
+<pre><code>removeAlias &lt;alias&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alias</td>
+<td>The alias associated with the default container.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; opencontainer shelltest.dbxml
+dbxml&gt; addalias &#39;shelltest&#39;
+Alias &#39;shelltest&#39; added to container &#39;shelltest.dbxml&#39;.
+dbxml&gt; removealias &#39;shelltest&#39;
+Removed alias &#39;shelltest&#39; from container &#39;shelltest.dbxml&#39;.
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="removecontainer">removeContainer</h3>
+<p>Removes (deletes) the named container.</p>
+<p>Usage: </p>
+<pre><code>removeContainer &lt;contaiNername&gt;
+</code></pre><p>Removes (deletes) the named container. The container must not be open, or the command will fail. If the container is the current container, the current results and container are released in order to perform the operation.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>container</td>
+<td>The container to remove.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; removeContainer test2.dbxml
+Removing container: test2.dbxml
+Container removed
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="removedocument">removeDocument</h3>
+<p>Remove (delete) a document from the default container.</p>
+<p>Usage: </p>
+<pre><code>removeDocument &lt;Docname&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docName</td>
+<td>The name of the document to remove.</td>
+</tr>
+</tbody>
+</table>
+<p>Uses the <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_DeleteDocument_Figaro_XmlDocument_Figaro_UpdateContext_">Figaro.Container.DeleteDocument</a> method.</p>
+<div class="NOTE"><h5>Note</h5><p>Document names are used in both node and document container types.</p>
+</div>
+<p>Example:</p>
+<pre><code>dbxml&gt; removedocument Artichoke
+Document deleted, name = Artichoke
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="run">run</h3>
+<p>Runs the given file as a script.</p>
+<p>Usage: </p>
+<pre><code>run &lt;scriptFile&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scriptFile</td>
+<td>The <code>dbxml</code> file to execute.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#">to top</a></p>
+<h3 id="setautoindexing">setAutoIndexing</h3>
+<p>Set auto-indexing state of the default container.</p>
+<p>Usage: </p>
+<pre><code>setAutoIndexing &lt;on|off&gt;
+</code></pre><p>Sets the auto-indexing state of the specified value. The <code>info</code> command returns the current state of auto-indexing.</p>
+<p><a href="#">to top</a></p>
+<h3 id="setbaseuri">setBaseUri</h3>
+<p>Get/set the base URI in the default context.</p>
+<p>Usage: </p>
+<pre><code>setBaseUri [&lt;uri&gt;]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td>The base URI. Must be in the form &quot;scheme:path&quot;. If not specified, the command returns the current base URI.</td>
+</tr>
+</tbody>
+</table>
+<p>This command calls the <a class="xref" href="../api/Figaro.QueryContext.html#Figaro_QueryContext_BaseUri">BaseUri</a> property.</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; setbaseuri http://groceryItem.dbxml/fruits
+Base URI = &#39;http://groceryItem.dbxml/fruits&#39;
+dbxml&gt; setBaseUri
+Current base URI: &#39;http://groceryItem.dbxml/fruits&#39;
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="setignore">setIgnore</h3>
+<p>Tell the shell to ignore script errors.</p>
+<p>Usage: </p>
+<pre><code>setIgnore &lt;on|off&gt;
+</code></pre><p>When set on, errors from commands in dbxml shell scripts will be ignored. When off, they will cause termination of the script. Default value is <code>off</code>.</p>
+<p><a href="#">to top</a></p>
+<h3 id="setlazy">setLazy</h3>
+<p>Sets lazy evaluation on or off in the default context.</p>
+<p>Usage: </p>
+<pre><code>setLazy &lt;on|off&gt;
+</code></pre><p>This command calls the <a class="xref" href="../api/Figaro.QueryContext.html#Figaro_QueryContext_EvaluationType">Figaro.QueryContext.EvaulationType</a> property.</p>
+<p><a href="#">to top</a></p>
+<h3 id="setmetadata">setMetaData</h3>
+<p>Set a metadata item on the named document.</p>
+<p>Usage: </p>
+<pre><code>setMetaData &lt;docName&gt; &lt;metaDataUri&gt; &lt;metaDataName&gt; &lt;metaDataType&gt; &lt;metaDataValue&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docName</td>
+<td>The name of the document to add metadata to.</td>
+</tr>
+<tr>
+<td>metaDataUri</td>
+<td>The URI of the metadata.</td>
+</tr>
+<tr>
+<td>metaDataName</td>
+<td>The name of the metadata.</td>
+</tr>
+<tr>
+<td>metaDataValue</td>
+<td>The value of the metadata.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; setMetadata apples &quot;http://fruits.net/&quot; fruit Apple
+MetaData item &#39;http://fruits.net/:fruit&#39; added to document apples
+
+dbxml&gt; getmetadata apples
+Metadata for document: apples
+http://www.sleepycat.com/2002/dbxml:name
+http://fruits.net/:fruit
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="setnamespace">setNamespace</h3>
+<p>Create a <code>prefix-&gt;namespace_binding</code> in the default context.</p>
+<p>Usage: </p>
+<pre><code>setNamespace &lt;prefix&gt; &lt;namespace&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix</td>
+<td>The namespace prefix used by the XML documents in the container.</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>The namespace associated with the specified prefix.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; setnamespace fruits http://groceryItem.dbxml/fruits
+Binding fruits -&gt; http://groceryItem.dbxml/fruits
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="setprojection">setProjection</h3>
+<p>Enables or disables the use of the document projection optimization.</p>
+<p>Usage: </p>
+<pre><code>setProjection &lt;on|off&gt;
+</code></pre><div class="NOTE"><h5>Note</h5><p>Document projection uses static analysis of the query to materialize only those portions of the document relevant to the query, which can significantly enhance performance of queries against documents from <code>Wholedoc</code> containers and documents not in a container.</p>
+</div>
+<p>It should not be used if arbitrary navigation of the resulting nodes is to be performed, as not all nodes in the original document will be present and unexpected results could be returned.
+<a href="#">to top</a></p>
+<h3 id="setquerytimeout">setQueryTimeout</h3>
+<p>Set a query timeout in seconds in the default context.</p>
+<p>Usage: </p>
+<pre><code>setQueryTimeout &lt;seconds&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seconds</td>
+<td>The query timeout, specified in seconds.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; setQueryTimeout 10
+Setting query timeout to 10 seconds
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="setvariable">setVariable</h3>
+<p>Sets an untyped variable in the current context.</p>
+<p>Usage: </p>
+<pre><code>setVariable &lt;varName&gt; &lt;value&gt; [(&lt;value&gt; ...)]
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>varName</td>
+<td>The variable name.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>The variable value.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>dbxml&gt; setvariable fruit apple
+Setting $fruit = apple
+
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="setverbose">setVerbose</h3>
+<p>Set verbosity output settings for the shell.</p>
+<p>Usage: </p>
+<pre><code>setVerbose &lt;level&gt; &lt;category&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>level</td>
+<td><ul style="list-style:none;"><li> <code>0x01</code> -- LEVEL_DEBUG -- program execution tracing@Figaro.UpdateContext <code>0x02</code> -- LEVEL_INFO -- informational messages@Figaro.UpdateContext <code>0x04</code> -- LEVEL_WARNING -- recoverable warnings@Figaro.UpdateContext <code>0x08</code> -- LEVEL_ERROR -- unrecoverable errors@Figaro.UpdateContext <code>-1</code> -- LEVEL_ALL --everything</li></ul></td>
+</tr>
+<tr>
+<td>category</td>
+<td><ul style="list-style:none;"><li> <code>0x01</code> -- CATEGORY_INDEXER -- messages from the indexer@Figaro.UpdateContext <code>0x02</code> -- CATEGORY_QUERY -- messages from the query processor@Figaro.UpdateContext <code>0x04</code> -- CATEGORY_OPTIMIZER -- messages from the query optimizer@Figaro.UpdateContext <code>0x08</code> -- CATEGORY_DICTIONARY -- messages from the name dictionary@Figaro.UpdateContext <code>0x10</code> -- CATEGORY_CONTAINER -- messages from container management@Figaro.UpdateContext <code>0x20</code> -- CATEGORY_NODESTORE -- messages from node storage management@Figaro.UpdateContext <code>0x40</code> -- CATEGORY_MANAGER -- messages from the manager@Figaro.UpdateContext <code>-1</code> -- CATEGORY_ALL -- everything</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>Level is used for <a class="xref" href="../api/Figaro.LogConfiguration.html#Figaro_LogConfiguration_SetLogLevel_Figaro_LogConfigurationLevel_System_Boolean_">Figaro.LogConfiguration.SetLogLevel</a>.</p>
+<p>Category is used for <a class="xref" href="../api/Figaro.LogConfiguration.html#Figaro_LogConfiguration_SetCategory_Figaro_LogConfigurationCategory_System_Boolean_">Figaro.LogConfiguration.SetCategory</a>.</p>
+<p>Using <code>0 0</code> for the parameters turns verbosity off. Using <code>-1 -1</code> turns on maximum verbosity.</p>
+<p>The values are masks from the library, and can be combined. For example, to turn on INDEXER and optimizer messages, use a category of 0x03.</p>
+<p>Example:</p>
+<pre><code>#set verbose debug &amp; warning levels on the indexer and container categories
+dbxml&gt; setverbose 0x01|0x04 0x01|0x10
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="sync">sync</h3>
+<p>Sync the current container to disk.</p>
+<p>Usage: </p>
+<pre><code>sync
+</code></pre><p>This command syncs the current container to disk, using <a class="xref" href="../api/Figaro.Container.html#Figaro_Container_Sync">Figaro.Container.Sync</a>.</p>
+<p><a href="#">to top</a></p>
+<h3 id="time">time</h3>
+<p>Wrap a shell command in a wall-clock timer.</p>
+<p>Usage: </p>
+<pre><code>time &lt;command&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command</td>
+<td>The <code>dbxml</code> shell command to run.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE"><h5>Note</h5><p>The <code>echo</code>, <code>help</code>, and <code>setIgnore</code> commands do not respond to the <code>time</code> command. </p>
+</div>
+<p>If the verbose switch is enabled for the shell, the time command output is always generated.</p>
+<p>This command wraps a timer around the specified command and times its execution. The result is sent to the console window (<code>stdout</code>).</p>
+<p>Example:</p>
+<pre><code>dbxml&gt; time cquery &quot;for $i in /fruits:item return $i&quot;
+96 objects returned for eager expression &#39;for $i in /fruits:item return $i&#39;
+Time in seconds for command &#39;cquery&#39;: 0.013
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="transaction">transaction</h3>
+<p>Create a transaction for all subsequent operations to use.</p>
+<p>Usage: </p>
+<pre><code>transaction
+</code></pre><p>Any transaction already in force is committed.</p>
+<p>This command uses <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction_Figaro_TransactionType_">Figaro.XmlManager.CreateTransaction</a>.</p>
+<p>The following example is used after starting the dbxml shell with the <code>-t</code> option and after opening the default container:</p>
+<pre><code>dbxml&gt; transaction
+Transaction started
+dbxml&gt; putdocument apple1 d:\dev\db\xmlData\nsData\apples.xml f
+Document added, name = apple1
+dbxml&gt; commit
+Transaction committed
+dbxml&gt;
+</code></pre><p><a href="#">to top</a></p>
+<h3 id="upgradecontainer">upgradeContainer</h3>
+<p>Upgrade a container to the current container format.</p>
+<p>Usage: </p>
+<pre><code>upgradeContainer &lt;contaiNername&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>containerName</td>
+<td>The name of the container to upgrade.</td>
+</tr>
+</tbody>
+</table>
+<p>This command can take a long time on large containers. Containers should be backed up before running this command.</p>
+<p><a href="#">to top</a></p>
+<h2 id="see-also">See Also</h2>
+<h3 id="other-resources">Other Resources</h3>
+<p><a href="utilities.html">Utilities</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/the-dbxml-shell.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

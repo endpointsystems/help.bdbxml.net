@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Looking Up Indexed XML Data </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Looking Up Indexed XML Data ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="looking-up-indexed-xml-data.md">
+<h1 id="looking-up-indexed-xml-data">Looking Up Indexed XML Data</h1>
+
+<h2 id="looking-up-indexed-documents">Looking Up Indexed Documents</h2>
+<p>You can retrieve all of the values referenced by an index using an <a class="xref" href="../api/Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object, which is returned by the <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_CreateIndexLookup_Figaro_Container_System_String_System_String_System_String_Figaro_XmlValue_Figaro_IndexLookupOperation_">CreateIndexLookup(Container, String, String, String, XmlValue, IndexLookupOperation)</a> method. <a class="xref" href="../api/Figaro.XmlIndexLookup.html">XmlIndexLookup</a> allows you to obtain an <a class="xref" href="../api/Figaro.XmlResults.html">XmlResults</a> object that contains all of the nodes or documents for which the identified index has keys. Whether nodes or documents is return depends on several factors:</p>
+<ul>
+<li>If your container is of type <a class="xref" href="../api/Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a>, then by default entire documents are always returned in this method&#39;s results set. If your container is of type <a class="xref" href="../api/Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a> then by default this method returns the nodes to which the index&#39;s keys refer. For example, every container is created with a default index that ensures the uniqueness of the document names in your container.</li>
+<li>URI is <code>http://www.sleepycat.com/2002/dbxml</code>.</li>
+<li>Node name is <code>name</code>.</li>
+<li>Indexing strategy is <code>unique-node-metadata-equality-string</code>.</li>
+</ul>
+<p>Given this, you can efficiently retrieve every document in the container using <a class="xref" href="../api/Figaro.XmlIndexLookup.html">XmlIndexLookup</a> as follows:</p>
+<pre><code class="lang-C#">using (var mgr = new XmlManager(ManagerInitOptions.AllowAutoOpen))
+{
+    using (var container = mgr.OpenContainer(simpleContainer))
+    {
+        // get a query context
+        QueryContext queryContext = mgr.CreateQueryContext();
+        XmlValue val = new XmlValue(&quot;Bananas&quot;);
+        XmlIndexLookup lookup = mgr.CreateIndexLookup(container, &quot;&quot;,
+                                                      &quot;product&quot;,
+                                                      &quot;unique-node-element-equality-string&quot;, val,
+                                                      IndexLookupOperation.Equal);
+        //perform lookup with an additional option specified
+        XmlResults res = lookup.Execute(queryContext, IndexLookupOptions.CacheDocuments);
+        while (res.HasNext())
+        {
+            XmlDocument doc = res.NextDocument();
+            trace(&quot;document: {0}&quot;, doc.Name);
+            trace(&quot;{0}&quot;, doc);
+        }
+    }
+}
+</code></pre><p>In the event that you want to look up an edge index, you must provide the lookup method with both the node and the parent node that together comprise the XML edge.</p>
+<p>For example, suppose you have the following document in your container:</p>
+<pre><code class="lang-XML">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;fruits:item xmlns:fruits=&quot;http://groceryItem.dbxml/fruits&quot;&gt;
+  &lt;product&gt;Bananas&lt;/product&gt;
+  &lt;inventory&gt;
+    &lt;sku&gt;Banafruiqud6Kq&lt;/sku&gt;
+    &lt;price&gt;0.55&lt;/price&gt;
+    &lt;inventory&gt;220&lt;/inventory&gt;
+  &lt;/inventory&gt;
+  &lt;vendor&gt;Simply Fresh&lt;/vendor&gt;
+&lt;/fruits:item&gt;
+</code></pre><p>Further suppose you indexed the presence of the <code>fruits/product</code> edges. In this case, you can look up the values referred to by this index by doing the following:</p>
+<pre><code class="lang-C#">//get our manager
+using (var mgr = new XmlManager())
+{
+    //open a container
+    using (var container = mgr.OpenContainer(simpleContainer))
+    {
+        // get a query context
+        QueryContext queryContext = mgr.CreateQueryContext();
+        XmlValue val = new XmlValue(&quot;Banafruiqud6Kq&quot;);
+        XmlIndexLookup lookup = mgr.CreateIndexLookup(container, &quot;&quot;,
+                                                      &quot;sku&quot;,
+                                                      &quot;unique-edge-element-equality-string&quot;, val,
+                                                      IndexLookupOperation.None);
+        //perform lookup with an additional option specified
+        lookup.SetParent(&quot;&quot;, &quot;inventory&quot;);
+        XmlResults res = lookup.Execute(queryContext, IndexLookupOptions.CacheDocuments);
+        while (res.HasNext())
+        {
+            XmlDocument doc = res.NextDocument();
+            Console.WriteLine(&quot;document: {0}&quot;, doc.Name);
+            Console.WriteLine(&quot;{0}&quot;, doc.ToString());
+        }
+    }
+}
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.XmlIndexLookup.html">XmlIndexLookup</a></li>
+<li><a class="xref" href="../api/Figaro.XmlContainerType.html">XmlContainerType</a></li>
+<li><a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_CreateIndexLookup_Figaro_Container_System_String_System_String_System_String_Figaro_XmlValue_Figaro_IndexLookupOperation_">CreateIndexLookup(Container, String, String, String, XmlValue, IndexLookupOperation)</a></li>
+<li><a class="xref" href="using-indices.html">Using Indices</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/looking-up-indexed-xml-data.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

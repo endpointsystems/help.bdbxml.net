@@ -1,0 +1,1645 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XmlValue
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XmlValue
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlValue">
+  
+  
+  <h1 id="Figaro_XmlValue" data-uid="Figaro.XmlValue" class="text-break">Class XmlValue
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates the value of a node in an Xml document. The type of the value may be any one of the
+enumerated types in the <a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a> enumeration.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XmlValue</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlValue_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XmlValue : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XmlValue_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> class implements a set of methods that test if
+the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is of a named type. The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>
+class also implements a set of methods that return the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> as a value of a specified type. If the
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is of type variable and no query context is provided when calling the test or cast methods, or no
+binding can be found for the variable, an exception is thrown.
+<p>
+In addition to type conversion, the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> class also provides DOM-like navigation functions. Using
+these, you can retrieve features from the underlying document, such as the parent, an attribute, or a
+child of the current node.
+</p>
+<p>
+    For information about XML and .NET datatypes, see &quot;Mapping XML Data Types to CLR Types&quot;<br>    in the section &quot;Type Support in the System.Xml Classes&quot; of the MSDN documentation.
+</p></p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=127">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_Figaro_XmlDocument_" data-uid="Figaro.XmlValue.#ctor(Figaro.XmlDocument)">XmlValue(XmlDocument)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class with
+an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(XmlDocument value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> value for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=142">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_Figaro_XmlValueType_Figaro_XmlData_" data-uid="Figaro.XmlValue.#ctor(Figaro.XmlValueType,Figaro.XmlData)">XmlValue(XmlValueType, XmlData)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified <a class="xref" href="Figaro.XmlData.html">XmlData</a> and data type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(XmlValueType valueType, XmlData data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a></td>
+        <td><span class="parametername">valueType</span></td>
+        <td><p>The specific value type to initialize with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlData.html">XmlData</a></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlData.html">XmlData</a> representation
+of the value type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=134">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_Figaro_XmlValueType_System_String_" data-uid="Figaro.XmlValue.#ctor(Figaro.XmlValueType,System.String)">XmlValue(XmlValueType, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified data and data type.
+<span class="xref">System.String</span> representation of that value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(XmlValueType valueType, string data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a></td>
+        <td><span class="parametername">valueType</span></td>
+        <td><p>The specific value type to initialize with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The <span class="xref">System.String</span> representation of the value type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=115">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Boolean_" data-uid="Figaro.XmlValue.#ctor(System.Boolean)">XmlValue(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class with a <span class="xref">System.Boolean</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <span class="xref">System.Boolean</span> value for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=76">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Decimal_" data-uid="Figaro.XmlValue.#ctor(System.Decimal)">XmlValue(Decimal)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified <span class="xref">System.Decimal</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(decimal value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>the <span class="xref">System.Decimal</span> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=120">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Double_" data-uid="Figaro.XmlValue.#ctor(System.Double)">XmlValue(Double)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class with a <span class="xref">System.Double</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <span class="xref">System.Double</span> value for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=84">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Int16_" data-uid="Figaro.XmlValue.#ctor(System.Int16)">XmlValue(Int16)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified <span class="xref">System.Int16</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(short value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>the <span class="xref">System.Int16</span> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=92">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Int32_" data-uid="Figaro.XmlValue.#ctor(System.Int32)">XmlValue(Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified <span class="xref">System.Int32</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>the <span class="xref">System.Int32</span> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=100">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_Int64_" data-uid="Figaro.XmlValue.#ctor(System.Int64)">XmlValue(Int64)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class using the specified <span class="xref">System.Int64</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>the <span class="xref">System.Int64</span> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=110">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_String_" data-uid="Figaro.XmlValue.#ctor(System.String)">XmlValue(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class with
+a <span class="xref">System.String</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <span class="xref">System.String</span> value for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=68">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue__ctor_" data-uid="Figaro.XmlValue.#ctor*"></a>
+  <h4 id="Figaro_XmlValue__ctor_System_String_System_String_System_String_" data-uid="Figaro.XmlValue.#ctor(System.String,System.String,System.String)">XmlValue(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XmlValue class of the URI and type name provided, 
+converting the string value to the specified type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue(string typeUri, string typeName, string data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">typeUri</span></td>
+        <td><p>the URI defining the type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">typeName</span></td>
+        <td><p>the name of the type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=396">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_AsBinary_" data-uid="Figaro.XmlValue.AsBinary*"></a>
+  <h4 id="Figaro_XmlValue_AsBinary" data-uid="Figaro.XmlValue.AsBinary">AsBinary</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Figaro.XmlData.html">XmlData</a> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> as a binary datatype.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlData AsBinary { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlData.html">XmlData</a></td>
+        <td><p>Gets the <a class="xref" href="Figaro.XmlData.html">XmlData</a> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> as a binary datatype.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=388">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_AsBoolean_" data-uid="Figaro.XmlValue.AsBoolean*"></a>
+  <h4 id="Figaro_XmlValue_AsBoolean" data-uid="Figaro.XmlValue.AsBoolean">AsBoolean</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the value is a boolean.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AsBoolean { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the <span class="xref">System.Boolean</span> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=404">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_AsDocument_" data-uid="Figaro.XmlValue.AsDocument*"></a>
+  <h4 id="Figaro_XmlValue_AsDocument" data-uid="Figaro.XmlValue.AsDocument">AsDocument</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument AsDocument { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>Gets the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=372">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_AsNumber_" data-uid="Figaro.XmlValue.AsNumber*"></a>
+  <h4 id="Figaro_XmlValue_AsNumber" data-uid="Figaro.XmlValue.AsNumber">AsNumber</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the value is a number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double AsNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>Gets the <span class="xref">System.Double</span> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=380">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_AsString_" data-uid="Figaro.XmlValue.AsString*"></a>
+  <h4 id="Figaro_XmlValue_AsString" data-uid="Figaro.XmlValue.AsString">AsString</h4>
+  <div class="markdown level1 summary"><p>Gets the <span class="xref">System.String</span> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AsString { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the <span class="xref">System.String</span> value of <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=308">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_Attributes_" data-uid="Figaro.XmlValue.Attributes*"></a>
+  <h4 id="Figaro_XmlValue_Attributes" data-uid="Figaro.XmlValue.Attributes">Attributes</h4>
+  <div class="markdown level1 summary"><p>Gets an <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> that contains all of the attributes appearing on
+this node.If the node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>,
+an <span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults Attributes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>Gets a <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> containing all of the attributes appearing in
+this node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=258">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_FirstChild_" data-uid="Figaro.XmlValue.FirstChild*"></a>
+  <h4 id="Figaro_XmlValue_FirstChild" data-uid="Figaro.XmlValue.FirstChild">FirstChild</h4>
+  <div class="markdown level1 summary"><p>Gets the current node&apos;s first child node. If the node has no children, a <span class="xref">null</span> node is returned.
+If the node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue FirstChild { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the current node&apos;s first child node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=355">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsBinary_" data-uid="Figaro.XmlValue.IsBinary*"></a>
+  <h4 id="Figaro_XmlValue_IsBinary" data-uid="Figaro.XmlValue.IsBinary">IsBinary</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> contains binary data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBinary { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the <span class="xref">System.Boolean</span> value determining whether
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> contains binary data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=346">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsBoolean_" data-uid="Figaro.XmlValue.IsBoolean*"></a>
+  <h4 id="Figaro_XmlValue_IsBoolean" data-uid="Figaro.XmlValue.IsBoolean">IsBoolean</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is a boolean.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBoolean { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the <span class="xref">System.Boolean</span> value determining whether
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is a boolean.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=364">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsNode_" data-uid="Figaro.XmlValue.IsNode*"></a>
+  <h4 id="Figaro_XmlValue_IsNode" data-uid="Figaro.XmlValue.IsNode">IsNode</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the value is a <span class="xref">System.Xml.XmlNode</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the <span class="xref">System.Boolean</span> value determining whether
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is an Xml node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=328">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsNumber_" data-uid="Figaro.XmlValue.IsNumber*"></a>
+  <h4 id="Figaro_XmlValue_IsNumber" data-uid="Figaro.XmlValue.IsNumber">IsNumber</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is a number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the boolean condition indicating this object type is a number.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=337">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsString_" data-uid="Figaro.XmlValue.IsString*"></a>
+  <h4 id="Figaro_XmlValue_IsString" data-uid="Figaro.XmlValue.IsString">IsString</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsString { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Gets the <span class="xref">System.Boolean</span> value determining whether
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=266">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_LastChild_" data-uid="Figaro.XmlValue.LastChild*"></a>
+  <h4 id="Figaro_XmlValue_LastChild" data-uid="Figaro.XmlValue.LastChild">LastChild</h4>
+  <div class="markdown level1 summary"><p>Gets the current node&apos;s last child node. If the node has no children, a <span class="xref">null</span> node is returned.
+If the node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>,
+an <span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue LastChild { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the current node&apos;s last child node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=232">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_LocalName_" data-uid="Figaro.XmlValue.LocalName*"></a>
+  <h4 id="Figaro_XmlValue_LocalName" data-uid="Figaro.XmlValue.LocalName">LocalName</h4>
+  <div class="markdown level1 summary"><p>Gets the node&apos;s local name. For example, if a node has the namespace prefix, &quot;prefix,&quot;
+and its qualified name is prefix:name, then &apos;name&apos; is the local name. If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LocalName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the node&apos;s local name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=215">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NamespaceContainerSettings_" data-uid="Figaro.XmlValue.NamespaceContainerSettings*"></a>
+  <h4 id="Figaro_XmlValue_NamespaceContainerSettings" data-uid="Figaro.XmlValue.NamespaceContainerSettings">NamespaceContainerSettings</h4>
+  <div class="markdown level1 summary"><p>Gets the URI used for the node&apos;s namespace. If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NamespaceContainerSettings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the URI used for the node&apos;s namespace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=285">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NextSibling_" data-uid="Figaro.XmlValue.NextSibling*"></a>
+  <h4 id="Figaro_XmlValue_NextSibling" data-uid="Figaro.XmlValue.NextSibling">NextSibling</h4>
+  <div class="markdown level1 summary"><p>Gets the sibling node immediately following this node in the document. If the current
+node had no siblings following it in the document, a <code>null</code> node is returned. If the
+node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>,
+an <span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue NextSibling { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the current node&apos;s next sibling node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=190">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NodeHandle_" data-uid="Figaro.XmlValue.NodeHandle*"></a>
+  <h4 id="Figaro_XmlValue_NodeHandle" data-uid="Figaro.XmlValue.NodeHandle">NodeHandle</h4>
+  <div class="markdown level1 summary"><p>Gets a string handle of a node representing an
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a>,
+which can be used to construct a new object representing the same node, at a later time,
+using <a class="xref" href="Figaro.Container.html#Figaro_Container_GetNode_System_String_Figaro_RetrievalModes_">GetNode(String, RetrievalModes)</a>.
+The handle returned encodes its document ID; however, it does not include its container. Matching a
+node handle to container is the responsibility of the caller.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NodeHandle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The node handle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlValue_NodeHandle_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Node handles are guaranteed to remain stable in the absence of modifications to a document. If
+a document is modified, a handle may cease to exist, or may belong to a different node.
+<p>
+If the node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.
+</p></p>
+</div>
+  <h5 id="Figaro_XmlValue_NodeHandle_seealso">See Also</h5>
+  <div class="seealso">
+      <div><span><a href="Container.GetNode">Container.GetNode</a></span></div>
+      <div><span class="xref">System.InvalidOperationException</span></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=199">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NodeName_" data-uid="Figaro.XmlValue.NodeName*"></a>
+  <h4 id="Figaro_XmlValue_NodeName" data-uid="Figaro.XmlValue.NodeName">NodeName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the node contained in this <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.
+If the node type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an
+invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NodeName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the name of the Xml node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=242">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NodeType_" data-uid="Figaro.XmlValue.NodeType*"></a>
+  <h4 id="Figaro_XmlValue_NodeType" data-uid="Figaro.XmlValue.NodeType">NodeType</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a> value for the node&apos;s type. If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValueType NodeType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a></td>
+        <td><p>Gets the <a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a> value for the node&apos;s type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=207">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_NodeValue_" data-uid="Figaro.XmlValue.NodeValue*"></a>
+  <h4 id="Figaro_XmlValue_NodeValue" data-uid="Figaro.XmlValue.NodeValue">NodeValue</h4>
+  <div class="markdown level1 summary"><p>Gets the node&apos;s value.If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NodeValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the value of the node as a <span class="xref">System.String</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=297">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_OwnerElement_" data-uid="Figaro.XmlValue.OwnerElement*"></a>
+  <h4 id="Figaro_XmlValue_OwnerElement" data-uid="Figaro.XmlValue.OwnerElement">OwnerElement</h4>
+  <div class="markdown level1 summary"><p>Gets returns the document element node that contains
+this attribute node, if the current node is an attribute node. If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue OwnerElement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the containing document element node, if <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> is
+of type <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=250">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_ParentNode_" data-uid="Figaro.XmlValue.ParentNode*"></a>
+  <h4 id="Figaro_XmlValue_ParentNode" data-uid="Figaro.XmlValue.ParentNode">ParentNode</h4>
+  <div class="markdown level1 summary"><p>Gets the current node&apos;s parent. If the node has no parent, a <span class="xref">null</span> node is returned. If the node
+type is not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue ParentNode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the current node&apos;s parent, if one exists.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=223">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_Prefix_" data-uid="Figaro.XmlValue.Prefix*"></a>
+  <h4 id="Figaro_XmlValue_Prefix" data-uid="Figaro.XmlValue.Prefix">Prefix</h4>
+  <div class="markdown level1 summary"><p>Gets the prefix set for the node&apos;s namespace. If the node type is not
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Prefix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the prefix set for the node&apos;s namespace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=276">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_PreviousSibling_" data-uid="Figaro.XmlValue.PreviousSibling*"></a>
+  <h4 id="Figaro_XmlValue_PreviousSibling" data-uid="Figaro.XmlValue.PreviousSibling">PreviousSibling</h4>
+  <div class="markdown level1 summary"><p>Gets the sibling node immediately preceding this node in the document. If the current node
+had no siblings preceding it in the document, a <code>null</code> node is returned.If the node type is
+not <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Node">Node</a>, an
+<span class="xref">System.InvalidOperationException</span> for an invalid value is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue PreviousSibling { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>Gets the current node&apos;s previous sibling node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=320">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_TypeName_" data-uid="Figaro.XmlValue.TypeName*"></a>
+  <h4 id="Figaro_XmlValue_TypeName" data-uid="Figaro.XmlValue.TypeName">TypeName</h4>
+  <div class="markdown level1 summary"><p>Gets the string name of the type of the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TypeName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the string name of this type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=314">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_TypeUri_" data-uid="Figaro.XmlValue.TypeUri*"></a>
+  <h4 id="Figaro_XmlValue_TypeUri" data-uid="Figaro.XmlValue.TypeUri">TypeUri</h4>
+  <div class="markdown level1 summary"><p>Gets the URI associated with the type of the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TypeUri { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Gets the URI associated with this type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=433">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_Dispose_" data-uid="Figaro.XmlValue.Dispose*"></a>
+  <h4 id="Figaro_XmlValue_Dispose" data-uid="Figaro.XmlValue.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=152">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_Equals_" data-uid="Figaro.XmlValue.Equals*"></a>
+  <h4 id="Figaro_XmlValue_Equals_Figaro_XmlValue_" data-uid="Figaro.XmlValue.Equals(Figaro.XmlValue)">Equals(XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Determines if two <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> objects represent
+the same value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if the two <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>
+objects represent the same value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=166">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_IsType_" data-uid="Figaro.XmlValue.IsType*"></a>
+  <h4 id="Figaro_XmlValue_IsType_Figaro_XmlValueType_" data-uid="Figaro.XmlValue.IsType(Figaro.XmlValueType)">IsType(XmlValueType)</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object contains
+the requested type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsType(XmlValueType valueType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a></td>
+        <td><span class="parametername">valueType</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a> to check against.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if the <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>
+is the requested type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=421">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_ToString_" data-uid="Figaro.XmlValue.ToString*"></a>
+  <h4 id="Figaro_XmlValue_ToString" data-uid="Figaro.XmlValue.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Gets the <span class="xref">System.String</span> representation of the underlying value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A <span class="xref">System.String</span> that represents the current <span class="xref">System.Object</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+  <h5 id="Figaro_XmlValue_ToString_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><div class="CAUTION"><h5>caution</h5><p>
+This override returns the <span class="xref">System.String</span> value for <a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Binary">Binary</a>,
+<a class="xref" href="Figaro.XmlValueType.html#Figaro_XmlValueType_Boolean">Boolean</a>, and number values. If the underlying
+value is <code>null</code>, a <code>null</code> value is returned. All other values return their respective
+<a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a>.
+</p></div>
+</div>
+  <h3 id="operators">Operators
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=55">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_op_Explicit_" data-uid="Figaro.XmlValue.op_Explicit*"></a>
+  <h4 id="Figaro_XmlValue_op_Explicit_Figaro_XmlValue__System_Xml_Linq_XDocument" data-uid="Figaro.XmlValue.op_Explicit(Figaro.XmlValue)~System.Xml.Linq.XDocument">Explicit(XmlValue to XDocument)</h4>
+  <div class="markdown level1 summary"><p>Convert an <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to an <span class="xref">System.Xml.Linq.XDocument</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator XDocument(XmlValue val)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">val</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.Linq.XDocument</span></td>
+        <td><p>An <span class="xref">System.Xml.Linq.XDocument</span> instance, or <code>null</code> upon failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidCastException</span></td>
+        <td><p>If a <code>null</code> value or value that is not a <code>string</code> or <code>node</code> XML datatype.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=45">View Source</a>
+  </span>
+  <a id="Figaro_XmlValue_op_Explicit_" data-uid="Figaro.XmlValue.op_Explicit*"></a>
+  <h4 id="Figaro_XmlValue_op_Explicit_Figaro_XmlValue__System_Xml_XmlReader" data-uid="Figaro.XmlValue.op_Explicit(Figaro.XmlValue)~System.Xml.XmlReader">Explicit(XmlValue to XmlReader)</h4>
+  <div class="markdown level1 summary"><p>Convert an <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to an <span class="xref">System.Xml.XmlReader</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator XmlReader(XmlValue val)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">val</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlReader</span></td>
+        <td><p>An <span class="xref">System.Xml.XmlReader</span> instance, or <code>null</code> upon failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidCastException</span></td>
+        <td><p>If a <code>null</code> value or value that is not a <code>string</code> or <code>node</code> XML datatype.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+      <div><a class="xref" href="Figaro.XmlData.html">XmlData</a></div>
+      <div><span><a href="https://msdn.microsoft.com/en-us/library/2bcctyt8.aspx">XML Documents and Data</a></span></div>
+      <div><span><a href="http://msdn.microsoft.com/en-us/library/xa669bew.aspx">Mapping XML Data Types to CLR Types</a></span></div>
+      <div><span><a href="https://msdn.microsoft.com/en-us/library/fbe7e4cy(v=vs.110).aspxx">Type Support in the System.Xml Classes</a></span></div>
+      <div><span><a href="https://msdn.microsoft.com/en-us/library/hh156542(v=vs.110).aspx">.NET Framework Development Guide</a></span></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlValue.cs&amp;version=GBmaster&amp;line=37" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

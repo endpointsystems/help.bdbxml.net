@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Architecting Figaro TDS Applications </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Architecting Figaro TDS Applications ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="architecting-figaro-tds-applications.md">
+<h1 id="architecting-figaro-tds-applications">Architecting Figaro TDS Applications</h1>
+
+<p>When building Transactional Data Store applications, the architecture decisions involve application startup (running recovery) and handling system or application failure. For details on performing recovery, see the Recovery procedures.</p>
+<p>Recovery in a database environment is a single-threaded procedure; that is, one thread of control or process must complete database environment recovery before any other thread of control or process operates in the Figaro environment. It may simplify matters that Figaro serializes recovery and creation of a new database environment.</p>
+<p>Performing recovery first marks any existing database environment as &quot;failed&quot; and then removes it, causing threads of control running in the database environment to fail and return to the application. This feature allows applications to recover environments without concern for threads of control that might still be running in the removed environment. The subsequent re-creation of the database environment is serialized, so multiple threads of control attempting to create a database environment will serialize behind a single creating thread.</p>
+<p>One consideration in removing (as part of recovering) a database environment which may be in use by another thread, is the type of mutex being used by the Figaro library. In the case of database environment failure when using test-and-set mutexes, threads of control waiting on a mutex when the environment is marked &quot;failed&quot; will quickly notice the failure and will return an error from the Figaro API. In the case of environment failure when using blocking mutexes, where the underlying system mutex implementation does not unblock mutex waiters after the thread of control holding the mutex dies, threads waiting on a mutex when an environment is recovered might hang forever. Applications blocked on events (for example, an application blocked on a network socket, or a GUI event) may also fail to notice environment recovery within a reasonable amount of time. Systems with such mutex implementations are rare, but do exist; applications on such systems should use an application architecture where the thread recovering the database environment can explicitly terminate any process using the failed environment, or configure Figaro for test-and-set mutexes, or incorporate some form of long-running timer or watchdog process to wake or kill blocked processes should they block for too long.</p>
+<p>Regardless, it makes little sense for multiple threads of control to simultaneously attempt recovery of a database environment, since the last one to run will remove all database environments created by the threads of control that ran before it. However, for some applications, it may make sense for applications to have a single thread of control that performs recovery and then removes the database environment, after which the application launches a number of processes, any of which will create the database environment and continue forward.</p>
+<p>There are three common ways to architect Figaro Transactional Data Store applications. The one chosen is usually based on whether or not the application is comprised of a single process or group of processes descended from a single process (for example, a server started when the system first boots), or if the application is comprised of unrelated processes (for example, processes started by web connections or users logged into the system).</p>
+<h2 id="single-process-applications">Single-Process Applications</h2>
+<p>The first way to architect Transactional Data Store applications is as a single process (the process may or may not be multithreaded.)</p>
+<p>When this process starts, it runs recovery on the database environment and then opens its databases. The application can subsequently create new threads of control as it chooses. Those threads of control can either share already open <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> handles, or create their own. In this architecture, databases are rarely opened or closed when more than a single thread of control is running; that is, they are opened when only a single thread is running, and closed after all threads but one have exited. The last thread of control to exit closes the databases and the database environment.</p>
+<p>This architecture is simplest to implement because thread serialization is easy and failure detection does not require monitoring multiple processes.</p>
+<p>If the application&#39;s thread model allows processes to continue after thread failure, the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> method can be used to determine if the database environment is usable after thread failure. If the application does not call <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a>, or <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> returns <code>true</code>, the application must behave as if there has been a system failure, performing recovery and re-creating the database environment. Once these actions have been taken, other threads of control can continue (as long as all existing Figaro handles are first discarded), or restarted.</p>
+<h2 id="related-processes">Related Processes</h2>
+<p>The second way to architect Transactional Data Store applications is as a group of related processes (the processes may or may not be multithreaded).</p>
+<p>This architecture requires the order in which threads of control are created be controlled to serialize database environment recovery.</p>
+<p>In addition, this architecture requires that threads of control be monitored. If any thread of control exits with open Figaro handles, the application may call the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> method to detect lost mutexes and locks and determine if the application can continue. If the application does not call <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a>, or <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> throws an exception that the database environment can no longer be used, the application must behave as if there has been a system failure, performing recovery and creating a new database environment. Once these actions have been taken, other threads of control can be continued (as long as all existing Figaro handles are first discarded), or restarted.</p>
+<p>The easiest way to structure groups of related processes is to first create a single &quot;watcher&quot; process (often a script) that starts when the system first boots, runs recovery on the database environment and then creates the processes or threads that will actually perform work. The initial thread has no further responsibilities other than to wait on the threads of control it has started, to ensure none of them unexpectedly exit. If a thread of control exits, the watcher process optionally calls the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> method. If the application does not call <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> or if <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_FailCheck">FailCheck()</a> throws an exception that the environment can no longer be used, the watcher kills all of the threads of control using the failed environment, runs recovery, and starts new threads of control to perform work.</p>
+<h2 id="unrelated-processes">Unrelated Processes</h2>
+<p>The third way to architect Transactional Data Store applications is as a group of unrelated processes (the processes may or may not be multithreaded). This is the most difficult architecture to implement because of the level of difficulty in some systems of finding and monitoring unrelated processes.</p>
+<p>One solution is to log a thread of control ID when a new Figaro handle is opened. For example, an initial &quot;watcher&quot; process could run recovery on the database environment and then create a sentinel file. Any &quot;worker&quot; process wanting to use the environment would check for the sentinel file. If the sentinel file does not exist, the worker would fail or wait for the sentinel file to be created. Once the sentinel file exists, the worker would register its process ID with the watcher (via shared memory, IPC or some other registry mechanism), and then the worker would open its <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> handles and proceed. When the worker finishes using the environment, it would unregister its process ID with the watcher. The watcher periodically checks to ensure that no worker has failed while using the environment. If a worker fails while using the environment, the watcher removes the sentinel file, kills all of the workers currently using the environment, runs recovery on the environment, and finally creates a new sentinel file.</p>
+<p>The weakness of this approach is that, on some systems, it is difficult to determine if an unrelated process is still running. For example, POSIX systems generally disallow sending signals to unrelated processes. The trick to monitoring unrelated processes is to find a system resource held by the process that will be modified if the process dies. On POSIX systems, flock- or <code>fcntl</code>-style locking will work, as will LockFile on Windows systems. Other systems may have to use other process-related information such as file reference counts or modification times. In the worst case, threads of control can be required to periodically re-register with the watcher process: if the watcher has not heard from a thread of control in a specified period of time, the watcher will take action, recovering the environment.</p>
+<p>The Figaro library includes one built-in implementation of this approach, the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method&#39;s <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> flag.</p>
+<p>If the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> flag is set, each process opening the database environment first checks to see if recovery needs to be performed. If recovery needs to be performed for any reason (including the initial creation of the database environment), and <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> is also specified, recovery will be performed and then the open will proceed normally. If recovery needs to be performed and <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> is not specified, the 
+<a class="xref" href="../api/Figaro.RunRecoveryException.html">RunRecoveryException</a> exception will be thrown.</p>
+<p>There are two additional requirements for the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> architecture to work: First, all applications using the database environment must specify the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> flag when opening the environment. However, there is no additional requirement the application choose a single process to recover the environment, as the first process to open the database environment will know to perform recovery. Second, there can only be a single <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> handle per database environment in each process. As the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Register">Register</a> locking is per-process, not per-thread, multiple <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> handles in a single environment could race with each other, potentially causing data corruption.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.RunRecoveryException.html">RunRecoveryException</a></li>
+<li><a class="xref" href="../api/Figaro.EnvOpenOptions.html">EnvOpenOptions</a></li>
+<li><a class="xref" href="a-note-on-system-failure.html">A Note on System Failure</a></li>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/architecting-figaro-tds-applications.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

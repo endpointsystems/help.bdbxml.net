@@ -1,0 +1,566 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace Figaro
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace Figaro
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro">
+  
+  <h1 id="Figaro" data-uid="Figaro" class="text-break">Namespace Figaro
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Figaro.BackupCloseArgs.html">BackupCloseArgs</a></h4>
+      <section><p>The arguments to the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnErr">OnErr</a></p>
+</section>
+      <h4><a class="xref" href="Figaro.BackupConfig.html">BackupConfig</a></h4>
+      <section><p>Used to configure settings for backup operations.</p>
+</section>
+      <h4><a class="xref" href="Figaro.Container.html">Container</a></h4>
+      <section><p>The <a class="xref" href="Figaro.Container.html">Container</a>  class encapsulates a document container and its 
+related indices and statistics. </p>
+</section>
+      <h4><a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a></h4>
+      <section><p>Container configuration settings.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ContainerScopeException.html">ContainerScopeException</a></h4>
+      <section><p>This exception is thrown when a <a class="xref" href="Figaro.Container.html">Container</a> is disposed before it is closed.</p>
+</section>
+      <h4><a class="xref" href="Figaro.DatabaseException.html">DatabaseException</a></h4>
+      <section><p>This exception is thrown when the underlying Berkeley database environment throws an error.</p>
+</section>
+      <h4><a class="xref" href="Figaro.DBDeadlockException.html">DBDeadlockException</a></h4>
+      <section><p>Thrown when a lock is unavailable for an operation.</p>
+</section>
+      <h4><a class="xref" href="Figaro.DBLockNotGrantedException.html">DBLockNotGrantedException</a></h4>
+      <section><p>Thrown when a lock request was not granted by the database system.</p>
+</section>
+      <h4><a class="xref" href="Figaro.DBSite.html">DBSite</a></h4>
+      <section><p>The replication site for Figaro High Availability (HA). </p>
+</section>
+      <h4><a class="xref" href="Figaro.ErrEventArgs.html">ErrEventArgs</a></h4>
+      <section><p>Generated by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnErr">OnErr</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></h4>
+      <section><p>The handle for a database environment - a collection including support for some or all of caching,
+locking, logging and transaction subsystems, as well as databases and log files. Methods of
+the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> handle are used to configure the environment as well as to operate
+on subsystems and databases in the environment.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroEnv.FigaroReplicationManager.html">FigaroEnv.FigaroReplicationManager</a></h4>
+      <section><p>The class used to control High Availability (HA) replication for the database environment.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroEnvException.html">FigaroEnvException</a></h4>
+      <section><p>Some properties can be modified after opening, and some can&apos;t. Those that can&apos;t throw this exception.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroEnvOutputException.html">FigaroEnvOutputException</a></h4>
+      <section><p>Occurs when trying to use more than one messaging output
+methodology in <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> at a time.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroException.html">FigaroException</a></h4>
+      <section><p>Base exception for other exceptions in the Figaro library.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroReplicationException.html">FigaroReplicationException</a></h4>
+      <section><p>Thrown when an exception occurs within the High Availability (HA) or replication environment.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a></h4>
+      <section><p>The replication manager for Figaro High Availability (HA).</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroTransactionException.html">FigaroTransactionException</a></h4>
+      <section><p>This exception is thrown whenever an error occurs when performing a transaction.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></h4>
+      <section><p>A utility class geared toward aiding in the creation of indexes for
+<a class="xref" href="Figaro.Container.html">Container</a> objects.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IsAliveEventArgs.html">IsAliveEventArgs</a></h4>
+      <section><p>Generated by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnIsAlive">OnIsAlive</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></h4>
+      <section><p>Encapsulates statistical information about the number of keys in existence for a given index.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LeaseExpiredException.html">LeaseExpiredException</a></h4>
+      <section><p>This exception is thrown when a replication lease expires.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LicenseException.html">LicenseException</a></h4>
+      <section><p>This exception is thrown when a licensing issue occurs in the Figaro library.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LockStatistics.html">LockStatistics</a></h4>
+      <section><p>Locking subsystem statistical data.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogConfiguration.html">LogConfiguration</a></h4>
+      <section><p>Performs logging flag operations on the Figaro.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogStatistics.html">LogStatistics</a></h4>
+      <section><p>Log statistics data.</p>
+</section>
+      <h4><a class="xref" href="Figaro.MemoryPoolStatistics.html">MemoryPoolStatistics</a></h4>
+      <section><p>Memory pool (buffer cache) subsystem statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.MemoryPoolStatisticsInfo.html">MemoryPoolStatisticsInfo</a></h4>
+      <section><p>Memory pool statistics for each of the cache files.</p>
+</section>
+      <h4><a class="xref" href="Figaro.MsgEventArgs.html">MsgEventArgs</a></h4>
+      <section><p>Generated by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnMessage">OnMessage</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.MutexStatistics.html">MutexStatistics</a></h4>
+      <section><p>Mutex statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ProcessEventArgs.html">ProcessEventArgs</a></h4>
+      <section><p>An <span class="xref">System.EventArgs</span> instance generated by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnProcess">OnProcess</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ProgressEventArgs.html">ProgressEventArgs</a></h4>
+      <section><p>Generated by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnProgress">OnProgress</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></h4>
+      <section><p>Encapsulates the context within which a query is performed against a
+<a class="xref" href="Figaro.Container.html">Container</a>. The context includes namespace mappings,
+variable bindings, and flags that indicate how the query result set should be determined
+and returned to the caller.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationConfig.html">ReplicationConfig</a></h4>
+      <section><p>Replication configuration settings for the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationHostAddress.html">ReplicationHostAddress</a></h4>
+      <section><p>The address of a replication site used by Figaro High Availability (HA).</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationManagerStatistics.html">ReplicationManagerStatistics</a></h4>
+      <section><p>Replication management statistics for <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationViewArgs.html">ReplicationViewArgs</a></h4>
+      <section><p>The events generated by replication views in Figaro HA.</p>
+</section>
+      <h4><a class="xref" href="Figaro.RunRecoveryException.html">RunRecoveryException</a></h4>
+      <section><p>Indicates that recovery procedures must be run against the database environment.</p>
+</section>
+      <h4><a class="xref" href="Figaro.SharedMemoryLockException.html">SharedMemoryLockException</a></h4>
+      <section><p>Thrown when the shared memory region was locked and (repeatedly)
+unavailable in a <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.SiteConfig.html">SiteConfig</a></h4>
+      <section><p>Configuration properties for a site in <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.StackFrameEventArgs.html">StackFrameEventArgs</a></h4>
+      <section><p>The stack frame event arguments.</p>
+</section>
+      <h4><a class="xref" href="Figaro.StackFrameExceptionEventArgs.html">StackFrameExceptionEventArgs</a></h4>
+      <section><p>Gets the stack frame exception event arguments.</p>
+</section>
+      <h4><a class="xref" href="Figaro.TransactionStatistics.html">TransactionStatistics</a></h4>
+      <section><p>Transaction statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.UnsupportedPlatformException.html">UnsupportedPlatformException</a></h4>
+      <section><p>Thrown when the operating system executing the Figaro assembly is not supported.</p>
+</section>
+      <h4><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></h4>
+      <section><p>Encapsulates the context within which update operations are performed against a
+<a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.VersionMismatchException.html">VersionMismatchException</a></h4>
+      <section><p>Thrown when the container version and the dbxml library version are not compatible.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlArguments.html">XmlArguments</a></h4>
+      <section><p>Used by implementers of <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a> to access function arguments passed to 
+the <a class="xref" href="Figaro.XmlExternalFunction.html#Figaro_XmlExternalFunction_Execute_Figaro_XmlManager_Figaro_XmlArguments_">Execute(XmlManager, XmlArguments)</a> method.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlData.html">XmlData</a></h4>
+      <section><p>A wrapper to the <code>Dbt</code> object found in Berkeley Db. This class represents untyped XML data and
+exists in support of <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> and
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.html">XmlDebugListener</a></h4>
+      <section><p>Allows the user to track the progress of a query as it executes. </p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></h4>
+      <section><p>An <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> is the unit of storage within a
+<a class="xref" href="Figaro.Container.html">Container</a>. A document consists of content, a name, and a
+set of metadata attributes.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlEnvEventArgs.html">XmlEnvEventArgs</a></h4>
+      <section><p>The base for events generated by <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlException.html">XmlException</a></h4>
+      <section><p>This general exception is thrown when the underlying BDB XML engine throws an error.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a></h4>
+      <section><p>The <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a> class is used to implement XQuery
+extension functions in .NET Framework languages.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a></h4>
+      <section><p>The <a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> class encapsulates the context within which an
+index lookup operation can be performed on a <a class="xref" href="Figaro.Container.html">Container</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></h4>
+      <section><p>Encapsulates the indexing specification of a container.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></h4>
+      <section><p>A forward-only stream used to read and write XML data.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></h4>
+      <section><p>Provides a high-level object used to manage various aspects of container, query, streaming, context, and transaction management.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlMetadataIterator.html">XmlMetadataIterator</a></h4>
+      <section><p>Provides an iterator over an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>&apos;s metadata. Metadata is set
+on a document with <a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_SetMetadata_System_String_System_String_Figaro_XmlData_">SetMetadata(String, String, XmlData)</a>. You can also
+use <a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlData_System_String_System_String_">GetMetadataXmlData(String, String)</a> or
+<a class="xref" href="Figaro.XmlDocument.html#Figaro_XmlDocument_GetMetadataXmlValue_System_String_System_String_">GetMetadataXmlValue(String, String)</a> to return
+a specific metadata item.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></h4>
+      <section><p>Encapsulates the results of a query or other lookup operation.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlStackFrame.html">XmlStackFrame</a></h4>
+      <section><p>Provides stack trace information about an executing query to the methods of <a class="xref" href="Figaro.XmlDebugListener.html">XmlDebugListener</a>. </p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></h4>
+      <section><p>The handle for a transaction, encapsulating a Berkeley <code>DbTxn</code> object. Methods of
+the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> class are
+used to abort and commit the transaction. <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> handles are
+provided to <a class="xref" href="Figaro.Container.html">Container</a>,
+<a class="xref" href="Figaro.XmlManager.html">XmlManager</a>, and other objects that query and modify documents and containers
+in order to transactionally protect those database operations.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></h4>
+      <section><p>Encapsulates the value of a node in an Xml document. The type of the value may be any one of the
+enumerated types in the <a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a> enumeration.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlValueException.html">XmlValueException</a></h4>
+      <section><p>This exception is thrown whenever the type of <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> result set is a
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a> type, but an attempt is made to retrieve it as a different type.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XQueryException.html">XQueryException</a></h4>
+      <section><p>Initializes a new instance of the XQueryException class. This exception is thrown when
+an XQuery operation throws an exception.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></h4>
+      <section><p><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a> represents a parsed
+XQuery expression, and is created by a call to
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a></h4>
+      <section><p>Provides a base class that is used for file resolution policy. 
+Implementations of this class are used for URI resolution, or for public and system id 
+resolution. <a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a> implementations are identified for use using 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_RegisterResolver_Figaro_XQueryResolver_">RegisterResolver(XQueryResolver)</a>.</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="Figaro.EnvCacheSize.html">EnvCacheSize</a></h4>
+      <section><p>The size of the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> cache.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvVersion.html">EnvVersion</a></h4>
+      <section><p>Version information of the Berkeley DB release used by the library.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroProductInfo.html">FigaroProductInfo</a></h4>
+      <section><p>General product information for the Figaro XML Database product installed.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogSequenceNumber.html">LogSequenceNumber</a></h4>
+      <section><p>A log sequence number which specifies a unique location in a 
+log file. </p>
+</section>
+      <h4><a class="xref" href="Figaro.MemoryPoolFileStatistics.html">MemoryPoolFileStatistics</a></h4>
+      <section><p>Cache information for each file that makes up the memory pool.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationSite.html">ReplicationSite</a></h4>
+      <section><p>Information about the sites configured within the replication manager.</p>
+</section>
+      <h4><a class="xref" href="Figaro.TransactionInfo.html">TransactionInfo</a></h4>
+      <section><p>Individual transaction information.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlIndex.html">XmlIndex</a></h4>
+      <section><p>A basic utility object for indexing.</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="Figaro.BackupOptions.html">BackupOptions</a></h4>
+      <section><p>Figaro backup options.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ConfigurationState.html">ConfigurationState</a></h4>
+      <section><p>Container configuration state settings.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ContainerState.html">ContainerState</a></h4>
+      <section><p>The state of the container.</p>
+</section>
+      <h4><a class="xref" href="Figaro.DeadlockDetectType.html">DeadlockDetectType</a></h4>
+      <section><p>A list of lock requests to request in
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_DeadlockDetectPolicy">DeadlockDetectPolicy</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvConfig.html">EnvConfig</a></h4>
+      <section><p>Used by
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a>
+to set the different
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> subsystems and
+settings for each of the following below.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvironmentEvent.html">EnvironmentEvent</a></h4>
+      <section><p>Used to describe the Figaro events raised by the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_ProcessEventEnabled">ProcessEventEnabled</a>
+property.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvironmentRemoveAction.html">EnvironmentRemoveAction</a></h4>
+      <section><p>One or more actions to perform when removing an environment.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvironmentTimeoutType.html">EnvironmentTimeoutType</a></h4>
+      <section><p>Used to identify the type of <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> timeout setting.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvLogOptions.html">EnvLogOptions</a></h4>
+      <section><p>The logging options used to configure a <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> instance.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvOpenOptions.html">EnvOpenOptions</a></h4>
+      <section><p>Specifies the subsystems that are initialized and how the application&apos;s environment affects
+Figaro file naming, among other things.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EvaluationType.html">EvaluationType</a></h4>
+      <section><p>Specifies the query evaluation type.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FeedbackEvent.html">FeedbackEvent</a></h4>
+      <section><p>The types of events that would generate progress events in
+the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroExceptionCategory.html">FigaroExceptionCategory</a></h4>
+      <section><p>Used by <a class="xref" href="Figaro.FigaroException.html">FigaroException</a> to determine errors and
+error codes encountered during the course of operation.</p>
+</section>
+      <h4><a class="xref" href="Figaro.FigaroProductEdition.html">FigaroProductEdition</a></h4>
+      <section><p>The Figaro product edition in use.</p>
+</section>
+      <h4><a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a></h4>
+      <section><p>Specifies the action to take when retrieving documents from a <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.HighboundOperationLookup.html">HighboundOperationLookup</a></h4>
+      <section><p>The type of high bound operation to be performed against a range lookup for an
+<a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexKeyType.html">IndexKeyType</a></h4>
+      <section><p>Identifies what sort of queries the index supports.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexLookupOperation.html">IndexLookupOperation</a></h4>
+      <section><p>The type of high bound operation to be performed against a range lookup for an
+<a class="xref" href="Figaro.XmlIndexLookup.html">XmlIndexLookup</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexLookupOptions.html">IndexLookupOptions</a></h4>
+      <section><p>The type of lookup operation.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexNodeType.html">IndexNodeType</a></h4>
+      <section><p>Used to determine the type of data indexed in the container.</p>
+</section>
+      <h4><a class="xref" href="Figaro.IndexPathType.html">IndexPathType</a></h4>
+      <section><p>Indicates what type of path the index should take with respect to identifying nodes to index.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LockStatisticOptions.html">LockStatisticOptions</a></h4>
+      <section><p>Used in
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetLockStatistics_System_Boolean_">GetLockStatistics(Boolean)</a>
+to determine which statistics to display as well as the option to reset values.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogArchiveOptions.html">LogArchiveOptions</a></h4>
+      <section><p>Used to select the types and attributes of log files returned.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogConfigurationCategory.html">LogConfigurationCategory</a></h4>
+      <section><p>The log category to enable or disable.</p>
+</section>
+      <h4><a class="xref" href="Figaro.LogConfigurationLevel.html">LogConfigurationLevel</a></h4>
+      <section><p>The log level to enable or disable.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ManagerInitOptions.html">ManagerInitOptions</a></h4>
+      <section><p>One or more values to set during <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> instantiation.</p>
+</section>
+      <h4><a class="xref" href="Figaro.NodeType.html">NodeType</a></h4>
+      <section><p>An enumerated list of possible node types that can be
+contained within an <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.PrintMemoryPoolStatisticsOptions.html">PrintMemoryPoolStatisticsOptions</a></h4>
+      <section><p>Options for printing memory pool statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></h4>
+      <section><p>One or more options for putting whole Xml documents in a
+<a class="xref" href="Figaro.Container.html">Container</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.QueryOptions.html">QueryOptions</a></h4>
+      <section><p>One or more options for querying containers.</p>
+</section>
+      <h4><a class="xref" href="Figaro.RecordAcknowledgmentPolicy.html">RecordAcknowledgmentPolicy</a></h4>
+      <section><p>Some acknowledgment policies use the concept of an electable peer, which is a client 
+capable of being subsequently elected master of the replication group. </p>
+</section>
+      <h4><a class="xref" href="Figaro.ReindexOptions.html">ReindexOptions</a></h4>
+      <section><p>One or more values to set for re-indexing containers.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationManagerStatus.html">ReplicationManagerStatus</a></h4>
+      <section><p>The status of a remote replication site.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationSiteConnectionStatus.html">ReplicationSiteConnectionStatus</a></h4>
+      <section><p>The connection status of the replication site.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationStartOptions.html">ReplicationStartOptions</a></h4>
+      <section><p>Replication Manager startup options.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationStatisticsOptions.html">ReplicationStatisticsOptions</a></h4>
+      <section><p>Print options for displaying <code>Figaro.FigaroReplicationManager</code> statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ReplicationViewOptions.html">ReplicationViewOptions</a></h4>
+      <section><p>Flags for whether the replication site is a partial or full replication view, or not a replication view at all.</p>
+</section>
+      <h4><a class="xref" href="Figaro.ResultsType.html">ResultsType</a></h4>
+      <section><p>Indicates what kind of object is to be returned from an <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object.</p>
+</section>
+      <h4><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></h4>
+      <section><p>One or more options for retrieving nodes and documents from the containers.</p>
+</section>
+      <h4><a class="xref" href="Figaro.SalvageOptions.html">SalvageOptions</a></h4>
+      <section><p>Salvage options to use when performing container verification.</p>
+</section>
+      <h4><a class="xref" href="Figaro.StatPrintOptions.html">StatPrintOptions</a></h4>
+      <section><p>One or more actions to take against the statistics subsystem after retrieving system statistics.</p>
+</section>
+      <h4><a class="xref" href="Figaro.TransactionStatus.html">TransactionStatus</a></h4>
+      <section><p>The status of a transaction.</p>
+</section>
+      <h4><a class="xref" href="Figaro.TransactionType.html">TransactionType</a></h4>
+      <section><p>Configuration options that can be used throughout Figaro when using transactions.</p>
+</section>
+      <h4><a class="xref" href="Figaro.VerboseOption.html">VerboseOption</a></h4>
+      <section><p>Informational and debugging messages in the message output.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlContainerType.html">XmlContainerType</a></h4>
+      <section><p>Specifies the storage type of the container.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDatatype.html">XmlDatatype</a></h4>
+      <section><p>The basic data types recognized by <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a>.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlValueType.html">XmlValueType</a></h4>
+      <section><p>The XML data types of an <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> object.</p>
+</section>
+    <h3 id="delegates">Delegates
+  </h3>
+      <h4><a class="xref" href="Figaro.EnvErrorEventHandler.html">EnvErrorEventHandler</a></h4>
+      <section><p>The event message handler for the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnErr">OnErr</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvIsAliveEventHandler.html">EnvIsAliveEventHandler</a></h4>
+      <section><p>The event message handler for the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnIsAlive">OnIsAlive</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvMessageEventHandler.html">EnvMessageEventHandler</a></h4>
+      <section><p>The event message handler for the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnMessage">OnMessage</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvProcessEventHandler.html">EnvProcessEventHandler</a></h4>
+      <section><p>The event message handler for the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnProcess">OnProcess</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.EnvProgressEventHandler.html">EnvProgressEventHandler</a></h4>
+      <section><p>The event message handler for the <a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_OnProgress">OnProgress</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.EnterEventDelegate.html">XmlDebugListener.EnterEventDelegate</a></h4>
+      <section><p>Delegate object for the <a class="xref" href="Figaro.XmlDebugListener.html#Figaro_XmlDebugListener_Debug_Enter">Debug_Enter</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.ErrorEventDelegate.html">XmlDebugListener.ErrorEventDelegate</a></h4>
+      <section><p>Delegate object for the <a class="xref" href="Figaro.XmlDebugListener.html#Figaro_XmlDebugListener_Debug_Error">Debug_Error</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.ExitEventDelegate.html">XmlDebugListener.ExitEventDelegate</a></h4>
+      <section><p>Delegate object for the <a class="xref" href="Figaro.XmlDebugListener.html#Figaro_XmlDebugListener_Debug_Exit">Debug_Exit</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.StartEventDelegate.html">XmlDebugListener.StartEventDelegate</a></h4>
+      <section><p>Delegate object for the <a class="xref" href="Figaro.XmlDebugListener.html#Figaro_XmlDebugListener_Debug_Start">Debug_Start</a> event.</p>
+</section>
+      <h4><a class="xref" href="Figaro.XmlDebugListener.StopEventDelegate.html">XmlDebugListener.StopEventDelegate</a></h4>
+      <section><p>Delegate object for the <a class="xref" href="Figaro.XmlDebugListener.html#Figaro_XmlDebugListener_Debug_Stop">Debug_Stop</a> event.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

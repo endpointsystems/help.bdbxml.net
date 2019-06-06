@@ -1,0 +1,1178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LockStatistics
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LockStatistics
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.LockStatistics">
+  
+  
+  <h1 id="Figaro_LockStatistics" data-uid="Figaro.LockStatistics" class="text-break">Class LockStatistics
+  </h1>
+  <div class="markdown level0 summary"><p>Locking subsystem statistical data.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LockStatistics</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_LockStatistics_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class LockStatistics : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_LockStatistics_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This object is created using the
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetLockStatistics_System_Boolean_">GetLockStatistics(Boolean)</a>
+method of the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> object.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=59">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_CurrentLockCount_" data-uid="Figaro.LockStatistics.CurrentLockCount*"></a>
+  <h4 id="Figaro_LockStatistics_CurrentLockCount" data-uid="Figaro.LockStatistics.CurrentLockCount">CurrentLockCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of current locks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong CurrentLockCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of current locks, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=71">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_CurrentLockerCount_" data-uid="Figaro.LockStatistics.CurrentLockerCount*"></a>
+  <h4 id="Figaro_LockStatistics_CurrentLockerCount" data-uid="Figaro.LockStatistics.CurrentLockerCount">CurrentLockerCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of current lockers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong CurrentLockerCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of current lockers, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=83">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_CurrentLockObjectCount_" data-uid="Figaro.LockStatistics.CurrentLockObjectCount*"></a>
+  <h4 id="Figaro_LockStatistics_CurrentLockObjectCount" data-uid="Figaro.LockStatistics.CurrentLockObjectCount">CurrentLockObjectCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of current lock objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong CurrentLockObjectCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of current lock objects, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=29">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_CurrentMaxUnusedLockerId_" data-uid="Figaro.LockStatistics.CurrentMaxUnusedLockerId*"></a>
+  <h4 id="Figaro_LockStatistics_CurrentMaxUnusedLockerId" data-uid="Figaro.LockStatistics.CurrentMaxUnusedLockerId">CurrentMaxUnusedLockerId</h4>
+  <div class="markdown level1 summary"><p>Gets the current maximum unused locker ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong CurrentMaxUnusedLockerId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The current maximum unused locker ID, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=135">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_Deadlocks_" data-uid="Figaro.LockStatistics.Deadlocks*"></a>
+  <h4 id="Figaro_LockStatistics_Deadlocks" data-uid="Figaro.LockStatistics.Deadlocks">Deadlocks</h4>
+  <div class="markdown level1 summary"><p>Gets the number of deadlocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong Deadlocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of deadlocks, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=214">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_HashLength_" data-uid="Figaro.LockStatistics.HashLength*"></a>
+  <h4 id="Figaro_LockStatistics_HashLength" data-uid="Figaro.LockStatistics.HashLength">HashLength</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum length of a lock hash bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong HashLength { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>Maximum length of a lock hash bucket, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=23">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LastAllocatedLockerId_" data-uid="Figaro.LockStatistics.LastAllocatedLockerId*"></a>
+  <h4 id="Figaro_LockStatistics_LastAllocatedLockerId" data-uid="Figaro.LockStatistics.LastAllocatedLockerId">LastAllocatedLockerId</h4>
+  <div class="markdown level1 summary"><p>Gets the last allocated locker ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LastAllocatedLockerId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The last allocated locker ID, or -1 if an error occurs..</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=140">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_Lock_" data-uid="Figaro.LockStatistics.Lock*"></a>
+  <h4 id="Figaro_LockStatistics_Lock" data-uid="Figaro.LockStatistics.Lock">Lock</h4>
+  <div class="markdown level1 summary"><p>Gets the lock timeout value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong Lock { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>Lock timeout value, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=77">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockerHighWater_" data-uid="Figaro.LockStatistics.LockerHighWater*"></a>
+  <h4 id="Figaro_LockStatistics_LockerHighWater" data-uid="Figaro.LockStatistics.LockerHighWater">LockerHighWater</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of lockers at any one time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockerHighWater { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of lockers at any one time, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=192">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockersNoWait_" data-uid="Figaro.LockStatistics.LockersNoWait*"></a>
+  <h4 id="Figaro_LockStatistics_LockersNoWait" data-uid="Figaro.LockStatistics.LockersNoWait">LockersNoWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate a locker for which the thread of control did not wait.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockersNoWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate a locker for which the thread of control did not wait, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=184">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockersWait_" data-uid="Figaro.LockStatistics.LockersWait*"></a>
+  <h4 id="Figaro_LockStatistics_LockersWait" data-uid="Figaro.LockStatistics.LockersWait">LockersWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate a locker for which the thread of control waited.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockersWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate a locker for which the thread of control waited, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=65">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockHighWater_" data-uid="Figaro.LockStatistics.LockHighWater*"></a>
+  <h4 id="Figaro_LockStatistics_LockHighWater" data-uid="Figaro.LockStatistics.LockHighWater">LockHighWater</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of locks at any one time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockHighWater { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of locks at any one time, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=35">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockModesCount_" data-uid="Figaro.LockStatistics.LockModesCount*"></a>
+  <h4 id="Figaro_LockStatistics_LockModesCount" data-uid="Figaro.LockStatistics.LockModesCount">LockModesCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of lock modes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockModesCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of lock modes, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=89">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockObjectsHighWater_" data-uid="Figaro.LockStatistics.LockObjectsHighWater*"></a>
+  <h4 id="Figaro_LockStatistics_LockObjectsHighWater" data-uid="Figaro.LockStatistics.LockObjectsHighWater">LockObjectsHighWater</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of lock objects at any one time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockObjectsHighWater { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of lock objects at any one time, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=220">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LockRegionSize_" data-uid="Figaro.LockStatistics.LockRegionSize*"></a>
+  <h4 id="Figaro_LockStatistics_LockRegionSize" data-uid="Figaro.LockStatistics.LockRegionSize">LockRegionSize</h4>
+  <div class="markdown level1 summary"><p>Gets the size of the lock region, in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LockRegionSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The size of the lock region, in bytes, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=208">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LocksNoWait_" data-uid="Figaro.LockStatistics.LocksNoWait*"></a>
+  <h4 id="Figaro_LockStatistics_LocksNoWait" data-uid="Figaro.LockStatistics.LocksNoWait">LocksNoWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate a lock structure for which the thread of control did not wait.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LocksNoWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate a lock structure for which the thread of control did not wait, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=200">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_LocksWait_" data-uid="Figaro.LockStatistics.LocksWait*"></a>
+  <h4 id="Figaro_LockStatistics_LocksWait" data-uid="Figaro.LockStatistics.LocksWait">LocksWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate a lock structure for which the thread of control waited.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LocksWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate a lock structure for which the thread of control waited, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=41">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_MaxLocks_" data-uid="Figaro.LockStatistics.MaxLocks*"></a>
+  <h4 id="Figaro_LockStatistics_MaxLocks" data-uid="Figaro.LockStatistics.MaxLocks">MaxLocks</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of locks possible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong MaxLocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of locks possible, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=53">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_MaxPossibleLock_" data-uid="Figaro.LockStatistics.MaxPossibleLock*"></a>
+  <h4 id="Figaro_LockStatistics_MaxPossibleLock" data-uid="Figaro.LockStatistics.MaxPossibleLock">MaxPossibleLock</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of lock objects possible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong MaxPossibleLock { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of lock objects possible, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=47">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_MaxPossibleLockers_" data-uid="Figaro.LockStatistics.MaxPossibleLockers*"></a>
+  <h4 id="Figaro_LockStatistics_MaxPossibleLockers" data-uid="Figaro.LockStatistics.MaxPossibleLockers">MaxPossibleLockers</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of lockers possible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong MaxPossibleLockers { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The maximum number of lockers possible, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=176">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_ObjectNoWaits_" data-uid="Figaro.LockStatistics.ObjectNoWaits*"></a>
+  <h4 id="Figaro_LockStatistics_ObjectNoWaits" data-uid="Figaro.LockStatistics.ObjectNoWaits">ObjectNoWaits</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate an object for which the thread of control did not wait.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong ObjectNoWaits { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate an object for which the thread of control did not wait, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=168">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_ObjectWaits_" data-uid="Figaro.LockStatistics.ObjectWaits*"></a>
+  <h4 id="Figaro_LockStatistics_ObjectWaits" data-uid="Figaro.LockStatistics.ObjectWaits">ObjectWaits</h4>
+  <div class="markdown level1 summary"><p>Gets the number of requests to allocate or deallocate an object for which the thread of control waited.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong ObjectWaits { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of requests to allocate or deallocate an object for which the thread of control waited, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=236">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_RegionNoWait_" data-uid="Figaro.LockStatistics.RegionNoWait*"></a>
+  <h4 id="Figaro_LockStatistics_RegionNoWait" data-uid="Figaro.LockStatistics.RegionNoWait">RegionNoWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times that a thread of control was able to obtain the lock region mutex without waiting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong RegionNoWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times that a thread of control was able to obtain the lock region mutex without waiting, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=228">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_RegionWait_" data-uid="Figaro.LockStatistics.RegionWait*"></a>
+  <h4 id="Figaro_LockStatistics_RegionWait" data-uid="Figaro.LockStatistics.RegionWait">RegionWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times that a thread of control was forced to wait before obtaining the lock region mutex.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong RegionWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times that a thread of control was forced to wait before obtaining the lock region mutex, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=146">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TimedOutLockRequests_" data-uid="Figaro.LockStatistics.TimedOutLockRequests*"></a>
+  <h4 id="Figaro_LockStatistics_TimedOutLockRequests" data-uid="Figaro.LockStatistics.TimedOutLockRequests">TimedOutLockRequests</h4>
+  <div class="markdown level1 summary"><p>Gets the number of lock requests that have timed out.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TimedOutLockRequests { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of lock requests that have timed out, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=160">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TimedOutTransactions_" data-uid="Figaro.LockStatistics.TimedOutTransactions*"></a>
+  <h4 id="Figaro_LockStatistics_TimedOutTransactions" data-uid="Figaro.LockStatistics.TimedOutTransactions">TimedOutTransactions</h4>
+  <div class="markdown level1 summary"><p>Gets the number of transactions that have timed out. This value is also a component of <code>st_ndeadlocks</code>, an internal structure that contains the total number of deadlocks detected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TimedOutTransactions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of transactions that have timed out, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=113">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalDowngradedLocks_" data-uid="Figaro.LockStatistics.TotalDowngradedLocks*"></a>
+  <h4 id="Figaro_LockStatistics_TotalDowngradedLocks" data-uid="Figaro.LockStatistics.TotalDowngradedLocks">TotalDowngradedLocks</h4>
+  <div class="markdown level1 summary"><p>Gets the total number of locks downgraded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalDowngradedLocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The total number of locks downgraded, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=129">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalLockNoWait_" data-uid="Figaro.LockStatistics.TotalLockNoWait*"></a>
+  <h4 id="Figaro_LockStatistics_TotalLockNoWait" data-uid="Figaro.LockStatistics.TotalLockNoWait">TotalLockNoWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of lock requests not immediately available due to conflicts, for which the thread of control did not wait.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalLockNoWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of lock requests not immediately available due to conflicts, for which the thread of control did not wait, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=95">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalLocksRequested_" data-uid="Figaro.LockStatistics.TotalLocksRequested*"></a>
+  <h4 id="Figaro_LockStatistics_TotalLocksRequested" data-uid="Figaro.LockStatistics.TotalLocksRequested">TotalLocksRequested</h4>
+  <div class="markdown level1 summary"><p>Gets the total number of locks requested.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalLocksRequested { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The total number of locks requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=121">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalLockWait_" data-uid="Figaro.LockStatistics.TotalLockWait*"></a>
+  <h4 id="Figaro_LockStatistics_TotalLockWait" data-uid="Figaro.LockStatistics.TotalLockWait">TotalLockWait</h4>
+  <div class="markdown level1 summary"><p>Gets the number of lock requests not immediately available due to conflicts, for which the thread of control waited.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalLockWait { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of lock requests not immediately available due to conflicts, for which the thread of control waited, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=101">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalReleasedLocks_" data-uid="Figaro.LockStatistics.TotalReleasedLocks*"></a>
+  <h4 id="Figaro_LockStatistics_TotalReleasedLocks" data-uid="Figaro.LockStatistics.TotalReleasedLocks">TotalReleasedLocks</h4>
+  <div class="markdown level1 summary"><p>Gets the total number of locks released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalReleasedLocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The total number of locks released, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=107">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TotalUpgradedLocks_" data-uid="Figaro.LockStatistics.TotalUpgradedLocks*"></a>
+  <h4 id="Figaro_LockStatistics_TotalUpgradedLocks" data-uid="Figaro.LockStatistics.TotalUpgradedLocks">TotalUpgradedLocks</h4>
+  <div class="markdown level1 summary"><p>Gets the total number of locks upgraded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TotalUpgradedLocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The total number of locks upgraded, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=152">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_TransactionTimeout_" data-uid="Figaro.LockStatistics.TransactionTimeout*"></a>
+  <h4 id="Figaro_LockStatistics_TransactionTimeout" data-uid="Figaro.LockStatistics.TransactionTimeout">TransactionTimeout</h4>
+  <div class="markdown level1 summary"><p>Gets the transaction timeout value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong TransactionTimeout { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>Transaction timeout value, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=252">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_Dispose_" data-uid="Figaro.LockStatistics.Dispose*"></a>
+  <h4 id="Figaro_LockStatistics_Dispose" data-uid="Figaro.LockStatistics.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=244">View Source</a>
+  </span>
+  <a id="Figaro_LockStatistics_Dispose_" data-uid="Figaro.LockStatistics.Dispose*"></a>
+  <h4 id="Figaro_LockStatistics_Dispose_System_Boolean_" data-uid="Figaro.LockStatistics.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If disposing equals <code>true</code>, the method has been called directly or 
+indirectly by a user&apos;s code. Managed and unmanaged resources can be disposed. If disposing equals 
+<code>false</code>, the method has been called by the runtime from inside the 
+finalizer and you should not reference other objects. Only unmanaged resources can be disposed. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetLockStatistics_System_Boolean_">GetLockStatistics(Boolean)</a></div>
+      <div><a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LockStatistics.cs&amp;version=GBmaster&amp;line=17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

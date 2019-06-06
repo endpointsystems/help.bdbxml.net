@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Secondary Indexes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Secondary Indexes ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="secondary-indexes">Secondary Indexes</h1>
+
+<p>A secondary index, put simply, is a way to efficiently access records in a database (the primary) by means of some piece of information other than the usual (primary) key. In Berkeley DB, this index is simply another database whose keys are these pieces of information (the secondary keys), and whose data are the primary keys. Secondary indexes can be created manually by the application; there is no disadvantage, other than complexity, to doing so. However, when the secondary key can be mechanically derived from the primary key and datum that it points to, as is frequently the case, Berkeley DB can automatically and transparently manage secondary indexes.</p>
+<p>As an example of how secondary indexes might be used, consider a database containing a list of students at a college, each of whom has a unique student ID number. A typical database would use the student ID number as the key; however, one might also reasonably want to be able to look up students by last name. To do this, one would construct a secondary index in which the secondary key was this last name.</p>
+<p>In Berkeley DB for .NET Core, this would work as follows:</p>
+<pre><code class="lang-csharp">        static void Main()
+        {
+            if (String.IsNullOrEmpty(Environment.GetEnvironmentVariable(&quot;DATA_DIR&quot;)))
+                throw new ApplicationException(&quot;DATA_DIR must be set to the directory containing student data!&quot;);
+
+            var dataPath = Environment.GetEnvironmentVariable(&quot;DATA_DIR&quot;);
+
+            var config = new BTreeDatabaseConfig
+            {                
+                Creation = CreatePolicy.IF_NEEDED,
+                CacheSize = new CacheInfo(1, 0, 1),
+                ErrorFeedback = (prefix, message) =&gt;
+                {
+                    var fg = ForegroundColor;
+                    ForegroundColor = ConsoleColor.Red;
+                    WriteLine($&quot;{prefix}: {message}&quot;);
+                    ForegroundColor = fg;
+                },
+                ErrorPrefix = &quot;students&quot;,                
+            };
+
+            var db = BTreeDatabase.Open(Path.Combine(dataPath, &quot;students.db&quot;), config);
+
+            var cfg = new SecondaryBTreeDatabaseConfig(db, (key, data) =&gt;
+            {
+                var last = Encoding.Default.GetString(data.Data).Split(&#39;#&#39;).Last();
+                //Console.WriteLine($&quot;adding {last} to index&quot;);
+                return new DatabaseEntry(Encoding.Default.GetBytes(last));
+            })
+            {
+                Creation = CreatePolicy.IF_NEEDED,Duplicates = DuplicatesPolicy.SORTED,
+                ErrorFeedback = (prefix, message) =&gt; WriteLine($&quot;{prefix}: {message}&quot;)
+
+            };
+
+            var dbIdx = SecondaryBTreeDatabase.Open(Path.Combine(dataPath, &quot;studentsIdx.db&quot;), cfg);
+
+            if (db.Stats().nKeys &lt; 1)
+            {
+                foreach (var line in File.ReadAllLines(Path.Combine(dataPath, &quot;students.csv&quot;)))
+                {
+                    var split = line.Split(&quot;#&quot;);
+                    var key = new DatabaseEntry(Encoding.Default.GetBytes(split[0]));
+                    var bytes = new List&lt;byte&gt;();
+
+                    //Add first and last name delimited by the &#39;#&#39; still
+                    bytes.AddRange(Encoding.Default.GetBytes(split[1]));
+                    bytes.AddRange(BitConverter.GetBytes(&#39;#&#39;));
+                    bytes.AddRange(Encoding.Default.GetBytes(split[2]));
+                    var dbval = new DatabaseEntry(bytes.ToArray());
+                    db.Put(key, dbval);
+                }
+
+                db.Sync();
+                dbIdx.Sync();
+            }
+
+            var dbKeys = db.Stats().nKeys;            
+            /* Data upload complete. Now let&#39;s find and delete some records. */
+
+            var idxCursor = dbIdx.Cursor();
+            idxCursor.MoveFirst();
+
+            int results = 0;
+
+            //var results = from c in idxCursor where c.Key == barrera select c;
+            do
+            {
+                if (Encoding.Default.GetString(idxCursor.Current.Key.Data) == &quot;Barrera&quot;) results++;
+            } while (idxCursor.MoveNext());
+
+            WriteLine($&quot;found {results} results containing Barrera.&quot;);
+            WriteLine();
+}
+</code></pre><div class="NOTE"><h5>Note</h5><p>The secondary index is configured by passing in the &lt;xref:BTreeDatabase&gt; to the &lt;xref:SecondaryBTreeDatabaseConfig&gt; constructor.</p>
+</div>
+<p>After the secondary index is created, the secondary indexes become alternate interfaces to the primary database. All updates to the primary will be automatically reflected in each secondary index that has been associated with it. All get operations using the &lt;xref:Database.Get&gt; or &lt;xref:SecondaryDatabase.Get&gt; methods on the secondary index return the primary datum associated with the specified (or otherwise current, in the case of cursor operations) secondary key. The <code>Move...</code> methods also become usable; these behave just like the <code>Get</code> operations, but return the primary key in addition to the primary datum, for those applications that need it as well.</p>
+<p>Cursor get operations on a secondary index perform as expected; although the data returned will by default be those of the primary database, a position in the secondary index is maintained normally, and records will appear in the order determined by the secondary key and the comparison function or other structure of the secondary database.</p>
+<p>Delete operations on a secondary index delete the item from the primary database and all relevant secondaries, including the current one.</p>
+<p>Put operations of any kind are forbidden on secondary indexes, as there is no way to specify a primary key for a newly put item. Instead, the application should use the &lt;xref:Databse.Add()&gt; or &lt;xref:Cursor.Add()&gt; methods on the primary database.</p>
+<p>Any number of secondary indexes may be associated with a given primary database, up to limitations on available memory and the number of open file descriptors.</p>
+<p>Note that although Berkeley DB guarantees that updates made using any DB handle with an associated secondary will be reflected in the that secondary, associating each primary handle with all the appropriate secondaries is the responsibility of the application and is not enforced by Berkeley DB. It is generally unsafe, but not forbidden by Berkeley DB, to modify a database that has secondary indexes without having those indexes open and associated. Similarly, it is generally unsafe, but not forbidden, to modify a secondary index directly. Applications that violate these rules face the possibility of outdated or incorrect results if the secondary indexes are later used.</p>
+<p>If a secondary index becomes outdated for any reason, it should be discarded using the DB-&gt;remove() method and a new one created using the DB-&gt;associate() method. If a secondary index is no longer needed, all of its handles should be closed using the DB-&gt;close() method, and then the database should be removed using a new database handle and the DB-&gt;remove() method.</p>
+<p>Closing a primary database handle automatically dis-associates all secondary database handles associated with it.</p>
+<h1 id="error-handling-with-secondary-indexes">Error Handling With Secondary Indexes</h1>
+<p>An error return during a secondary update in CDS or DS (which requires an abort in TDS) may leave a secondary index inconsistent in CDS or DS. There are a few non-error returns:</p>
+<ul>
+<li><code>0</code></li>
+<li><code>DB_BUFFER_SMALL</code></li>
+<li><code>DB_NOTFOUND</code></li>
+<li><code>DB_KEYEMPTY</code></li>
+<li><code>DB_KEYEXIST</code></li>
+</ul>
+<p>In the case of any other error return during a secondary update in CDS or DS, delete the secondary indices, recreate them. Some examples of error returns that need to be handled this way are:</p>
+<ul>
+<li><code>ENOMEM</code> - indicating there is insufficient memory to return the requested item</li>
+<li><code>EINVAL</code> - indicating that an invalid flag value or parameter is specified</li>
+</ul>
+<p>Note that <code>DB_RUNRECOVERY</code> and <code>DB_PAGE_NOTFOUND</code> are fatal errors which should never occur during normal use of CDS or DS. If those errors are returned by Berkeley DB when running without transactions, check the database integrity with the &lt;xref:Database.Verify()&gt; method before rebuilding the secondary indices.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb-pg/secondary-indexes.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

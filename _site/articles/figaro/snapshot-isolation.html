@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Snapshot Isolation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Snapshot Isolation ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="snapshot-isolation.md">
+<h1 id="snapshot-isolation">Snapshot Isolation</h1>
+
+<p>By default Figaro uses serializable isolation. An important side effect of this isolation level is that read operations obtain read locks on database pages, and then hold those locks until the read operation is completed. You can avoid this by using snapshot isolation. Snapshot isolation uses multi-version concurrency control to guarantee repeatable reads. What this means is that every time a writer would take a read lock on a page, instead a copy of the page is made and the writer operates on that page copy. This frees other writers from blocking due to a read lock held on the page.</p>
+<div class="NOTE"><h5>Note</h5><p>Snapshot isolation is strongly recommended for read-only threads when writer threads are also running, as this will eliminate read-write contention and greatly improve transaction throughput for your writer threads. However, in order for snapshot isolation to work for your reader-only threads, you must of course use transactions for your Figaro reads.</p>
+</div>
+<h2 id="snapshot-isolation-costs">Snapshot Isolation Costs</h2>
+<p>Snapshot isolation does not come without a cost. Because pages are being duplicated before being operated upon, the cache will fill up faster. This means that you might need a larger cache in order to hold the entire working set in memory.</p>
+<p>If the cache becomes full of page copies before old copies can be discarded, additional I/O will occur as pages are written to temporary &quot;freezer&quot; files on disk. This can substantially reduce throughput, and should be avoided if possible by configuring a large cache and keeping snapshot isolation transactions short.</p>
+<p>You can estimate how large your cache should be by taking a checkpoint, followed by a call to the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_LogArchive_Figaro_LogArchiveOptions_">LogArchive(LogArchiveOptions)</a> method. The amount of cache required is approximately double the size of the remaining log files (that is, the log files that cannot be archived).</p>
+<h2 id="snapshot-isolation-transactional-requirements">Snapshot Isolation Transactional Requirements</h2>
+<p>In addition to an increased cache size, you may also need to increase the maximum number of transactions that your application supports. (See <a class="xref" href="configuring-the-transaction-subsystem.html">Configuring the Transaction Subsystem</a> for details on how to set this.) In the worst case scenario, you might need to configure your application for one more transaction for every page in the cache. This is because transactions are retained until the last page they created is evicted from the cache.</p>
+<h2 id="when-to-use-snapshot-isolation">When To Use Snapshot Isolation</h2>
+<p>Snapshot isolation is best used when all or most of the following conditions are true:</p>
+<ul>
+<li>You have a <em>large cache</em> relative to its working size.</li>
+<li>You require repeatable reads.</li>
+<li>You will be using transactions that routinely work on the entire database, or more commonly, there is data in your database that will be very frequently written by more than one transaction.</li>
+<li>If your application uses a single write thread and multiple readers, then snapshot isolation can help performance. However, if your application uses multiple write threads, then snapshot isolation can result in additional deadlocks that may harm your application&#39;s performance.</li>
+</ul>
+<h2 id="how-to-use-snapshot-isolation">How to use Snapshot Isolation</h2>
+<p>You use snapshot isolation by:</p>
+<ul>
+<li>Opening the container with multi-version support. You can configure this either when you open your environment or when you open your container. Use the <a class="xref" href="../../api/Figaro.EnvConfig.html#Figaro_EnvConfig_MultiVersion">MultiVersion</a> flag to configure this support.</li>
+<li>Configure your transaction to use snapshot isolation. To do this, pass the <a class="xref" href="../../api/Figaro.TransactionType.html#Figaro_TransactionType_SnapshotTransaction">SnapshotTransaction</a> flag when you create the transaction.</li>
+</ul>
+<p>The simplest way to take advantage of snapshot isolation is for queries: keep update transactions using full read/write locking and use snapshot isolation on read-only transactions or cursors. This should minimize blocking of snapshot isolation transactions and will avoid deadlock errors.</p>
+<p>If the application has update transactions which read many items and only update a small set (for example, scanning until a desired record is found, then modifying it), throughput may be improved by running some updates at snapshot isolation as well. But doing this means that you must manage deadlock errors. See <a class="xref" href="resolving-deadlocks.html">Resolving Deadlocks</a> &gt; for details.</p>
+<p>The following code fragment turns on snapshot isolation for a transaction:</p>
+<pre><code class="lang-C#">using System;
+using System.IO;
+using Figaro;
+
+namespace Figaro.Documentation.Examples
+{
+internal class SnapshotIsolation
+{
+
+private const EnvOpenOptions envOpenOptions =
+//create the environment if it doesn&#39;t exist
+EnvOpenOptions.Create |
+//initialize locking
+EnvOpenOptions.InitLock |
+//initialize logging
+EnvOpenOptions.InitLog |
+//initialize the cache
+EnvOpenOptions.InitMemoryBufferPool |
+//free-threaded environment handle
+EnvOpenOptions.Thread |
+//initialize transactions
+EnvOpenOptions.InitTransaction;
+
+private const ContainerSettings containerSettings =
+//Create if it doesn&#39;t exist.
+ContainerSettings.Create |
+//Support transactions.
+ContainerSettings.Transactional;
+
+private const string baseUri = @&quot;C:\dev\db\samples\SnapshotIsolation&quot;;
+private const string testdb = &quot;SnapshotIsolation.dbxml&quot;;
+private static void Main()
+{
+FigaroEnv environment = new FigaroEnv();
+try
+{
+environment.Open(baseUri, envOpenOptions);
+
+//support snapshot isolation.
+environment.SetEnvironmentOption(EnvConfig.MultiVersion, true);
+
+using (XmlManager mgr = new XmlManager(environment))
+{
+using (Container myContainer =
+mgr.CreateContainer(testdb, containerSettings,
+XmlContainerType.WholeDocContainer))
+{
+var transaction =
+mgr.CreateTransaction(TransactionType.SnapshotTransaction);
+}
+}
+}
+catch (FigaroException fe)
+{
+Debugger.Break();
+}
+}
+}
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/snapshot-isolation.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

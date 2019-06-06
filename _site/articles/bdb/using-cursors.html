@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using Cursors </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using Cursors ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-cursors">Using Cursors</h1>
+
+<p>Cursors provide a mechanism by which you can iterate over the records in a database. Using cursors, you can get, put, and delete database records. If a database allows duplicate records, then cursors are the easiest way that you can access anything other than the first record for a given key. </p>
+<p>Using the Berkeley DB .NET library, we have the added benefit of our <code>Cursor</code> object being a LINQ IEnumerable of @BerkeleyDB.Core.DatabaseEntry <code>KeyValuePair</code> objects. This gives us a lot of added flexibility when it comes to </p>
+<p>This section introduces cursors. It explains how to open and close them, how to use them to modify databases, and how to use them with duplicate records. </p>
+<p>Cursors are obtained by calling the @BerkeleyDb.Core.Database.Cursor method:</p>
+<pre><code>db = BTreeDatabase.Open(Path.Combine(dataPath,databaseName +&quot;.db&quot;),cfg);
+var cursor = db.Cursor();
+</code></pre><p>When you&#39;re done with a cursor you should close it using the <code>Close</code> method. </p>
+<div class="NOTE"><h5>Note</h5><p>Closing your database while cursors are still opened can have unpredictable results. It is recommended that you close all cursor handles after their use to ensure concurrency and to release resources such as page locks. </p>
+</div>
+<p>If we go back to our sample project in the <a href="db-usage-sample.html">database usage sample</a> and add a cursor to our <code>Repository</code> object, we get something that looks like this:</p>
+<pre><code>public abstract class Repository: IDisposable
+  {
+    protected string path;
+    protected BTreeDatabase db;
+    protected Cursor cursor;
+
+    protected Repository(string dataPath, string databaseName)
+    {
+      path = dataPath;
+      var cfg = new BTreeDatabaseConfig
+      {
+        Creation = CreatePolicy.IF_NEEDED, CacheSize = new CacheInfo(1, 0, 1),
+        ErrorFeedback = (prefix, message) =&gt;
+        {
+          var fg = Console.ForegroundColor;
+          Console.ForegroundColor = ConsoleColor.Red;
+          Console.WriteLine($&quot;{prefix}: {message}&quot;);
+          Console.ForegroundColor = fg;
+        },
+        ErrorPrefix = databaseName,Duplicates = DuplicatesPolicy.SORTED,        
+      };
+      db = BTreeDatabase.Open(Path.Combine(dataPath,databaseName +&quot;.db&quot;),cfg);
+
+      cursor = db.Cursor();
+    }
+    // ...
+</code></pre><h2 id="searching-for-records">Searching for Records</h2>
+<p>You can use cursors to search for database records. You can search based on just a key, or you can search based on both the key and the data. You can also perform partial matches if your database supports sorted duplicate sets. In all cases, the key and data parameters of these methods are filled with the key and data values of the database record to which the cursor is positioned as a result of the search. </p>
+<p>Using a cursor is as simple as iterating through the <code>KeyValuePair</code> items containing the key and the data. </p>
+<p>In our repository code, we could add something like this:</p>
+<pre><code>public void FindKey(string keyValue)
+  {
+    var pairs = (from c in cursor where Encoding.UTF8.GetString(c.Key.Data).Contains(keyValue) select c).ToList();
+    var watch = new Stopwatch();
+    watch.Start();
+    foreach (var pair in pairs)
+    {
+      Console.WriteLine($&quot;\t{Encoding.UTF8.GetString(pair.Key.Data)}&quot;);
+    }
+    watch.Stop();
+    Console.WriteLine($&quot;task completed in {watch.Elapsed.Seconds} seconds.&quot;);
+    Console.WriteLine($&quot;found {pairs.Count()} records.&quot;);      
+    Console.WriteLine(&quot;---&quot;);
+  }
+</code></pre><p>And then in our main code we will do a keyword search for the word <code>Lorem</code>:</p>
+<pre><code>// find vendors with the word &#39;Lorem&#39; in their key
+vendorRepo.FindKey(&quot;Lorem&quot;);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb/using-cursors.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

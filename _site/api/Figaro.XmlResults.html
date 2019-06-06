@@ -1,0 +1,1133 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XmlResults
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XmlResults
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XmlResults">
+  
+  
+  <h1 id="Figaro_XmlResults" data-uid="Figaro.XmlResults" class="text-break">Class XmlResults
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates the results of a query or other lookup operation.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XmlResults</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.IEnumerator</span></div>
+    <div><span class="xref">System.Collections.ICollection</span></div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XmlResults_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class XmlResults : IEnumerator, ICollection, IEnumerable</code></pre>
+  </div>
+  <h5 id="Figaro_XmlResults_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p><a class="xref" href="Figaro.XmlResults.html">XmlResults</a> is a collection of
+<a class="xref" href="Figaro.XmlValue.html">XmlValue</a>
+objects, which may represent any one of the supported types. An
+<a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object is created by executing a query or
+calling <a class="xref" href="Figaro.XmlIndexLookup.html#Figaro_XmlIndexLookup_Execute_Figaro_QueryContext_">Execute(QueryContext)</a>.
+<p>
+There are several ways that a query is performed. One is to call
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Query_System_String_Figaro_QueryContext_Figaro_QueryOptions_">Query(String, QueryContext, QueryOptions)</a> directly. This mechanism is
+appropriate for one-shot queries that will not be repeated.
+</p><p>
+A second approach is to create an <a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a> using
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a>. You then execute the query expression
+using <a class="xref" href="Figaro.XQueryExpression.html#Figaro_XQueryExpression_Execute_Figaro_QueryContext_">Execute(QueryContext)</a>. This approach is appropriate
+for queries that will be performed more than once as it means that the expense of compiling the query can be
+amortized across multiple queries.
+</p><p>
+Note that when you perform a query, you must provide an <a class="xref" href="Figaro.QueryContext.html">QueryContext</a> object.
+Using this object, you can indicate whether you want the query to be performed eagerly or lazily. If eager
+evaluation is specified (the default), then the resultant values are stored within
+the <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object. If lazy evaluation is selected, then the
+resultant values will be computed as needed. In this case
+the <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object will maintain a reference to the affected
+containers (<a class="xref" href="Figaro.Container.html">Container</a>), query context
+(<a class="xref" href="Figaro.QueryContext.html">QueryContext</a>), and expression
+(<a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a>).
+</p><p>
+The <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> class provides an iteration interface through
+the <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextDocument">NextDocument()</a> and <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextValue">NextValue()</a>
+methods. These methods
+return <code>null</code> when no more results are available
+(<a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_IsNull">IsNull()</a> returns <code>true</code>).
+<a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_Reset">Reset()</a> can be called to reset the iterator, and the
+subsequent call to <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextDocument">NextDocument()</a> or
+<a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextValue">NextValue()</a>
+will return the first value of the result set.
+</p></p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=345">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_Count_" data-uid="Figaro.XmlResults.Count*"></a>
+  <h4 id="Figaro_XmlResults_Count" data-uid="Figaro.XmlResults.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <span class="xref">System.Collections.ICollection</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of elements contained in the <span class="xref">System.Collections.ICollection</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=297">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_Current_" data-uid="Figaro.XmlResults.Current*"></a>
+  <h4 id="Figaro_XmlResults_Current" data-uid="Figaro.XmlResults.Current">Current</h4>
+  <div class="markdown level1 summary"><p>Gets the current element in the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Current { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>The current element in the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>The enumerator is positioned before the first element of the collection or after the last element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=357">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_IsSynchronized_" data-uid="Figaro.XmlResults.IsSynchronized*"></a>
+  <h4 id="Figaro_XmlResults_IsSynchronized" data-uid="Figaro.XmlResults.IsSynchronized">IsSynchronized</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether access to the <span class="xref">System.Collections.ICollection</span> is synchronized (thread safe).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSynchronized { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if access to the <span class="xref">System.Collections.ICollection</span> is synchronized (thread safe); otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=369">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_SyncRoot_" data-uid="Figaro.XmlResults.SyncRoot*"></a>
+  <h4 id="Figaro_XmlResults_SyncRoot" data-uid="Figaro.XmlResults.SyncRoot">SyncRoot</h4>
+  <div class="markdown level1 summary"><p>Gets an object that can be used to synchronize access to the <span class="xref">System.Collections.ICollection</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object SyncRoot { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>An object that can be used to synchronize access to the <span class="xref">System.Collections.ICollection</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=85">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_Add_" data-uid="Figaro.XmlResults.Add*"></a>
+  <h4 id="Figaro_XmlResults_Add_Figaro_XmlValue_" data-uid="Figaro.XmlResults.Add(Figaro.XmlValue)">Add(XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to the end of the results set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_Add_Figaro_XmlValue__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that if
+the <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object was created as the result of a
+lazy evaluation, this method throws an exception. This method is used primarily for
+application resolution of collections in
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateXmlResults">CreateXmlResults()</a>).</p>
+</div>
+  <h5 id="Figaro_XmlResults_Add_Figaro_XmlValue__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateXmlResults">CreateXmlResults()</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=62">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_ConcatResults_" data-uid="Figaro.XmlResults.ConcatResults*"></a>
+  <h4 id="Figaro_XmlResults_ConcatResults_Figaro_XmlResults_" data-uid="Figaro.XmlResults.ConcatResults(Figaro.XmlResults)">ConcatResults(XmlResults)</h4>
+  <div class="markdown level1 summary"><p>Concatenate <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> objects together.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ConcatResults(XmlResults results)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><span class="parametername">results</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object to concatenate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=69">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_CopyResults_" data-uid="Figaro.XmlResults.CopyResults*"></a>
+  <h4 id="Figaro_XmlResults_CopyResults_Figaro_XmlResults_" data-uid="Figaro.XmlResults.CopyResults(Figaro.XmlResults)">CopyResults(XmlResults)</h4>
+  <div class="markdown level1 summary"><p>Create a new copy of the results.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults CopyResults(XmlResults results)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><span class="parametername">results</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object to copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>A new copy of the <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=333">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_CopyTo_" data-uid="Figaro.XmlResults.CopyTo*"></a>
+  <h4 id="Figaro_XmlResults_CopyTo_System_Array_System_Int32_" data-uid="Figaro.XmlResults.CopyTo(System.Array,System.Int32)">CopyTo(Array, Int32)</h4>
+  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.ICollection</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(Array array, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Array</span></td>
+        <td><span class="parametername">array</span></td>
+        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.ICollection</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The zero-based index in <code data-dev-comment-type="paramref" class="paramref">array</code> at which copying begins.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">array</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is less than zero.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">array</code> is multidimensional.
+    -or-
+<code data-dev-comment-type="paramref" class="paramref">index</code> is equal to or greater than the length of <code data-dev-comment-type="paramref" class="paramref">array</code>.
+-or-
+The number of elements in the source <span class="xref">System.Collections.ICollection</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">index</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The type of the source <span class="xref">System.Collections.ICollection</span> cannot be cast automatically to the type of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=280">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_Dispose_" data-uid="Figaro.XmlResults.Dispose*"></a>
+  <h4 id="Figaro_XmlResults_Dispose" data-uid="Figaro.XmlResults.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=383">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_GetEnumerator_" data-uid="Figaro.XmlResults.GetEnumerator*"></a>
+  <h4 id="Figaro_XmlResults_GetEnumerator" data-uid="Figaro.XmlResults.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through a collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>An <span class="xref">System.Collections.IEnumerator</span> object that can be used to iterate through the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=94">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_GetEvaluationType_" data-uid="Figaro.XmlResults.GetEvaluationType*"></a>
+  <h4 id="Figaro_XmlResults_GetEvaluationType" data-uid="Figaro.XmlResults.GetEvaluationType">GetEvaluationType()</h4>
+  <div class="markdown level1 summary"><p>Returns the evaluation type of the <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object.
+This type is either <a class="xref" href="Figaro.EvaluationType.html#Figaro_EvaluationType_Eager">Eager</a>
+or <a class="xref" href="Figaro.EvaluationType.html#Figaro_EvaluationType_Lazy">Lazy</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvaluationType GetEvaluationType()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.EvaluationType.html">EvaluationType</a></td>
+        <td><p>The evaluation type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_GetEvaluationType_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.EvaluationType.html">EvaluationType</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=133">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_GetSize_" data-uid="Figaro.XmlResults.GetSize*"></a>
+  <h4 id="Figaro_XmlResults_GetSize" data-uid="Figaro.XmlResults.GetSize">GetSize()</h4>
+  <div class="markdown level1 summary"><p>Returns the number of results in an eagerly-evaluated results set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint GetSize()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The number of results in an eagerly-evaluated results set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_GetSize_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Gets the number of results in an eagerly-evaluated results set.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=106">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_HasNext_" data-uid="Figaro.XmlResults.HasNext*"></a>
+  <h4 id="Figaro_XmlResults_HasNext" data-uid="Figaro.XmlResults.HasNext">HasNext()</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if there is another element in the results set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasNext()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if there is another element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_HasNext_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Gets the boolean operator indicating another element in the results set.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=118">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_HasPrevious_" data-uid="Figaro.XmlResults.HasPrevious*"></a>
+  <h4 id="Figaro_XmlResults_HasPrevious" data-uid="Figaro.XmlResults.HasPrevious">HasPrevious()</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if there is a previous element in the results set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasPrevious()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if there is a previous element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_HasPrevious_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Gets the boolean operator indicating an element prior to the current in the results set.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=251">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_IsNull_" data-uid="Figaro.XmlResults.IsNull*"></a>
+  <h4 id="Figaro_XmlResults_IsNull" data-uid="Figaro.XmlResults.IsNull">IsNull()</h4>
+  <div class="markdown level1 summary"><p>Determines whether or not values were returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNull()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if no values were returned from the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XmlResults_IsNull_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Gets the boolean operator determining if values were returned from the query operation.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=310">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_MoveNext_" data-uid="Figaro.XmlResults.MoveNext*"></a>
+  <h4 id="Figaro_XmlResults_MoveNext" data-uid="Figaro.XmlResults.MoveNext">MoveNext()</h4>
+  <div class="markdown level1 summary"><p>Advances the enumerator to the next element of the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MoveNext()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the enumerator was successfully advanced to the next element; <code>false</code> if the enumerator has passed the end of the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>The collection was modified after the enumerator was created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=178">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_NextDocument_" data-uid="Figaro.XmlResults.NextDocument*"></a>
+  <h4 id="Figaro_XmlResults_NextDocument" data-uid="Figaro.XmlResults.NextDocument">NextDocument()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the next value in the result set. When no more values remain in the result set,
+the method returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument NextDocument()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The next <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueException.html">XmlValueException</a></td>
+        <td><p>Thrown if the underlying type is <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=143">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_NextReader_" data-uid="Figaro.XmlResults.NextReader*"></a>
+  <h4 id="Figaro_XmlResults_NextReader" data-uid="Figaro.XmlResults.NextReader">NextReader()</h4>
+  <div class="markdown level1 summary"><p>Return the next document as a .NET <span class="xref">System.Xml.XmlReader</span>. If none exists,
+returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlReader NextReader()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlReader</span></td>
+        <td><p>A .NET <span class="xref">System.Xml.XmlReader</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=190">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_NextValue_" data-uid="Figaro.XmlResults.NextValue*"></a>
+  <h4 id="Figaro_XmlResults_NextValue" data-uid="Figaro.XmlResults.NextValue">NextValue()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the next value in the result set. When no more values remain in the result set,
+the method returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue NextValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>The next <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=202">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PeekDocument_" data-uid="Figaro.XmlResults.PeekDocument*"></a>
+  <h4 id="Figaro_XmlResults_PeekDocument" data-uid="Figaro.XmlResults.PeekDocument">PeekDocument()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> in the result set without moving the internal iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument PeekDocument()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The current <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueException.html">XmlValueException</a></td>
+        <td><p>Thrown if the underlying type is <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=153">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PeekReader_" data-uid="Figaro.XmlResults.PeekReader*"></a>
+  <h4 id="Figaro_XmlResults_PeekReader" data-uid="Figaro.XmlResults.PeekReader">PeekReader()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the current document in the result set as a .NET <span class="xref">System.Xml.XmlReader</span> without
+moving the internal iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlReader PeekReader()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlReader</span></td>
+        <td><p>A .NET <span class="xref">System.Xml.XmlReader</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=214">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PeekValue_" data-uid="Figaro.XmlResults.PeekValue*"></a>
+  <h4 id="Figaro_XmlResults_PeekValue" data-uid="Figaro.XmlResults.PeekValue">PeekValue()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> in the
+result set without moving the internal iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue PeekValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>The current <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=227">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PreviousDocument_" data-uid="Figaro.XmlResults.PreviousDocument*"></a>
+  <h4 id="Figaro_XmlResults_PreviousDocument" data-uid="Figaro.XmlResults.PreviousDocument">PreviousDocument()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the previous <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> in the
+result set. If none exists, returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument PreviousDocument()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The previous <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValueException.html">XmlValueException</a></td>
+        <td><p>Thrown if the underlying type is <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=165">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PreviousReader_" data-uid="Figaro.XmlResults.PreviousReader*"></a>
+  <h4 id="Figaro_XmlResults_PreviousReader" data-uid="Figaro.XmlResults.PreviousReader">PreviousReader()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the previous document in the
+result set as a .NET <span class="xref">System.Xml.XmlReader</span>. If none exists, returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlReader PreviousReader()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlReader</span></td>
+        <td><p>The previous document as a .NET <span class="xref">System.Xml.XmlReader</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=239">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_PreviousValue_" data-uid="Figaro.XmlResults.PreviousValue*"></a>
+  <h4 id="Figaro_XmlResults_PreviousValue" data-uid="Figaro.XmlResults.PreviousValue">PreviousValue()</h4>
+  <div class="markdown level1 summary"><p>Retrieves the previous <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> in the
+result set. If none exists, returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue PreviousValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>The previous <a class="xref" href="Figaro.XmlValue.html">XmlValue</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=270">View Source</a>
+  </span>
+  <a id="Figaro_XmlResults_Reset_" data-uid="Figaro.XmlResults.Reset*"></a>
+  <h4 id="Figaro_XmlResults_Reset" data-uid="Figaro.XmlResults.Reset">Reset()</h4>
+  <div class="markdown level1 summary"><p>Resets the result set iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <h5 id="Figaro_XmlResults_Reset_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If a query was processed with eager evaluation, a call to the
+<a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_Reset">Reset()</a> method resets the
+result set iterator, so that a subsequent call
+to <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextDocument">NextDocument()</a>
+or <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_NextValue">NextValue()</a> methods will
+return the first value in the result set. If the query
+was processed with lazy evaluation, then a call to
+the <a class="xref" href="Figaro.XmlResults.html#Figaro_XmlResults_Reset">Reset()</a> method throws an
+exception.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.IEnumerator</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.ICollection</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Prepare_System_String_Figaro_QueryContext_">Prepare(String, QueryContext)</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.Container.html">Container</a></div>
+      <div><a class="xref" href="Figaro.QueryContext.html">QueryContext</a></div>
+      <div><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XmlResults.cs&amp;version=GBmaster&amp;line=54" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

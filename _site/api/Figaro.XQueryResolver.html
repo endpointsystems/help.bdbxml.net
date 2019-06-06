@@ -1,0 +1,723 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XQueryResolver
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XQueryResolver
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.XQueryResolver">
+  
+  
+  <h1 id="Figaro_XQueryResolver" data-uid="Figaro.XQueryResolver" class="text-break">Class XQueryResolver
+  </h1>
+  <div class="markdown level0 summary"><p>Provides a base class that is used for file resolution policy. 
+Implementations of this class are used for URI resolution, or for public and system id 
+resolution. <a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a> implementations are identified for use using 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_RegisterResolver_Figaro_XQueryResolver_">RegisterResolver(XQueryResolver)</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">XQueryResolver</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_XQueryResolver_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class XQueryResolver : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_XQueryResolver_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The <a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a> class allows applications to provide named access to 
+application-specific objects, such as documents, collections of documents, DTDs, and 
+XML schema. Figaro can resolve references to names within a container, or a file 
+system; applications can create <a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a> instances that can resolve 
+entities in other locations.
+<p>If an application uses multiple threads, custom implementations of 
+<code>XQueryResolver</code> must be free threaded, and allow multiple, 
+simultaneous calls for resolution.</p>
+<p>For an example of a <a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a> implementation, 
+see the SDK samples.</p></p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=35">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver__ctor_" data-uid="Figaro.XQueryResolver.#ctor*"></a>
+  <h4 id="Figaro_XQueryResolver__ctor_System_Uri_" data-uid="Figaro.XQueryResolver.#ctor(System.Uri)">XQueryResolver(Uri)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the XQueryResolver class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected XQueryResolver(Uri uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p>The unique identifier for the resolver.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=40">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_Uri_" data-uid="Figaro.XQueryResolver.Uri*"></a>
+  <h4 id="Figaro_XQueryResolver_Uri" data-uid="Figaro.XQueryResolver.Uri">Uri</h4>
+  <div class="markdown level1 summary"><p>Gets the unique identifier for the resolver.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Uri Uri { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=46">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_Dispose_" data-uid="Figaro.XQueryResolver.Dispose*"></a>
+  <h4 id="Figaro_XQueryResolver_Dispose" data-uid="Figaro.XQueryResolver.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=56">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveCollection_" data-uid="Figaro.XQueryResolver.ResolveCollection*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveCollection_Figaro_XmlTransaction_Figaro_XmlManager_System_String_Figaro_XmlResults_" data-uid="Figaro.XQueryResolver.ResolveCollection(Figaro.XmlTransaction,Figaro.XmlManager,System.String,Figaro.XmlResults)">ResolveCollection(XmlTransaction, XmlManager, String, XmlResults)</h4>
+  <div class="markdown level1 summary"><p>Resolve a custom collection external to XQuery and the Figaro XML Database containers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool ResolveCollection(XmlTransaction txn, XmlManager mgr, string uri, XmlResults collection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The owning <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p>The URI of the collection to resolve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><span class="parametername">collection</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object to add collection items to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the collection was successfully resolved.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=65">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveDocument_" data-uid="Figaro.XQueryResolver.ResolveDocument*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveDocument_Figaro_XmlTransaction_Figaro_XmlManager_System_String_" data-uid="Figaro.XQueryResolver.ResolveDocument(Figaro.XmlTransaction,Figaro.XmlManager,System.String)">ResolveDocument(XmlTransaction, XmlManager, String)</h4>
+  <div class="markdown level1 summary"><p>Resolve a document referenced in an XQuery query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract XmlDocument ResolveDocument(XmlTransaction txn, XmlManager mgr, string uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The owning <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p>The URI of the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to resolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The referenced <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>, or <code>null</code> if the resolver does not resolve to the particular reference.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=75">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveEntity_" data-uid="Figaro.XQueryResolver.ResolveEntity*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveEntity_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String_" data-uid="Figaro.XQueryResolver.ResolveEntity(Figaro.XmlTransaction,Figaro.XmlManager,System.String,System.String)">ResolveEntity(XmlTransaction, XmlManager, String, String)</h4>
+  <div class="markdown level1 summary"><p>Resolve an external entity in an XQuery query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract XmlInputStream ResolveEntity(XmlTransaction txn, XmlManager mgr, string systemId, string publicId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The owning <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">systemId</span></td>
+        <td><p>The system ID of the referenced entity.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">publicId</span></td>
+        <td><p>The public ID of the referenced entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></td>
+        <td><p>The referenced entity, or <code>null</code> if the resolver does not resolve the particular reference.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=96">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveExternalFunction_" data-uid="Figaro.XQueryResolver.ResolveExternalFunction*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveExternalFunction_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String_System_UInt64_" data-uid="Figaro.XQueryResolver.ResolveExternalFunction(Figaro.XmlTransaction,Figaro.XmlManager,System.String,System.String,System.UInt64)">ResolveExternalFunction(XmlTransaction, XmlManager, String, String, UInt64)</h4>
+  <div class="markdown level1 summary"><p>Resolve the URI, name and number of arguments to an <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a>
+implementation. If the external function cannot be resolved by this
+<a class="xref" href="Figaro.XQueryResolver.html">XQueryResolver</a>, then the method should return <code>null</code>. 
+The returned <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a>
+will be adopted by Figaro, and disposed of when it&apos;s been used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract XmlExternalFunction ResolveExternalFunction(XmlTransaction txn, XmlManager mgr, string uri, string name, ulong numArgs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object associated with the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p>The URI of the function to resolve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The XQuery function name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><span class="parametername">numArgs</span></td>
+        <td><p>The number of XQuery function arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a></td>
+        <td><p>A new <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a> instance, or <code>null</code> if the function fails to resolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryResolver_ResolveExternalFunction_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String_System_UInt64__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><div class="CAUTION"><h5>caution</h5><p>
+If the resolver successfully locates the <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a>, return a new instance 
+of the <a class="xref" href="Figaro.XmlExternalFunction.html">XmlExternalFunction</a> object. 
+</p></div>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=111">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveModule_" data-uid="Figaro.XQueryResolver.ResolveModule*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveModule_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String_" data-uid="Figaro.XQueryResolver.ResolveModule(Figaro.XmlTransaction,Figaro.XmlManager,System.String,System.String)">ResolveModule(XmlTransaction, XmlManager, String, String)</h4>
+  <div class="markdown level1 summary"><p>When implemented, should resolve a module location (URI) and namespace to a 
+new <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a>. If the location and namespace cannot be resolved by 
+this resolver, this method should return <code>null</code>. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract XmlInputStream ResolveModule(XmlTransaction txn, XmlManager mgr, string moduleLocation, string nameSpace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object associated with the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">moduleLocation</span></td>
+        <td><p>The module location.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nameSpace</span></td>
+        <td><p>The module namespace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></td>
+        <td><p>an <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a> instance containing the loaded XQuery module.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_XQueryResolver_ResolveModule_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a> object will be deleted by the caller, and should not be reused.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=121">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveModuleLocation_" data-uid="Figaro.XQueryResolver.ResolveModuleLocation*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveModuleLocation_Figaro_XmlTransaction_Figaro_XmlManager_System_String_Figaro_XmlResults_" data-uid="Figaro.XQueryResolver.ResolveModuleLocation(Figaro.XmlTransaction,Figaro.XmlManager,System.String,Figaro.XmlResults)">ResolveModuleLocation(XmlTransaction, XmlManager, String, XmlResults)</h4>
+  <div class="markdown level1 summary"><p>Resolve the XQuery module location(s) according to the <code data-dev-comment-type="paramref" class="paramref">nameSpace</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool ResolveModuleLocation(XmlTransaction txn, XmlManager mgr, string nameSpace, XmlResults moduleLocations)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object associated with the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nameSpace</span></td>
+        <td><p>The namespace of the module(s) to resolve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><span class="parametername">moduleLocations</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> object to store the location(s) of the XQuery module(s).s</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the resolver resolves the location(s); otherwise, <code>false</code> is returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=131">View Source</a>
+  </span>
+  <a id="Figaro_XQueryResolver_ResolveSchema_" data-uid="Figaro.XQueryResolver.ResolveSchema*"></a>
+  <h4 id="Figaro_XQueryResolver_ResolveSchema_Figaro_XmlTransaction_Figaro_XmlManager_System_String_System_String_" data-uid="Figaro.XQueryResolver.ResolveSchema(Figaro.XmlTransaction,Figaro.XmlManager,System.String,System.String)">ResolveSchema(XmlTransaction, XmlManager, String, String)</h4>
+  <div class="markdown level1 summary"><p>Resolve schemas referenced in XQuery queries.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract XmlInputStream ResolveSchema(XmlTransaction txn, XmlManager mgr, string schemaLocation, string nameSpace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">txn</span></td>
+        <td><p>If a transaction is in force, a reference to the <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object; otherwise, <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object associated with the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">schemaLocation</span></td>
+        <td><p>The location of the resolved schema.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nameSpace</span></td>
+        <td><p>The namespace of the module(s) to resolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></td>
+        <td><p>The <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a> containing the referenced schema, or <code>null</code> if it does not resolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/XQueryResolver.cs&amp;version=GBmaster&amp;line=29" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

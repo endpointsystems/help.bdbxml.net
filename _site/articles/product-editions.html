@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Product Editions </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Product Editions ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="product-editions.md">
+<h1 id="product-editions">Product Editions</h1>
+
+<p>Oracle Berkeley DB XML comes in four distinct product editions - Data Store (DS), for single-threaded applications; Concurrent Data Store (CDS), for multi-threaded read, single-threaded write operations; Transactional Data Storage (TDS) for multi-threaded, ATOMIC operations; and High Availability (HA), for replication and multiple instance master-slave database application data storage requirements.</p>
+<h2 id="data-store-ds">Data Store (DS)</h2>
+<p>Figaro Data Store, or DS, covers the basics of data storage. The API is simple and uses direct key or cursor-based access under the hood; this minimizes overhead when adding, removing, and updating XML data. Frequently accessed data is cached in memory. DS is very fast; it avoids storing data to disk until it is necessary. It performs no locking or other concurrency control, and it does not provide the ACID features of transactional systems. DS is simple and efficient data storage for non-concurrent applications that favor raw throughput over guaranteed data integrity.</p>
+<p>Choose Figaro DS when:</p>
+<ul>
+<li>There is only one reader or writer, or multiple read-only processes.</li>
+<li>Transactional data protection (ACID) is not required.</li>
+</ul>
+<h2 id="concurrent-data-store-cds">Concurrent Data Store (CDS)</h2>
+<p>Figaro Concurrent Data Store, or CDS, adds locking and concurrency management services to DS. With the CDS features enabled, Figaro CDS uses locks to manage multiple readers, and a single writer orchestrating their concurrent access to data within the databases. Figaro CDS is simple and efficient data storage for concurrent systems. ACID transactions are not supported.</p>
+<p>Choose Figaro CDS when:</p>
+<ul>
+<li>There are many concurrent readers and writers to the database.</li>
+<li>Reads are much more common than writes.</li>
+<li>Transactional data protection is not required.</li>
+</ul>
+<h2 id="transactional-data-store-tds">Transactional Data Store (TDS)</h2>
+<p>Figaro Transactional Data Store, or TDS, adds full ACID transaction support to Figaro CDS. Changes to databases or their contents are atomic, consistent, isolated, and durable when using TDS. Transactions can be short lived or long running, lasting days if necessary. Transactions can improve system throughput in concurrent applications by grouping actions into a single commit to disk. Applications that use secondary indices to manage relationships require transactions to keep those relationships consistent. The Figaro TDS transactional system in the Berkeley DB database engine offers a great deal of flexibility to accommodate your desired performance and durability requirements. For example, Figaro TDS supports the ability to trade off durability for speed, or to allow readers to see uncommitted data to reduce locking overhead. Figaro TDS utilizes log files to contain information about transactional data that can be used to recover from application or systems failure.</p>
+<p>Choose Figaro TDS when:</p>
+<ul>
+<li>There is a balance of concurrent readers and writers.</li>
+<li>Data integrity is critical.</li>
+<li>Recovery of committed data is a requirement.</li>
+<li>Database corruption is unacceptable.</li>
+</ul>
+<h2 id="high-availability-ha">High Availability (HA)</h2>
+<p>Figaro High Availability, or HA, adds support for replicated systems to Figaro TDS. There are the two basic reasons to build a replicated highly available system: scale and reliability:</p>
+<ul>
+<li>Scale your transactional application beyond the processing constraints of a single system.</li>
+<li>Deliver a highly reliable system where failure of one node does not cause system wide failure.</li>
+</ul>
+<p>Replicated databases come in a number of different configurations. The HA layer of the Berkeley DB database engine can be configured for any of the replicated designs that involve a single writer as a master and multiple replicas allowing for read-only access to data.</p>
+<p>Figaro HA supports the entire range of configurations from a simple hot standby with failover setup to a geographically diverse set of tiered replica clusters. Figaro HA makes no assumptions about how the nodes communicate with one another; it will support TCP/IP communications networks.</p>
+<p>Figaro HA supports any topology regardless of the number of replicated nodes within it. Upon notification of a failure of the master node, an election algorithm will identify a new master so that processing can continue uninterrupted. Figaro HA can even be used as a completely disk-less in memory reliable distributed storage system.</p>
+<p>Choose Figaro HA when:</p>
+<ul>
+<li>Single-system throughput isn&#39;t enough to meet your data requirements.</li>
+<li>System uptime of %99.999 or better is a requirement.</li>
+<li>The system must be able to survive node failure.</li>
+<li>There is a need for consistent online backup of system data.</li>
+<li>Your architecture calls for a hot-failover strategy.</li>
+<li>Your hardware device has multiple redundant systems and must be able to fail from one to the other gracefully.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="developing-dotnet-apps-with-figaro.html">Developing .NET Applications with the Figaro XML Database</a></li>
+<li><a class="xref" href="getting-started-with-concurrent-and-transactional-processing.html">Getting Started with Concurrent and Transactional Processing</a></li>
+<li><a href="replication-overview.html">Replication Overview</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/product-editions.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Setup </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Project Setup ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="project-setup.md">
+<h1 id="project-setup">Project Setup</h1>
+
+<p>In order to set up your project you will need to perform the following steps:</p>
+<ul>
+<li>Obtain a license</li>
+<li>Change the platform target</li>
+<li>Install the NuGet package</li>
+<li>Configure Figaro</li>
+</ul>
+<h2 id="licensing">Licensing</h2>
+<p>In order to use Figaro in your .NET application, the first thing you will need to do is obtain a license for the library. Here&#39;s a brief overview of how the licensing works:</p>
+<ul>
+<li>For development purposes, you&#39;ll need a NuGet license. </li>
+<li>For any project going into production use, you&#39;ll need to purchase a license.</li>
+</ul>
+<p>Both licenses can be obtained at the <a href="https://licensing.endpointsystems.com">Endpoint Systems Licensing Portal</a>. If you have not done so yet you will need to register in order to obtain a license. This information is shared with Oracle for licensing purposes, which is why social media logins are disabled. Simply click on the <a href="https://licensing.endpointsystems.com/Account/SignUp">Register</a> link in order to set up your account. Once you have your account enabled, you can sign in.</p>
+<h3 id="obtaining-a-nuget-license">Obtaining a NuGet License</h3>
+<p><img src="/images/licensing-page.png" alt="Endpoint Systems licensing page"></p>
+<p>Once you are signed in, click on the Figaro Licenses drop-down menu and select <a href="https://licensing.endpointsystems.com/Cart/NuGet">Figaro NuGet Licensing</a>.</p>
+<p><img src="/images/nuget-license.png" alt="Figaro NuGet License"></p>
+<p>Select the Activate link to the product you wish to use, and you will obtain an install code that you can use in your project.</p>
+<div class="NOTE"><h5>Note</h5><p>The install code is used to install a license on your system. This license will come from the licensing server at <a href="https://licensing.endpointsystems.net">https://licensing.endpointsystems.net</a> so be sure to keep communications open within your network to access that site, or you may encounter licensing install issues. </p>
+</div>
+<h2 id="setting-up-the-nuget-package">Setting up the NuGet package</h2>
+<p>To use the Figaro NuGet packages, it is important that you know which processing platform you are targeting. Currently the Figaro licenses support the <code>Win32</code> and <code>x64</code> platforms, and the 4.6.1 version of the .NET Framework. </p>
+<div class="NOTE"><h5>Note</h5><p>Custom builds supporting specific .NET Framework targets are available for commercial license holders. 
+A version supporting .NET Core is in the works.</p>
+</div>
+<p>In your .NET project, you will need to change your target platform to match the NuGet package you are downloading. For example, if you are going to use the x64 version, you will need to set up your project to target <code>x64</code>. </p>
+<div class="NOTE"><h5>Note</h5><p>If you do not change the platform target and leave it at <code>Any CPU</code> (the default setting) you will experience a compile error.</p>
+</div>
+<p>When you install the package, you will see the following added to your project:</p>
+<p>Assemblies:</p>
+<ul>
+<li>Figaro.dll</li>
+<li>Figaro.Configuration.dll</li>
+<li>Desaware.Dls.Interfaces40.dll</li>
+<li>Desaware.MachineLicense40.dll</li>
+</ul>
+<p>Files:</p>
+<ul>
+<li>Figaro.config - Figaro configuration file</li>
+<li>FigaroConfigSchema.xsd - the schema to the configuration file for the edition you are using</li>
+<li>FigaroDataManager.cs - An example on how to get started with Figaro in your application</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>The NuGet package manager will attempt to add a <code>section</code> entry in the <code>configSections</code> setting in your <code>app.config</code> or <code>web.config</code> file. The odds are good that it will not put this at the top of your configuration file, where it belongs. It&#39;s a known issue within the NuGet package manager and we&#39;re working on improving the experience.</p>
+</div>
+<p>Your configuration file should now look something like this:</p>
+<pre><code class="lang-XML">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+  &lt;configSections&gt;
+    &lt;section name=&quot;Figaro&quot; type=&quot;Figaro.Configuration.FigaroSection, Figaro.Configuration&quot;/&gt;
+  &lt;/configSections&gt;
+  &lt;startup&gt; 
+        &lt;supportedRuntime version=&quot;v4.0&quot; sku=&quot;.NETFramework,Version=v4.6.1&quot;/&gt;
+    &lt;/startup&gt;
+    &lt;appSettings&gt;
+        &lt;!-- You can specify a path to where your license key is installed. 
+        By default it resides in your bin directory. --&gt;
+        &lt;add key=&quot;figaro:licensePath&quot; value=&quot;&quot;/&gt;
+        &lt;!-- You will need an install code in order for Figaro to work. 
+        You can obtain one at https://licensing.endpointsystems.com  --&gt;
+        &lt;add key=&quot;figaro:installCode&quot; value=&quot;your key here&quot;/&gt;
+    &lt;/appSettings&gt;
+    &lt;Figaro configSource=&quot;Figaro.config&quot;/&gt;
+&lt;/configuration&gt;
+</code></pre><p>Paste the install code you obtained from the licensing portal in the <code>installCode</code> setting. Optionally, you can add a path where you would like your licensing file to go.</p>
+<h2 id="configuring-figaro">Configuring Figaro</h2>
+<p>Let&#39;s take a look at the <code>Figaro.config</code> file. This particular configuration is for the <a href="https://github.com/bdbxml/Figaro.Samples.EncryptionAtRest">Figaro.Samples.EncryptionAtRest</a> application using Figaro CDS:</p>
+<pre><code class="lang-XML">&lt;Figaro xmlns=&quot;http://schemas.bdbxml.net/configuration/6.0/CDS&quot;&gt;
+    &lt;DefaultContainerSettings allowCreate=&quot;true&quot; compression=&quot;false&quot; 
+                              containerType=&quot;WholeDocContainer&quot; threaded=&quot;true&quot; statistics=&quot;On&quot;/&gt;    
+    &lt;Environments&gt;
+      &lt;FigaroEnv name=&quot;demoEnv&quot; threadCount=&quot;3&quot;&gt;
+        &lt;!-- Caching requires InitMemoryBufferPool in the Open options. --&gt;
+        &lt;Cache gigaBytes=&quot;1&quot;/&gt;
+        &lt;DataDirectories&gt;
+          &lt;Directory create=&quot;true&quot; path=&quot;demo\data&quot;/&gt;
+        &lt;/DataDirectories&gt;
+        &lt;EnvConfig&gt;
+          &lt;ConfigItem setting=&quot;AllConcurrentDatabases&quot; enabled=&quot;true&quot;/&gt;
+        &lt;/EnvConfig&gt;
+        &lt;!-- note: the &#39;anUnsecurePassword will throw an exception when you try to instantiate the XmlManager --&gt;
+        &lt;!--&lt;Encryption enabled=&quot;true&quot; password=&quot;anUnsecurePassword&quot;/&gt;--&gt;
+        &lt;Encryption enabled=&quot;true&quot; password=&quot;asldfkjasldkgjs&quot;/&gt;
+        &lt;Tracing category=&quot;All&quot; level=&quot;All&quot; errorPrefix=&quot;err&quot;/&gt;
+        &lt;!-- You can add additional values to the options attribute, separated by spaces --&gt;
+        &lt;Open create=&quot;true&quot; home=&quot;demo\&quot; options=&quot;InitMemoryBufferPool Create Thread ConcurrentDataStoreDefaults&quot;/&gt;
+
+      &lt;/FigaroEnv&gt;
+    &lt;/Environments&gt;
+    &lt;Managers&gt;
+      &lt;XmlManager env=&quot;demoEnv&quot; name=&quot;demoMgr&quot; defaultContainerType=&quot;WholeDocContainer&quot; options=&quot;AllOptions&quot;&gt;
+        &lt;Containers&gt;
+          &lt;Container name=&quot;demo&quot; alias=&quot;demo&quot; path=&quot;data\demo.dbxml&quot;
+                     allowCreate=&quot;true&quot; allowValidation=&quot;false&quot; checksum=&quot;false&quot; compression=&quot;false&quot;
+                     containerType=&quot;NodeContainer&quot; encrypted=&quot;false&quot; exclusiveCreate=&quot;false&quot;
+                     indexNodes=&quot;On&quot; multiVersion=&quot;false&quot; noMMap=&quot;true&quot; pageSize=&quot;1024&quot;
+            readOnly=&quot;false&quot; sequenceIncrement=&quot;1&quot; statistics=&quot;On&quot; threaded=&quot;true&quot;/&gt;
+        &lt;/Containers&gt;
+      &lt;/XmlManager&gt;
+    &lt;/Managers&gt;
+  &lt;/Figaro&gt;
+</code></pre><p>Discussing what goes into each of these settings is covered throughout the documentation, but for now it is important to know that you can configure settings here, or you can set them within your code. The <a class="xref" href="../api/Figaro.Configuration.html">Figaro.Configuration</a> library reads these settings and uses factory objects to create your Figaro objects for you, as seen in the FigaroDataManager:</p>
+<pre><code class="lang-C#">/// &lt;summary&gt;
+/// Initialize the Figaro data objects via Figaro.Configuration 
+/// &lt;/summary&gt;
+public FigaroDataManager()
+{
+    //The Figaro.Configuration will create the FigaroEnv object 
+    // for the XmlManager it is assigned to, so we can simply 
+    // retrieve the reference to it from the manager and 
+    // avoid creating multiple instances and adding additional, 
+    // unnecessary reference instances. Otherwise, we&#39;d simply 
+    // create it first and assign to the manager.
+
+    Manager = ManagerFactory.Create(&quot;demoMgr&quot;);
+    Environment = Manager.Environment;
+
+    //configure logging, progress and panic events
+    Environment.OnErr += Environment_OnErr;
+    Environment.OnMessage += Environment_OnMessage;
+    Environment.OnProcess += Environment_OnProcess;
+    Environment.OnProgress += Environment_OnProgress;
+    Environment.ErrEventEnabled = true;
+    Environment.MessageEventEnabled = true;
+    Environment.ProcessEventEnabled = true;
+    Environment.ProgressEventEnabled = true;
+
+    Database = Manager.OpenContainer(ContainerConfigFactory.Create(&quot;demoMgr&quot;, &quot;demo&quot;));
+
+}
+</code></pre><h4 id="see-also">See Also</h4>
+<p><a href="https://www.nuget.org/packages?q=figaro">Figaro on NuGet</a>
+<a href="https://github.com/bdbxml/Figaro.Samples.EncryptionAtRest">Figaro.Samples.EncryptionAtRest</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/project-setup.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

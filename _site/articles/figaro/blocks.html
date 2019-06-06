@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Blocks </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Blocks ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="blocks.md">
+<h1 id="blocks">Blocks</h1>
+
+<p>Simply put, a thread of control is blocked when it attempts to obtain a lock, but that attempt is denied because some other thread of control holds a conflicting lock. Once blocked, the thread of control is temporarily unable to make any forward progress until the requested lock is obtained or the operation requesting the lock is abandoned.</p>
+<p>Be aware that when we talk about blocking, strictly speaking the thread is not what is attempting to obtain the lock. Rather, some object within the thread (such as a cursor) is attempting to obtain the lock. However, once a locker attempts to obtain a lock, the entire thread of control must pause until the lock request is in some way resolved.</p>
+<p>For example, if <code>Txn A</code> holds a write lock (an exclusive lock) on object 002, then if <code>Txn B</code> tries to obtain a read or write lock on that object, the thread of control in which <code>Txn B</code> is running is blocked:</p>
+<p><strong>A write block</strong>
+<img src="/images/writeblock.jpg" alt="a write block"></p>
+<p>However, if <code>Txn A</code> only holds a read lock (a shared lock) on object 002, then only those handles that attempt to obtain a write lock on that object will block.</p>
+<p><strong>A read block</strong>
+<a href="/images/readblock.jpg">A read block</a></p>
+<h2 id="blocking-and-application-performance">Blocking and Application Performance</h2>
+<p>Multi-threaded and multi-process applications typically perform better than simple single-threaded applications because the application can perform one part of its workload (updating an XML document, for example) while it is waiting for some other lengthy operation to complete (performing disk or network I/O, for example). This performance improvement is particularly noticeable if you use hardware that offers multiple CPUs, because the threads and processes can run simultaneously.</p>
+<p>That said, concurrent applications can see reduced workload throughput if their threads of control are seeing a large amount of lock contention. That is, if threads are blocking on lock requests, then that represents a performance penalty for your application.</p>
+<p>Consider once again the previous diagram of a blocked write lock request. In that diagram, <code>Txn C</code> cannot obtain its requested write lock because <code>Txn A</code> and <code>Txn B</code> are both already holding read locks on the requested object. In this case, the thread in which <code>Txn C</code> is running will pause until such a time as <code>Txn C</code> either obtains its write lock, or the operation that is requesting the lock is abandoned. The fact that <code>Txn C</code>&#39;s thread has temporarily halted all forward progress represents a performance penalty for your application.</p>
+<p>Moreover, any read locks that are requested while <code>Txn C</code> is waiting for its write lock will also block until such a time as <code>Txn C</code> has obtained and subsequently released its write lock.</p>
+<h2 id="avoiding-blocks">Avoiding Blocks</h2>
+<p>Reducing lock contention is an important part of performance tuning your concurrent Figaro application. Applications that have multiple threads of control obtaining exclusive (write) locks are prone to contention issues. Moreover, as you increase the numbers of lockers and as you increase the time that a lock is held, you increase the chances of your application seeing lock contention.</p>
+<p>As you are designing your application, try to do the following in order to reduce lock contention:</p>
+<p><strong>Reduce the length of time your application holds locks.</strong> Shorter lived transactions will result in shorter lock lifetimes, which will in turn help to reduce lock contention. In addition, by default transactional cursors hold read locks until such a time as the transaction is completed. For this reason, try to minimize the time you keep transactional cursors opened, or reduce your isolation levels – see below. If possible, access heavily accessed (read or write) items toward the end of the transaction. This reduces the amount of time that a heavily used page is locked by the transaction.</p>
+<p><strong>Reduce your application&#39;s isolation guarantees.</strong> By reducing your isolation guarantees, you reduce the situations in which a lock can block another lock. Try using uncommitted reads for your read operations in order to prevent a read lock being blocked by a write lock. In addition, for cursors you can use degree 2 (read committed) isolation, which causes the cursor to release its read locks as soon as it is done reading the record (as opposed to holding its read locks until the transaction ends). Be aware that reducing your isolation guarantees can have adverse consequences for your application. Before deciding to reduce your isolation, take care to examine your application&#39;s isolation requirements. For information on isolation levels, see <a class="xref" href="isolation.html">Isolation</a>.</p>
+<p><strong>Use snapshot isolation for read-only threads.</strong> Snapshot isolation causes the transaction to make a copy of the page on which it is holding a lock. When a reader makes a copy of a page, write locks can still be obtained for the original page. This eliminates entirely read-write contention. Snapshot isolation is described in <a class="xref" href="snapshot-isolation.html">Snapshot Isolation</a> .</p>
+<p><strong>Consider your data access patterns.</strong>Depending on the nature of your application, this may be something that you can not do anything about. However, if it is possible to create your threads such that they operate only on non-overlapping portions of your database, then you can reduce lock contention because your threads will rarely (if ever) block on one another&#39;s locks.</p>
+<div class="NOTE"><h5>Note</h5><p>It is possible to configure Figaro&#39;s transactions so that they never wait on blocked lock requests. Instead, if they are blocked on a lock request, they will notify the application of a deadlock (see the next section).</p>
+</div>
+<p>You configure this behavior on a transaction by transaction basis. See <a class="xref" href="no-wait-on-transaction-blocks.html">No Wait on Transaction Blocks</a> for more information.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/blocks.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

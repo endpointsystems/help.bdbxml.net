@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Path Types </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Path Types ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="path-types.md">
+<h1 id="path-types">Path Types</h1>
+
+<p>If you think of an XML document as a tree of nodes, then there are two types of path elements in the tree. One type is just a node, such as an element or attribute within the document. The other type is any location in a path where two nodes meet. The path type, then, identifies the path element type that you want indexed. Path type node indicates that you want to index a single node in the path. Path type edge indicates that you want to index the portion of the path where two nodes meet.</p>
+<p>Of the two of these, the Figaro query processor prefers edge-type indices because they are more specific than a node-type index. This means that the query processor will use an edge-type index over a node-type if both indices provide similar information.</p>
+<p>Consider the following document:</p>
+<pre><code class="lang-XML">&lt;vendor type=&quot;wholesale&quot;&gt;
+  &lt;name&gt;TriCounty Produce&lt;/name&gt;
+  &lt;address&gt;309 S. Main Street&lt;/address&gt;
+  &lt;city&gt;Middle Town&lt;/city&gt;
+  &lt;state&gt;MN&lt;/state&gt;
+  &lt;zipcode&gt;55432&lt;/zipcode&gt;
+  &lt;phonenumber&gt;763 555 5761&lt;/phonenumber&gt;
+  &lt;salesrep&gt;
+    &lt;name&gt;Mort Dufresne&lt;/name&gt;
+    &lt;phonenumber&gt;763 555 5765&lt;/phonenumber&gt;
+  &lt;/salesrep&gt;
+&lt;/vendor&gt;
+</code></pre><p>Suppose you want to declare an index for the name node in the preceding document. In that case:</p>
+<table>
+<thead>
+<tr>
+<th>Path Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node</td>
+<td>There are two locations in the document where the name node appears. The first of these has a value of &quot;TriCounty Produce,&quot; while the second has a value of &quot;Mort Dufresne.&quot; The result is that the name node will require two index entries, each with a different value. Queries based on a name node may have to examine both index entries in order to satisfy the query.</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>There are two edge nodes in the document that involve the name node: <code>/vendor/name</code> and <code>salesrep/name</code>. Indices that use this path type are more specific because queries that cross these edge boundaries only have to examine one index entry for the document instead of two.</td>
+</tr>
+</tbody>
+</table>
+<p>Given this, use:</p>
+<ul>
+<li><code>Node</code> path types to improve queries where there can be no overlap in the node name. That is, if the query is based on an element or attribute that appears on only one context within the document, then use node path types. In the preceding sample document, you would want to use node-type indices with the <code>address</code>, city, state, <code>zipcode</code>, and <code>salesrep</code> elements because they appear in only one context within the document.</li>
+<li><code>Edge</code> path types to improve query performance when a node name is used in multiple contexts within the document. In the preceding document, use edge path types for the name and <code>phonenumber</code> elements because they appear in multiple (2) contexts within the document.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="index-types.html">Index Types</a></li>
+<li><a class="xref" href="using-indices.html">Using Indices</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/path-types.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

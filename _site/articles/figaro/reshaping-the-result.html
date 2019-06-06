@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Reshaping the Result </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Reshaping the Result ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="reshaping-the-result.md">
+<h1 id="reshaping-the-result">Reshaping the Result</h1>
+
+<p>XQuery is also useful when reshaping XML content. A common use for this feature is to restructure data into a display oriented dialect of XML, such as XHTML for presentation in a web browser.</p>
+<p>Again, begin with the same value query seen earlier, modify it using XQuery and generate an XHTML version of the result suitable for display in a web browser:</p>
+<pre><code>dbxml&gt; query &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $part in
+(collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105])
+return
+&lt;li&gt;{$part/description/string()}&lt;/li&gt;
+}
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;&#39;
+1 objects returned for eager expression &#39;&lt;html&gt;&lt;body&gt;
+&lt;ul&gt;
+{
+for $part in
+(collection(&quot;parts.dbxml&quot;)/part[@number &gt; 100 and @number &lt; 105])
+return
+&lt;li&gt;{$part/description/string()}&lt;/li&gt;
+}
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;&#39;
+
+dbxml&gt; print
+&lt;html&gt;&lt;body&gt;&lt;ul&gt;
+&lt;li&gt;Description of 101&lt;/li&gt;
+&lt;li&gt;Description of 102&lt;/li&gt;
+&lt;li&gt;Description of 103&lt;/li&gt;
+&lt;li&gt;Description of 104&lt;/li&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre><p>The following shows the previous HTML as displayed in a web browser:</p>
+<p><img src="/images/reshaping-sample.png" alt="Reshaping sample"></p>
+<p>This XQuery introduces the XQuery FLWOR expression (For, Let, While, Order by, Return — sometimes written as FLWR or FLOWR). Note that XPath is still used in the query, but now as part of the overall FLWOR structure.</p>
+<div class="NOTE"><h5>Note</h5><p>Processing XML data in containers for display in dynamic web sites is best done using the .NET Framework API rather than the command line tool in this example.</p>
+</div>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="figaro-and-xquery.html">Fiagro and XQuery</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+<li><a class="xref" href="using-flwor.html">Using FLWOR</a></li>
+<li><a class="xref" href="retrieving-data-using-xquery.html">Retrieving Data using XQuery</a></li>
+<li><a class="xref" href="performing-queries.html">Performing Queries</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/reshaping-the-result.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

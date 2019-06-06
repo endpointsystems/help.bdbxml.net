@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Basic Concepts </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Basic Concepts ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="basic-concepts.md">
+<h1 id="basic-concepts">Basic Concepts</h1>
+
+<p>Typically, Figaro is used as a library that is linked directly into your application. In addition, Figaro comes with a command line shell that allows you to work with XML documents outside of the programming languages that you normally use to interact with Figaro containers and environments. You can use the command line shell as part of your application, as a management tool, or simply as a means to explore the features of the product as we do here.</p>
+<div class="NOTE"><h5>Note</h5><p>Remember that Figaro is an <em>embedded</em> database engine that supports XML data and queries against that data. This means that in contrast to other database systems, Figaro is not a relational database, is not a database server, and it does not support SQL queries. Instead, it is a library that is meant to be used directly with your code and which provides XQuery queries against the XML data that you store within the engine.</p>
+</div>
+<h2 id="environments">Environments</h2>
+<p>The Berkeley DB database engine is configured to run through an <em>environment</em> object, or <a class="xref" href="../../api/Figaro.FigaroEnv.html">FigaroEnv</a> in the case of Figaro. The environment is where data and log directories are set, as well as configuration options such as logging, locking, and system memory. The environment is not available as a feature in Figaro DS, which uses some default settings, but is available in the rest of the <a class="xref" href="product-editions.html">product editions</a>. </p>
+<h2 id="containers">Containers</h2>
+<p>In Figaro, all XML data is stored within files called <em>containers</em>. <a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a> provides a simple and convenient way to work with these containers and exposes most of the database functionality in a friendly, interactive environment, without requiring the use of a programming language.</p>
+<p>Containers are really a collection of XML documents and information about those documents. For example, containers include any <a class="xref" href="introducing-indices.html">indices</a> that are being maintained for the documents.</p>
+<p>Containers also store XML documents as either whole documents or as nodes. When containers store whole documents, the XML document is stored all as one unit in the container exactly as it was presented to the system. When documents are stored as nodes, the XML document is deconstructed into smaller pieces – nodes – and those small chunks are what is stored in the container.</p>
+<div class="NOTE"><h5>Note</h5><p>The Figaro library does not break these down into nodes for you - that is a developer task, at least for the time being.</p>
+</div>
+<p>For the node storage case, retrieval of the document still returns the document in the same formatting state (assuming you didn&#39;t modify it) as it was in when it was stored in the container. The only difference is how the document is physically held within the container. Note that node storage typically offers better performance than does whole document storage, and for this reason node storage is the default container type.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html">FigaroEnv</a></li>
+<li><a class="xref" href="product-editions.html">Product Editions</a></li>
+<li><a class="xref" href="introducing-indices.html">Introducing Indices</a></li>
+<li><a class="xref" href="figaro-and-xquery.html">Exploring Figaro and XQuery suing the dbxml Shell</a></li>
+<li><a class="xref" href="the-dbxml-shell.html">The dbxml Shell</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/basic-concepts.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

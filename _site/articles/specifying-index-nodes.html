@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Specifying Index Nodes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Specifying Index Nodes ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="specifying-index-nodes.md">
+<h1 id="specifying-index-nodes">Specifying Index Nodes</h1>
+
+<p>It is possible to have Figaro build indices at a node granularity rather than a document granularity. The difference is that document granularity is good for retrieving large documents while node granularity is good for retrieving nodes from within documents.</p>
+<p>Indexing nodes can only be performed if your containers are performing node-level storage. You should consider using node indices if you have a few large documents stored in your containers and you will be performing queries intended to retrieve subsections of those documents. Otherwise, you should use document level indexes.</p>
+<p>Because node indices can actually be harmful to your application&#39;s performance, depending on the actual read/write activity on your containers, expect to experiment with your indexing strategy to find out whether node or document indexes work best for you.</p>
+<p>Node indices contain a little more information, so they may take more space on disk and could also potentially take longer to write. For example, consider the following document:</p>
+<pre><code class="lang-XML">&lt;names&gt;
+  &lt;name&gt;Joe&lt;/name&gt;
+  &lt;name&gt;Joe&lt;/name&gt;
+  &lt;name&gt;Fred&lt;/name&gt;
+&lt;/names&gt;
+</code></pre><p>If you are using document-level indexing, then there is one index entry for each unique value occurring in the document for a given index. So if you have a string index on the name element, the above document would result in two index entries; one for Joe and another for Fred.</p>
+<p>However, for node-level indices, there is one index entry for each node regardless of whether it is unique. Therefore, given an a string index on the name element, the above document would result in three index entries.</p>
+<p>Given this, imagine that the document in use had 1000 name elements, 500 of which contained Joe and 500 of which contained Fred. For document-level indexing, you would still only have two index entries, while for node-level indexing you would have 1000 index entries per stored document. Whether the considerably larger size of the node-level index is worthwhile is something that you would have to evaluate based on the number of documents you are storing and the nature of your query patterns.</p>
+<p>Note that by default, containers of type <a class="xref" href="../api/Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a> use node-level indexes. Containers of type <a class="xref" href="../api/Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a> use document level indexes by default. You can change the default indexing strategy for a container by setting the <a class="xref" href="../api/Figaro.ContainerConfig.html#Figaro_ContainerConfig_IndexNodes">IndexNodes</a> to <a class="xref" href="../api/Figaro.ConfigurationState.html#Figaro_ConfigurationState_On">On</a> (for node-level indexes) and <a class="xref" href="../api/Figaro.ConfigurationState.html#Figaro_ConfigurationState_Off">Off</a> (for document-level indexes) for the container.</p>
+<p>You can tell whether a container is using node-level indices using the method. If the container is creating node-level indices, this method will return true.</p>
+<p>You can switch between node-level indices and document-level indices using <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_ReindexContainer_System_String_Figaro_UpdateContext_Figaro_ReindexOptions_">ReindexContainer(String, UpdateContext, ReindexOptions)</a>. Specify <a class="xref" href="../api/Figaro.ReindexOptions.html#Figaro_ReindexOptions_IndexNodes">IndexNodes</a> to cause a the container to use node-level indices. To switch from node-level to document-level indices, use <a class="xref" href="../api/Figaro.ReindexOptions.html#Figaro_ReindexOptions_NoIndexNodes">NoIndexNodes</a>.</p>
+<div class="NOTE"><h5>Note</h5><p>This method causes your container to be completely re-indexed. Therefore, for containers containing large amount of data, or large numbers of indices, or both, this method should not be used routinely as it may take some time to write the new indices.</p>
+</div>
+<h2 id="see-also">See Also</h2>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_ReindexContainer_System_String_Figaro_UpdateContext_Figaro_ReindexOptions_">ReindexContainer(String, UpdateContext, ReindexOptions)</a></li>
+<li><a class="xref" href="../api/Figaro.ReindexOptions.html">ReindexOptions</a></li>
+<li><a class="xref" href="../api/Figaro.XmlContainerType.html">XmlContainerType</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="using-indices.html">Using Indices</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/specifying-index-nodes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

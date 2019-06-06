@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Glossary </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Glossary ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="glossary.md">
+<h1 id="glossary">Glossary</h1>
+
+<h3 id="a">A</h3>
+<h5 id="abstract-syntax-tree-ast">Abstract Syntax Tree, AST</h5>
+<p>A tree representation of the abstract (simplified) syntactic structure of source code written in a programming language.</p>
+<h5 id="atomicity">Atomicity</h5>
+<p>The ability to guarantee all pieces of work in a transaction are performed or none are performed. Atomicity states that transactions follow an &quot;all or nothing&quot; rule. If one part of a transaction fails, the entire transaction fails.</p>
+<h3 id="b">B</h3>
+<h5 id="blocked">Blocked</h5>
+<p>When a thread cannot obtain a lock because some other thread already holds a lock on that object, the lock attempt is said to be <em>blocked</em>. See <a class="xref" href="blocks.html">Blocks</a> for more information.</p>
+<h3 id="c">C</h3>
+<h5 id="consistency">Consistency</h5>
+<p>Consistency states that only valid data will be written to the database. In other words, the database will maintain a consistent state regardless of a transaction&#39;s success or failure.</p>
+<h5 id="container">Container</h5>
+<p>A unit of storage for XML nodes and documents; also referred to as a database.</p>
+<h3 id="d">D</h3>
+<h5 id="deadlock">Deadlock</h5>
+<p>Occurs when two or more threads of control attempt to access conflicting resource in such a way as none of the threads can any longer may further progress.</p>
+<p>For example, if Thread A is blocked waiting for a resource held by Thread B, while at the same time Thread B is blocked waiting for a resource held by Thread A, then neither thread can make any forward progress. In this situation, Thread A and Thread B are said to be <em>deadlocked</em>.</p>
+<p>For more information, see <a class="xref" href="deadlocks.html">Deadlocks</a>.</p>
+<h5 id="durability">Durability</h5>
+<p>The guarantee that once the user has been notified of success, the transaction will persist, and not be undone. This means it will survive system failure, and that the database system has checked the integrity constraints and won&#39;t need to abort the transaction. Many databases implement durability by writing all transactions into a transaction log that can be played back to recreate the system state right before a failure. A transaction can only be deemed committed after it is safely in the log.</p>
+<h3 id="e">E</h3>
+<h5 id="environment">Environment</h5>
+<p>An encapsulation of one or more containers and any associated log and region files. Environments are used to support multi-threaded and multi-process applications by allowing different threads of control to share the in-memory cache, the locking tables, the logging subsystem, and the file namespace.</p>
+<h3 id="f">F</h3>
+<h5 id="free-threaded-thread-safe">Free-threaded, Thread-safe</h5>
+<p>Data structures and objects are free-threaded if they can be shared across threads of control without any explicit locking on the part of the application. Some books, libraries, and programming languages may use the term thread-safe for data structures or objects that have this characteristic. The two terms mean the same thing. For a description of free-threaded Figaro objects, see <a class="xref" href="which-handles-are-free-threaded.html">Which Handles are Free-Threaded?</a>.</p>
+<h3 id="i">I</h3>
+<h5 id="isolation">Isolation</h5>
+<p>The requirement that other operations cannot access or see data in an intermediate state during a transaction. This constraint is required for performance and consistency purposes between transactions in a database management system.</p>
+<h3 id="l">L</h3>
+<h5 id="locker">Locker</h5>
+<p>An object holding a lock. In a transactional application, a transactional handle is a locker. In a non-transactional application, the locker is a cursor, a <a class="xref" href="../api/Figaro.Container.html">Container</a>, or some document management handle within the Figaro environment.</p>
+<h5 id="locking">Locking</h5>
+<p>When a thread of control obtains access to a shared resource, it is said to be <em>locking</em> that resource. Note that Figaro supports both exclusive and non-exclusive locks. See <a class="xref" href="locks.html">Locks</a> for more information.</p>
+<h3 id="t">T</h3>
+<h5 id="thread-of-control">Thread of control</h5>
+<p>The thread in your applications performing Figaro operations.</p>
+<p>Note that this term can also be taken to mean a separate process that is performing work — Figaro supports multi-process operations on your containers.</p>
+<p>Also, Figaro is agnostic with regard to the type or style of threads in use in your application. So if you are using multiple threads (as opposed to multiple processes) to perform concurrent database access, you are free to use whatever thread package is best for your platform and application.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/glossary.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

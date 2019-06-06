@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Replacing Nodes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Replacing Nodes ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="replacing-nodes.md">
+<h1 id="replacing-nodes">Replacing Nodes</h1>
+
+<p>You can use XQuery Update statements to either replace an entire node or a node&#39;s value. To replace a node, use the replace node query. For example, given the document named <code>mydoc.xml</code> in container <code>con.dbxml</code>:</p>
+<pre><code class="lang-XML">&lt;a&gt;
+  &lt;b1&gt;first child&lt;/b1&gt;
+  &lt;b2&gt;second child&lt;/b2&gt;
+  &lt;b4&gt;inserted child&lt;/b4&gt;
+  &lt;b3&gt;third child&lt;/b3&gt;
+&lt;/a&gt;
+</code></pre><p>You can replace node b2 with a different node such as <code>&lt;r1&gt;replacement child&lt;/r1&gt;</code> using the following query:</p>
+<pre><code class="lang-XML">replace node doc(&quot;dbxml:/con.dbxml/mydoc.xml&quot;)/a/b2
+with &lt;z1&gt;replacement node&lt;/z1&gt;
+</code></pre><p>The result of this replacement query is:</p>
+<pre><code class="lang-XML">&lt;a&gt;
+  &lt;b1&gt;first child&lt;/b1&gt;
+  &lt;z1&gt;replacement node&lt;/z1&gt;
+  &lt;b3&gt;third child&lt;/b3&gt;
+&lt;/a&gt;
+</code></pre><p>The replacement value can also be a selection expression. For example, suppose you had a second document named <code>replace.xml</code>:</p>
+<pre><code class="lang-XML">&lt;a&gt;
+&lt;rep&gt;more replacement data&lt;/rep&gt;
+&lt;/a&gt;
+</code></pre><p>Then you can replace node <code>z1</code> with the <code>rep</code> node using the following query:</p>
+<pre><code class="lang-XML">replace node doc(&quot;dbxml:/con.dbxml/mydoc.xml&quot;)/a/z1
+with doc(&quot;dbxml:/con.dbxml/replace.xml&quot;)/a/rep
+</code></pre><p>This results in the document:</p>
+<pre><code class="lang-XML">&lt;a&gt;
+  &lt;b1&gt;first child&lt;/b1&gt;
+  &lt;rep&gt;more replacement data&lt;/rep&gt;
+  &lt;b3&gt;third child&lt;/b3&gt;
+&lt;/a&gt;
+</code></pre><p>In addition to the <code>replace node ... with ...</code> form, you can also replace node values. Do this using <code>replace value of node ... with ...</code> queries.</p>
+<p>For example, to replace the value of the rep node, above, use:</p>
+<pre><code class="lang-XML">replace value of node doc(&quot;dbxml:/con.dbxml/mydoc.xml&quot;)/a/rep
+with &quot;random replacement text&quot;.
+</code></pre><p>The results of this query is:</p>
+<p><strong>XML</strong></p>
+<pre><code class="lang-XML">&lt;a&gt;
+  &lt;b1&gt;first child&lt;/b1&gt;
+  &lt;rep&gt;random replacement text&lt;/rep&gt;
+  &lt;b3&gt;third child&lt;/b3&gt;
+&lt;/a&gt;
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="modifying-xml-data.html">Modifying XML Data</a></li>
+<li><a class="xref" href="managing-xml-data-in-containers.html">Managing XML Data in Containers</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/replacing-nodes.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

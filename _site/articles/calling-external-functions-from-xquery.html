@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Calling External Functions from XQuery </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Calling External Functions from XQuery ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="calling-external-functions-from-xquery.md">
+<h1 id="calling-external-functions-from-xquery">Calling External Functions from XQuery</h1>
+
+<p>In order to use external functions, you must register the resolver that manages them. This is done with the <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_RegisterResolver_Figaro_XQueryResolver_">RegisterResolver(XQueryResolver)</a> method. You then set a URI prefix for the URI that you use to identify the resolver.</p>
+<p>For example:</p>
+<pre><code class="lang-C#">        // instantiate the manager and resolver
+        var mgr = new XmlManager(ManagerInitOptions.AllowExternalAccess);
+        var resolver = new MyFunResolver();
+
+        // register the resolver
+        mgr.RegisterResolver(resolver);
+        // set up the query context
+        var qc = mgr.CreateQueryContext(EvaluationType.Eager);
+        qc.SetNamespace(&quot;myxfunc&quot;, resolver.Uri.ToString());
+        var results = mgr.Query(File.ReadAllText(&quot;ResolverQuery.xq&quot;), qc);
+        if (!results.IsNull())
+            Trace.WriteLine(results.NextDocument().GetContentAsXDocument().ToString());
+</code></pre><p>To use the external function, declare them in the preamble of your query, and then use them as you would any XQuery function (for a complete explanation of examining query results, see the next section).</p>
+<p>For example:</p>
+<pre><code class="lang-XQuery">
+    (: declare the external functions resolved by the resolver :)
+    declare function myxfunc:sfunc($a as xs:double, $b as xs:double) as xs:double external;
+    declare function myxfunc:bfunc($a as xs:double, $b as xs:double, 
+        $c as xs:double, $d as xs:double, $e as xs:double) as xs:double external;
+
+    (: declare variables containing the output :)
+    declare variable $small := myxfunc:sfunc(2,3);
+    declare variable $big := myxfunc:bfunc(1,2,3,4,5);
+
+    (: return a small XML structure containing the values :)
+    &lt;ret&gt;&lt;small&gt;{$small}&lt;/small&gt;&lt;big&gt;{$big}&lt;/big&gt;&lt;/ret&gt;
+</code></pre><h2 id="see-also">See Also</h2>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a class="xref" href="../api/Figaro.XmlExternalFunction.html">XmlExternalFunction</a></li>
+<li><a class="xref" href="../api/Figaro.XQueryResolver.html">XQueryResolver</a></li>
+<li><a class="xref" href="../api/Figaro.Container.html">Container</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="implementing-xqueryresolver.html">Implementing XQueryResolver</a></li>
+<li><a class="xref" href="working-with-external-functions.html">Working with External Functions</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/calling-external-functions-from-xquery.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

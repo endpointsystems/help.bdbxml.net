@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Adding Documents </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Adding Documents ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="adding-documents.md">
+<h1 id="adding-documents">Adding Documents</h1>
+
+<p>Adding a document to a container is done with the @Figaro.Container.PutDocument method. To do this, you must perform the following steps:</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You must have the <a class="xref" href="../api/Figaro.Container.html">Container</a> object opened and assigned to a working variable before you can insert XML data into it.</p>
+<h3 id="adding-a-document-to-a-container">Adding a Document to a Container</h3>
+<p><strong>Obtain the document you want to put into the container.</strong> You can do this with the path and filename of a document residing on the file system, a string variable containing the document contents, or through the Figaro API using <a class="xref" href="../api/Figaro.XmlDocument.html">XmlDocument</a> and related objects.
+Provide a name for the document. The document name must be unique or an exception is thrown. You can also request the </p>
+<p><a class="xref" href="../api/Figaro.Container.html">Container</a> generate a unique name for you by passing <a class="xref" href="../api/Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a> to the method.</p>
+<div class="NOTE"><h5>Note</h5><p>If you pass a name and use the <a class="xref" href="../api/Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a> parameter, the <a class="xref" href="../api/Figaro.Container.html">Container</a> object will use both to create the name.</p>
+</div>
+<p>Create an <a class="xref" href="../api/Figaro.UpdateContext.html">UpdateContext</a> object. This object encapsulates the context within which the container is updated.</p>
+<div class="NOTE"><h5>Note</h5><p>Reusing the same <a class="xref" href="../api/Figaro.UpdateContext.html">UpdateContext</a> for a series of puts against the same container can improve your container&#39;s write performance.</p>
+</div>
+<p>Note that the content that you supply to @Figaro.Container.PutDocument is read and validated. By default, this includes any schema or DTDs that the document might reference. Since this can cause you some performance issues, you can cause Figaro to only examine the document body itself by passing the <a class="xref" href="../api/Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_WellFormedOnly">WellFormedOnly</a> flag to @Figaro.Container.PutDocument. However, using this flag cause parsing errors if the document references information that might have come from a schema or DTD.</p>
+<p>Further, note that while your documents are stored in the container with their shared text entities (if any) as-is, the underlying XML parser does attempt to expand them for indexing purposes. Therefore, you must make sure that any entities contained in your documents are resolvable at load time.</p>
+<pre><code class="lang-C#">using (var mgr = new XmlManager() { DefaultContainerType = XmlContainerType.WholeDocContainer })
+      {
+          // open the container object
+          using (var cont = mgr.OpenContainer(Path.Combine(homePath,simpleContainer)))
+          {
+              // our sample data, as a string
+              const string sampleData = &quot;&lt;product&gt;&lt;item&gt;Bananas&lt;/item&gt;&lt;inventory&gt;&lt;price&gt;0.55&lt;/price&gt;&lt;inventory&gt;220&lt;/inventory&gt;&lt;/inventory&gt;&lt;vendor&gt;Simply Fresh&lt;/vendor&gt;&lt;/product&gt;&quot;;
+              // insert the string XML into the Container. Create a one-off 
+              // update context for the occasion. Auto-generate a file name 
+              // for the record.
+              cont.PutDocument(&quot;&quot;,sampleData, mgr.CreateUpdateContext(),PutDocumentOptions.GenerateFileName);                    
+          }
+      }
+</code></pre><p>To load the document from an input stream, the code is identical except that you use the appropriate method on <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> to obtain the stream. For example, to load an <a class="xref" href="../api/Figaro.XmlDocument.html">XmlDocument</a> directly from a file on disk:</p>
+<pre><code class="lang-C#">using (var mgr = new XmlManager() { DefaultContainerType = XmlContainerType.WholeDocContainer })
+    {
+        using (var cont = mgr.OpenContainer(Path.Combine(homePath,simpleContainer)))
+        {
+            //create our local, reusable update context
+            var ctx = mgr.CreateUpdateContext();
+
+            /* Approach 1 - create the file stream first */
+            // grab the file we want to load
+            var inputStream =
+                mgr.CreateLocalFileInputStream(Path.Combine(simpleData,&quot;Avocado.xml&quot;));
+
+            // insert the file - because it already exists, auto-generate a file name
+            cont.PutDocument(&quot;&quot;,inputStream, ctx, PutDocumentOptions.GenerateFileName);
+
+            // insert the file directly from the file system
+            // in this approach, the Container creates its own internal InputStream
+            cont.PutDocument(Path.Combine(simpleData,&quot;Avocado.xml&quot;), ctx, PutDocumentOptions.GenerateFileName);
+
+            // Prevent memory leaks by disposing of our remaining resources
+            ctx.Dispose();
+            inputStream.Dispose();
+        }
+    }
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../api/Figaro.Container.html">Container</a></li>
+<li><a class="xref" href="../api/Figaro.Container.html">Container</a></li>
+<li><a class="xref" href="../api/Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<p><a class="xref" href="adding-xml-documents-to-containers.html">Adding XML Documents to Containers</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/adding-documents.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

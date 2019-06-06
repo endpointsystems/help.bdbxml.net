@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Environment Tuning </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Environment Tuning ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="environment-tuning.md">
+<h1 id="environment-tuning">Environment Tuning</h1>
+
+<p>There are a few different issues to consider when tuning the performance of Figaro .NET applications.</p>
+<h2 id="cache-size">Cache Size</h2>
+<p>The database cache defaults to a fairly small size, and most applications concerned with performance will want to set it explicitly. Using a cache that&#39;s too small will result in horrible performance. The first step in tuning the cache size is to use the <a class="xref" href="db_stat.html">db_stat</a> utility (or the statistics returned by the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetMemoryPoolStatistics_System_Boolean_">GetMemoryPoolStatistics(Boolean)</a> function) to measure the effectiveness of the cache. The goal is to maximize the cache&#39;s hit rate. Typically, increasing the size of the cache until the hit rate reaches 100% or levels off will yield the best performance. However, if your working set is sufficiently large, you will be limited by the system&#39;s available physical memory. Depending on the virtual memory and file system buffering policies of your system, and the requirements of other applications, the maximum cache size will be some amount smaller than the size of physical memory. If you find the <a class="xref" href="db_stat.html">db_stat</a> utility showing that increasing the cache size improves your hit rate, but performance is not improving (or is getting worse), then it&#39;s likely you&#39;ve hit other system limitations. At this point, you should review the system&#39;s swapping/paging activity and limit the size of the cache to the maximum size possible without triggering paging activity.</p>
+<div class="NOTE"><h5>Note</h5><p>Always remember to make your measurements under conditions as close as possible to the conditions your deployed application will run under, and to test your final choices under worst-case conditions.</p>
+</div>
+<h2 id="shared-memory">Shared Memory</h2>
+<p>By default, Figaro creates its database environment shared regions in memory backed by the file system. Some systems do not distinguish between regular file system pages and memory-mapped pages backed by the file system, when selecting dirty pages to be flushed back to disk. For this reason, dirtying pages in the cache may cause intense file system activity, typically when the file system sync thread or process is run. In some cases, this can dramatically affect application throughput. The workaround to this problem is to create the shared regions in system shared memory (@Figaro.EnvOpenOptions.SystemSharedMem) or application private memory (@Figaro.EnvOpenOptions.Private), or, in cases where this behavior is configurable, to turn off the operating system&#39;s flushing of memory-mapped pages.</p>
+<h2 id="large-xml-data">Large XML Data</h2>
+<p>Storing large XML nodes or documents in a database can alter the database performance characteristics. The first parameter to consider is the database page size. When a node or document item is too large to be placed on a database page, it is stored on &quot;overflow&quot; pages that are maintained outside of the normal database structure (typically, items that are larger than one-quarter of the page size are deemed to be too large). Accessing these overflow pages requires at least one additional page reference over a normal access, so it is usually better to increase the page size than to create a database with a large number of overflow pages. Use the <a class="xref" href="db_stat.html">db_stat</a> utility to review the number of overflow pages in the database.</p>
+<p>The second issue is using large data items instead of duplicate data items. While using large data can offer performance gains to some applications (because it is possible to retrieve several data items in a single call), once the key/data items are large enough to be pushed off-page, they will slow the application down. Avoiding page overflow is the better long-term choice in container configuration.</p>
+<h2 id="scalability-and-mutexes">Scalability and Mutexes</h2>
+<p>A common question when tuning applications is scalability. For example, people will ask why, when adding additional threads or processes to an application, the overall database throughput decreases, even when all of the operations are read-only queries.</p>
+<p>First, while read-only operations are logically concurrent, they still have to acquire mutexes on internal data structures. For example, when searching a XML node, the node has to be locked against other threads of control attempting to add or remove pages from the node. The more threads of control you add, the more contention there will be for those shared data structure resources.</p>
+<p>Second, once contention starts happening, applications will also start to see threads of control convoy behind locks On test-and-set architectures, threads of control waiting for locks must attempt to acquire the mutex, sleep, check the mutex again, and so on. Each failed check of the mutex and subsequent sleep wastes CPU and decreases the overall throughput of the system.</p>
+<p>Third, every time a thread acquires a shared mutex, it has to shoot down other references to that memory in every other CPU on the system. Many modern snoopy cache architectures have slow shoot down characteristics.</p>
+<p>Fourth, schedulers don&#39;t care what application-specific mutexes a thread of control might hold when descheduling a thread. If a thread of control is descheduled while holding a shared data structure mutex, other threads of control will be blocked until the scheduler decides to run the blocking thread of control again. The more threads of control that are running, the smaller their quanta of CPU time, and the more likely they will be descheduled while holding a mutex.</p>
+<p>The results of adding new threads of control to an application, on the application&#39;s throughput, is application and hardware specific and almost entirely dependent on the application&#39;s data access pattern and hardware.</p>
+<h2 id="see-also">See Also</h2>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="performance-tuning.html">Performance Tuning</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/environment-tuning.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

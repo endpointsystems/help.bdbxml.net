@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>XQuery: A Brief Introduction </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="XQuery: A Brief Introduction ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="xquery-a-brief-introduction.md">
+<h1 id="xquery-a-brief-introduction">XQuery: A Brief Introduction</h1>
+
+<p>XQuery can be used to:</p>
+<ul>
+<li><em>Query for a document</em>. Note that queries can be formed against an individual document, or against multiple documents.</li>
+<li><em>Query for document subsections</em>, including values found on individual document nodes.</li>
+<li><em>Manipulate and transform</em> the results of a query.</li>
+<li><em>Modify a document</em> (see <a class="xref" href="modifying-xml-data.html">Modifying XML Data</a> for more information).</li>
+</ul>
+<p>To do this, XQuery views an XML document as a collection of element, text, and attribute nodes. For example, consider the following XML document:</p>
+<pre><code class="lang-XML">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;Node0&gt;
+  &lt;Node1 class=&quot;myValue1&quot;&gt;Node1 text &lt;/Node1&gt;
+  &lt;Node2&gt;
+    &lt;Node3&gt;Node3 text&lt;/Node3&gt;
+    &lt;Node3&gt;Node3 text 2&lt;/Node3&gt;
+    &lt;Node3&gt;Node3 text 3&lt;/Node3&gt;
+    &lt;Node4&gt;300&lt;/Node4&gt;
+  &lt;/Node2&gt;
+&lt;/Node0&gt;
+</code></pre><p>In the above document, <code>&lt;Node0&gt;</code> is the document&#39;s root node, and <code>&lt;Node1&gt;</code> is an element node. Further, the element node, <code>&lt;Node1&gt;</code>, contains a single attribute node whose name is class and whose value is <code>myValue1</code>. Finally, <code>&lt;Node1&gt;</code> contains a text node whose value is <code>Node1</code> text.</p>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="modifying-xml-data.html">Modifying XML Data</a></li>
+<li><a class="xref" href="using-xquery.html">Using XQuery</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/xquery-a-brief-introduction.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

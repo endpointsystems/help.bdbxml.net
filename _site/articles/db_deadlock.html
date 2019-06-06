@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>db_deadlock </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="db_deadlock ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="db_deadlock.md">
+<h1 id="dbdeadlock">db_deadlock</h1>
+
+<p>The <code>db_deadlock</code> utility traverses the database environment lock region, and aborts a lock request each time it detects a deadlock or a lock request that has timed out. By default, in the case of a deadlock, a random lock request is chosen to be aborted.</p>
+<p>This utility should be run as a background daemon, or the underlying deadlock detection interfaces should be called in some other way, whenever there are multiple threads or processes accessing a database and at least one of them is modifying it.</p>
+<p><code>db_deadlock [-Vv] [-a e | m | n | o | W | w | y] [-h home] [-L file] [-t sec.usec]</code></p>
+<p>The <code>db_deadlock</code> utility uses a Figaro BDB environment (as described for the -h option, the environment variable <code>DB_HOME</code>, or because the utility was run in a directory containing a Figaro BDB environment). In order to avoid environment corruption when using an environment, <code>db_deadlock</code> should always be given the chance to detach from the environment and exit gracefully. To cause <code>db_deadlock</code> to release all environment resources and exit cleanly, send it an interrupt signal (<code>SIGINT</code>).</p>
+<p>The <code>db_deadlock</code> utility does not attempt to create the shared memory regions if they do not already exist. The application which creates the region should be started first, and then, once the region is created, the <code>db_deadlock</code> utility should be started.</p>
+<h4 id="-a">-a</h4>
+<p>When a deadlock is detected, abort the locker:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Selected Locker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m</code></td>
+<td>with the most locks</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>with the fewest locks</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>with the oldest locks</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>with the most write locks</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>with the fewest write locks</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>with the youngest lock</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>with any lock requests that have timed out</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-h">-h</h4>
+<p>Specify a home directory for the database environment; by default, the current working directory is used.</p>
+<h4 id="-l">-L</h4>
+<p>Log the execution of the <code>db_deadlock</code> utility to the specified <strong>file</strong> in the following format, where <em>###</em> is the process ID, and the date is the time the utility was started.</p>
+<pre><code>db_deadlock: ### Wed Jun 15 01:23:45 EDT 2009
+</code></pre><p>This file will be removed if the <code>db_deadlock</code> utility exits gracefully.</p>
+<h4 id="-t">-t</h4>
+<p>Check the database environment every <strong>sec</strong> seconds plus <code>usec</code> microseconds to see if a process has been forced to wait for a lock; if one has, review the database environment lock structures.</p>
+<p>If the <code>-t</code> option is not specified, the command will run once and exit.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="-v-1">-v</h4>
+<p>Run in verbose mode, generating messages each time the detector runs.</p>
+<h4 id="environment-variables">Environment Variables</h4>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home, as described in <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="utilities.html">Utilities</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/db_deadlock.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>uid: file-naming.md </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="uid: file-naming.md ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<hr>
+<h2 id="uid-file-namingmd">uid: file-naming.md</h2>
+<h1 id="file-naming">File Naming</h1>
+<p>In order to operate, your Figaro application must be able to locate its container files, log files, and region files. If these are stored in the file system, then you must tell Figaro where they are located (a number of mechanisms exist that allow you to identify the location of these files – see below). Otherwise, by default they are located in the current working directory.</p>
+<h2 id="specifying-the-environment-home-directory">Specifying the Environment Home Directory</h2>
+<p>The environment home directory is used to determine where Figaro files are located. Its location is identified using one of the following mechanisms, in the following order of priority:</p>
+<ul>
+<li>If no information is given as to where to put the environment home, then the current working directory is used.</li>
+<li>If a home directory is specified on the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method, then that location is always used for the environment home.</li>
+<li>If a home directory is not supplied to <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>, then the directory identified by the <code>DB_HOME</code> environment variable is used if you specify either the <a class="xref" href="../api/Figaro.EnvironmentRemoveAction.html#Figaro_EnvironmentRemoveAction_UseEnvironment">UseEnvironment</a> or <a class="xref" href="../api/Figaro.EnvironmentRemoveAction.html#Figaro_EnvironmentRemoveAction_UseEnvironmentRoot">UseEnvironmentRoot</a> flags to the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method. Both flags allow you to identify the path to the environment&#39;s home directory using the <code>DB_HOME</code> environment variable. However, <a class="xref" href="../api/Figaro.EnvironmentRemoveAction.html#Figaro_EnvironmentRemoveAction_UseEnvironmentRoot">UseEnvironmentRoot</a> is honored only if the process is run with administrative privileges.</li>
+</ul>
+<h2 id="specifying-file-locations">Specifying File Locations</h2>
+<p>By default, all Figaro files are created relative to the environment home directory. For example, suppose your environment home is in <code>C:\dev\db\home</code>. Also suppose you name your container <code>data\myContainer.dbxml</code>. Then in this case, the container is placed in: <code>C:\dev\db\home\data\myContainer.dbxml</code>.</p>
+<p>That said, Figaro always defers to absolute pathnames. This means that if you provide an absolute filename when you name your container, then that file is not placed relative to the environment home directory. Instead, it is placed in the exact location that you specified for the filename.</p>
+<p>On Windows systems, an absolute pathname is a name that begins with one of the following:</p>
+<ul>
+<li>A backslash (&#39;&#39;).</li>
+<li>Any alphabetic letter, followed by a colon (&#39;:&#39;), followed by a backslash (&#39;&#39;).</li></ul>&nbsp;
+
+<div class="NOTE"><h5>Note</h5><p>Try not to use absolute path names for your environment&#39;s files. Under certain recovery scenarios, absolute path names can render your environment unrecoverable. This occurs if you are attempting to recover you environment on a system that does not support the absolute path name that you used.</p>
+</div>
+<h2 id="identifying-specific-file-locations">Identifying Specific File Locations</h2>
+<p>As described in the previous sections, Figaro will place all its files in or relative to the environment home directory. You can also cause a specific container file to be placed in a particular location by using an absolute path name for its name. In this situation, the environment&#39;s home directory is not considered when naming the file.</p>
+<p>It is frequently desirable to place container, log, and region files on separate disk drives. By spreading I/O across multiple drives, you can increase parallelism and improve throughput. Additionally, by placing log files and container files on separate drives, you improve your application&#39;s reliability by providing your application with a greater chance of surviving a disk failure.</p>
+<p>You can cause Figaro&#39;s files to be placed in specific locations using the following mechanisms:</p>
+<table>
+<thead>
+<tr>
+<th>File Type</th>
+<th>To Override</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container Files</td>
+<td>You can cause container files to be created in a directory other than the environment home by using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_AddDataDirectory_System_String_">AddDataDirectory(String)</a> method. The directory identified here must exist. If a relative path is provided, then the directory location is resolved relative to the environment&#39;s home directory. This method modifies the directory used for container files created and managed by a single environment handle; it does not configure the entire environment. This method may not be called after the environment has been opened. You can also set a default data location that is used by the entire environment by using the set_data_dir parameter in the environment&#39;s <code>DB_CONFIG</code> file. Note that the <code>set_data_dir</code> parameter overrides any value set by the Figaro.FigaroEnv.AddDataDirectory(System.String)</td>
+</tr>
+<tr>
+<td>Log Files</td>
+<td>You can cause log files to be created in a directory other than the environment home directory by using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_LogDirectory">LogDirectory</a> property. The directory identified here must exist. If a relative path is provided, then the directory location is resolved relative to the environment&#39;s home directory. This method modifies the directory used for container files created and managed by a single environment handle; it does not configure the entire environment. This method may not be called after the environment has been opened.</td>
+</tr>
+<tr>
+<td>Region Files</td>
+<td>If backed by the file system, region files are always placed in the environment home directory.</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/file-naming.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

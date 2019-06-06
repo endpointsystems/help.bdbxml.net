@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Putting Records Using Cursors </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Putting Records Using Cursors ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="putting-records-using-cursors">Putting Records Using Cursors</h1>
+
+<p>You can use cursors to put records into the database. DB&#39;s behavior when putting records into the database differs depending on the flags that you use when writing the record, on the access method that you are using, and on whether your database supports sorted duplicates. </p>
+<p>Note that when putting records to the database using a cursor, the cursor is positioned at the record you inserted. </p>
+<p>You use <code>Cursor.Add</code> to put (write) records into the database. </p>
+<pre><code>    /// &lt;summary&gt;
+    /// Add records directly to the database.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;keyval&quot;&gt;The key.&lt;/param&gt;
+    /// &lt;param name=&quot;dataval&quot;&gt;The data value.&lt;/param&gt;
+    protected void AddToDb(string keyval, byte[] dataval)
+    {
+      var key = new DatabaseEntry(Encoding.UTF8.GetBytes(keyval));
+      var data = new DatabaseEntry(dataval);
+      db.Put(key, data);
+    }
+
+    /// &lt;summary&gt;
+    /// Add records to the database through the cursor.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;keyval&quot;&gt;The key.&lt;/param&gt;
+    /// &lt;param name=&quot;dataval&quot;&gt;The data value.&lt;/param&gt;
+    protected void AddToCursor(string keyval, byte[] dataval)
+    {
+      var key = new DatabaseEntry(Encoding.UTF8.GetBytes(keyval));
+      var data = new DatabaseEntry(dataval);
+      cursor.Add(new KeyValuePair&lt;DatabaseEntry, DatabaseEntry&gt;(key,data));      
+    }
+
+  /// &lt;summary&gt;
+  /// The data repository for our Vendor database.
+  /// &lt;/summary&gt;
+  public class VendorRepository: Repository
+  {
+    public VendorRepository(string dataPath) : base(dataPath, &quot;vendor&quot;){}
+    public void AddVendor(Vendor v){AddToCursor(v.VendorName,v.ToByteArray());}
+  }
+</code></pre><p>In our main class, we&#39;ll add a new vendor:</p>
+<pre><code>vendorRepo.FindKey(&quot;Endpoint Systems&quot;);
+
+var vendor = new Vendor
+{
+    City = &quot;Boynton Beach&quot;,
+    PhoneNumber = &quot;866-637-7274&quot;,
+    SalesRep = &quot;Lucas Vogel&quot;,
+    SalesRepPhone = &quot;866-637-7274&quot;,
+    State = &quot;Florida&quot;,
+    Street = &quot;2500 Quantum Lakes Dr&quot;,
+    VendorName = &quot;Endpoint Systems&quot;,
+    Zip = &quot;33426&quot;
+};
+
+vendorRepo.AddVendor(vendor);
+
+Console.WriteLine(&quot;Press any key to exit.&quot;);
+</code></pre><p>The first time we run this, we don&#39;t find our record in the <code>FindKey</code> method because it doesn&#39;t exist. The next time we run the program, we see that the record exists, and we get the following error when trying to insert the record again:</p>
+<pre><code>vendor: BDB0696 Duplicate data items are not supported with sorted data
+</code></pre><p>This is because BTree databases do not allow duplicates by default. We&#39;ll see a workaround for this in <a href="allowing-duplicate-records.md">Allowing Duplicate Records</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/bdb/putting-records-using-cursors.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

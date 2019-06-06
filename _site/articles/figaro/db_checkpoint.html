@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>db_checkpoint </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="db_checkpoint ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="db_checkpoint.md">
+<h1 id="dbcheckpoint">db_checkpoint</h1>
+
+<p>The <code>db_checkpoint</code> utility is a daemon process that monitors the database log, and periodically calls <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentTransactionCheckpoint_System_Boolean_System_UInt32_System_UInt32_">SetEnvironmentTransactionCheckpoint(Boolean, UInt32, UInt32)</a> to checkpoint it.</p>
+<pre><code>db_checkpoint [-1Vv] [-h home] [-k kilobytes] [-L file] [-P password] [-p min]
+</code></pre><p>The <code>db_checkpoint</code> utility uses a Figaro BDB environment (as described for the <code>-h</code> option, the environment variable <code>DB_HOME</code>, or because the utility was run in a directory containing a Figaro BDB environment). In order to avoid environment corruption when using a Figaro BDB environment, <code>db_checkpoint</code> should always be given the chance to detach from the environment and exit gracefully. To cause <code>db_checkpoint</code> to release all environment resources and exit cleanly, send it an interrupt signal (SIGINT).</p>
+<p>The <code>db_checkpoint</code> utility does not attempt to create the Figaro BDB shared memory regions if they do not already exist. The application that creates the region should be started first, and once the region is created, the <code>db_checkpoint</code> utility should be started.</p>
+<h4 id="-1">-1</h4>
+<p>Force a single checkpoint of the log (regardless of whether or not there has been activity since the last checkpoint), and then exit.</p>
+<p>When the <code>-1</code> flag is specified, the <code>db_checkpoint</code> utility will checkpoint the log even if unable to find an existing database environment. This functionality is useful when upgrading database environments from one version to another.</p>
+<h4 id="-h">-h</h4>
+<p>Specify a home directory for the database environment; by default, the current working directory is used.</p>
+<h4 id="-k">-k</h4>
+<p>Checkpoint the database at least as often as every <strong>kilobytes</strong> of log file are written.</p>
+<h4 id="-l">-L</h4>
+<p>Log the execution of the <code>db_checkpoint</code> utility to the specified <strong>file</strong> in the following format, where <em>###</em> is the process ID, and the date is the time the utility was started.</p>
+<pre><code>db_checkpoint: ### Wed Jun 15 01:23:45 EDT 2009
+</code></pre><p>This file will be removed if the <code>db_checkpoint</code> utility exits gracefully.</p>
+<h4 id="-p">-P</h4>
+<p>Specify an environment password. Although utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<h4 id="-p-1">-p</h4>
+<p>Checkpoint the database at least every <strong>min</strong> minutes if there has been any activity since the last checkpoint.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="-v-1">-v</h4>
+<p>Write the time of each checkpoint attempt to the standard output.</p>
+<h2 id="see-also">See Also</h2>
+<p><a class="xref" href="utilities.html">Utilities</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/db_checkpoint.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

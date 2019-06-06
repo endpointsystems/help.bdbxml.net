@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuring In-Memory Logging </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuring In-Memory Logging ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="configuring-in-memory-logging.md">
+<h1 id="configuring-in-memory-logging">Configuring In-Memory Logging</h1>
+
+<p>It is possible to configure your logging subsystem such that logs are maintained entirely in memory. When you do this, you give up your transactional durability guarantee. Without log files, you have no way to run recovery so any system or software failures that you might experience can corrupt your containers.</p>
+<p>However, by giving up your durability guarantees, you can greatly improve your application&#39;s throughput by avoiding the disk I/O necessary to write logging information to disk. In this case, you still retain your transactional atomicity, consistency, and isolation guarantees.</p>
+<p>To configure your logging subsystem to maintain your logs entirely in-memory:</p>
+<ul>
+<li>Make sure your log buffer is capable of holding all log information that can accumulate during the longest running transaction. See <a class="xref" href="setting-the-in-memory-log-buffer-size.html">Setting the In-Memory Log Buffer Size</a> for details.</li>
+<li>Do not run normal recovery when you open your environment. In this configuration, there are no log files available against which you can run recovery. As a result, if you specify recovery when you open your environment, it is ignored.</li>
+<li>Specify @Figaro.EnvConfig.LogInMemory to the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> method. Note that you must specify this before your application opens its first environment handle.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="lang-C#">// Set the normal flags for a transactional subsystem. Note that
+// we do NOT specify Recover. 
+const EnvOpenOptions envOpenOptions =
+    //create the environment if it doesn&#39;t exist
+    EnvOpenOptions.Create |
+    //initialize locking
+    EnvOpenOptions.InitLock |
+    //initialize logging
+    EnvOpenOptions.InitLog |
+    //initialize the cache
+    EnvOpenOptions.InitMemoryBufferPool |
+    //free-threaded environment handle
+    EnvOpenOptions.Thread |
+    //initialize transactions
+    EnvOpenOptions.InitTransaction;
+
+    ContainerConfig cfg = new ContainerConfig
+                              {
+                                  AllowCreate = true,
+                                  Transactional = true
+                              };
+
+    var env = new FigaroEnv();
+    // Indicate that logging is to be performed only in memory. 
+    // Doing this means that we give up our transactional durability
+    // guarantee.
+    env.SetEnvironmentOption(EnvConfig.LogInMemory, true);
+    // Configure the size of our log memory buffer. This must be
+    // large enough to hold all the logging information likely
+    // to be created for our longest running transaction. The
+    // default size for the logging buffer is 1 MB when logging
+    // is performed in-memory. For this example, we arbitrarily
+    // set the logging buffer to 5 MB.
+    env.SetLogBufferSize(5*1024*1024);
+    env.Open(homePath, envOpenOptions);
+
+    using (var mgr = new XmlManager(env, ManagerInitOptions.AllOptions))
+    {
+        var trans = mgr.CreateTransaction();
+        Container container = null;
+        try
+        {
+            container = mgr.OpenContainer(trans, Path.Combine(homePath, &quot;inMemory.dbxml&quot;), cfg);
+            trans.Commit();
+        }
+        catch(Exception)
+        {
+            trans.Abort();
+            Assert.Fail();
+            throw;
+        }
+
+        if (container == null)
+        {
+            Assert.Fail();
+            return;
+        }
+        var watch = new Stopwatch();
+        watch.Start();
+        var uc = mgr.CreateUpdateContext();
+        foreach (string file in Directory.GetFiles(simpleData,&quot;*.xml&quot;))
+        {
+            trans = mgr.CreateTransaction();
+            try
+            {
+                container.PutDocument(trans, file, uc);
+                trans.Commit();
+            }
+            catch(Exception)
+            {
+                trans.Abort();
+                Assert.Fail();
+                throw;
+            }
+        }
+        watch.Stop();
+        trace(&quot;loaded in-memory log container in {0} ms&quot;, watch.ElapsedMilliseconds);
+    }
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li>@Figaro.EnvConfig.LogInMemory</li>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="setting-the-in-memory-log-buffer-size.html">Setting the In-Memory Log Buffer Size</a></li>
+<li><a class="xref" href="configuring-the-logging-subsystem.html">Configuring the Logging Subsystem</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/configuring-in-memory-logging.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

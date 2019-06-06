@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Removing Log Files </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Removing Log Files ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="removing-log-files.md">
+<h1 id="removing-log-files">Removing Log Files</h1>
+
+<p>By default Figaro does not delete log files for you. For this reason, log files will eventually grow to consume an unnecessarily large amount of disk space. To guard against this, you should periodically take administrative action to remove log files that are no longer in use by your application.</p>
+<p>You can remove a log file if all of the following are true:</p>
+<ul>
+<li>The log file is not involved in an active transaction.</li>
+<li>A checkpoint has been performed after the log file was created.</li>
+<li>The log file is not the only log file in the environment.</li>
+<li>The log file that you want to remove has already been included in an offline or hot backup. Failure to observe this last condition can cause your backups to be unusable.</li>
+</ul>
+<p>Figaro provides several mechanisms to remove log files that meet all but the last criteria (Figaro has no way to know which log files have already been included in a backup). The following mechanisms make it easy to remove unneeded log files, but can result in an unusable backup if the log files are not first saved to your archive location. All of the following mechanisms automatically delete unneeded log files for you:</p>
+<ul>
+<li>Run the <a class="xref" href="db_archive.html">db_archive</a> command line utility with the <code>-d</code> option.</li>
+<li>From within your application, call the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_LogArchive_Figaro_LogArchiveOptions_">LogArchive(LogArchiveOptions)</a> method with the <a class="xref" href="../api/Figaro.LogArchiveOptions.html#Figaro_LogArchiveOptions_Remove">Remove</a> flag.</li>
+<li>Call the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentOption_Figaro_EnvConfig_System_Boolean_">SetEnvironmentOption(EnvConfig, Boolean)</a> method with the @Figaro.EnvConfig.AutoLogRemove flag. Note that this flag can be set at any point in the lifetime of your application. Setting this parameter affects all environment handles opened against the environment; not just the handle used to set the flag.</li>
+</ul>
+<p>Note that unlike the other log removal mechanisms identified here, this method actually causes log files to be removed on an on-going basis as they become unnecessary. This is extremely desirable behavior if what you want is to use the absolute minimum amount of disk space possible for your application. This mechanism will leave you with the log files that are required to run normal recovery. However, it is highly likely that this mechanism will prevent you from running catastrophic recovery.</p>
+<div class="CAUTION"><h5>Caution</h5><p>Do NOT use this mechanism if you want to be able to perform catastrophic recovery, or if you want to be able to maintain a hot backup.</p>
+</div>
+<p>In order to safely remove log files and still be able to perform catastrophic recovery, use the <a class="xref" href="db_archive.html">db_archive</a> command line utility as follows:</p>
+<ul>
+<li>Run either a normal or hot backup as described in <a class="xref" href="backup-procedures.html">Backup Procedures</a>. Make sure that all of this data is safely stored to your backup media before continuing.</li>
+<li>If you have not already done so, perform a checkpoint. See <a class="xref" href="checkpoints.html">Checkpoints</a> for more information.</li>
+<li>If you are maintaining a hot backup, perform the hot backup procedure as described in <a class="xref" href="using-hot-failovers.html">Using Hot Failovers</a>.</li>
+<li>Run the <a class="xref" href="db_archive.html">db_archive</a> command line utility with the <code>-d</code> option against your production environment.</li>
+<li>Run the <a class="xref" href="db_archive.html">db_archive</a> command line utility with the <code>-d</code> option against your failover environment, if you are maintaining one.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="db_archive.html">db_archive</a></li>
+<li><a class="xref" href="using-hot-failovers.html">Using Hot Failovers</a></li>
+<li><a class="xref" href="checkpoints.html">Checkpoints</a></li>
+<li><a class="xref" href="recovery-procedures.html">Recovery Procedures</a></li>
+<li><a class="xref" href="managing-database-files.html">Managing Database Files</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/removing-log-files.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

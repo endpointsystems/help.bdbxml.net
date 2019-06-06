@@ -1,0 +1,888 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LogStatistics
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LogStatistics
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.LogStatistics">
+  
+  
+  <h1 id="Figaro_LogStatistics" data-uid="Figaro.LogStatistics" class="text-break">Class LogStatistics
+  </h1>
+  <div class="markdown level0 summary"><p>Log statistics data.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LogStatistics</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_LogStatistics_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class LogStatistics : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_LogStatistics_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This object is created using the
+<a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetLogStatistics_System_Boolean_">GetLogStatistics(Boolean)</a>
+method of the <a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> object.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=112">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_ByteOffset_" data-uid="Figaro.LogStatistics.ByteOffset*"></a>
+  <h4 id="Figaro_LogStatistics_ByteOffset" data-uid="Figaro.LogStatistics.ByteOffset">ByteOffset</h4>
+  <div class="markdown level1 summary"><p>Gets the byte offset in the current log file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ByteOffset { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The byte offset in the current log file, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=66">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_BytesWritten_" data-uid="Figaro.LogStatistics.BytesWritten*"></a>
+  <h4 id="Figaro_LogStatistics_BytesWritten" data-uid="Figaro.LogStatistics.BytesWritten">BytesWritten</h4>
+  <div class="markdown level1 summary"><p>Gets the number of bytes written in addition to the megabytes written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint BytesWritten { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The number of bytes written in addition to the megabytes written, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=80">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_CheckpointBytes_" data-uid="Figaro.LogStatistics.CheckpointBytes*"></a>
+  <h4 id="Figaro_LogStatistics_CheckpointBytes" data-uid="Figaro.LogStatistics.CheckpointBytes">CheckpointBytes</h4>
+  <div class="markdown level1 summary"><p>Gets the number of bytes written in addition to the megabytes written to this log since the last checkpoint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint CheckpointBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The number of bytes written in addition to the megabytes written to this log since the last checkpoint, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=73">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_CheckpointMegabytes_" data-uid="Figaro.LogStatistics.CheckpointMegabytes*"></a>
+  <h4 id="Figaro_LogStatistics_CheckpointMegabytes" data-uid="Figaro.LogStatistics.CheckpointMegabytes">CheckpointMegabytes</h4>
+  <div class="markdown level1 summary"><p>Gets the number of megabytes written to this log since the last checkpoint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint CheckpointMegabytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The number of megabytes written to this log since the last checkpoint, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=107">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_CurrentLogNumber_" data-uid="Figaro.LogStatistics.CurrentLogNumber*"></a>
+  <h4 id="Figaro_LogStatistics_CurrentLogNumber" data-uid="Figaro.LogStatistics.CurrentLogNumber">CurrentLogNumber</h4>
+  <div class="markdown level1 summary"><p>Gets the current log file number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint CurrentLogNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The current log file number, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=102">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_FlushCount_" data-uid="Figaro.LogStatistics.FlushCount*"></a>
+  <h4 id="Figaro_LogStatistics_FlushCount" data-uid="Figaro.LogStatistics.FlushCount">FlushCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times the log has been flushed to disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong FlushCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times the log has been flushed to disk, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=92">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_FullCacheWriteCount_" data-uid="Figaro.LogStatistics.FullCacheWriteCount*"></a>
+  <h4 id="Figaro_LogStatistics_FullCacheWriteCount" data-uid="Figaro.LogStatistics.FullCacheWriteCount">FullCacheWriteCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times the log has been written to disk because the in-memory log record cache filled up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong FullCacheWriteCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times the log has been written to disk because the in-memory log record cache filled up, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=123">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LastKnownByteOffset_" data-uid="Figaro.LogStatistics.LastKnownByteOffset*"></a>
+  <h4 id="Figaro_LogStatistics_LastKnownByteOffset" data-uid="Figaro.LogStatistics.LastKnownByteOffset">LastKnownByteOffset</h4>
+  <div class="markdown level1 summary"><p>Gets the byte offset of the last record known to be on disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint LastKnownByteOffset { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The byte offset of the last record known to be on disk, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=117">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LastKnownRecord_" data-uid="Figaro.LogStatistics.LastKnownRecord*"></a>
+  <h4 id="Figaro_LogStatistics_LastKnownRecord" data-uid="Figaro.LogStatistics.LastKnownRecord">LastKnownRecord</h4>
+  <div class="markdown level1 summary"><p>Gets the log file number of the last record known to be on disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint LastKnownRecord { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The log file number of the last record known to be on disk, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=43">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogFileSize_" data-uid="Figaro.LogStatistics.LogFileSize*"></a>
+  <h4 id="Figaro_LogStatistics_LogFileSize" data-uid="Figaro.LogStatistics.LogFileSize">LogFileSize</h4>
+  <div class="markdown level1 summary"><p>Gets the log file size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint LogFileSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The log file size, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=38">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogRecordCacheSize_" data-uid="Figaro.LogStatistics.LogRecordCacheSize*"></a>
+  <h4 id="Figaro_LogStatistics_LogRecordCacheSize" data-uid="Figaro.LogStatistics.LogRecordCacheSize">LogRecordCacheSize</h4>
+  <div class="markdown level1 summary"><p>Gets the in-memory log record cache size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint LogRecordCacheSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The in-memory log record cache size, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=54">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogRecords_" data-uid="Figaro.LogStatistics.LogRecords*"></a>
+  <h4 id="Figaro_LogStatistics_LogRecords" data-uid="Figaro.LogStatistics.LogRecords">LogRecords</h4>
+  <div class="markdown level1 summary"><p>Gets the number of records written to this log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LogRecords { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of records written to this log, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=143">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogRegionByteSize_" data-uid="Figaro.LogStatistics.LogRegionByteSize*"></a>
+  <h4 id="Figaro_LogStatistics_LogRegionByteSize" data-uid="Figaro.LogStatistics.LogRegionByteSize">LogRegionByteSize</h4>
+  <div class="markdown level1 summary"><p>Gets the size of the log region, in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LogRegionByteSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The size of the log region, in bytes, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=159">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogRegionNoWaitCount_" data-uid="Figaro.LogStatistics.LogRegionNoWaitCount*"></a>
+  <h4 id="Figaro_LogStatistics_LogRegionNoWaitCount" data-uid="Figaro.LogStatistics.LogRegionNoWaitCount">LogRegionNoWaitCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times that a thread of control was able to obtain the log region mutex without waiting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LogRegionNoWaitCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times that a thread of control was able to obtain the log region mutex without waiting, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=151">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_LogRegionWaitCount_" data-uid="Figaro.LogStatistics.LogRegionWaitCount*"></a>
+  <h4 id="Figaro_LogStatistics_LogRegionWaitCount" data-uid="Figaro.LogStatistics.LogRegionWaitCount">LogRegionWaitCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times that a thread of control was forced to wait before obtaining the log region mutex.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LogRegionWaitCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times that a thread of control was forced to wait before obtaining the log region mutex, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=23">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_Magic_" data-uid="Figaro.LogStatistics.Magic*"></a>
+  <h4 id="Figaro_LogStatistics_Magic" data-uid="Figaro.LogStatistics.Magic">Magic</h4>
+  <div class="markdown level1 summary"><p>Gets the magic number that identifies a file as a log file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Magic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The magic number that identifies a file as a log file, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=129">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_MaxFlushCommits_" data-uid="Figaro.LogStatistics.MaxFlushCommits*"></a>
+  <h4 id="Figaro_LogStatistics_MaxFlushCommits" data-uid="Figaro.LogStatistics.MaxFlushCommits">MaxFlushCommits</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum number of commits contained in a single log flush.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint MaxFlushCommits { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The maximum number of commits contained in a single log flush, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=59">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_MegabytesWritten_" data-uid="Figaro.LogStatistics.MegabytesWritten*"></a>
+  <h4 id="Figaro_LogStatistics_MegabytesWritten" data-uid="Figaro.LogStatistics.MegabytesWritten">MegabytesWritten</h4>
+  <div class="markdown level1 summary"><p>Gets the number of megabytes written to this log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint MegabytesWritten { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The number of megabytes written to this log, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=137">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_MinFlushCommits_" data-uid="Figaro.LogStatistics.MinFlushCommits*"></a>
+  <h4 id="Figaro_LogStatistics_MinFlushCommits" data-uid="Figaro.LogStatistics.MinFlushCommits">MinFlushCommits</h4>
+  <div class="markdown level1 summary"><p>Gets the minimum number of commits contained in a single log flush that contained a commit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint MinFlushCommits { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The minimum number of commits contained in a single log flush that contained a commit, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=33">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_Mode_" data-uid="Figaro.LogStatistics.Mode*"></a>
+  <h4 id="Figaro_LogStatistics_Mode" data-uid="Figaro.LogStatistics.Mode">Mode</h4>
+  <div class="markdown level1 summary"><p>Gets the mode of any created log files.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Mode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The mode of any created log files, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=97">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_ReadCount_" data-uid="Figaro.LogStatistics.ReadCount*"></a>
+  <h4 id="Figaro_LogStatistics_ReadCount" data-uid="Figaro.LogStatistics.ReadCount">ReadCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times the log has been read from disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong ReadCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times the log has been read from disk, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=28">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_Version_" data-uid="Figaro.LogStatistics.Version*"></a>
+  <h4 id="Figaro_LogStatistics_Version" data-uid="Figaro.LogStatistics.Version">Version</h4>
+  <div class="markdown level1 summary"><p>Gets the version of the log file type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Version { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The version of the log file type, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=85">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_WriteCount_" data-uid="Figaro.LogStatistics.WriteCount*"></a>
+  <h4 id="Figaro_LogStatistics_WriteCount" data-uid="Figaro.LogStatistics.WriteCount">WriteCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of times the log has been written to disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong WriteCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of times the log has been written to disk, or -1 if an error occurs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=175">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_Dispose_" data-uid="Figaro.LogStatistics.Dispose*"></a>
+  <h4 id="Figaro_LogStatistics_Dispose" data-uid="Figaro.LogStatistics.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=167">View Source</a>
+  </span>
+  <a id="Figaro_LogStatistics_Dispose_" data-uid="Figaro.LogStatistics.Dispose*"></a>
+  <h4 id="Figaro_LogStatistics_Dispose_System_Boolean_" data-uid="Figaro.LogStatistics.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If disposing equals <code>true</code>, the method has been called directly or 
+indirectly by a user&apos;s code. Managed and unmanaged resources can be disposed. If disposing equals 
+<code>false</code>, the method has been called by the runtime from inside the 
+finalizer and you should not reference other objects. Only unmanaged resources can be disposed. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroEnv.html#Figaro_FigaroEnv_GetLogStatistics_System_Boolean_">GetLogStatistics(Boolean)</a></div>
+      <div><a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/LogStatistics.cs&amp;version=GBmaster&amp;line=17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

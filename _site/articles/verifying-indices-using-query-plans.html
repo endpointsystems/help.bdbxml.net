@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Verifying Indices Using Query Plans </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Verifying Indices Using Query Plans ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="verifying-indices-using-query-plans.md">
+<h1 id="verifying-indices-using-query-plans">Verifying Indices Using Query Plans</h1>
+
+<p>When designing your indexing strategy, you should create indices to improve the performance of your most frequently occurring queries. Without indices, Figaro must walk every document in the container in order to satisfy the query. For containers that contain large numbers of documents, or very large documents, or both, this can be a time-consuming process.</p>
+<p>However, when you set the appropriate index(es) for your container, the same query that otherwise takes minutes to complete can now complete in a time potentially measured in milliseconds. So setting the appropriate indices for your container is a key ingredient to improving your application&#39;s performance.</p>
+<p>That said, the question then becomes, how do you know that a given index is actually being used by a given query? That is, how do you do this without loading the container with enough data that it is noticeably faster to complete a query with an index set than it is to complete the query without the index?</p>
+<p>The way to do this is to examine Figaro&#39;s query plan for the query to see if it intends to use an index for the query. And the best and easiest way to examine a query plan is by using the <strong>dbxml</strong> command line utility.</p>
+<p>The query plan is literally Figaro&#39;s plan for how it will satisfy a query. When you use @Figaro.XmlManager.Prepare, one of the things you are doing is regenerating a query plan so that Figaro does not have to continually re-create it every time you run the query.</p>
+<p>Printed out, the query plan looks like an XML document that describes the steps the query processor will take to fulfill a specific query.</p>
+<p>For example, suppose your container holds documents that look like the following:</p>
+<pre><code class="lang-XML">&lt;a&gt;
+  &lt;docId id=&quot;aaUivth&quot; /&gt;
+  &lt;b&gt;
+    &lt;c&gt;node1&lt;/c&gt;
+    &lt;d&gt;node2&lt;/d&gt;
+  &lt;/b&gt;
+&lt;/a&gt;
+</code></pre><p>Also, suppose you will frequently want to retrieve the document based on the value set for the id parameter on the docId node. That is, you will frequently perform queries that look like this:</p>
+<pre><code class="lang-XML">collection(&quot;myContainer.dbxml&quot;)/a/docId[@id=&#39;bar&#39;]
+</code></pre><p>In this case, if you print out the query plan (we describe how to do this below), you will see something like this:</p>
+<pre><code class="lang-XML">&lt;XQuery&gt;
+  &lt;QueryPlanToAST&gt;
+    &lt;NodePredicateFilterQP uri=&quot;&quot; name=&quot;#tmp5&quot;&gt;
+      &lt;StepQP axis=&quot;child&quot; name=&quot;docId&quot; nodeType=&quot;element&quot;&gt;
+        &lt;StepQP axis=&quot;child&quot; name=&quot;a&quot; nodeType=&quot;element&quot;&gt;
+          &lt;SequentialScanQP container=&quot;myContainer.dbxml&quot; nodeType=&quot;document&quot;/&gt;
+        &lt;/StepQP&gt;
+      &lt;/StepQP&gt;
+      &lt;ValueFilterQP comparison=&quot;eq&quot; general=&quot;true&quot;&gt;
+        &lt;StepQP axis=&quot;attribute&quot; name=&quot;id&quot; nodeType=&quot;attribute&quot;&gt;
+          &lt;VariableQP name=&quot;#tmp5&quot;/&gt;
+        &lt;/StepQP&gt;
+        &lt;Sequence&gt;
+          &lt;AnyAtomicTypeConstructor value=&quot;bar&quot; typeuri=&quot;http://www.w3.org/2001/XMLSchema&quot; typename=&quot;string&quot;/&gt;
+        &lt;/Sequence&gt;
+      &lt;/ValueFilterQP&gt;
+    &lt;/NodePredicateFilterQP&gt;
+  &lt;/QueryPlanToAST&gt;
+&lt;/XQuery&gt;
+</code></pre><p>While a complete description of the query plan is outside the scope of this manual, notice that there is no element specified in the query plan that includes an index attribute. This attribute can appear on different element nodes, depending on the nature of the query and the actual index that the query wants to use. For example, queries that use indexes which example the value of a node might specify a <code>ValueQP</code> node.</p>
+<pre><code class="lang-XML">&lt;ValueQP container=&quot;myContainer.dbxml&quot; index=&quot;node-attribute-equality-string&quot; operation=&quot;eq&quot; child=&quot;id&quot; value=&quot;bar&quot;/&gt;
+</code></pre><p>Other indexes that simply test for the presence of a node would specify the index on a <code>PresenceQP</code> element:</p>
+<pre><code class="lang-XML">&lt;PresenceQP container=&quot;parts.dbxml&quot; index=&quot;node-element-presence-none&quot; operation=&quot;eq&quot; child=&quot;parent-part&quot;/&gt;
+</code></pre><h2 id="see-also">See Also</h2>
+<p><a class="xref" href="using-indices.html">Using Indices</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/verifying-indices-using-query-plans.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using the Query Plan Optimizer Log Output </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using the Query Plan Optimizer Log Output ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="using-the-query-plan.md">
+<h1 id="using-the-query-plan-optimizer-log-output">Using the Query Plan Optimizer Log Output</h1>
+
+<p>Whenever starting an application containing the Berkeley DB XML library, you will see this legend in the application output. </p>
+<pre><code>     Legend for the Query Plan log output
+
+     RQP  - Raw Query Plan before any optimizations
+     POQP - Partially optimized Query Plan
+     OQP  - Optimized Query Plan after optimizations
+
+     path - Paths
+
+     P    - Presence index look up
+     V    - Value index look up
+     R    - Range index look up
+     Pd   - Presence document index look up
+     Vd   - Value document index look up
+     Rd   - Range document index look up
+     SS   - Sequential scan
+     U    - Universal set
+     E    - Empty set
+
+     COL  - Collection function
+     DOC  - Document function
+     CN   - Context node
+     VAR  - Variable
+     AST  - Non query plan operation
+
+     VF   - Value filter
+     PF   - Predicate filter
+     NPF  - Node predicate filter
+     NNPF - Negative node predicate filter
+     NuPF - Numeric predicate filter
+     RNPF - Reverse numeric predicate filter
+     LF   - Level filter
+
+     DP   - Optimization decision point
+     DPE  - Decision point end
+     BUF  - Buffer
+     BR   - Buffer reference
+     CH   - Choice
+
+     n    - Intersection
+     u    - Union
+     e    - Except
+
+     step - Conventional navigation step
+
+     d    - Descendant join
+     ds   - Descendant or self join
+     c    - Child join
+     ca   - Attribute or child join
+     a    - Attribute join
+     p    - Parent join
+     pa   - Parent of attribute join
+     pc   - Parent of child join
+     an   - Ancestor join
+     ans  - Ancestor or self join
+</code></pre><p>The purpose behind this legend is to help understand the logic used by the database engine to query data out of the database. Observe the following sample output snippet:</p>
+<pre><code>err: Optimizer  - COL -&gt; SS(document(*))
+err: Optimizer  - RQP(1): DPE
+err: Optimizer  - OQP(1): SS(document(*))
+err: Optimizer  - Original query plan: SS(document(*))
+err: Optimizer  - QueryPlanToAST alternative chosen (from 1)
+err: Optimizer  - SS(document(*)) : keys=0, overhead=0k, forKeys=0k
+err: Optimizer  - Finished parse, time taken = 297ms
+</code></pre><p>Using the legend, we can see that the optimizer performs the following steps:</p>
+<ul>
+<li>the current query plan is a collection function consisting of a sequential scan for documents</li>
+<li>a Raw Query Plan (before any optimizations) with a decision point end</li>
+<li>the Optimized Query Plan (after optimizations) is still the sequential scan</li>
+<li>the query plan was chosen</li>
+<li>a keyless sequential scan for documents was performed</li>
+<li>the parsing operation was performed taking 297 milliseconds of time.</li>
+</ul>
+<p>Using this query plan output will help you determine the efficiency level of your queries and make adjustments to your queries as well as your indexing strategies for boosting performance.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/using-the-query-plan.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

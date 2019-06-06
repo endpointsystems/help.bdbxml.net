@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Replication Manager </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Replication Manager ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="the-replication-manager.md">
+<h1 id="the-replication-manager">The Replication Manager</h1>
+
+<p>The easiest way to add replication to your transactional application is to use the Replication Manager via the <a class="xref" href="../api/Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> object. The Replication Manager provides a comprehensive communications layer that enables replication. For a brief listing of the Replication Manager&#39;s feature set, see <a class="xref" href="replication-manager-overview.html">Replication Manager Overview</a>.</p>
+<p>To use the Replication Manager, you make use of a combination of the <a class="xref" href="../api/Figaro.DBSite.html">DBSite</a> class and related methods, plus special methods off the <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> class. That is:</p>
+<ul>
+<li>Create and configure a <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> environment handle with the desired settings.</li>
+<li>Use the <a class="xref" href="../api/Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> instance inside the <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> handle to configure replication properties. Configuring the Replication Manager entails setting the replication environment&#39;s priority, setting the TCP/IP address that this replication environment will use for incoming replication messages, identifying TCP/IP addresses of other replication environments, and so forth.</li>
+<li>Open the environment handle (using @Figaro.FigaroEnv.Open(System.String,Figaro.EnvOpenOptions)) using the appropriate combination with the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Replication">Replication</a> and <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Thread">Thread</a> flag set or simply by using the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_ReplicationDefaults">ReplicationDefaults</a> combination flag. The <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Replication">Replication</a> and <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Thread">Thread</a> flags enable the Replication Manager and ensure the environment handle is free-threaded (thread safe). <strong>Both of these flags are required for Replication Manager usage</strong>.</li>
+<li>Start replication by calling @Figaro.FigaroReplicationManager.Start.</li>
+<li>Open your databases as needed. Masters must open their databases for read and write activity. Replicas can open their databases for read-only activity, but doing so means they must re-open the databases if the replica ever becomes a master. Either way, replicas should never attempt to write to the database(s) directly.</li>
+</ul>
+<p>When you are ready to shut down your application:</p>
+<ul>
+<li>Close/Dispose any <a class="xref" href="../api/Figaro.DBSite.html">DBSite</a> objects that are open.</li>
+<li>Close/Dispose any <a class="xref" href="../api/Figaro.XmlManager.html">XmlManager</a> or other references.</li>
+<li>Dispose of the <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> object last.</li>
+</ul>
+<div class="WARNING"><h5>Warning</h5><p>It is imperative that the <a class="xref" href="../api/Figaro.FigaroEnv.html">FigaroEnv</a> object be disposed last in your Figaro applications. Failure to ensure this ordering will result in C++ exceptions in your application.</p>
+</div>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li>@Figaro.FigaroEnv@Figaro.XmlManager</li>
+<li><a class="xref" href="../api/Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a></li>
+<li>@Figaro.FigaroReplicationManager.Start</li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="replication-manager-overview.html">Replication Manager Overview</a></li>
+<li><a class="xref" href="xmlmanager-instantiation-and-destruction.html">XmlManager Instantiation and Destruction</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/the-replication-manager.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

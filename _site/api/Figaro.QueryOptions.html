@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum QueryOptions
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum QueryOptions
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.QueryOptions">
+  
+  
+  <h1 id="Figaro_QueryOptions" data-uid="Figaro.QueryOptions" class="text-break">Enum QueryOptions
+  </h1>
+  <div class="markdown level0 summary"><p>One or more options for querying containers.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_QueryOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum QueryOptions</code></pre>
+  </div>
+  <h5 id="Figaro_QueryOptions_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This enumeration can be bitwise OR&apos;d together with multiple values where it is used.</p>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Figaro_QueryOptions_DocumentProjection">DocumentProjection</td>
+        <td><p>When parsing a document in order to execute a query, use static analysis of the query to
+materialize only those portions of the document relevant to the query.
+This can significantly enhance performance of queries against documents from containers of
+type <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_WholeDocContainer">WholeDocContainer</a> and documents not in a container. It should not be used if
+arbitrary navigation of the resulting nodes is to be performed, as not all nodes in the
+original document will be present and unexpected results could be returned. This flag
+has no effect on documents in containers of type <a class="xref" href="Figaro.XmlContainerType.html#Figaro_XmlContainerType_NodeContainer">NodeContainer</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_LazyDocs">LazyDocs</td>
+        <td><p>Retrieve the document lazily. That is, retrieve document content and document metadata only on an as needed basis when reading the document.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_None">None</td>
+        <td><p>No settings.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_ReadCommitted">ReadCommitted</td>
+        <td><p>This operation will have degree 2 isolation. This provides for cursor stability but not
+repeatable reads. Data items which have been previously read by this transaction may be deleted
+or modified by other transactions before this transaction completes.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_ReadModifyWrite">ReadModifyWrite</td>
+        <td><p>Acquire write locks instead of read locks when doing the read, if locking is configured.
+Setting this flag can eliminate deadlock during a read-modify-write cycle by
+acquiring the write lock during the read part of the cycle so that another thread of
+control acquiring a read lock for the same item, in its own read-modify-write cycle,
+will not result in deadlock.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_ReadUncommitted">ReadUncommitted</td>
+        <td><p>This operation will support degree 1 isolation; that is, read operations may return data
+that has been modified by other transactions but which has not yet been committed.
+Silently ignored if the <a class="xref" href="Figaro.ContainerConfig.html#Figaro_ContainerConfig_ReadUncommitted">ReadUncommitted</a>
+flag was not specified when the underlying container was opened.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Figaro_QueryOptions_WellFormedOnly">WellFormedOnly</td>
+        <td><p>Force the use of a scanner that will neither validate nor read schema or DTDs associated with the
+document during parsing.
+<p>
+This is efficient, but can cause parsing errors if the document references
+information that might have come from a schema or DTD, such as entity references.
+</p></p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+  <h5 id="Figaro_QueryOptions_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Query_System_String_Figaro_QueryContext_Figaro_QueryOptions_">Query(String, QueryContext, QueryOptions)</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Enums.cs&amp;version=GBmaster&amp;line=2186" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

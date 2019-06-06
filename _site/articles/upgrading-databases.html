@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Upgrading Databases </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Upgrading Databases ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="upgrading-databases.md">
+<h1 id="upgrading-databases">Upgrading Databases</h1>
+
+<p>When upgrading databases to support a newer version of the libraries, it may be necessary to upgrade the on-disk format of already-created database files. Berkeley DB database upgrades are done in place, and so are potentially destructive. This means that if the system crashes during the upgrade procedure, or if the upgrade procedure runs out of disk space, the databases may be left in an inconsistent and unrecoverable state. To guard against failure, the procedures outlined in this guide should be carefully followed.</p>
+<div class="WARNING"><h5>Warning</h5><p>If you are not performing catastrophic archival as part of your application upgrade process, you should at least copy your database to an archival location, verify that your archival location is error-free and readable, and that copies of your backups are stored offsite!</p>
+</div>
+<p>Database upgrades can be performed at the command-line level using <a class="xref" href="db_upgrade.html">db_upgrade</a> or through the API using <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_UpgradeContainer_System_String_Figaro_UpdateContext_">UpgradeContainer(String, UpdateContext)</a>.</p>
+<p>After an upgrade, Berkeley DB applications must be recompiled to use the new Berkeley DB library before they can access an upgraded database. There is no guarantee that applications compiled against previous releases of Berkeley DB will work correctly with an upgraded database format, nor is there any guarantee that applications compiled against newer releases of Berkeley DB will work correctly with the previous database format. It is guaranteed that any archived database may be upgraded using a current Berkeley DB software release and the <a class="xref" href="../api/Figaro.XmlManager.html#Figaro_XmlManager_UpgradeContainer_System_String_Figaro_UpdateContext_">UpgradeContainer(String, UpdateContext)</a> method, and there is no need to step-wise upgrade the database using intermediate releases of Berkeley DB. Sites should consider archiving appropriate copies of their application or application sources if they may need to access archived databases without first upgrading them.</p>
+<p>The following information describes the general process of upgrading applications using the Figaro XML database library. There are four areas to be considered when upgrading Berkeley DB applications and database environments:</p>
+<ul>
+<li>The application API</li>
+<li>The database environment&#39;s region files</li>
+<li>The underlying database formats</li>
+<li>Log files (for transactional environments)</li>
+</ul>
+<p>The upgrade procedures required depend on whether or not the release is a major or minor release (in which either the major or minor number of the version changed), or a patch release (in which only the patch number in the version changed). Figaro BDB major and minor releases may optionally include changes in all four areas; that is, the application API, region files, database formats, and log files may not be backward-compatible with previous releases. A Berkeley DB database formats in incompatible ways, and so applications may only need to be recompiled or reconfigured to point to the new assembly version.</p>
+<h3 id="upgrading-a-patch-release">Upgrading a Patch Release</h3>
+<ul>
+<li>Shut down all applications using the Figaro library.</li>
+<li>Install the library update.</li>
+<li>Restart the applications.</li>
+</ul>
+<h3 id="upgrading-non-transactional-environments">Upgrading non-transactional environments</h3>
+<ul>
+<li>Shut down all applications using the Figaro library.</li>
+<li>Remove any old environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Remove_System_String_Figaro_EnvironmentRemoveAction_">Remove(String, EnvironmentRemoveAction)</a> method or an appropriate system utility.</li>
+<li>Install the new version of the Figaro library.</li>
+<li>If necessary, upgrade the application databases.</li>
+<li>Restart the applications.</li>
+</ul>
+<h3 id="upgrading-transactional-environments-without-upgrading-log-or-database-files">Upgrading transactional environments without upgrading log or database files</h3>
+<ul>
+<li>Shut down all applications using the Figaro library.</li>
+<li>Run recovery on the database environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method (using the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> option), or the <a class="xref" href="db_recover.html">db_recover</a> utility.</li>
+<li>Remove any old environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Remove_System_String_Figaro_EnvironmentRemoveAction_">Remove(String, EnvironmentRemoveAction)</a> method or an appropriate system utility.</li>
+<li>Install the new version of the Figaro library.</li>
+<li>If necessary, upgrade the application databases.</li>
+<li>Restart the applications.</li>
+</ul>
+<h3 id="upgrading-transactional-environments-and-log-files-without-upgrading-database-files">Upgrading transactional environments and log files without upgrading database files</h3>
+<ul>
+<li>Shut down all applications using the Figaro library.</li>
+<li>Run recovery on the database environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method (using the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> option), or the <a class="xref" href="db_recover.html">db_recover</a> utility.</li>
+<li>Archive the database environment for catastrophic recovery.</li>
+<li>Install the new version of the Figaro library.</li>
+<li>Force a checkpoint using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentTransactionCheckpoint_System_Boolean_System_UInt32_System_UInt32_">SetEnvironmentTransactionCheckpoint(Boolean, UInt32, UInt32)</a> or the <a class="xref" href="db_checkpoint.html">db_checkpoint</a> utility. If you use the <a class="xref" href="db_checkpoint.html">db_checkpoint</a> utility, make sure to use the new version of the utility - that is, the version that came with the installation you are upgrading with.</li>
+<li>Restart the applications.</li>
+</ul>
+<h3 id="upgrading-transactional-environments-log-files-and-databases">Upgrading transactional environments, log files and databases</h3>
+<ul>
+<li>Shut down all applications using the Figaro library.</li>
+<li>Run recovery on the database environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> method (using the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_Recover">Recover</a> option), or the <a class="xref" href="db_recover.html">db_recover</a> utility.</li>
+<li>Remove any old environment using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Remove_System_String_Figaro_EnvironmentRemoveAction_">Remove(String, EnvironmentRemoveAction)</a> method or an appropriate system utility.</li>
+<li>Archive the database environment for catastrophic recovery.</li>
+<li>Install the new version of the Figaro library.</li>
+<li>Upgrade the databases.</li>
+<li>Archive the database for catastrophic recovery again (using different media than before, of course). 
+&gt;[!NOTE]
+&gt;This archival is not strictly necessary. However, if you have to perform catastrophic recovery after restarting the application, that recovery must be done based on the last archive you have made. If you make this second archive, you can use it as the basis of that catastrophic recovery. If you do not make this second archive, you have to use the archive you made in step 4 as the basis of your recovery, and you have to do a full upgrade on it before you can apply log files created after the upgrade to it.</li>
+<li>Force a checkpoint using the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_SetEnvironmentTransactionCheckpoint_System_Boolean_System_UInt32_System_UInt32_">SetEnvironmentTransactionCheckpoint(Boolean, UInt32, UInt32)</a> or the <a class="xref" href="db_checkpoint.html">db_checkpoint</a> utility. If you use the <a class="xref" href="db_checkpoint.html">db_checkpoint</a> utility, make sure to use the new version of the utility - that is, the version that came with the installation you are upgrading with.</li>
+<li>Restart the applications.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="utilities.html">Utilities</a></li>
+<li><a class="xref" href="backup-procedures.html">Backup Procedures</a></li>
+<li><a class="xref" href="recovery-procedures.html">Recovery Procedures</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/upgrading-databases.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

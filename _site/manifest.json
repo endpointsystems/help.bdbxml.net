@@ -1,0 +1,5861 @@
+{
+  "sitemap": {
+    "baseUrl": "http://help.bdbxml.net/",
+    "changefreq": "monthly",
+    "priority": 0.6
+  },
+  "homepages": [],
+  "source_base_path": "C:/Repos/websites/help.bdbxml.net",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.BackupCloseArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.BackupCloseArgs.html",
+          "hash": "wSGGAWHkMeWPgdqEgx5ikQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.BackupConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.BackupConfig.html",
+          "hash": "90ZuSXaHc7uyY8Q8WeK3KQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.BackupOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.BackupOptions.html",
+          "hash": "QEnh2GT6DCvK+GhivRxdsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ContainerConfigFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ContainerConfigFactory.html",
+          "hash": "QuH5azBL8aL4aHeVpKIwGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ContainerElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ContainerElement.html",
+          "hash": "eyp0h9S8kPffQ9AcACwIjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ContainerElementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ContainerElementCollection.html",
+          "hash": "QTYF1veO2meZKbtViU+UJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.DataDirectoryElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.DataDirectoryElement.html",
+          "hash": "u1WV6NyPphaSYM/iTn4KQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.DataDirectoryElementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.DataDirectoryElementCollection.html",
+          "hash": "W1qiy/9y9SoxY+VMsHwncA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.DefaultContainerElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.DefaultContainerElement.html",
+          "hash": "QWBcc3f2PoXl0lBuWRrvCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.Factory.ContainerConfigFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.Factory.ContainerConfigFactory.html",
+          "hash": "IydvIZcHTgxF7TkaIBo2sA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.Factory.ManagerFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.Factory.ManagerFactory.html",
+          "hash": "5I3U8rZfq8hlZ0vqeD+Zbw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.Factory.SectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.Factory.SectionFactory.html",
+          "hash": "OXmAfjuGPjNsbxOLCfgL+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.Factory.html",
+          "hash": "RkMy2zRwaXtV0o70pgl6PQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.FigaroSection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.FigaroSection.html",
+          "hash": "k1g4+S7eqLkLvbHTVk6PLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ManagerElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ManagerElement.html",
+          "hash": "1T7LZEGoSpawx2IidxWv+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ManagerElementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ManagerElementCollection.html",
+          "hash": "c8ePpUJEiOmI5K3OS+EBlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.ManagerFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.ManagerFactory.html",
+          "hash": "ElcmaLrhwX2j4QLP2Y46aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.NamespaceElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.NamespaceElement.html",
+          "hash": "ieI+4VB0iWYvGPc1wzsMaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.NamespaceElementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.NamespaceElementCollection.html",
+          "hash": "uMoRCBUoAu+hpMVNPihefQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.QueryCollectionElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.QueryCollectionElement.html",
+          "hash": "BedWJLGp7r60XcvTtwvbGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.QueryElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.QueryElement.html",
+          "hash": "x3PixnQh9axBNDVkdymQFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.SectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.SectionFactory.html",
+          "hash": "DNWDG/9tLH5p6kduINnyww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.VariableElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.VariableElement.html",
+          "hash": "gD23wQ85ShUoM/a3vlN/xA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.VariableElementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.VariableElementCollection.html",
+          "hash": "KfHvSM5mYR0ra1fyqvFm2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Configuration.html",
+          "hash": "i5lhNWAMxVyXAh9INvN73A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ConfigurationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ConfigurationState.html",
+          "hash": "XIARDfsOrI2jjO10ppjAQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Container.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Container.html",
+          "hash": "Gn0TBErf0m3yf8PRFFf38Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ContainerConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ContainerConfig.html",
+          "hash": "aCa0KO5jhujrn/04XUoBwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ContainerScopeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ContainerScopeException.html",
+          "hash": "1hWNwUWVU4bPVSk9rkc+7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ContainerState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ContainerState.html",
+          "hash": "4F4q469fGXSdSCm5pJZ36Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.DBDeadlockException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.DBDeadlockException.html",
+          "hash": "rMQFgZAVxK8BZyxC8U5zvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.DBLockNotGrantedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.DBLockNotGrantedException.html",
+          "hash": "HgZh/Q9EaRBPGDN+f8M5Fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.DBSite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.DBSite.html",
+          "hash": "kyhrZoqKWOSox6saxCoAAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.DatabaseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.DatabaseException.html",
+          "hash": "o9CpjFdAQb7Xl4K+Dbrb3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.DeadlockDetectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.DeadlockDetectType.html",
+          "hash": "sbfxW/6KBJR3D7qGtox1xQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvCacheSize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvCacheSize.html",
+          "hash": "b2armM5XxUVQxB/doNK1WA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvConfig.html",
+          "hash": "a7RW21ABoYfzTRLHi7oiFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvErrorEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvErrorEventHandler.html",
+          "hash": "QHJK49xieY0utFoiMqY13g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvIsAliveEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvIsAliveEventHandler.html",
+          "hash": "iauYfmv1zDHaxlgZtTyZxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvLogOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvLogOptions.html",
+          "hash": "jwJIoqWlevtPJA9nKbfp6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvMessageEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvMessageEventHandler.html",
+          "hash": "kQdFpsvZBwJoVk4kHBcmfw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvOpenOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvOpenOptions.html",
+          "hash": "fLwEUwPvEKM1yc2COn7ftQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvProcessEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvProcessEventHandler.html",
+          "hash": "LP+LEiAQdQ+8hL1lDS/kyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvProgressEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvProgressEventHandler.html",
+          "hash": "LRNZsJAxQl7hm3EQXBB96g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvVersion.html",
+          "hash": "I6cwVL/chdiHmF0YnXVtCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvironmentEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvironmentEvent.html",
+          "hash": "g8jgYIYACkif7p2LhyTFrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvironmentRemoveAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvironmentRemoveAction.html",
+          "hash": "0XdU5WjIf595iuCjTPRFhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EnvironmentTimeoutType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EnvironmentTimeoutType.html",
+          "hash": "nFMwStQ/0JvKCw4Hc6XdeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ErrEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ErrEventArgs.html",
+          "hash": "MUj2soFPw4BLo/BAXqHcHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.EvaluationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.EvaluationType.html",
+          "hash": "jH+II3p89C5/gLOg40mr+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FeedbackEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FeedbackEvent.html",
+          "hash": "Bz4vvTw31JLDoSZD8NAbpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroEnv.FigaroReplicationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroEnv.FigaroReplicationManager.html",
+          "hash": "FpI+R41HY6NT26POzcqmFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroEnv.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroEnv.html",
+          "hash": "aZqVEmRpQSKZFCEVP6kdxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroEnvException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroEnvException.html",
+          "hash": "m1IETjVlGsvkdbqxXnPmhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroEnvOutputException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroEnvOutputException.html",
+          "hash": "rT3TnQ0EoBDRFRDgUmBYuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroException.html",
+          "hash": "1TURAwwc5f/VnXUuTAF7nQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroExceptionCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroExceptionCategory.html",
+          "hash": "0zh8HmHjjl3Vqo4vaA4tTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroProductEdition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroProductEdition.html",
+          "hash": "FA18J8+2EvqgkDRLpRw/yA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroProductInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroProductInfo.html",
+          "hash": "5t1XvX3rH9TJ4DXLAhS6Zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroReplicationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroReplicationException.html",
+          "hash": "Y6FzWvzkmt7a8x3S2XB3jw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroReplicationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroReplicationManager.html",
+          "hash": "AZWlCYEpt+Upc/T0iXr4BA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.FigaroTransactionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.FigaroTransactionException.html",
+          "hash": "/LbKRXuNzeOd3SUMbYLhuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.GetAllDocumentOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.GetAllDocumentOptions.html",
+          "hash": "Gf1jy+syhHiaH0e2jOi2sQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.HighboundOperationLookup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.HighboundOperationLookup.html",
+          "hash": "h4R78Zkv3AZlsJawlGYqYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexKeyType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexKeyType.html",
+          "hash": "xRfYG1xGBawO/Pq/JTBpsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexLookupOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexLookupOperation.html",
+          "hash": "maKRztzoT6WF2EM1JbD/pA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexLookupOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexLookupOptions.html",
+          "hash": "/aTO3vkgl+WPcN4r6ZxDTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexNodeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexNodeType.html",
+          "hash": "FQrJFAazStfZWUnjPbDfbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexPathType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexPathType.html",
+          "hash": "up4s06s+Nh4AlIr/ldmhVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IndexingStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IndexingStrategy.html",
+          "hash": "RklGM6s7E8T4SrLiJgZIyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.IsAliveEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.IsAliveEventArgs.html",
+          "hash": "02tcEK35N7O9KH+76PI5DQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.KeyStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.KeyStatistics.html",
+          "hash": "twZgtMZC3wCRYKbfo0U4Cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LeaseExpiredException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LeaseExpiredException.html",
+          "hash": "xvN4/xXeruhcny6sgyoJ8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LicenseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LicenseException.html",
+          "hash": "ZgM8x4KcHJGHfhNV/iAD5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LockStatisticOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LockStatisticOptions.html",
+          "hash": "+q492v1ci0GwN419g4bB/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LockStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LockStatistics.html",
+          "hash": "IuWrmHKp6Elnb8q3Gshd+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogArchiveOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogArchiveOptions.html",
+          "hash": "yyaD0f7KebCW8/eZFxOqqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogConfiguration.html",
+          "hash": "TLhCF0ihfEacVJUMMBS4qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogConfigurationCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogConfigurationCategory.html",
+          "hash": "dluq/cihyENlchQTfg3vLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogConfigurationLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogConfigurationLevel.html",
+          "hash": "blL5djwuX11DFTFaXeadMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogSequenceNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogSequenceNumber.html",
+          "hash": "fcxmkg3AS865F0qko6LnyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.LogStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.LogStatistics.html",
+          "hash": "1i6b/+rDnFUVU+rWyjC5Bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ManagerInitOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ManagerInitOptions.html",
+          "hash": "914+XBco0YNUdFUJ+tfnjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.MemoryPoolFileStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.MemoryPoolFileStatistics.html",
+          "hash": "ca8ABZdpA8v3QtCORuRNxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.MemoryPoolStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.MemoryPoolStatistics.html",
+          "hash": "vFNT3Sqv2Jwm11R7pqZrXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.MemoryPoolStatisticsInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.MemoryPoolStatisticsInfo.html",
+          "hash": "myIhXWRNXv06dBIvGL6KDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.MsgEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.MsgEventArgs.html",
+          "hash": "SDCGG2syXuOqcMNj7/Kwiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.MutexStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.MutexStatistics.html",
+          "hash": "8o3LD44sPuTuY5ZTsh7e8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.NodeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.NodeType.html",
+          "hash": "YeYaG+WLZgDBRQNIUgi9mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.PrintMemoryPoolStatisticsOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.PrintMemoryPoolStatisticsOptions.html",
+          "hash": "WDRFBjM3mioOESZJrSGDQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ProcessEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ProcessEventArgs.html",
+          "hash": "YLqOKVcPOkMsz7ljKCYfig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ProgressEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ProgressEventArgs.html",
+          "hash": "kkWd/sbbFQnzg4PKmtL1QQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.PutDocumentOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.PutDocumentOptions.html",
+          "hash": "4GHeHjZYxcX9GgVpOshzTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.QueryContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.QueryContext.html",
+          "hash": "jjoyBHmnfWKXxglEOPC70w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.QueryOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.QueryOptions.html",
+          "hash": "gC81RIABoXcX4J4AW3COHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.RecordAcknowledgmentPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.RecordAcknowledgmentPolicy.html",
+          "hash": "TnyyOr9lAPJKsj+jAG8scQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReindexOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReindexOptions.html",
+          "hash": "SV791PSUoMS858llLPWvHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationConfig.html",
+          "hash": "/5gh8Kcl7rkR1u9AWEK2mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationHostAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationHostAddress.html",
+          "hash": "BrFxS6ONImK9oGB6Tx5oZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationManagerStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationManagerStatistics.html",
+          "hash": "b4ANJN9qVIuB6PB57B8QDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationManagerStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationManagerStatus.html",
+          "hash": "KysnUu2KVYHWXbu+rT5FaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationSite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationSite.html",
+          "hash": "QQK8IUOPjtUMvLBiCGrhWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationSiteConnectionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationSiteConnectionStatus.html",
+          "hash": "wh90yr+vEhloQkopcsIl5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationStartOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationStartOptions.html",
+          "hash": "SnePFNCvtitzwcnsvSoYaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationStatisticsOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationStatisticsOptions.html",
+          "hash": "sQ/W8qtgJPg4p4GPc1V2DA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationViewArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationViewArgs.html",
+          "hash": "fFuKKgfQPTcqWlexMh7EUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ReplicationViewOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ReplicationViewOptions.html",
+          "hash": "/emoaOfDzbVU+JNLhtRboQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.ResultsType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.ResultsType.html",
+          "hash": "bRjsfVOE1lqpcKg3DwH/Bg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.RetrievalModes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.RetrievalModes.html",
+          "hash": "6C0M8NQgrJeyApfOUcTlDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.RunRecoveryException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.RunRecoveryException.html",
+          "hash": "lGR4lkkVweSx7u/dw6LcRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.SalvageOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.SalvageOptions.html",
+          "hash": "LfYD/QuVQ76OQbFR9YMVOQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.SharedMemoryLockException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.SharedMemoryLockException.html",
+          "hash": "4tnOMC5BL81ndyp3S23FuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.SiteConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.SiteConfig.html",
+          "hash": "4gNvFZP7jQywzBAWXMivrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.StackFrameEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.StackFrameEventArgs.html",
+          "hash": "lsgkW4/9T1X0QIfSUBfSCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.StackFrameExceptionEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.StackFrameExceptionEventArgs.html",
+          "hash": "sLuQ+vePb41zWB3QxPQqMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.StatPrintOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.StatPrintOptions.html",
+          "hash": "DiwK8+b27WnvzEFibCl47Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.TransactionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.TransactionInfo.html",
+          "hash": "EWEv5PbR7CGzQ/UCtooLoA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.TransactionStatistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.TransactionStatistics.html",
+          "hash": "l5+Qa7vjhQx/10qKFGBYDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.TransactionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.TransactionStatus.html",
+          "hash": "ihXt2Fvy7Fdei6SzyKc1yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.TransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.TransactionType.html",
+          "hash": "jj7RL4/HvifyhVbmEJfHJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.UnsupportedPlatformException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.UnsupportedPlatformException.html",
+          "hash": "2pFtOUPT2EeSa5Q76ep9Gw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.UpdateContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.UpdateContext.html",
+          "hash": "es5TGNkvFyp7WkYRwRbDsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.VerboseOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.VerboseOption.html",
+          "hash": "2W7Wyp7yfnuowFp0oxdNBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.VersionMismatchException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.VersionMismatchException.html",
+          "hash": "/7P+S/bW7GlzMeqRjwEp/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XQueryException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XQueryException.html",
+          "hash": "Cev802Yw2S+pe7y+EpcBdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XQueryExpression.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XQueryExpression.html",
+          "hash": "xI4slTXBW6KmKqhjelpYgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XQueryResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XQueryResolver.html",
+          "hash": "rM2azOZ3ffOu9E94E/pOPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Xml.XQueryException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Xml.XQueryException.html",
+          "hash": "+yzPxhq7p8MTqPGRU7g22Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Xml.XmlException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Xml.XmlException.html",
+          "hash": "XjTYyl6exqi7+5I7yJJhgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Xml.XmlValueException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Xml.XmlValueException.html",
+          "hash": "ZuWjlTNTNMS4F633OLU34A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.Xml.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.Xml.html",
+          "hash": "+hWhziyYt1YDc4kfKu0f9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlArguments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlArguments.html",
+          "hash": "R/cDr0OtT/7VUnLyxb9kxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlContainerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlContainerType.html",
+          "hash": "ZuLowKXPxLiSZ6kWDSODOQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlData.html",
+          "hash": "5wYh8ehhRyh6aGX7sVPufA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDatatype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDatatype.html",
+          "hash": "B3VNeF2gS/Q8wZlOk9LJSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.EnterEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.EnterEventDelegate.html",
+          "hash": "xtgbmxr4RRv5q8LceVNlUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.ErrorEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.ErrorEventDelegate.html",
+          "hash": "da9xgDOsCJd0cMZRWQrEmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.ExitEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.ExitEventDelegate.html",
+          "hash": "bGN4irv7nI7YLHP/7ObK4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.StartEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.StartEventDelegate.html",
+          "hash": "nArw1tiGgjsPpNg0bmQABw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.StopEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.StopEventDelegate.html",
+          "hash": "UjeoJrI2LNYa0ZqQX74c3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDebugListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDebugListener.html",
+          "hash": "sBBJCje1/X2ZtMFKmR6cwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlDocument.html",
+          "hash": "KRDMVi/3aOsDcbikOEnClA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlEnvEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlEnvEventArgs.html",
+          "hash": "D91d6rDO+964GO3rclaxEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlException.html",
+          "hash": "Z2UO/KyuOxIMHhsEwW1E2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlExternalFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlExternalFunction.html",
+          "hash": "CeRrD1Y9KRo8eVBiEk4DIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlIndex.html",
+          "hash": "N87Yz256tZVq8S0e8nbG4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlIndexLookup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlIndexLookup.html",
+          "hash": "5yHqIUohRvdyOTkh7EWbbg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlIndexSpecification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlIndexSpecification.html",
+          "hash": "bOP7T6YfoCxByVxY3AqpYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlInputStream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlInputStream.html",
+          "hash": "kNBD6mEH3gm0OqjsZ9lSKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlManager.html",
+          "hash": "DhOz/ZyvcEevt5lXE2FTWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlMetadataIterator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlMetadataIterator.html",
+          "hash": "fEzKmdcqTmRdi2GWLH/aaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlResults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlResults.html",
+          "hash": "OZLQ8XgpJc7c10xp9x0c4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlStackFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlStackFrame.html",
+          "hash": "Mkbo9isgeAQFQImHat/LkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlTransaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlTransaction.html",
+          "hash": "C82fpWzGnCjXn1O6FiqDWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlValue.html",
+          "hash": "aQQxOcA2wP8EH3qTt6PbyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlValueException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlValueException.html",
+          "hash": "9nZpn8hYohRwW9IVaJdiPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.XmlValueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.XmlValueType.html",
+          "hash": "dJHFd5yIxrLNSVrV4pdATQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Figaro.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Figaro.html",
+          "hash": "r5E31UWhBq5SwOn5eLWIsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "yTgHo8L2nSOYiP8xFgohYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "6g5+F8TehpIftjNI7YkaXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/access-method-operations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/access-method-operations.html",
+          "hash": "Rt7FV3TwRno4XcnHw8RR8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/berkeley-db-products.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/berkeley-db-products.html",
+          "hash": "qD/DFk3ouMyDgYZLEsYthA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/btree-access-method-specific-configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/btree-access-method-specific-configuration.html",
+          "hash": "4oH9jQDZkNLhzdnuBACPJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/btree-or-heap.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/btree-or-heap.html",
+          "hash": "rHxooG6rm5DqQBffUfqNDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/clients-and-servers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/clients-and-servers.html",
+          "hash": "8QGAVuWvFNTcod0+iQvSSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/closing-the-database.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/closing-the-database.html",
+          "hash": "/7MmMqZyAHqVbHgskdzHSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/data-access-data-mgmt.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/data-access-data-mgmt.html",
+          "hash": "Dx8W9Ik2C3rAlzF25adCJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/data-access-services.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/data-access-services.html",
+          "hash": "zIkHDo/qcHtxgZuwG7u90g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/data-management-services.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/data-management-services.html",
+          "hash": "IiuUbF4jsJkSvd44EcV4VQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/database-statistics.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/database-statistics.html",
+          "hash": "RBo+88V+6m0ya4DKSEycxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/database-truncation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/database-truncation.html",
+          "hash": "FkjZgxDLQ1M9o1zvRlisJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/database-upgrade.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/database-upgrade.html",
+          "hash": "6x5JHBSkp3yOocgbHb4xIw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/deleting-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/deleting-records.html",
+          "hash": "hG7tKO21w2wDiljXDpKsSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/design.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/design.html",
+          "hash": "1NeDLbf2IBpJYzi4cUPAbg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/do-you-need-bdb.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/do-you-need-bdb.html",
+          "hash": "bGLo4Acsm3cb+g9NX8tS/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/flushing-the-cache.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/flushing-the-cache.html",
+          "hash": "zF95FCDwM5CvA/dyPXlAsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/foreign-key-indexes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/foreign-key-indexes.html",
+          "hash": "/t2EPdseiOIzHpiAjV5g3Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/general-access-method-configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/general-access-method-configuration.html",
+          "hash": "xwv9uwNH3xzDSSoDDSqu8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/hash-access-method-specific-configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/hash-access-method-specific-configuration.html",
+          "hash": "/72XCgsAWz09disd8aTcNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/hash-or-btree.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/hash-or-btree.html",
+          "hash": "McZstvISbtAP4Hqu0b7t2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/heap-access-method-specific-configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/heap-access-method-specific-configuration.html",
+          "hash": "ADXTPHwR5AJKBIb0i4G27g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/logical-record-numbers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/logical-record-numbers.html",
+          "hash": "J51pCjt45L9TnLr9XAStQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/mapping-the-terrain.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/mapping-the-terrain.html",
+          "hash": "lCiJmzGx9fAzwoM+0i5TuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/not-a-relational-db.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/not-a-relational-db.html",
+          "hash": "j+No+ZRNFd/ncl7qQN0xNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/not-a-server.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/not-a-server.html",
+          "hash": "C+NR9Mlo/rIK5OZNiEqP1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/opening-multiple-dbs-in-a-single-file.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/opening-multiple-dbs-in-a-single-file.html",
+          "hash": "WXJ2MK456ULCzQUAdothuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/other-services.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/other-services.html",
+          "hash": "q2zJmMQSUDVPC6RX7nQBUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/partitioning-databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/partitioning-databases.html",
+          "hash": "AnK/GT2We+/rdhZja8FbfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/queue-or-recno.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/queue-or-recno.html",
+          "hash": "rEgXiPB7ijvUIEL7iHFm9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/queue-recno-access-method-specific-configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/queue-recno-access-method-specific-configuration.html",
+          "hash": "boAIlDxsX6WlIOrqVokeuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/relational-databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/relational-databases.html",
+          "hash": "nOK2lRZYYVoTtVtHBh8YzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/retrieving-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/retrieving-records.html",
+          "hash": "qIqg76D4dbAmCIOpJ3Jr+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/secondary-indexes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/secondary-indexes.html",
+          "hash": "aXBnwFepUzHma/r1EktWdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/selecting-an-access-method.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/selecting-an-access-method.html",
+          "hash": "3XHJQcgRPI4QJo0ix+DjKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/storing-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/storing-records.html",
+          "hash": "3LkXT+C+rfp8JrcubadtQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/verification-and-salvage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/verification-and-salvage.html",
+          "hash": "B1qw6dTDxd5otp0wUWHDEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/what-are-the-access-methods.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/what-are-the-access-methods.html",
+          "hash": "pr1dbdPNBJU47hGk0lBtKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/what-bdb-is-not.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/what-bdb-is-not.html",
+          "hash": "U9NQLTayA2pchLJX5IbEXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb-pg/what-is-berkeley-db.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb-pg/what-is-berkeley-db.html",
+          "hash": "OLbUnzjTkr5LoyU2NjxqeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/access-methods.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/access-methods.html",
+          "hash": "jLi+dnJ3D/dEw3dUjOB/5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/berkeley-db-intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/berkeley-db-intro.html",
+          "hash": "YVQHMRmUOErJJJ0Mm6GELQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/closing-dbs.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/closing-dbs.html",
+          "hash": "aFcyPUk0PAkuBpdVt65kqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/concepts.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/concepts.html",
+          "hash": "B/vS9PUuvFrLSx6gBHNpTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/cursor-example.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/cursor-example.html",
+          "hash": "ILRmOfDeBzFR3ducEUIenA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/databases.html",
+          "hash": "Dk32DdeZIoD3ZFkfQkl6Zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/db-error-reporting.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/db-error-reporting.html",
+          "hash": "qaHsSNkVtaG+/bh9MWA5oA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/db-example.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/db-example.html",
+          "hash": "45ilfGRCG6DqvzAXmwZd+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/db-limits-and-portability.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/db-limits-and-portability.html",
+          "hash": "z/ubMRtTFPCIg4mt07rGQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/db-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/db-records.html",
+          "hash": "EqW5CWwMiJF1ezZTxFKaOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/db-usage-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/db-usage-sample.html",
+          "hash": "3jAfkmiVESA6NAD+qovBHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/deleting-records-using-cursors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/deleting-records-using-cursors.html",
+          "hash": "aA4lajUYZRO3ENgruEm1jQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/environments.html",
+          "hash": "bdJWb7fqlf9EQnHd8v5JIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/exception-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/exception-handling.html",
+          "hash": "cdD7Bo4Aa2ypEOJ9NYGpdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/getting-records-using-the-cursor.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/getting-records-using-the-cursor.html",
+          "hash": "uNm6jN4RkYFspZbYd+F6Pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/implementing-key-extractors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/implementing-key-extractors.html",
+          "hash": "leynvBCk0j4BtDVvPPrm8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/managing-dbs-in-environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/managing-dbs-in-environments.html",
+          "hash": "lE8duSCU8SMNMGtj1zMNvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/putting-records-using-cursors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/putting-records-using-cursors.html",
+          "hash": "xK0j2+jbqJqMxejyQpCBhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/reading-and-writing-db-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/reading-and-writing-db-records.html",
+          "hash": "NN/Ga6WyRT4EY8h9+JLnDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/replacing-records-using-cursors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/replacing-records-using-cursors.html",
+          "hash": "cPgfVCqYCxV9EUTICiAYcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/secondary-databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/secondary-databases.html",
+          "hash": "kg8FjTpH+b8sulMQWGH8kA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/bdb/using-cursors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/bdb/using-cursors.html",
+          "hash": "gw0AVvjEjaz/n+uTh4F9Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/a-note-on-snapshot-isolation-mvcc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/a-note-on-snapshot-isolation-mvcc.html",
+          "hash": "O2yngv4C45C1y+0NiaxnIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/a-note-on-system-failure.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/a-note-on-system-failure.html",
+          "hash": "znKt5Z3HqKKz9vzZPCuFgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/aborting-a-transaction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/aborting-a-transaction.html",
+          "hash": "BXv/Z6lTRiy261JE9qtGVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/adding-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/adding-data.html",
+          "hash": "TkjW1oF12HCoEKv70P4TPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/adding-documents.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/adding-documents.html",
+          "hash": "5QhnZsv0dpWvukpXeVommA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/adding-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/adding-indices.html",
+          "hash": "2+U7/WULtb9eLiCABvOM5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/adding-metadata.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/adding-metadata.html",
+          "hash": "Od43LgX0afLdZKSZDAJDBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/adding-xml-documents-to-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/adding-xml-documents-to-containers.html",
+          "hash": "2gfytGoJfYFB6wkvJNsuBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/additional-features.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/additional-features.html",
+          "hash": "AOuz6e7RqPCCA/rHuzVMKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/administering-apps.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/administering-apps.html",
+          "hash": "bXUQQLifs+kdhsc6Q7HIiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/anatomy-of-a-transactional-application.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/anatomy-of-a-transactional-application.html",
+          "hash": "6T6OA5KM6X93vd6gHvcxJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/application-requirements.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/application-requirements.html",
+          "hash": "rKkXYTHSJMCrJXpE4pA2Aw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/architecting-figaro-tds-applications.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/architecting-figaro-tds-applications.html",
+          "hash": "SLUrVCeZZ+xCQ56k1JsMKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/atomicity.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/atomicity.html",
+          "hash": "52z3yxcvXY8u5wj4Go53aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/autocommit.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/autocommit.html",
+          "hash": "icm/zoGe6U90ryKXC5X56g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/backup-procedures.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/backup-procedures.html",
+          "hash": "ZkClcS9CzNbD24s2AAtwbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/basic-concepts.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/basic-concepts.html",
+          "hash": "ueQ9zmyGbf1/fZ9wO7zscA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/benefits.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/benefits.html",
+          "hash": "JP4YGSQoGp8IJES4PbfolQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/berkeley-db-environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/berkeley-db-environments.html",
+          "hash": "+Y2NE5eyihbrG+RU8oVdUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/blocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/blocks.html",
+          "hash": "sDJAo67S1AsYuDuw0E6IsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/bulk-transfers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/bulk-transfers.html",
+          "hash": "2Vr8V1xHmrOrrkU0utP5ww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/cache-and-locking-size-considerations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/cache-and-locking-size-considerations.html",
+          "hash": "zePPVcpJ6KgDD+NPIJbLTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/calling-external-functions-from-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/calling-external-functions-from-xquery.html",
+          "hash": "uzN/lqm5bS+NsDXOproXXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/catastrophic-recovery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/catastrophic-recovery.html",
+          "hash": "S5XlVr9oPPXjMN09nnZJpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/checkpoints.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/checkpoints.html",
+          "hash": "rUHVRGOu0/VktS+v3cvg9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/client-to-client-transfer.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/client-to-client-transfer.html",
+          "hash": "8LLkw1X7mCs95NHBHIqcMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/committed-reads.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/committed-reads.html",
+          "hash": "0XQVfCY2amZk4nA/YBE03Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/committing-a-transaction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/committing-a-transaction.html",
+          "hash": "p8WNy6ROmzoDlMEiv0pfRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/concurrency.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/concurrency.html",
+          "hash": "hkPAMjwMgzxs0l0crnxT4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-deadlock-detection.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-deadlock-detection.html",
+          "hash": "BCehSMQooRGJ7TFf0lk2AA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-in-memory-logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-in-memory-logging.html",
+          "hash": "RGtvP1lDao0jlFeMZIqqFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-locking-sizing-the-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-locking-sizing-the-system.html",
+          "hash": "f0SOX6a141QWU2DMDzsH3Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-the-locking-subsystem.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-the-locking-subsystem.html",
+          "hash": "CRYTwumcgNHOpVEeC79uWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-the-logging-region-size.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-the-logging-region-size.html",
+          "hash": "wXGU/EOxwh6XlWbJc5H4gQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-the-logging-subsystem.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-the-logging-subsystem.html",
+          "hash": "VXggIckgcqsCIV0i1Fh1xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/configuring-the-transaction-subsystem.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/configuring-the-transaction-subsystem.html",
+          "hash": "lO6N6VkSyBeKYYTCbPNFsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/consistency.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/consistency.html",
+          "hash": "r/5HBu1+AzwE/n4GvCsn0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/container-properties.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/container-properties.html",
+          "hash": "TSbN5AxeRfZy/b+yjYKtKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/container-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/container-types.html",
+          "hash": "nkNmnQAY8kHcEwK9kHI0cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/database-and-log-file-archival.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/database-and-log-file-archival.html",
+          "hash": "PecoNeM3XYEq7xmWwsVxWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/database-features.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/database-features.html",
+          "hash": "hUb5GNMgCSBG/fgO3z/TBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/database-recoverability.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/database-recoverability.html",
+          "hash": "2CVPdcxZOFL6mgMKB3rmsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/database-recovery-procedures.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/database-recovery-procedures.html",
+          "hash": "BS7Gaw+YA3d+jAY0n+p1aw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_archive.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_archive.html",
+          "hash": "D2F0kwVa6bkHgoRKd/5IJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_checkpoint.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_checkpoint.html",
+          "hash": "MVpqvu/GY03aoR4qBcnlGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_deadlock.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_deadlock.html",
+          "hash": "IIddD6yGThx7N4b1rSOHww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_hotbackup.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_hotbackup.html",
+          "hash": "n6WXLkPGSF9yFt2Vkge15A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_printlog.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_printlog.html",
+          "hash": "dDu3j2fWcRKlOj/VufSGHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_recover.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_recover.html",
+          "hash": "Yi59ROfRfPTyHZ3XrkyMYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_stat.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_stat.html",
+          "hash": "PNehypIpDpEyXS594wfdzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_upgrade.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_upgrade.html",
+          "hash": "91jWvoLmPv3RSGOaorhUGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/db_verify.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/db_verify.html",
+          "hash": "qF+DbEcuzEsrQCWFQO69Zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/dbxml_dump.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/dbxml_dump.html",
+          "hash": "APvVVqpR9D2JrhRiSde+4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/dbxml_load.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/dbxml_load.html",
+          "hash": "8tfswcXrAaz6pvtM6nZN+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/dbxml_load_container.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/dbxml_load_container.html",
+          "hash": "HDKWAtgy6O7EPEyufrQeBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deadlock-detection.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deadlock-detection.html",
+          "hash": "6ivc1pCGVoBlPqQisM/tHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deadlocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deadlocks.html",
+          "hash": "6DBGiBJvmT9DJKgklGZ7DA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/debug-output-events.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/debug-output-events.html",
+          "hash": "atqadVBQyugA8dgVP1g+RA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/debug-output-files.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/debug-output-files.html",
+          "hash": "SKU7MMIo7O1Jc5Tcf2jujQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/debug-output-streams.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/debug-output-streams.html",
+          "hash": "QjzsKwFHqm+PX9UEkYPzjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/debugging-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/debugging-xquery.html",
+          "hash": "xALYBxIitUJUu7nR+pZZyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/default-program-run.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/default-program-run.html",
+          "hash": "vDkVcRcpTuoWv5Nf/8LOCw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/defining-namespaces.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/defining-namespaces.html",
+          "hash": "T3ggLOvAJKbMJJvMkT6zEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/defining-the-evaluation-type.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/defining-the-evaluation-type.html",
+          "hash": "3xbOinXHvE53G+0Go63Hog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/defining-variables.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/defining-variables.html",
+          "hash": "V7cKppsWiROJGIU3CXG9ZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/delayed-synchronization.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/delayed-synchronization.html",
+          "hash": "cgy/U4/X+ncMFCLcFUtyNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deleting-and-renaming-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deleting-and-renaming-containers.html",
+          "hash": "WH1DSa03hY9Zx3bNHGuQPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deleting-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deleting-indices.html",
+          "hash": "lZLH/CbUtm8/GFPIKPaVKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deleting-nodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deleting-nodes.html",
+          "hash": "6mSDSRYUgmHgmxF6r4Q7/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/deleting-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/deleting-records.html",
+          "hash": "8PawjwovUR6LATJlWCvm9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/design-and-usage-considerations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/design-and-usage-considerations.html",
+          "hash": "kBWIEOQc0qAzpjhGgpW7JA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/designing-your-application-for-recovery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/designing-your-application-for-recovery.html",
+          "hash": "IDDDejpMcOYzi5Hgnzzt/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/developing-dotnet-apps-with-figaro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/developing-dotnet-apps-with-figaro.html",
+          "hash": "7mAoDXAs0ozFixXzwnfxIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/documentation-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/documentation-overview.html",
+          "hash": "/58ausrCkwdW7+64DnI3rQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/durability.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/durability.html",
+          "hash": "0JoB0/j43w9MrW9wBZPVpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/enabling-transactions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/enabling-transactions.html",
+          "hash": "zyINsU56c9vK6e4CNImzFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/environment-administrative-infrastructure.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/environment-administrative-infrastructure.html",
+          "hash": "e54ytLuuQFxWWoADvmANew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/environment-open-flags.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/environment-open-flags.html",
+          "hash": "eujAlHY8GFQtA5RauJiUFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/environment-tuning.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/environment-tuning.html",
+          "hash": "51nUew38Vv2dcK/aE7LMYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/environments.html",
+          "hash": "d02klMHhIf1QIXJOq4P/vA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/event-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/event-handling.html",
+          "hash": "kdTj97Dl5DAfOBSkD3OAQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/examining-document-query-results.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/examining-document-query-results.html",
+          "hash": "zK44PbXkqGWs/r+Rf5s0Tw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/examining-document-values.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/examining-document-values.html",
+          "hash": "j1rGd9hUjBUZSqUxwDSdQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/examining-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/examining-indices.html",
+          "hash": "HJO36yfjjag4dXoTAMNB+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/examining-metadata.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/examining-metadata.html",
+          "hash": "Sa2vQQ3RNgk4uZxhhqB9Mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/examining-query-results.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/examining-query-results.html",
+          "hash": "dsQgVz2ToVLWuC4K8f680g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/exception-handling-and-debugging.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/exception-handling-and-debugging.html",
+          "hash": "Iq7mtkWL37xflFFaaHSc2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/figaro-and-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/figaro-and-xquery.html",
+          "hash": "j4FzU0sSp3/8wTch9Bo9lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/figaro-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/figaro-overview.html",
+          "hash": "ryYEUdMFhrO8CH0IctScnQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/file-naming.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/file-naming.html",
+          "hash": "Hu/TFJ23rPKox3BbUdmLeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/getting-started-with-concurrent-and-transactional-processing.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/getting-started-with-concurrent-and-transactional-processing.html",
+          "hash": "EFseMde8PPKiApakBFnxqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/glossary.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/glossary.html",
+          "hash": "iHn6P9HDSnfOqbQkKOEnKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/handling-failure-in-figaro-tds-applications.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/handling-failure-in-figaro-tds-applications.html",
+          "hash": "SOAxMaRKQp8wUgjPV3QpkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/hot-backup.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/hot-backup.html",
+          "hash": "mt7F9Ta+TrZXdWFMHk6nCw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/implementing-xmlexternalfunction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/implementing-xmlexternalfunction.html",
+          "hash": "kvYZHMRV3EyDxAqOWfXzZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/implementing-xqueryresolver.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/implementing-xqueryresolver.html",
+          "hash": "EurrhaYXoZ7JN3PP4tRCRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/incremental-backups.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/incremental-backups.html",
+          "hash": "99FRzAKBgW5xPzrmk64Ikg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/index-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/index-types.html",
+          "hash": "ofPCuGGkqQQYDHBhXpJi6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/indexer-processing-notes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/indexer-processing-notes.html",
+          "hash": "1XqZl2nNEdHWsbdKjXlHeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/input-streams-and-strings.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/input-streams-and-strings.html",
+          "hash": "sRvfGObMn5hTnzfgZE/JZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/inserting-nodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/inserting-nodes.html",
+          "hash": "yQjW71lJaw9VvE+hWdTH6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/insertion-rules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/insertion-rules.html",
+          "hash": "Y/VwbYwLpgdo5+9Z42GyPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/intro.html",
+          "hash": "uKI/shFpFkTzoL+Z1HnpKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/introducing-figaro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/introducing-figaro.html",
+          "hash": "PdXK3exOv/utxk5oJUkfIw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/introducing-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/introducing-indices.html",
+          "hash": "LlAIjsfZq0eHlrASZmX0OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/introduction-to-replication.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/introduction-to-replication.html",
+          "hash": "7Asr8bnJFoFEPAAZS5xl2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/introduction.html",
+          "hash": "UE6AwARqdEcEqktTsvG4FA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/isolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/isolation.html",
+          "hash": "n+8g0rqn2/Nv/cbtOkEDdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/key-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/key-types.html",
+          "hash": "89gUiW/ZxNfj5QIQixNVmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/languages-and-platforms.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/languages-and-platforms.html",
+          "hash": "wAlJFaDY4C+O87qqUtBq1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/library-dependencies.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/library-dependencies.html",
+          "hash": "3SlLXXHFS0Ld7gcALoie8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/locks-blocks-and-deadlocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/locks-blocks-and-deadlocks.html",
+          "hash": "uMmdjHcVnYVdSQAm49z3Ww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/locks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/locks.html",
+          "hash": "RqUFIr25Gl+dXCJ+RYQv4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/log-file-limits.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/log-file-limits.html",
+          "hash": "MZbRsFEpEJ1QM32yaFa2FA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/looking-up-indexed-xml-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/looking-up-indexed-xml-data.html",
+          "hash": "WeT7yr1HHlqQ+h3NB7NdVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-blocking-operations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-blocking-operations.html",
+          "hash": "sP9XuVhgwSoErX+XxENNiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-connection-retries.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-connection-retries.html",
+          "hash": "rNJ+BH1NltSJi/I3weX9dg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-containers.html",
+          "hash": "BRCsyJA1EoXqH96whowyww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-database-files.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-database-files.html",
+          "hash": "1jB72seI/Eg0EgC5VGehzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-election-policies.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-election-policies.html",
+          "hash": "oSbvuNb8Hc42SryKmJhhRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-election-times.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-election-times.html",
+          "hash": "g+t/xteZodaWRRElX4MJGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-heartbeats.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-heartbeats.html",
+          "hash": "qsAyFm552rNKU4JC9hd+Ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-indices.html",
+          "hash": "ALhRX7OFCf9vzb2XmYbJhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/managing-xml-data-in-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/managing-xml-data-in-containers.html",
+          "hash": "gthT/ToKoQsmWm2URrBpSg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/metadata-based-queries.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/metadata-based-queries.html",
+          "hash": "COfBStNxW3VzYlnq//7Wnw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/modifying-documents.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/modifying-documents.html",
+          "hash": "aCst11nhCIUizQbISOIceQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/modifying-xml-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/modifying-xml-data.html",
+          "hash": "7knY9GvKvYmMQq45Gw28sA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/nested-transactions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/nested-transactions.html",
+          "hash": "13P+J2i22iaRmFcY/hJ9Qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/no-wait-on-transaction-blocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/no-wait-on-transaction-blocks.html",
+          "hash": "CImIuHe9HLE+nY2oTSy7zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/node-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/node-types.html",
+          "hash": "feuziFGCSD6O4OoTyHkBRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/non-durable-transactions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/non-durable-transactions.html",
+          "hash": "HD6mBwbjJ5qRstzDnQGuXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/normal-recovery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/normal-recovery.html",
+          "hash": "kosrcLAXSfTNNhkUC8Xytw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/offline-backups.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/offline-backups.html",
+          "hash": "PIOw2t0mMVvcpwiI4Ph4Pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/opening-a-transactional-environment-and-container.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/opening-a-transactional-environment-and-container.html",
+          "hash": "jkF5viUSIxAJU0Fq/0+gdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/opening-and-closing-environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/opening-and-closing-environments.html",
+          "hash": "A2DQbvGMKBeexAcgmG1oiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/opening-berkeley-db-databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/opening-berkeley-db-databases.html",
+          "hash": "oaKSJ3qLVtZL08CTzPRuvg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/path-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/path-types.html",
+          "hash": "dTKrZWn1gG90OAWHyLClPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/performance-tuning.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/performance-tuning.html",
+          "hash": "aq2oTvZSOQqC3XahQtmBdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/performing-queries.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/performing-queries.html",
+          "hash": "x1KpgEbmNvQyafEOX9CqdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/permanent-message-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/permanent-message-handling.html",
+          "hash": "h7l8H+3omPADHQFFixDkYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/position-keywords.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/position-keywords.html",
+          "hash": "l1RNV3tEB7WC3uUClDMihw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/product-editions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/product-editions.html",
+          "hash": "dQHoWrxXgGifHBk09lZbnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/project-setup.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/project-setup.html",
+          "hash": "K8chFPr3PBN/VQUNATf4Ww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/queries-involving-document-structure.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/queries-involving-document-structure.html",
+          "hash": "FlMBygknRhgWnLo6/SxvNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/read-committed-with-wholedoc-storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/read-committed-with-wholedoc-storage.html",
+          "hash": "xLN4Uwk1KkM+jKXpVfvLuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/reading-uncommitted-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/reading-uncommitted-data.html",
+          "hash": "bQGdDLJADYk5qoDmjcAzKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/readmodifywrite.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/readmodifywrite.html",
+          "hash": "0g/asd0YPNrcpSvVO89vZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/recoverability-and-deadlock-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/recoverability-and-deadlock-handling.html",
+          "hash": "Ry7VfLn/mSAQUU4GDcWmhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/recovery-for-multi-process-applications.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/recovery-for-multi-process-applications.html",
+          "hash": "YOTXnwoK6KCJsTzAmTMf0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/recovery-for-multi-threaded-applications.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/recovery-for-multi-threaded-applications.html",
+          "hash": "J/hHhGt898o0apX1ht+S+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/recovery-procedures.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/recovery-procedures.html",
+          "hash": "qQDxS4EfLBiXBKF6pEwSPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/referencing-portions-of-documents-using-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/referencing-portions-of-documents-using-xquery.html",
+          "hash": "ylM5BUFBD9ttJQRc+kjcKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/removing-log-files.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/removing-log-files.html",
+          "hash": "xRGHxd1x/JhTnsGY3Y6bjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/renaming-nodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/renaming-nodes.html",
+          "hash": "VcdZ+xBVT4Sv8WNSeaolWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replacement-rules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replacement-rules.html",
+          "hash": "YlkXOwcMW04QgZ5SvN3VZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replacing-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replacing-indices.html",
+          "hash": "jPD1zycPNo0LbEy2I11SOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replacing-nodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replacing-nodes.html",
+          "hash": "57RdEzJDEJ2vEeSSBPuKJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replacing-xml-in-records.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replacing-xml-in-records.html",
+          "hash": "okqE/l+1r/vWMKfUjcNHxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replica-vs-master-processes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replica-vs-master-processes.html",
+          "hash": "U/2v18m7wSuW5qGTAyXgOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replication-benefits.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replication-benefits.html",
+          "hash": "UF7YNytypjSle3fyBi/oTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replication-elections.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replication-elections.html",
+          "hash": "fEKOxM7T67X2wcqlcFaOOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replication-manager-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replication-manager-overview.html",
+          "hash": "IgLZce/zp9fD0YMNdtNZ5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replication-manager-permanent-message-handling-policies.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replication-manager-permanent-message-handling-policies.html",
+          "hash": "CnoqfZirMKOy2PQv0v7svw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/replication-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/replication-overview.html",
+          "hash": "aPedLs6aMqpUGxetI2OjDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/reshaping-the-result.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/reshaping-the-result.html",
+          "hash": "+Vm3z25xd2NadguW6oHwog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/resolving-conflicting-updates.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/resolving-conflicting-updates.html",
+          "hash": "4eMzFveS4KWA53GcSD/uQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/resolving-deadlocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/resolving-deadlocks.html",
+          "hash": "TByCuzCAqVAREz3qX5plVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/retrieving-data-using-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/retrieving-data-using-xquery.html",
+          "hash": "WushaSFtGyAB+MRMVBoyMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/running-the-shell.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/running-the-shell.html",
+          "hash": "gqZ29EAxiSzaQjDHUHKY2A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/runtime-analysis.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/runtime-analysis.html",
+          "hash": "lEKxk5NcdaX1E/b7tZc0aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/schema-constraints.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/schema-constraints.html",
+          "hash": "I2Tcby+MpZBIBMdKOe3jzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/security-considerations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/security-considerations.html",
+          "hash": "f+K8yzOo7QywBqZxXSAflw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/selecting-a-cache-size.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/selecting-a-cache-size.html",
+          "hash": "BH4tJJVV0sOdU8NL+M1vGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/setting-the-in-memory-log-buffer-size.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/setting-the-in-memory-log-buffer-size.html",
+          "hash": "GsEFcq9wUk8VDMvd5HAZ3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/setting-the-log-file-size.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/setting-the-log-file-size.html",
+          "hash": "KZ5P1yc4qbngmSvBhV3dYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/shared-memory-regions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/shared-memory-regions.html",
+          "hash": "hb+Ce80zwvsML1jI4CakbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/snapshot-isolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/snapshot-isolation.html",
+          "hash": "UmRZTHuJy+mCutQdyv1Rlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/sorting-the-result.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/sorting-the-result.html",
+          "hash": "9ciH21I4pqKODtZog+tpaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/specifying-index-nodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/specifying-index-nodes.html",
+          "hash": "/xzOHYDs2yyG/JDtWi3CEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/specifying-index-strategies.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/specifying-index-strategies.html",
+          "hash": "Vau5GMvGuwdt5pCI01T3eQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/stop-auto-initialization.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/stop-auto-initialization.html",
+          "hash": "2ALkE0ejJ7jVJpYiSqcFgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/summary-and-examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/summary-and-examples.html",
+          "hash": "exyDapmKYZfccU4uwtKXLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/supported-degrees-of-isolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/supported-degrees-of-isolation.html",
+          "hash": "89z6VkERDwqXemVt+4GLjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/syntax-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/syntax-types.html",
+          "hash": "8dXn5zCKa8HpvuPSvdQ4Dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/system-shared-memory-on-windows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/system-shared-memory-on-windows.html",
+          "hash": "NMiMDrn7/r9Fy+HKBBmWeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/temporary-files.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/temporary-files.html",
+          "hash": "Q+cQntBiKCf5UHT/8JnZiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/terminology.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/terminology.html",
+          "hash": "612Wi58/EdbdONiTc4+OVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-dbsite-handle.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-dbsite-handle.html",
+          "hash": "FnqkQ0/AhPS406SsX8NIuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-dbxml-shell.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-dbxml-shell.html",
+          "hash": "ZxBlXC+6R0B8D3mienmx7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-in-memory-transaction-example.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-in-memory-transaction-example.html",
+          "hash": "53/K2rE1C1YO7K/RsCIIZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-locking-subsystem.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-locking-subsystem.html",
+          "hash": "CraCUTy0T6QAv0FP1c9UyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-query-context.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-query-context.html",
+          "hash": "tjZ/Q7wF9SYu8EHsA0+/9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-replication-manager.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-replication-manager.html",
+          "hash": "Vao1MeKZd7NEk7WJUp7uSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/the-xqilla-command-line-tool.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/the-xqilla-command-line-tool.html",
+          "hash": "07JvCrnpfS8WYFHSItINww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transaction-basics.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transaction-basics.html",
+          "hash": "6waEasexCHX3tj6rN5OhvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transaction-example.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transaction-example.html",
+          "hash": "ZoSaXbJKaWurDANMqWUwkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transaction-faq.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transaction-faq.html",
+          "hash": "fX5pKJ4sYyYZawLWZnm/0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transaction-throughput.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transaction-throughput.html",
+          "hash": "AjXgOGCbJ5DydDbtmqgIRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transaction-tuning.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transaction-tuning.html",
+          "hash": "lImyxkCTsPbR5Y0baxdIsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transactional-data-store-applications.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transactional-data-store-applications.html",
+          "hash": "Y/2/TsKxnoiCHmPFIElhVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/transform-functions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/transform-functions.html",
+          "hash": "aviBMvHcUZojADG16NADLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/tx-isolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/tx-isolation.html",
+          "hash": "n22W5A1/c6kgjpqgdDEY5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/uniqueness.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/uniqueness.html",
+          "hash": "o8YJNklaH0BHRxTLiHR2Bg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/updating-functions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/updating-functions.html",
+          "hash": "YzqaeE69u5Z3SlLCedzV/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/upgrading-databases.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/upgrading-databases.html",
+          "hash": "sGcX8RDe30xhLWTsSYBZ3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-checkpoints.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-checkpoints.html",
+          "hash": "IlGf4A9qdmFExgQKWtFyNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-container-compression.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-container-compression.html",
+          "hash": "6wavbh3kAFQcFq2z4L+vcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-flwor.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-flwor.html",
+          "hash": "JGUBc/KM0CKkLso9MptseQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-hot-failovers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-hot-failovers.html",
+          "hash": "zSzZ3a4kRabiQJLTsk2E0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-indices.html",
+          "hash": "zc9QYPpnmgd0FWuz6Yba5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-metadata.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-metadata.html",
+          "hash": "JUl8eQ7nsusXbVmDnlgGGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-readcommitted-isolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-readcommitted-isolation.html",
+          "hash": "fnFAtRZBEISG5M8oBLImyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-the-query-plan.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-the-query-plan.html",
+          "hash": "sPUHsTo3+ImIvhaDHDsxKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-wholedoc-storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-wholedoc-storage.html",
+          "hash": "T514ya2G+8A2VPOI2/obzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-xquery-update.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-xquery-update.html",
+          "hash": "2xJeWMZmTO9FzsIFsnN7rQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/using-xquery.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/using-xquery.html",
+          "hash": "yUusRyyynhPAul97t3G1nQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/utilities.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/utilities.html",
+          "hash": "y+Feqm/aSgXgQZRp3OeWOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/value-queries.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/value-queries.html",
+          "hash": "qSCQ7pOHshtDHsLeDWxHaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/varying-the-node-size.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/varying-the-node-size.html",
+          "hash": "Ysd0VJtsgP703jow8awk6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/verifying-indices-using-query-plans.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/verifying-indices-using-query-plans.html",
+          "hash": "H9pnzc+dNZeH7GtJO6GKUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/welcome.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/welcome.html",
+          "hash": "/R6lqUuv+gNtax0zaWegiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/which-handles-are-free-threaded.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/which-handles-are-free-threaded.html",
+          "hash": "tDJA1X6L4kk97pEHUvThNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/why-transactions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/why-transactions.html",
+          "hash": "NibtDsHmpFmXyj+fL50sGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/working-with-data-from-a-specific-document.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/working-with-data-from-a-specific-document.html",
+          "hash": "hRNfaXexDaU636dcJiJkRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/working-with-data-from-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/working-with-data-from-containers.html",
+          "hash": "zPT7BGW+eW4S9MZVmltohQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/working-with-data-from-multiple-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/working-with-data-from-multiple-containers.html",
+          "hash": "CRfbSq/ka1B+DJH4SZisUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/working-with-default-indices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/working-with-default-indices.html",
+          "hash": "KjG4lfdzx8shcxhjCo2Cyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/working-with-external-functions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/working-with-external-functions.html",
+          "hash": "zokG7HKzYL8yuZXyiC9Vyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xml-features.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xml-features.html",
+          "hash": "iUPLqWh0WGA4caHyQ5H5qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xml-manager-and-environments.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xml-manager-and-environments.html",
+          "hash": "PjecEUOQp2Y5xAr6luY3tA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xml-resources.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xml-resources.html",
+          "hash": "nUWbqKQP6xDaLNjc5tPT1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xmlmanager-and-containers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xmlmanager-and-containers.html",
+          "hash": "g46Y1mWc49vySspRbUjsbg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xmlmanager-instantiation-and-destruction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xmlmanager-instantiation-and-destruction.html",
+          "hash": "VIayMx6tmGRjdSeoUYCmVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xmlmanager.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xmlmanager.html",
+          "hash": "kVHDfD4j9CsA4jGWZJiT3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xquery-a-brief-introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xquery-a-brief-introduction.html",
+          "hash": "pRHvak4RAzf4bteGu/Pd0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/figaro/xquery-resources.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/figaro/xquery-resources.html",
+          "hash": "6TGooKXcmJLzEAjk5YdvXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "WhSxn8kE/w4+PMQLf7uRhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProductStack.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProductStack.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProductStackOriginal.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProductStackOriginal.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/SmOracle_Ptnr_clr_rgb.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/SmOracle_Ptnr_clr_rgb.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/checked.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/checked.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/deadlock.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/deadlock.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/figaro.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/figaro.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/licensing-page.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/licensing-page.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/multiple-containers.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/multiple-containers.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/nuget-license.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/nuget-license.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/readblock.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/readblock.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/reshaping-sample-sorted.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/reshaping-sample-sorted.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/reshaping-sample.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/reshaping-sample.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rwlocks1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/rwlocks1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/simplelock.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/simplelock.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unchecked.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unchecked.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/working-with-data.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/working-with-data.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/writeblock.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/writeblock.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "WEdVxTO4pml/4mZ2NAzOUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "readme.html",
+          "hash": "hmqUTc7pMXm/8P21T+ApQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Rlr7vTACl7/YwbXfNBY1dg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because docfx version changed from 2.40.1.0 to 2.40.8.0.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 300,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 158,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

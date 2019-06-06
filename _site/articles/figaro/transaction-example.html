@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Transaction Example </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Transaction Example ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="transaction-example.md">
+<h1 id="transaction-example">Transaction Example</h1>
+
+<p>The following code provides a fully functional example of a multi-threaded transactional Figaro application. For improved portability across platforms, this examples uses <a href="https://github.com/Wintellect/PowerThreading">Jeffrey Richter&#39;s .NET Power Threading Library</a> to provide threading support.</p>
+<p>The example creates multiple threads, each of which creates a set number of XML documents that it then writes to the container. Each thread creates and writes 10 documents under a single transaction before committing and writing another 10 documents. This activity is repeated 50 times.</p>
+<p>From the command line, you can tell the program to vary:</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>The number of threads that it should use.</li>
+<li>The number of nodes each XML document will contain.</li>
+<li>Whether the container used by the program is of type <code>Wholedoc</code> or <code>node</code> storage.</li>
+<li>Whether read committed (degree 2) isolation should be used for the container writes.</li>
+</ul>
+<p>As we will see in <a class="xref" href="runtime-analysis.html">Runtime Analysis</a> each of these variables plays a role in the number of deadlocks the program encounters during its run time.</p>
+<p>Of course, each writer thread performs deadlock detection as described in this article. In addition, normal recovery is performed when the environment is opened.</p>
+<pre><code class="lang-C#">using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Threading;
+using Figaro;
+using Wintellect.Threading.AsyncProgModel;
+using Wintellect.CommandArgumentParser;
+
+namespace Figaro.Documentation.Examples
+{
+
+internal class TransactionDemoApp
+{
+#region envOpenOptions
+// Set the normal flags for a transactional subsystem. Note that
+// we DO NOT specify Recover.
+private const EnvOpenOptions envOpenOptions =
+//create the environment if it doesn&#39;t exist
+EnvOpenOptions.Create |
+//run normal recovery
+EnvOpenOptions.Recover |
+//initialize locking
+EnvOpenOptions.InitLock |
+//initialize logging
+EnvOpenOptions.InitLog |
+//initialize the cache
+EnvOpenOptions.InitMemoryBufferPool |
+//free-threaded environment handle
+EnvOpenOptions.Thread |
+//initialize transactions
+EnvOpenOptions.InitTransaction;
+#endregion
+
+public struct ThreadInfo
+{
+public Container container;
+public bool useReadCommitted;
+public int numNodes;
+} ;
+
+#region containerSettings
+private const ContainerSettings containerSettings =
+//Create if it doesn&#39;t exist.
+ContainerSettings.Create |
+//Support transactions.
+ContainerSettings.Transactional |
+//Create a free-threaded container
+ContainerSettings.Thread;
+#endregion
+
+#region data and database paths
+private const string baseUri = @&quot;D:\dev\db\samples\TransactionDemoApp&quot;;
+private const string testdb = &quot;TransactionDemoApp.dbxml&quot;;
+private const string testdata = @&quot;D:\dev\db\xmlData\nsData\&quot;;
+#endregion
+
+private static XmlContainerType containerType = XmlContainerType.NodeContainer;
+
+private static CmdArgOptions cmdArgs;
+
+public delegate void TransactionWorkDelegate(ThreadInfo info);
+
+private static void Main(string[] args)
+{
+cmdArgs = CmdArgOptions.Parse(args);
+
+if (cmdArgs.ShowUsage) return;
+
+//show our command-line settings
+//cmdArgs.Validate();
+
+if (cmdArgs.WholeDocStorage)
+containerType = XmlContainerType.WholeDocContainer;
+
+//if our environment already exists, delete everything and rebuild it
+//BuildDir(cmdArgs.HomeDirectory, true);
+FigaroEnv environment = new FigaroEnv();
+try
+{
+// Indicate that we want to internally perform deadlock
+// detection.  Using the Random policy will ensure you have
+// the best chance of deadlock detection and management --
+// keeping in mind that we&#39;re performing some pretty static
+// behavior in this test application.
+environment.DeadlockDetectPolicy = DeadlockDetectType.Random;
+
+environment.Open(cmdArgs.HomeDirectory, envOpenOptions);
+using (XmlManager mgr = new XmlManager(environment))
+{
+if (mgr.ExistsContainer(testdb))
+mgr.RemoveContainer(testdb);
+
+using (Container myContainer =
+mgr.CreateContainer(testdb, containerSettings,
+XmlContainerType.WholeDocContainer))
+{
+try
+{
+ThreadInfo threadInfo = new ThreadInfo();
+threadInfo.container = myContainer;
+threadInfo.numNodes = cmdArgs.NodesPerDocument;
+ThreadPool.SetMinThreads(cmdArgs.NumThreads, cmdArgs.NumThreads);
+AsyncEnumerator ae = new AsyncEnumerator();
+ae.Execute(RunWriterThreads(ae,threadInfo));
+}
+catch (FigaroException)
+{
+Debugger.Break();
+}
+finally
+{
+myContainer.Close();
+}
+}
+}
+}
+catch (FigaroException)
+{
+Debugger.Break();
+}
+}
+
+public static IEnumerator&lt;Int32&gt; RunWriterThreads(AsyncEnumerator ae, ThreadInfo info)
+{
+for (int i = 0; i &lt; cmdArgs.NumThreads; i++)
+{
+TransactionWorkDelegate twd = writerThread;
+twd.BeginInvoke(info, ae.End(), null);
+}
+yield return cmdArgs.NumThreads;
+
+for (int i = 0; i &lt; cmdArgs.NumThreads; i++)
+{
+ae.DequeueAsyncResult();
+}
+}
+
+/// &lt;summary&gt;
+/// A function that performs a series of writes to a
+/// Figaro container.
+/// The mechanism of transactional commit/abort and
+/// deadlock detection is illustrated here.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;threadInfo&quot;&gt; The Figaro objects used to insert documents.&lt;/param&gt;
+private static void writerThread(ThreadInfo threadInfo)
+{
+int maxRetries = 30;
+int numDeadlocks = 0;
+
+XmlManager mgr = threadInfo.container.GetManager();
+TransactionType transType = threadInfo.useReadCommitted
+? TransactionType.ReadCommitted
+: TransactionType.None;
+StringBuilder contents = new StringBuilder();
+System.Random random = new Random();
+Console.WriteLine(&quot;thread start thread id: {0}&quot;, Thread.CurrentThread.ManagedThreadId);
+for (int h = 0; h &lt; 50; h++)
+{
+bool retry = true;
+int retryCount = 0;
+while (retry)
+{
+try
+{
+XmlTransaction transaction = mgr.CreateTransaction(transType);
+try
+{
+UpdateContext updateContext = mgr.CreateUpdateContext();
+for (int i = 0; i &lt; 10; i++)
+{
+contents = new StringBuilder();
+string fileName = Guid.NewGuid().ToString(&amp;quot;N&amp;quot;);
+contents.Append(&amp;quot;&amp;lt;testDoc&amp;gt;&amp;quot;);
+for (int k = 0; k &lt; threadInfo.numNodes; k++)
+{
+contents.AppendFormat(&quot;&lt;payload&gt;{0}{1}{2}&lt;/payload&gt;&quot;, random.Next(), k, i);
+}
+contents.Append(&quot;&lt;/testDoc&gt;&quot;);
+//Console.WriteLine(&quot;contents: {0}&quot;,contents);
+threadInfo.container.PutDocument(transaction, fileName, contents.ToString(),
+updateContext,
+PutDocumentOptions.None);
+}
+transaction.Commit();
+retry = false;
+}
+catch (XmlException xxe)
+{
+if (xxe.ExceptionCategory == FigaroExceptionCategory.Deadlock)
+{
+//first thing we MUST do is abort the transaction
+if (transaction != null) transaction.Abort();
+
+// Now we decide if we want to retry the operation.
+// If we have retried less than max_retries,
+// increment the retry count and goto retry.
+if (retryCount &lt; maxRetries)
+{
+Console.WriteLine(&amp;quot;{0} a deadlock occured - we must retry the transaction&amp;quot;,
+DateTime.Now);
+retryCount++;
+retry = true;
+}
+else
+{
+retry = false;
+}
+numDeadlocks++;
+}
+else
+{
+Console.WriteLine(xxe.Message);
+if (transaction != null)
+{
+transaction.Abort();
+transaction = null;
+}
+retry = false;
+}
+}
+catch (NullReferenceException)
+{
+Console.WriteLine(&quot;Ran out of memory allocation transaction; adjust the transaction subsystem&quot;);
+return;
+}
+catch (Exception)
+{
+Debugger.Break();
+}
+}
+catch (NullReferenceException)
+{
+Console.WriteLine(&quot;Ran out of memory allocation transaction; adjust the transaction subsystem&quot;);
+return;
+}
+catch(XmlException xe)
+{
+Debugger.Break();
+}
+catch (Exception)
+{
+Debugger.Break();
+}
+}
+}
+
+Console.WriteLine(&quot;total deadlocks in thread {0}: {1}&quot;, Thread.CurrentThread.ManagedThreadId,numDeadlocks);
+}
+
+private static void BuildDir(string directory, bool reCreate)
+{
+if (!Directory.Exists(directory))
+{
+Directory.CreateDirectory(directory);
+return;
+}
+if (reCreate)
+{
+Directory.Delete(directory, true);
+Directory.CreateDirectory(directory);
+}
+}
+}
+
+internal sealed class CmdArgOptions: ICmdArgs
+{
+
+#region ICmdArgs Members
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Yes, Description = &quot;Database home directory&quot;,
+ArgName = &quot;h&quot;,RequiredArg = true)]
+public string HomeDirectory = string.Empty;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description = &quot;Number of threads&quot;,
+ArgName = &quot;t&quot;, RequiredArg = false)]
+public int NumThreads = 5;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description=&quot;Number of nodes per document&quot;,
+ArgName = &quot;n&quot;, RequiredArg = false)]
+public int NodesPerDocument = 3;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional,Description = &quot;Use Read Committed isolation&quot;,
+ArgName = &quot;2&quot;,RequiredArg = false)]
+public bool UseReadCommitted = false;
+
+[CmdArg(RequiredValue = CmdArgRequiredValue.Optional, Description = &quot;Use Wholedoc storage&quot;,
+ArgName = &quot;w&quot;, RequiredArg = false)]
+public bool WholeDocStorage = false;
+
+[CmdArg(ArgName = &quot;?&quot;, Description = &quot;Show this usage help&quot;)]
+public Boolean ShowUsage = false;   // Default to not show usage
+
+public void ProcessStandAloneArgument(string arg)
+{
+throw new NotImplementedException();
+}
+
+public void Usage(string errorInfo)
+{
+if (!string.IsNullOrEmpty(errorInfo))
+{
+// A command-line argument error occurred, report it to user
+// errorInfo identifies the argument that is in error.
+Console.WriteLine(&quot;Command-line switch error: {0}{1}&quot;, errorInfo,
+Environment.NewLine);
+}
+Console.WriteLine(CmdArgParser.Usage(typeof(CmdArgOptions)));
+}
+
+public void Validate()
+{
+if (ShowUsage) return;
+NumThreads = NumThreads &lt; 1 ? 1 : NumThreads;
+Console.WriteLine(&quot;number of threads: {0}&quot;, NumThreads);
+
+NodesPerDocument = NodesPerDocument &lt; 1 ? 1 : NodesPerDocument;
+Console.WriteLine(&quot;nodes per document: {0}&quot;, NodesPerDocument);
+
+string iso = UseReadCommitted ? &quot;read committed&quot; : &quot;default&quot;;
+Console.WriteLine(&quot;Isolation level: {0}&quot;, iso);
+
+string storage = WholeDocStorage ? &quot;Wholedoc storage&quot; : &quot;node storage&quot;;
+Console.WriteLine(&quot;Container type: {0}&quot;, storage);
+
+}
+// Called to construct an instance of this class populating the fields from command-line arguments
+public static CmdArgOptions Parse(String[] args)
+{
+CmdArgOptions options = new CmdArgOptions();
+try
+{
+CmdArgParser.Parse(options, args);
+}
+catch(Exception e)//catch (Exception&lt;InvalidCmdArgumentExceptionArgs&gt; e)
+{
+if (!options.ShowUsage)
+{
+options.Usage(e.Message);
+throw;
+}
+}
+if (options.ShowUsage) options.Usage(null);
+return options;
+}
+#endregion
+}
+}
+</code></pre><h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/Wintellect/PowerThreading">Jeffrey Richter&#39;s .NET Power Threading Library</a></li>
+<li><a class="xref" href="runtime-analysis.html">Runtime Analysis</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/transaction-example.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

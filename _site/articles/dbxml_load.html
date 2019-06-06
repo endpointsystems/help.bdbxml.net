@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60745647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>dbxml_load </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="dbxml_load ">
+    <meta name="generator" content="docfx 2.29.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="png" src="/images/figaro.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="dbxml_load.md">
+<h1 id="dbxmlload">dbxml_load</h1>
+
+<p>The <code>dbxml_load</code> utility reads from the standard input and loads it into the XML container <strong>xml_container</strong>. The XML container <strong>xml_container</strong> is created if it does not already exist.</p>
+<p>The input to <code>dbxml_load</code> must be in the output format specified by the <code>dbxml_dump</code> utility.</p>
+<h2 id="dbxmlload--v--f-file--h-home--p-password-xmlcontainer">dbxml_load [-V] [-f file] [-h home] [-P password] xml_container</h2>
+<p>The <code>dbxml_load</code> utility may be used with a Figaro BDB environment (as described for the <code>-h</code> option, the environment variable <code>DB_HOME</code>, or because the utility was run in a directory containing an existing environment). In order to avoid environment corruption when using an existing environment, <code>dbxml_load</code> should always be given the chance to detach from the environment and exit gracefully. To cause <code>dbxml_load</code> to release all environment resources and exit cleanly, send it an interrupt signal (SIGINT, or ^C).</p>
+<h4 id="-f">-f</h4>
+<p>Read from the specified file instead of from the standard input.</p>
+<h4 id="-h">-h</h4>
+<p>Specify a home directory for the database environment.</p>
+<p>If a home directory is specified, the database environment is opened using the <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLock">InitLock</a>, <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitLog">InitLog</a>, <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitMemoryBufferPool">InitMemoryBufferPool</a>, <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_InitTransaction">InitTransaction</a>, and <a class="xref" href="../api/Figaro.EnvOpenOptions.html#Figaro_EnvOpenOptions_UseEnvironment">UseEnvironment</a> flags to <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>. (This means that <code>dbxml_load</code> can be used to load data into XML containers while they are in use by other processes.) If the <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a> call fails, or if no home directory is specified, the XML container is still updated, but the environment is ignored; for example, no locking is done.</p>
+<h4 id="-p">-P</h4>
+<p>Specify an environment password. Although utilities overwrite password strings as soon as possible, be aware there may be a window of vulnerability on systems where unprivileged users can see command-line arguments or where utilities are not able to overwrite the memory containing the command-line arguments.</p>
+<h4 id="-v">-V</h4>
+<p>Write the library version number to the standard output, and exit.</p>
+<h4 id="environment-variables">Environment Variables</h4>
+<p>If the <code>-h</code> option is not specified and the environment variable <code>DB_HOME</code> is set, it is used as the path of the database home, as described in <a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a>.</p>
+<h2 id="see-also">See Also</h2>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a class="xref" href="../api/Figaro.EnvOpenOptions.html">EnvOpenOptions</a></li>
+<li><a class="xref" href="a-note-on-system-failure.html">A Note on System Failure</a></li>
+<li><a class="xref" href="../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_Open_System_String_Figaro_EnvOpenOptions_">Open(String, EnvOpenOptions)</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<p>&amp; <a class="xref" href="utilities.html">Utilities</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bdbxml/help-bdbxml-net/blob/master/articles/dbxml_load.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2007-2017 <a href="http://endpointsystems.com" target="_blank">Endpoint Systems</a>, an Oracle Gold and Microsoft Partner <br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

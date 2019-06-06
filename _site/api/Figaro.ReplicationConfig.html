@@ -1,0 +1,1363 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ReplicationConfig
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ReplicationConfig
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.ReplicationConfig">
+  
+  
+  <h1 id="Figaro_ReplicationConfig" data-uid="Figaro.ReplicationConfig" class="text-break">Class ReplicationConfig
+  </h1>
+  <div class="markdown level0 summary"><p>Replication configuration settings for the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ReplicationConfig</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_ReplicationConfig_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ReplicationConfig</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=206">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_AckTimeout_" data-uid="Figaro.ReplicationConfig.AckTimeout*"></a>
+  <h4 id="Figaro_ReplicationConfig_AckTimeout" data-uid="Figaro.ReplicationConfig.AckTimeout">AckTimeout</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in microseconds) the replication manager&apos;s transport function
+waits to collect enough acknowledgments from replication group
+clients, before giving up and returning a failure indication. The
+default wait time is 1 second.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint AckTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=107">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_AutoInit_" data-uid="Figaro.ReplicationConfig.AutoInit*"></a>
+  <h4 id="Figaro_ReplicationConfig_AutoInit" data-uid="Figaro.ReplicationConfig.AutoInit">AutoInit</h4>
+  <div class="markdown level1 summary"><p>If true, the replication master automatically re-initializes
+outdated clients (defaults to true). </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AutoInit { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=44">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_BulkTransfer_" data-uid="Figaro.ReplicationConfig.BulkTransfer*"></a>
+  <h4 id="Figaro_ReplicationConfig_BulkTransfer" data-uid="Figaro.ReplicationConfig.BulkTransfer">BulkTransfer</h4>
+  <div class="markdown level1 summary"><p>IF true, the replication master sends groups of records to the clients in a single network transfer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BulkTransfer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=220">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_CheckpointDelay_" data-uid="Figaro.ReplicationConfig.CheckpointDelay*"></a>
+  <h4 id="Figaro_ReplicationConfig_CheckpointDelay" data-uid="Figaro.ReplicationConfig.CheckpointDelay">CheckpointDelay</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in microseconds) a master site delays between completing a
+checkpoint and writing a checkpoint record into the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint CheckpointDelay { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_CheckpointDelay_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This delay allows clients to complete their own checkpoints before
+the master requires completion of them. The default is 30 seconds.
+If all databases in the environment, and the environment&apos;s
+transaction log, are configured to reside in-memory (never preserved
+to disk), then, although checkpoints are still necessary, the delay
+is not useful and should be set to 0.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=280">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ClockSkewFast_" data-uid="Figaro.ReplicationConfig.ClockSkewFast*"></a>
+  <h4 id="Figaro_ReplicationConfig_ClockSkewFast" data-uid="Figaro.ReplicationConfig.ClockSkewFast">ClockSkewFast</h4>
+  <div class="markdown level1 summary"><p>The value, relative to <a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_ClockSkewSlow">ClockSkewSlow</a>, of the fastest
+clock in the group of sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ClockSkewFast { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=285">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ClockSkewSlow_" data-uid="Figaro.ReplicationConfig.ClockSkewSlow*"></a>
+  <h4 id="Figaro_ReplicationConfig_ClockSkewSlow" data-uid="Figaro.ReplicationConfig.ClockSkewSlow">ClockSkewSlow</h4>
+  <div class="markdown level1 summary"><p>The value of the slowest clock in the group of sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ClockSkewSlow { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=227">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ConnectionRetry_" data-uid="Figaro.ReplicationConfig.ConnectionRetry*"></a>
+  <h4 id="Figaro_ReplicationConfig_ConnectionRetry" data-uid="Figaro.ReplicationConfig.ConnectionRetry">ConnectionRetry</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in microseconds) the replication manager waits before trying
+to re-establish a connection to another site after a communication
+failure. The default wait time is 30 seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ConnectionRetry { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=52">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_DelayClientSync_" data-uid="Figaro.ReplicationConfig.DelayClientSync*"></a>
+  <h4 id="Figaro_ReplicationConfig_DelayClientSync" data-uid="Figaro.ReplicationConfig.DelayClientSync">DelayClientSync</h4>
+  <div class="markdown level1 summary"><p>If true, the client delays synchronizing to a newly declared
+master (defaults to false). Clients configured in this way
+remain unsynchronized until the application explicitly synchronizes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DelayClientSync { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_DelayClientSync_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroReplicationManager.html#Figaro_FigaroReplicationManager_Sync">Sync()</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=240">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ElectionRetry_" data-uid="Figaro.ReplicationConfig.ElectionRetry*"></a>
+  <h4 id="Figaro_ReplicationConfig_ElectionRetry" data-uid="Figaro.ReplicationConfig.ElectionRetry">ElectionRetry</h4>
+  <div class="markdown level1 summary"><p>Configure the amount of time (in microseconds) the replication manager waits
+before retrying a failed election. The default wait time is 10
+seconds. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ElectionRetry { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=138">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_Elections_" data-uid="Figaro.ReplicationConfig.Elections*"></a>
+  <h4 id="Figaro_ReplicationConfig_Elections" data-uid="Figaro.ReplicationConfig.Elections">Elections</h4>
+  <div class="markdown level1 summary"><p>If true, <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> automatically runs elections to
+choose a new master when the old master appears to
+have become disconnected (defaults to true).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Elections { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=233">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ElectionTimeout_" data-uid="Figaro.ReplicationConfig.ElectionTimeout*"></a>
+  <h4 id="Figaro_ReplicationConfig_ElectionTimeout" data-uid="Figaro.ReplicationConfig.ElectionTimeout">ElectionTimeout</h4>
+  <div class="markdown level1 summary"><p>The timeout period (in microseconds) for an election. The default timeout is 2
+seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ElectionTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=248">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_FullElectionTimeout_" data-uid="Figaro.ReplicationConfig.FullElectionTimeout*"></a>
+  <h4 id="Figaro_ReplicationConfig_FullElectionTimeout" data-uid="Figaro.ReplicationConfig.FullElectionTimeout">FullElectionTimeout</h4>
+  <div class="markdown level1 summary"><p>An optional configuration timeout period (in microseconds) to wait for full election
+participation the first time the replication group finds a master.
+By default this option is turned off and normal election timeouts
+are used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint FullElectionTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=257">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_HeartbeatMonitor_" data-uid="Figaro.ReplicationConfig.HeartbeatMonitor*"></a>
+  <h4 id="Figaro_ReplicationConfig_HeartbeatMonitor" data-uid="Figaro.ReplicationConfig.HeartbeatMonitor">HeartbeatMonitor</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in microseconds) the replication manager, running at a client
+site, waits for some message activity on the connection from the
+master (heartbeats or other messages) before concluding that the
+connection has been lost. When 0 (the default), no monitoring is
+performed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint HeartbeatMonitor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=265">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_HeartbeatSend_" data-uid="Figaro.ReplicationConfig.HeartbeatSend*"></a>
+  <h4 id="Figaro_ReplicationConfig_HeartbeatSend" data-uid="Figaro.ReplicationConfig.HeartbeatSend">HeartbeatSend</h4>
+  <div class="markdown level1 summary"><p>The frequency (in microseconds) at which the replication manager, running at a master
+site, broadcasts a heartbeat message in an otherwise idle system.
+When 0 (the default), no heartbeat messages are sent. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint HeartbeatSend { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=398">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_IncomingQueueMaxBytes_" data-uid="Figaro.ReplicationConfig.IncomingQueueMaxBytes*"></a>
+  <h4 id="Figaro_ReplicationConfig_IncomingQueueMaxBytes" data-uid="Figaro.ReplicationConfig.IncomingQueueMaxBytes">IncomingQueueMaxBytes</h4>
+  <div class="markdown level1 summary"><p>The bytes component of the maximum amount of dynamic memory
+used by the Replication Manager incoming queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint IncomingQueueMaxBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=392">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_IncomingQueueMaxGBytes_" data-uid="Figaro.ReplicationConfig.IncomingQueueMaxGBytes*"></a>
+  <h4 id="Figaro_ReplicationConfig_IncomingQueueMaxGBytes" data-uid="Figaro.ReplicationConfig.IncomingQueueMaxGBytes">IncomingQueueMaxGBytes</h4>
+  <div class="markdown level1 summary"><p>The gigabytes component of the maximum amount of dynamic memory
+used by the Replication Manager incoming queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint IncomingQueueMaxGBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=88">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_InMemory_" data-uid="Figaro.ReplicationConfig.InMemory*"></a>
+  <h4 id="Figaro_ReplicationConfig_InMemory" data-uid="Figaro.ReplicationConfig.InMemory">InMemory</h4>
+  <div class="markdown level1 summary"><p>If true, replication only stores the internal information in-memory
+and cannot keep persistent state across a site crash or reboot. By
+default, it is false and replication creates files in the
+environment home directory to preserve the internal information. 
+This configuration flag can only be set before the
+<a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a> is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InMemory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_InMemory_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>By default, replication creates files in the environment home directory to preserve some 
+internal information. If this configuration flag is turned on, replication only stores this 
+internal information in-memory and cannot keep persistent state across a site crash or reboot. 
+This results in the following limitations:
+<ul><li></li><li></li><li></li><li></li></ul>
+<p>All sites in the replication group should have the same value for this configuration flag.</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=274">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_LeaseTimeout_" data-uid="Figaro.ReplicationConfig.LeaseTimeout*"></a>
+  <h4 id="Figaro_ReplicationConfig_LeaseTimeout" data-uid="Figaro.ReplicationConfig.LeaseTimeout">LeaseTimeout</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in microseconds) a client grants its master lease to a master.
+When using master leases all sites in a replication group must use
+the same lease timeout value. There is no default value. If leases
+are desired, this method must be called prior to calling
+<a class="xref" href="Figaro.FigaroEnv.FigaroReplicationManager.html#Figaro_FigaroEnv_FigaroReplicationManager_Start_System_UInt16_Figaro_ReplicationStartOptions_">Start(UInt16, ReplicationStartOptions)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint LeaseTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=116">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_NoBlocking_" data-uid="Figaro.ReplicationConfig.NoBlocking*"></a>
+  <h4 id="Figaro_ReplicationConfig_NoBlocking" data-uid="Figaro.ReplicationConfig.NoBlocking">NoBlocking</h4>
+  <div class="markdown level1 summary"><p>If true, method calls that would normally block while
+clients are in recovery will return errors immediately (defaults to
+false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool NoBlocking { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_NoBlocking_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="/managing-blocking-operations.htm">Managing Blocking Operations</a> for more information.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=330">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_Priority_" data-uid="Figaro.ReplicationConfig.Priority*"></a>
+  <h4 id="Figaro_ReplicationConfig_Priority" data-uid="Figaro.ReplicationConfig.Priority">Priority</h4>
+  <div class="markdown level1 summary"><p>The database environment&apos;s priority in replication group elections.
+A special value of 0 indicates that this environment cannot be a
+replication group master. If not configured, then a default value
+of 100 is used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Priority { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=435">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_RecordAckPolicy_" data-uid="Figaro.ReplicationConfig.RecordAckPolicy*"></a>
+  <h4 id="Figaro_ReplicationConfig_RecordAckPolicy" data-uid="Figaro.ReplicationConfig.RecordAckPolicy">RecordAckPolicy</h4>
+  <div class="markdown level1 summary"><p>Specify how master and client sites handle the acknowledgment of
+replication messages which is necessary for &quot;permanent&quot; records.
+The current implementation requires all sites in a replication group
+to configure the same acknowledgment policy. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RecordAcknowledgmentPolicy RecordAckPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.RecordAcknowledgmentPolicy.html">RecordAcknowledgmentPolicy</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_RecordAckPolicy_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_AckTimeout">AckTimeout</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=198">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ReplicationView_" data-uid="Figaro.ReplicationConfig.ReplicationView*"></a>
+  <h4 id="Figaro_ReplicationConfig_ReplicationView" data-uid="Figaro.ReplicationConfig.ReplicationView">ReplicationView</h4>
+  <div class="markdown level1 summary"><p>Gets or sets whether the site is a replication view, and if so 
+whether it is a partial or a full view.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReplicationViewOptions ReplicationView { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationViewOptions.html">ReplicationViewOptions</a></td>
+        <td><p><code>ReplicationViewOptions.None</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=343">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_RetransmissionRequestMax_" data-uid="Figaro.ReplicationConfig.RetransmissionRequestMax*"></a>
+  <h4 id="Figaro_ReplicationConfig_RetransmissionRequestMax" data-uid="Figaro.ReplicationConfig.RetransmissionRequestMax">RetransmissionRequestMax</h4>
+  <div class="markdown level1 summary"><p>The maximum number of microseconds a client waits before requesting
+retransmission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint RetransmissionRequestMax { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>1280000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=336">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_RetransmissionRequestMin_" data-uid="Figaro.ReplicationConfig.RetransmissionRequestMin*"></a>
+  <h4 id="Figaro_ReplicationConfig_RetransmissionRequestMin" data-uid="Figaro.ReplicationConfig.RetransmissionRequestMin">RetransmissionRequestMin</h4>
+  <div class="markdown level1 summary"><p>The minimum number of microseconds a client waits before requesting
+retransmission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint RetransmissionRequestMin { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>40000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=18">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_Sites_" data-uid="Figaro.ReplicationConfig.Sites*"></a>
+  <h4 id="Figaro_ReplicationConfig_Sites" data-uid="Figaro.ReplicationConfig.Sites">Sites</h4>
+  <div class="markdown level1 summary"><p>The list of sites, including the local site, that the replication manager communicates with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;DBSite&gt; Sites { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Figaro.DBSite.html">DBSite</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=35">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_StartOption_" data-uid="Figaro.ReplicationConfig.StartOption*"></a>
+  <h4 id="Figaro_ReplicationConfig_StartOption" data-uid="Figaro.ReplicationConfig.StartOption">StartOption</h4>
+  <div class="markdown level1 summary"><p>If the StartReplication property is set to true, automatically start the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> 
+with this startup setting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReplicationStartOptions StartOption { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ReplicationStartOptions.html">ReplicationStartOptions</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_StartOption_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroReplicationManager.html#Figaro_FigaroReplicationManager_Start_System_UInt16_Figaro_ReplicationStartOptions_">Start(UInt16, ReplicationStartOptions)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=28">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_StartReplication_" data-uid="Figaro.ReplicationConfig.StartReplication*"></a>
+  <h4 id="Figaro_ReplicationConfig_StartReplication" data-uid="Figaro.ReplicationConfig.StartReplication">StartReplication</h4>
+  <div class="markdown level1 summary"><p>If true, the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> will immediately start after being configured.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool StartReplication { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_StartReplication_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is an &apos;external signal&apos; - it will not be automatically started by the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> 
+because starting the replication manager requires the environment be opened first.
+If you configure this to true, make sure you also set the <a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_StartOption">StartOption</a> property to the desired setting.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=39">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_StartThreads_" data-uid="Figaro.ReplicationConfig.StartThreads*"></a>
+  <h4 id="Figaro_ReplicationConfig_StartThreads" data-uid="Figaro.ReplicationConfig.StartThreads">StartThreads</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the number of threads to use within the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort StartThreads { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=131">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_StrictTwoSite_" data-uid="Figaro.ReplicationConfig.StrictTwoSite*"></a>
+  <h4 id="Figaro_ReplicationConfig_StrictTwoSite" data-uid="Figaro.ReplicationConfig.StrictTwoSite">StrictTwoSite</h4>
+  <div class="markdown level1 summary"><p>If true, the <a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> observes the strict &quot;majority&quot;
+rule in managing elections, even in a group with only 2 sites. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool StrictTwoSite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_StrictTwoSite_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This means the client in a 2-site group is unable to take over as
+master if the original master fails or becomes disconnected. 
+<p>
+Both sites in the replication group should have the
+same value for this parameter.
+</p></p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=191">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_TwoSitePreferredMaster_" data-uid="Figaro.ReplicationConfig.TwoSitePreferredMaster*"></a>
+  <h4 id="Figaro_ReplicationConfig_TwoSitePreferredMaster" data-uid="Figaro.ReplicationConfig.TwoSitePreferredMaster">TwoSitePreferredMaster</h4>
+  <div class="markdown level1 summary"><p>If true, runs in a two-site replication group as the master; if false, runs as the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TwoSitePreferredMaster { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_TwoSitePreferredMaster_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This flag is used to specify the preferred master site in a
+replication group operating in preferred master mode. A preferred
+master replication group must contain only two sites, with one site
+specified as the preferred master site and the other site specified
+as the client site. The preferred master site operates as the
+master site whenever possible.
+</p>
+<p>
+    One of the benefits of replication is that it helps your application remain 
+    available for writes even when a site crashes.Another benefit is the added 
+    durability achieved by storing multiple copies of your application data 
+    at different sites.However, if your replication group contains only 
+    two sites, you must prioritize which of these benefits is more important to your application.
+</p>
+<p>
+    A two-site replication group is particularly vulnerable to duplicate masters if there 
+    is a loss of communication between the sites.The original master continues to accept 
+    new transactions. If the original client detects the loss of the master and elects 
+    itself master, it also starts accepting new transactions. When communications are 
+    restored, there are duplicate masters and one site&apos;s new transactions will be rolled back.
+</p>
+<p>
+    If it is unacceptable to your application for any new transactions to be rolled back, 
+    the alternative in a two - site replication group is to require both sites to be present 
+    in order to elect a master.This stops a client from electing itself master when it loses 
+    contact with the master and prevents creation of parallel sets of transactions, one of 
+    which must be rolled back.
+</p>
+<p>
+    However, requiring both sites to be present to elect a master results in a loss of write 
+    availability when the master crashes.The client cannot take over as master and the 
+    replication group exists in a read - only state until the original master site rejoins the replication group.
+</p>
+<p>
+    A two-site HA application uses this property to make this trade-off
+    between write availability and transaction durability. When this value is true, the 
+<a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> favors transaction durability. When this value is false, 
+<a class="xref" href="Figaro.FigaroReplicationManager.html">FigaroReplicationManager</a> favors write availability. 
+</p>
+<p>
+    A two-site HA Figaro application that uses heartbeats in an environment with frequent communications 
+    disruptions generally should operate with this value set to True. Otherwise, frequent heartbeat 
+    failures will cause frequent duplicate masters and the resulting elections and client synchronizations 
+    will make one or both sites unavailable for extended periods of time.
+</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=101">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_UseMasterLeases_" data-uid="Figaro.ReplicationConfig.UseMasterLeases*"></a>
+  <h4 id="Figaro_ReplicationConfig_UseMasterLeases" data-uid="Figaro.ReplicationConfig.UseMasterLeases">UseMasterLeases</h4>
+  <div class="markdown level1 summary"><p>If true, master leases are used for this site (defaults to
+false). </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseMasterLeases { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_UseMasterLeases_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Configuring this option may result in a 
+<a class="xref" href="Figaro.LeaseExpiredException.html">LeaseExpiredException</a> when attempting to read entries
+from a database after the site&apos;s master lease has expired.
+<p>All sites in the replication group should have the same value for this configuration flag.</p></p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=321">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_ClockSkew_" data-uid="Figaro.ReplicationConfig.ClockSkew*"></a>
+  <h4 id="Figaro_ReplicationConfig_ClockSkew_System_UInt32_System_UInt32_" data-uid="Figaro.ReplicationConfig.ClockSkew(System.UInt32,System.UInt32)">ClockSkew(UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Set the clock skew ratio among replication group members based on
+the fastest and slowest measurements among the group for use with
+master leases.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClockSkew(uint fast, uint slow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">fast</span></td>
+        <td><p>The value, relative to <code data-dev-comment-type="paramref" class="paramref">slow</code>, of the fastest clock
+in the group of sites.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">slow</span></td>
+        <td><p>The value of the slowest clock in the group of sites.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_ClockSkew_System_UInt32_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Calling this method is optional, the default values for clock skew
+assume no skew. The user must also configure leases via
+<a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_UseMasterLeases">UseMasterLeases</a>. Additionally, the user must also
+set the master lease timeout via <a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_LeaseTimeout">LeaseTimeout</a> and
+the number of sites in the replication group via
+<a class="xref" href="Figaro.ReplicationConfig.html#Figaro_ReplicationConfig_Sites">Sites</a>. These settings may be configured in any
+order. For a description of the clock skew values, see Clock skew 
+in the Figaro Programmer&apos;s Reference Guide. For a description
+of master leases, see Master leases in the Figaro Programmer&apos;s
+Reference Guide.
+</p>
+<p>
+These arguments can be used to express either raw measurements of a
+clock timing experiment or a percentage across machines. For
+instance a group of sites have a 2% variance, then
+<code data-dev-comment-type="paramref" class="paramref">fast</code> should be set to 102, and
+<code data-dev-comment-type="paramref" class="paramref">slow</code> should be set to 100. Or, for a 0.03%
+difference, you can use 10003 and 10000 respectively.
+</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=425">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_IncomingQueueMax_" data-uid="Figaro.ReplicationConfig.IncomingQueueMax*"></a>
+  <h4 id="Figaro_ReplicationConfig_IncomingQueueMax_System_UInt32_System_UInt32_" data-uid="Figaro.ReplicationConfig.IncomingQueueMax(System.UInt32,System.UInt32)">IncomingQueueMax(UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Set a byte-count limit on the maximum amount of dynamic memory
+used by the Replication Manager incoming queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IncomingQueueMax(uint gBytes, uint bytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">gBytes</span></td>
+        <td><p>The number of gigabytes which, when added to
+<code data-dev-comment-type="paramref" class="paramref">bytes</code>, specifies the maximum amount of dynamic
+memory used by the Replication Manager incoming queue.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">bytes</span></td>
+        <td><p>The number of bytes which, when added to 
+<code data-dev-comment-type="paramref" class="paramref">gBytes</code>, specifies the maximum amount of dynamic
+memory used by the Replication Manager incoming queue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_IncomingQueueMax_System_UInt32_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+By default, the Replication Manager incoming queue size has a
+limit of 100MB.
+</p>
+<p>
+If both <code data-dev-comment-type="paramref" class="paramref">gBytes</code> and <code data-dev-comment-type="paramref" class="paramref">bytes</code> are
+zero, then the Replication Manager incoming queue size is limited
+by available heap memory.
+</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=385">View Source</a>
+  </span>
+  <a id="Figaro_ReplicationConfig_RetransmissionRequest_" data-uid="Figaro.ReplicationConfig.RetransmissionRequest*"></a>
+  <h4 id="Figaro_ReplicationConfig_RetransmissionRequest_System_UInt32_System_UInt32_" data-uid="Figaro.ReplicationConfig.RetransmissionRequest(System.UInt32,System.UInt32)">RetransmissionRequest(UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Set a threshold for the minimum and maximum time that a client waits
+before requesting retransmission of a missing message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RetransmissionRequest(uint min, uint max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum number of microseconds a client waits before requesting
+retransmission.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum number of microseconds a client waits before requesting
+retransmission.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_ReplicationConfig_RetransmissionRequest_System_UInt32_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If the client detects a gap in the sequence of incoming log records
+or database pages, Figaro waits for at least
+<code data-dev-comment-type="paramref" class="paramref">min</code> microseconds before requesting retransmission
+of the missing record. Figaro doubles that amount before
+requesting the same missing record again, and so on, up to a
+maximum threshold of <code data-dev-comment-type="paramref" class="paramref">max</code> microseconds.
+</p>
+<p>
+These values are thresholds only. Replication Manager applications 
+use these values to determine when to automatically request 
+retransmission of missing messages. For Base API applications, 
+Figaro has no thread available in the library as a timer, the 
+threshold is only checked when a thread enters the Figaro
+library to process an incoming replication message. Any amount of
+time may have passed since the last message arrived and Figaro
+only checks whether the amount of time since a request was made is 
+beyond the threshold value or not.
+</p>
+<p>
+By default the minimum is 40000 and the maximum is 1280000 (1.28
+seconds). These defaults are fairly arbitrary and the application
+likely needs to adjust these. The values should be based on expected
+load and performance characteristics of the master and client host
+platforms and transport infrastructure as well as round-trip message
+time.
+</p></div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/ReplicationConfig.cs&amp;version=GBmaster&amp;line=13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

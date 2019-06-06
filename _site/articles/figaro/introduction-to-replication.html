@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Introduction to Replication </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Introduction to Replication ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="introduction-to-replication.md">
+<h1 id="introduction-to-replication">Introduction to Replication</h1>
+
+<h2 id="overview">Overview</h2>
+<p>The DB replication APIs allow you to distribute your database write operations (performed on a read-write master) to one or more read-only replicas. For this reason, DB&#39;s replication implementation is said to be a <em>single master, multiple replica</em> replication strategy.</p>
+<p>Note that your database write operations can occur only on the master; any attempt to write to a replica results in an error being raised by the DB API used to perform the write.</p>
+<p>A single replication master and all of its replicas are referred to as a <em>replication group</em>. While all members of the replication group can reside on the same machine, usually each replication participant is placed on a separate physical machine somewhere on the network.</p>
+<p>All replication applications must first be transactional applications. The data that the master transmits to its replicas are log records that are generated as records are updated. Upon transactional commit, the master transmits a transaction record which tells the replicas to commit the records they previously received from the master. In order for all of this to work, your replicated application must also be a transactional application. For this reason, it is recommended that you write and debug your DB application as a stand-alone transactional application before introducing the replication layer to your code.</p>
+<h2 id="replication-environments">Replication Environments</h2>
+<p>The most important requirement for a replication participant is that it must use a unique <a class="xref" href="../../api/Figaro.FigaroEnv.html">FigaroEnv</a> environment independent of all other replication participants. So while multiple replication participants can reside on the same physical machine, no two such participants can share the same environment home directory.</p>
+<p>For this reason, technically replication occurs between <em>unique database environments</em>. So in the strictest sense, a replication group consists of a master environment and one or more replica environments. However, the reality is that for production code, each such environment will usually be located on its own unique machine. Consequently, the documentation occasionally talks about replication sites, meaning the unique combination of environment home directory, host and port that a specific replication application is using.</p>
+<p>There is no specified limit to the number of environments which can participate in a replication group. The only limitation here is one of resources — network bandwidth, for example. The Replication Manager, however, does place a limit on the number of environments you can use. See <a class="xref" href="replication-manager-overview.html">Replication Manager Overview</a> for more details.</p>
+<p>Also, DB&#39;s replication implementation requires all participating environments to be assigned IDs that are locally unique to the given environment. Depending on the replication APIs that you choose to use, you may or may not need to manage this particular detail.</p>
+<h2 id="replication-databases">Replication Databases</h2>
+<p>DB&#39;s databases are managed and used in exactly the same way as if you were writing a non-replicated application, with a couple of caveats. First, the databases maintained in a replicated environment must reside in the directory identified by the <a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_AddDataDirectory_System_String_">AddDataDirectory(String)</a> method. Unlike non-replication applications, you cannot place your databases in a subdirectory below these locations. You should also not use full path names for your databases or environments as these are likely to break when they are replicated to other machines.</p>
+<h2 id="selecting-a-master">Selecting a Master</h2>
+<p>Every replication group is allowed one and only one master environment. Usually masters are selected by holding an election, although it is possible to turn elections off and manually select masters (this is not recommended for most replicated applications).</p>
+<p>When elections are being used, they are performed by the underlying replication code so you have to do very little to implement them.</p>
+<p>When holding an election, replicas &quot;vote&quot; on who should be the master. Among replicas participating in the election, the one with the most up-to-date set of log records will win the election. Note that it&#39;s possible for there to be a tie. When this occurs, priorities are used to select the master. See @replication-elections. for details.</p>
+<p>For more information on holding and managing elections, see <a class="xref" href="replication-elections.html">Replication Elections</a> .</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a class="xref" href="../../api/Figaro.FigaroEnv.html#Figaro_FigaroEnv_AddDataDirectory_System_String_">AddDataDirectory(String)</a></li>
+</ul>
+<h4 id="other-resources">Other Resources</h4>
+<ul>
+<li><a class="xref" href="replication-elections.html">Replication Elections</a></li>
+<li><a class="xref" href="replication-manager-overview.html">Replication Manager Overview</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=articles/figaro/introduction-to-replication.md&amp;version=GBmaster&amp;line=1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

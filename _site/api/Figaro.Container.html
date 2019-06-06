@@ -1,0 +1,3666 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Container
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Container
+   ">
+    <meta name="generator" content="docfx 2.40.8.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Figaro.Container">
+  
+  
+  <h1 id="Figaro_Container" data-uid="Figaro.Container" class="text-break">Class Container
+  </h1>
+  <div class="markdown level0 summary"><p>The <a class="xref" href="Figaro.Container.html">Container</a>  class encapsulates a document container and its 
+related indices and statistics. </p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Container</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Figaro.html">Figaro</a></h6>
+  <h6><strong>Assembly</strong>: Figaro.dll</h6>
+  <h5 id="Figaro_Container_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Container : IDisposable</code></pre>
+  </div>
+  <h5 id="Figaro_Container_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+<a class="xref" href="Figaro.Container.html">Container</a> exposes methods for managing (putting and deleting) 
+<a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> objects, managing indices, and retrieving container statistics.
+</p><p>
+If the <a class="xref" href="Figaro.Container.html">Container</a> has never before been opened, 
+use <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateContainer_System_String_">CreateContainer(String)</a> to instantiate 
+a <a class="xref" href="Figaro.Container.html">Container</a>  object. If the container already exists, use 
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_OpenContainer_System_String_">OpenContainer(String)</a> 
+instead. Containers are always opened until the last referencing handle is destroyed.
+</p><p>
+You can delete containers using <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_RemoveContainer_System_String_">RemoveContainer(String)</a> and 
+rename containers using <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_RenameContainer_System_String_System_String_">RenameContainer(String, String)</a>.
+</p><p>
+The class is implemented using a handle-body idiom. When a handle is copied both handles maintain a 
+reference to the same body.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=80">View Source</a>
+  </span>
+  <a id="Figaro_Container__ctor_" data-uid="Figaro.Container.#ctor*"></a>
+  <h4 id="Figaro_Container__ctor_Figaro_Container_" data-uid="Figaro.Container.#ctor(Figaro.Container)">Container(Container)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Container class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Container(Container container)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.Container.html">Container</a></td>
+        <td><span class="parametername">container</span></td>
+        <td><p>The container to copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container__ctor_Figaro_Container__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>When a handle is copied, both handles maintain a reference to the same body.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=44">View Source</a>
+  </span>
+  <a id="Figaro_Container_CompressionEnabled_" data-uid="Figaro.Container.CompressionEnabled*"></a>
+  <h4 id="Figaro_Container_CompressionEnabled" data-uid="Figaro.Container.CompressionEnabled">CompressionEnabled</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the container was configured to use compression.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CompressionEnabled { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=62">View Source</a>
+  </span>
+  <a id="Figaro_Container_ContainerState_" data-uid="Figaro.Container.ContainerState*"></a>
+  <h4 id="Figaro_Container_ContainerState" data-uid="Figaro.Container.ContainerState">ContainerState</h4>
+  <div class="markdown level1 summary"><p>Gets the state of the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContainerState ContainerState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ContainerState.html">ContainerState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=71">View Source</a>
+  </span>
+  <a id="Figaro_Container_ContainerType_" data-uid="Figaro.Container.ContainerType*"></a>
+  <h4 id="Figaro_Container_ContainerType" data-uid="Figaro.Container.ContainerType">ContainerType</h4>
+  <div class="markdown level1 summary"><p>Gets the container&apos;s storage type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlContainerType ContainerType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlContainerType.html">XmlContainerType</a></td>
+        <td><p>The container&apos;s storage type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_ContainerType_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlContainerType.html">XmlContainerType</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=57">View Source</a>
+  </span>
+  <a id="Figaro_Container_IndexNodes_" data-uid="Figaro.Container.IndexNodes*"></a>
+  <h4 id="Figaro_Container_IndexNodes" data-uid="Figaro.Container.IndexNodes">IndexNodes</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the container is configured to create node indices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IndexNodes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The boolean operator used to determine if the <a class="xref" href="Figaro.Container.html">Container</a> is configured to create node indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=66">View Source</a>
+  </span>
+  <a id="Figaro_Container_Name_" data-uid="Figaro.Container.Name*"></a>
+  <h4 id="Figaro_Container_Name" data-uid="Figaro.Container.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets the container name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The container name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=75">View Source</a>
+  </span>
+  <a id="Figaro_Container_PageSize_" data-uid="Figaro.Container.PageSize*"></a>
+  <h4 id="Figaro_Container_PageSize" data-uid="Figaro.Container.PageSize">PageSize</h4>
+  <div class="markdown level1 summary"><p>Gets the page size for the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The page size for the container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=53">View Source</a>
+  </span>
+  <a id="Figaro_Container_Settings_" data-uid="Figaro.Container.Settings*"></a>
+  <h4 id="Figaro_Container_Settings" data-uid="Figaro.Container.Settings">Settings</h4>
+  <div class="markdown level1 summary"><p>Gets the flags used to open the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContainerConfig Settings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a></td>
+        <td><p>The <a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a> used to open the container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_Settings_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.ContainerConfig.html">ContainerConfig</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=597">View Source</a>
+  </span>
+  <a id="Figaro_Container_Transactional_" data-uid="Figaro.Container.Transactional*"></a>
+  <h4 id="Figaro_Container_Transactional" data-uid="Figaro.Container.Transactional">Transactional</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether or not the object is configured for transactions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Transactional { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if configured for transactions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=93">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddAlias_" data-uid="Figaro.Container.AddAlias*"></a>
+  <h4 id="Figaro_Container_AddAlias_System_String_" data-uid="Figaro.Container.AddAlias(System.String)">AddAlias(String)</h4>
+  <div class="markdown level1 summary"><p>Adds a new alias to the list maintained by the <a class="xref" href="Figaro.XmlManager.html">XmlManager</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddAlias(string alias)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">alias</span></td>
+        <td><p>The new alias to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if the alias is successfully added. If the alias is already used by the 
+containing <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> object, <code>false</code> is returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_AddAlias_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The new alias can then be used as a parameter to the <code>collection()</code> function in an XQuery expression.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=636">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddDefaultIndex_" data-uid="Figaro.Container.AddDefaultIndex*"></a>
+  <h4 id="Figaro_Container_AddDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.AddDefaultIndex(Figaro.XmlTransaction,System.String,Figaro.UpdateContext)">AddDefaultIndex(XmlTransaction, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Add a default index to the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddDefaultIndex(XmlTransaction transaction, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for the index operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_AddDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience -- see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddDefaultIndex_System_String_">AddDefaultIndex(String)</a> for more information.</p>
+</div>
+  <h5 id="Figaro_Container_AddDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=134">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddDefaultIndex_" data-uid="Figaro.Container.AddDefaultIndex*"></a>
+  <h4 id="Figaro_Container_AddDefaultIndex_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.AddDefaultIndex(System.String,Figaro.UpdateContext)">AddDefaultIndex(String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Add a default index to the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddDefaultIndex(string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for the index operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_AddDefaultIndex_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience -- see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddDefaultIndex_System_String_">AddDefaultIndex(String)</a> for more information.</p>
+</div>
+  <h5 id="Figaro_Container_AddDefaultIndex_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=657">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddIndex_" data-uid="Figaro.Container.AddIndex*"></a>
+  <h4 id="Figaro_Container_AddIndex_Figaro_XmlTransaction_System_String_System_String_Figaro_IndexingStrategy_Figaro_UpdateContext_" data-uid="Figaro.Container.AddIndex(Figaro.XmlTransaction,System.String,System.String,Figaro.IndexingStrategy,Figaro.UpdateContext)">AddIndex(XmlTransaction, String, String, IndexingStrategy, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Adds an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddIndex(XmlTransaction transaction, string nodeNamespace, string nodeName, IndexingStrategy indexingStrategy, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default is selected by passing an empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><span class="parametername">indexingStrategy</span></td>
+        <td><p>The indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for index insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_AddIndex_Figaro_XmlTransaction_System_String_System_String_Figaro_IndexingStrategy_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=646">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddIndex_" data-uid="Figaro.Container.AddIndex*"></a>
+  <h4 id="Figaro_Container_AddIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.AddIndex(Figaro.XmlTransaction,System.String,System.String,System.String,Figaro.UpdateContext)">AddIndex(XmlTransaction, String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Adds an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddIndex(XmlTransaction transaction, string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default is selected by passing an empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings representing the indexing strategy. See <a class="xref" href="../articles/figaro/using-indices.html">Using Indices</a> for more details.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for index insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=121">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddIndex_" data-uid="Figaro.Container.AddIndex*"></a>
+  <h4 id="Figaro_Container_AddIndex_System_String_System_String_Figaro_IndexingStrategy_Figaro_UpdateContext_" data-uid="Figaro.Container.AddIndex(System.String,System.String,Figaro.IndexingStrategy,Figaro.UpdateContext)">AddIndex(String, String, IndexingStrategy, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Adds an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddIndex(string nodeNamespace, string nodeName, IndexingStrategy indexStrategy, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default is selected by passing an empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the attribute or node to be indexed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></td>
+        <td><span class="parametername">indexStrategy</span></td>
+        <td><p>An <a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a> object used for streamlining the index creation process. See <a class="xref" href="../articles/figaro/using-indices.html">Using Indices</a> for more details.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for index insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_AddIndex_System_String_System_String_Figaro_IndexingStrategy_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.IndexingStrategy.html">IndexingStrategy</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=107">View Source</a>
+  </span>
+  <a id="Figaro_Container_AddIndex_" data-uid="Figaro.Container.AddIndex*"></a>
+  <h4 id="Figaro_Container_AddIndex_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.AddIndex(System.String,System.String,System.String,Figaro.UpdateContext)">AddIndex(String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Adds an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddIndex(string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default is selected by passing an empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the attribute or node to be indexed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings representing the indexing strategy. See <a class="xref" href="../articles/figaro/using-indices.html">Using Indices</a> for more details.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for index insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=604">View Source</a>
+  </span>
+  <a id="Figaro_Container_Close_" data-uid="Figaro.Container.Close*"></a>
+  <h4 id="Figaro_Container_Close" data-uid="Figaro.Container.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Closes the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete]
+public void Close()</code></pre>
+  </div>
+  <h5 id="Figaro_Container_Close_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is obsolete and will be removed in the next version of Figaro.</p>
+</div>
+  <h5 id="Figaro_Container_Close_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.ContainerScopeException.html">ContainerScopeException</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=669">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDefaultIndex_" data-uid="Figaro.Container.DeleteDefaultIndex*"></a>
+  <h4 id="Figaro_Container_DeleteDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDefaultIndex(Figaro.XmlTransaction,System.String,Figaro.UpdateContext)">DeleteDefaultIndex(XmlTransaction, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Deletes the default index for the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDefaultIndex(XmlTransaction transaction, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience - see
+<a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_DeleteDefaultIndex_System_String_">DeleteDefaultIndex(String)</a> for more information.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=192">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDefaultIndex_" data-uid="Figaro.Container.DeleteDefaultIndex*"></a>
+  <h4 id="Figaro_Container_DeleteDefaultIndex_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDefaultIndex(System.String,Figaro.UpdateContext)">DeleteDefaultIndex(String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Deletes the default index for the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDefaultIndex(string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteDefaultIndex_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience - see 
+<a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_DeleteDefaultIndex_System_String_">DeleteDefaultIndex(String)</a> for more information.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=165">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDocument_" data-uid="Figaro.Container.DeleteDocument*"></a>
+  <h4 id="Figaro_Container_DeleteDocument_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDocument(Figaro.XmlDocument,Figaro.UpdateContext)">DeleteDocument(XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> from 
+the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDocument(XmlDocument document, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">document</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be deleted from the container. The name 
+to be deleted is extracted from this parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> object to use for this deletion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=704">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDocument_" data-uid="Figaro.Container.DeleteDocument*"></a>
+  <h4 id="Figaro_Container_DeleteDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDocument(Figaro.XmlTransaction,Figaro.XmlDocument,Figaro.UpdateContext)">DeleteDocument(XmlTransaction, XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> from
+the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDocument(XmlTransaction transaction, XmlDocument document, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">document</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be deleted from the container. The name
+to be deleted is extracted from this parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> object to use for this deletion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=694">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDocument_" data-uid="Figaro.Container.DeleteDocument*"></a>
+  <h4 id="Figaro_Container_DeleteDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDocument(Figaro.XmlTransaction,System.String,Figaro.UpdateContext)">DeleteDocument(XmlTransaction, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Delete the document with the given name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDocument(XmlTransaction transaction, string name, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The file name of the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be deleted from the
+container. The name to be deleted is extracted from this parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> object to use for this deletion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=150">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteDocument_" data-uid="Figaro.Container.DeleteDocument*"></a>
+  <h4 id="Figaro_Container_DeleteDocument_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteDocument(System.String,Figaro.UpdateContext)">DeleteDocument(String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Delete the document with the given name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteDocument(string name, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The file name of the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be deleted from the 
+container. The name to be deleted is extracted from this parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> object to use for this deletion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteDocument_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=683">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteIndex_" data-uid="Figaro.Container.DeleteIndex*"></a>
+  <h4 id="Figaro_Container_DeleteIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteIndex(Figaro.XmlTransaction,System.String,System.String,System.String,Figaro.UpdateContext)">DeleteIndex(XmlTransaction, String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Deletes an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteIndex(XmlTransaction transaction, string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default namespace is selected by passing an empty string for the namespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience -- see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_DeleteIndex_Figaro_XmlIndex_">DeleteIndex(XmlIndex)</a> for
+more information.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=181">View Source</a>
+  </span>
+  <a id="Figaro_Container_DeleteIndex_" data-uid="Figaro.Container.DeleteIndex*"></a>
+  <h4 id="Figaro_Container_DeleteIndex_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.DeleteIndex(System.String,System.String,System.String,Figaro.UpdateContext)">DeleteIndex(String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Deletes an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteIndex(string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default namespace is selected by passing an empty string for the namespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the element or attribute node to be indexed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_DeleteIndex_System_String_System_String_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience -- 
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_DeleteIndex_Figaro_XmlIndex_">DeleteIndex(XmlIndex)</a> for more information.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=1046">View Source</a>
+  </span>
+  <a id="Figaro_Container_Dispose_" data-uid="Figaro.Container.Dispose*"></a>
+  <h4 id="Figaro_Container_Dispose" data-uid="Figaro.Container.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=1038">View Source</a>
+  </span>
+  <a id="Figaro_Container_Dispose_" data-uid="Figaro.Container.Dispose*"></a>
+  <h4 id="Figaro_Container_Dispose_System_Boolean_" data-uid="Figaro.Container.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If disposing equals <code>true</code>, the method has been called directly or 
+indirectly by a user&apos;s code. Managed and unmanaged resources can be disposed. If disposing equals 
+<code>false</code>, the method has been called by the runtime from inside the 
+finalizer and you should not reference other objects. Only unmanaged resources can be disposed. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=199">View Source</a>
+  </span>
+  <a id="Figaro_Container_DocumentExists_" data-uid="Figaro.Container.DocumentExists*"></a>
+  <h4 id="Figaro_Container_DocumentExists_System_String_" data-uid="Figaro.Container.DocumentExists(System.String)">DocumentExists(String)</h4>
+  <div class="markdown level1 summary"><p>Verifies the existence of a document in the container with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DocumentExists(string docName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">docName</span></td>
+        <td><p>The name of the document to look for within the container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if an entry with the file name <code data-dev-comment-type="paramref" class="paramref">docName</code> exists in the container; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=1054">View Source</a>
+  </span>
+  <a id="Figaro_Container_Finalize_" data-uid="Figaro.Container.Finalize*"></a>
+  <h4 id="Figaro_Container_Finalize" data-uid="Figaro.Container.Finalize">Finalize()</h4>
+  <div class="markdown level1 summary"><p>Allows an object to try to free resources and perform other cleanup operations before it is 
+reclaimed by garbage collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=208">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetAllDocuments_" data-uid="Figaro.Container.GetAllDocuments*"></a>
+  <h4 id="Figaro_Container_GetAllDocuments" data-uid="Figaro.Container.GetAllDocuments">GetAllDocuments()</h4>
+  <div class="markdown level1 summary"><p>Return all of the documents in the container in a lazily 
+evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults GetAllDocuments()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>All documents from the <a class="xref" href="Figaro.Container.html">Container</a> in a lazily 
+evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetAllDocuments_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=218">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetAllDocuments_" data-uid="Figaro.Container.GetAllDocuments*"></a>
+  <h4 id="Figaro_Container_GetAllDocuments_Figaro_GetAllDocumentOptions_" data-uid="Figaro.Container.GetAllDocuments(Figaro.GetAllDocumentOptions)">GetAllDocuments(GetAllDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Return all of the documents in the container in a lazily evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults GetAllDocuments(GetAllDocumentOptions getAllDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a></td>
+        <td><span class="parametername">getAllDocumentOptions</span></td>
+        <td><p>The <a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a> parameter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>All documents from the <a class="xref" href="Figaro.Container.html">Container</a> in a lazily evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetAllDocuments_Figaro_GetAllDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=716">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetAllDocuments_" data-uid="Figaro.Container.GetAllDocuments*"></a>
+  <h4 id="Figaro_Container_GetAllDocuments_Figaro_XmlTransaction_Figaro_GetAllDocumentOptions_" data-uid="Figaro.Container.GetAllDocuments(Figaro.XmlTransaction,Figaro.GetAllDocumentOptions)">GetAllDocuments(XmlTransaction, GetAllDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Return all of the documents in the container in a lazily evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlResults GetAllDocuments(XmlTransaction transaction, GetAllDocumentOptions getAllDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a></td>
+        <td><span class="parametername">getAllDocumentOptions</span></td>
+        <td><p>Document options to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></td>
+        <td><p>All documents from the <a class="xref" href="Figaro.Container.html">Container</a> in a
+lazily evaluated <a class="xref" href="Figaro.XmlResults.html">XmlResults</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetAllDocuments_Figaro_XmlTransaction_Figaro_GetAllDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlResults.html">XmlResults</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=733">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetDocument_" data-uid="Figaro.Container.GetDocument*"></a>
+  <h4 id="Figaro_Container_GetDocument_Figaro_XmlTransaction_System_String_Figaro_RetrievalModes_" data-uid="Figaro.Container.GetDocument(Figaro.XmlTransaction,System.String,Figaro.RetrievalModes)">GetDocument(XmlTransaction, String, RetrievalModes)</h4>
+  <div class="markdown level1 summary"><p>Returns the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument GetDocument(XmlTransaction transaction, string name, RetrievalModes retrievalModes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be retrieved from the container.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></td>
+        <td><span class="parametername">retrievalModes</span></td>
+        <td><p>The <a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a> parameter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The requested <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetDocument_Figaro_XmlTransaction_System_String_Figaro_RetrievalModes__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+      <div><a class="xref" href="Figaro.GetAllDocumentOptions.html">GetAllDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=230">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetDocument_" data-uid="Figaro.Container.GetDocument*"></a>
+  <h4 id="Figaro_Container_GetDocument_System_String_" data-uid="Figaro.Container.GetDocument(System.String)">GetDocument(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the 
+<a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument GetDocument(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The file name of the document to get.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The requested <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetDocument_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=246">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetDocument_" data-uid="Figaro.Container.GetDocument*"></a>
+  <h4 id="Figaro_Container_GetDocument_System_String_Figaro_RetrievalModes_" data-uid="Figaro.Container.GetDocument(System.String,Figaro.RetrievalModes)">GetDocument(String, RetrievalModes)</h4>
+  <div class="markdown level1 summary"><p>Returns the 
+<a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlDocument GetDocument(string name, RetrievalModes retrievalModes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the 
+<a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be retrieved from the container.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></td>
+        <td><span class="parametername">retrievalModes</span></td>
+        <td><p>The <a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a> parameter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><p>The requested <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetDocument_System_String_Figaro_RetrievalModes__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+      <div><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></div>
+      <div><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=614">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetIndexSpecification_" data-uid="Figaro.Container.GetIndexSpecification*"></a>
+  <h4 id="Figaro_Container_GetIndexSpecification" data-uid="Figaro.Container.GetIndexSpecification">GetIndexSpecification()</h4>
+  <div class="markdown level1 summary"><p>Gets the current indexing specification for the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlIndexSpecification GetIndexSpecification()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetIndexSpecification_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The indexing specification can be modified using <a class="xref" href="Figaro.Container.html#Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext_">SetIndexSpecification(XmlIndexSpecification, UpdateContext)</a>.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=621">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetManager_" data-uid="Figaro.Container.GetManager*"></a>
+  <h4 id="Figaro_Container_GetManager" data-uid="Figaro.Container.GetManager">GetManager()</h4>
+  <div class="markdown level1 summary"><p>Returns the <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> associated with the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlManager GetManager()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></td>
+        <td><p>The <a class="xref" href="Figaro.XmlManager.html">XmlManager</a> associated with the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=769">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetNode_" data-uid="Figaro.Container.GetNode*"></a>
+  <h4 id="Figaro_Container_GetNode_Figaro_XmlTransaction_System_String_Figaro_RetrievalModes_" data-uid="Figaro.Container.GetNode(Figaro.XmlTransaction,System.String,Figaro.RetrievalModes)">GetNode(XmlTransaction, String, RetrievalModes)</h4>
+  <div class="markdown level1 summary"><p>Returns a node representing the specified handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue GetNode(XmlTransaction transaction, string nodeHandle, RetrievalModes nodeOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeHandle</span></td>
+        <td><p>The handle representing the node which must have been obtained using <a class="xref" href="Figaro.XmlValue.html#Figaro_XmlValue_NodeHandle">NodeHandle</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></td>
+        <td><span class="parametername">nodeOptions</span></td>
+        <td><p>One or more <a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a> values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> representing a node in a document in
+the calling <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetNode_Figaro_XmlTransaction_System_String_Figaro_RetrievalModes__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The handle must represent a node in a document in the <a class="xref" href="Figaro.Container.html">Container</a>. If the document or node has been removed, the operation may fail.
+<p>
+Node handles are guaranteed to remain stable in the absence of modifications to a document. If a document is modified, a handle may cease to exist, or may belong to a different node.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_GetNode_Figaro_XmlTransaction_System_String_Figaro_RetrievalModes__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=268">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetNode_" data-uid="Figaro.Container.GetNode*"></a>
+  <h4 id="Figaro_Container_GetNode_System_String_Figaro_RetrievalModes_" data-uid="Figaro.Container.GetNode(System.String,Figaro.RetrievalModes)">GetNode(String, RetrievalModes)</h4>
+  <div class="markdown level1 summary"><p>Returns a node representing the specified handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlValue GetNode(string nodeHandle, RetrievalModes nodeOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeHandle</span></td>
+        <td><p>The handle representing the node which must have been obtained using <a class="xref" href="Figaro.XmlValue.html#Figaro_XmlValue_NodeHandle">NodeHandle</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></td>
+        <td><span class="parametername">nodeOptions</span></td>
+        <td><p>One or more <a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a> values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><p>An <a class="xref" href="Figaro.XmlValue.html">XmlValue</a> representing a node in a document in 
+the calling <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetNode_System_String_Figaro_RetrievalModes__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The handle must represent a node in a document in the <a class="xref" href="Figaro.Container.html">Container</a>. If the 
+document or node has been removed, the operation may fail.
+<p>
+Node handles are guaranteed to remain stable in the absence of modifications to a document. If a document 
+is modified, a handle may cease to exist, or may belong to a different node.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_GetNode_System_String_Figaro_RetrievalModes__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></div>
+      <div><a class="xref" href="Figaro.RetrievalModes.html">RetrievalModes</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=284">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetNumDocuments_" data-uid="Figaro.Container.GetNumDocuments*"></a>
+  <h4 id="Figaro_Container_GetNumDocuments" data-uid="Figaro.Container.GetNumDocuments">GetNumDocuments()</h4>
+  <div class="markdown level1 summary"><p>Performs a lookup of the number of documents in  the 
+<a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong GetNumDocuments()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of documents stored in the 
+<a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_GetNumDocuments_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you use this method and the container is configured with
+transactions, an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object will be
+created and used for the operation.</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=746">View Source</a>
+  </span>
+  <a id="Figaro_Container_GetNumDocuments_" data-uid="Figaro.Container.GetNumDocuments*"></a>
+  <h4 id="Figaro_Container_GetNumDocuments_Figaro_XmlTransaction_" data-uid="Figaro.Container.GetNumDocuments(Figaro.XmlTransaction)">GetNumDocuments(XmlTransaction)</h4>
+  <div class="markdown level1 summary"><p>Performs a lookup of the number of documents in
+the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong GetNumDocuments(XmlTransaction transaction)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>The number of documents stored in the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=794">View Source</a>
+  </span>
+  <a id="Figaro_Container_LookupStatistics_" data-uid="Figaro.Container.LookupStatistics*"></a>
+  <h4 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_XmlValue_" data-uid="Figaro.Container.LookupStatistics(Figaro.XmlTransaction,System.String,System.String,System.String,Figaro.XmlValue)">LookupStatistics(XmlTransaction, String, String, String, XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Returns an
+<a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a> object for the identified index.
+This object identifies the number of keys (both total and unique) maintained for the identified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KeyStatistics LookupStatistics(XmlTransaction transaction, string nodeNamespace, string nodeName, string index, XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to which this index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Identifies the index for which you want the statistics returned. The value supplied here must be a valid
+index. See <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a>for a
+description of valid index specifications.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Provides the value to which equality indices must be equal. This parameter is required when
+returning statistics on equality indices, and it is ignored for all other types of indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></td>
+        <td><p>Statistical information for the indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_XmlValue__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This form of this method cannot be used to return statistics on edge indices.</p>
+</div>
+  <h5 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_XmlValue__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=825">View Source</a>
+  </span>
+  <a id="Figaro_Container_LookupStatistics_" data-uid="Figaro.Container.LookupStatistics*"></a>
+  <h4 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue_" data-uid="Figaro.Container.LookupStatistics(Figaro.XmlTransaction,System.String,System.String,System.String,System.String,System.String,Figaro.XmlValue)">LookupStatistics(XmlTransaction, String, String, String, String, String, XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Returns an <a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a> object for
+the identified index. This object identifies the number of keys (both total and unique)
+maintained for the identified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KeyStatistics LookupStatistics(XmlTransaction transaction, string nodeNamespace, string nodeName, string parentUri, string parentName, string index, XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to which this index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentUri</span></td>
+        <td><p>The namespace of the parent node to which this edge index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentName</span></td>
+        <td><p>The name of the parent node to which this edge index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Identifies the index for which you want the statistics returned. The
+value supplied here must be a valid index. See
+<a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a> for a
+description of valid index specifications.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Provides the value to which equality indices must be equal. This parameter is
+required when returning statistics on equality indices, and it is ignored for all other types of indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></td>
+        <td><p>Statistical information for the indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Lookup statistics for the identified index. Use this form of this method to return statistics on edge indices.
+<p>
+Edge indices are indices maintained for those locations in a document where two
+nodes (a parent node and a child node) meet. See <a class="xref" href="../articles/figaro/developing-dotnet-apps-with-figaro.html">Developing .NET Applications with Figaro</a> for details.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_LookupStatistics_Figaro_XmlTransaction_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=314">View Source</a>
+  </span>
+  <a id="Figaro_Container_LookupStatistics_" data-uid="Figaro.Container.LookupStatistics*"></a>
+  <h4 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_Figaro_XmlValue_" data-uid="Figaro.Container.LookupStatistics(System.String,System.String,System.String,Figaro.XmlValue)">LookupStatistics(String, String, String, XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Returns a
+<a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a> object for the identified index. This
+object identifies the number of keys (both total and unique)
+maintained for the identified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KeyStatistics LookupStatistics(string nodeNamespace, string nodeName, string index, XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to which this
+index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Identifies the index for which you want the
+statistics returned. The value supplied here must be a valid index.
+See <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a>for a description of
+valid index specifications.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Provides the value to which equality indices
+must be equal. This parameter is required when returning statistics
+on equality indices, and it is ignored for all other types of
+indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></td>
+        <td><p>Statistical information for the indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_Figaro_XmlValue__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This form of this method cannot be used to return statistics on edge
+indices.</p>
+</div>
+  <h5 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_Figaro_XmlValue__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=345">View Source</a>
+  </span>
+  <a id="Figaro_Container_LookupStatistics_" data-uid="Figaro.Container.LookupStatistics*"></a>
+  <h4 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue_" data-uid="Figaro.Container.LookupStatistics(System.String,System.String,System.String,System.String,System.String,Figaro.XmlValue)">LookupStatistics(String, String, String, String, String, XmlValue)</h4>
+  <div class="markdown level1 summary"><p>Returns an <a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a> object for 
+the identified index. This object identifies the number of keys (both total and unique) 
+maintained for the identified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KeyStatistics LookupStatistics(string nodeNamespace, string nodeName, string parentUri, string parentName, string index, XmlValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to which this index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the node to which this index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentUri</span></td>
+        <td><p>The namespace of the parent node to which this edge index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parentName</span></td>
+        <td><p>The name of the parent node to which this edge index is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Identifies the index for which you want the statistics returned. The 
+value supplied here must be a valid index. See 
+<a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_AddIndex_Figaro_XmlIndex_">AddIndex(XmlIndex)</a> for a 
+description of valid index specifications.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlValue.html">XmlValue</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Provides the value to which equality indices must be equal. This parameter is 
+required when returning statistics on equality indices, and it is ignored for all other types of indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></td>
+        <td><p>Statistical information for the indices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Lookup statistics for the identified index. Use this form of this method to return statistics on edge indices.
+<p>
+Edge indices are indices maintained for those locations in a document where two 
+nodes (a parent node and a child node) meet. See <a class="xref" href="../articles/figaro/developing-dotnet-apps-with-figaro.html">Developing .NET Applications with Figaro</a> for details.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_LookupStatistics_System_String_System_String_System_String_System_String_System_String_Figaro_XmlValue__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+      <div><a class="xref" href="Figaro.KeyStatistics.html">KeyStatistics</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=397">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.PutDocument(Figaro.XmlDocument,Figaro.UpdateContext)">PutDocument(XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon 
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PutDocument(XmlDocument doc, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">doc</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to insert into the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the container or an exception is thrown. 
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the 
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p> 
+The document content is indexed according to the container indexing specification. The indexer supports the 
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p> </p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=377">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(Figaro.XmlDocument,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(XmlDocument, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value
+returned by this method is dependent upon  the form of the method
+that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PutDocument(XmlDocument doc, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">doc</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to insert into the 
+<a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document
+insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified
+in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the
+container or an exception is thrown.  The flag, 
+<a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to 
+generate a name. To change a document that already exists in the 
+container, use 
+<a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p>
+The document content is indexed according to the container indexing
+specification. The indexer supports the  Xerces content encodings
+and expects the content to be well-formed, but it need not be valid.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlDocument_Figaro_UpdateContext_Figaro_PutDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=852">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,Figaro.XmlDocument,Figaro.UpdateContext)">PutDocument(XmlTransaction, XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PutDocument(XmlTransaction transaction, XmlDocument doc, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>If the operation is to be transaction-protected, the parameter is an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> handle
+returned from <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction">CreateTransaction()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">doc</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to insert into the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlTransaction, XmlDocument, UpdateContext)</a>.
+</p>
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=876">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,Figaro.XmlDocument,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(XmlTransaction, XmlDocument, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PutDocument(XmlTransaction transaction, XmlDocument doc, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>If the operation is to be transaction-protected, the parameter is
+an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> handle returned from <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction">CreateTransaction()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">doc</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to insert into the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to
+generate a name. To change a document that already exists in the
+container, use
+<a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+</p>
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p>
+</div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=935">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,System.String,Figaro.UpdateContext)">PutDocument(XmlTransaction, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(XmlTransaction transaction, string pathAndName, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>If the operation is to be transaction-protected, the parameter is
+an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> handle returned
+from <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction">CreateTransaction()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathAndName</span></td>
+        <td><p>The full file path and name of the document you want to insert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used
+to generate a name. To change a document that already exists in the
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+</p>
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=906">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,System.String,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(XmlTransaction, String, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(XmlTransaction transaction, string pathAndName, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>If the operation is to be transaction-protected, the parameter is
+an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> handle returned from
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction">CreateTransaction()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathAndName</span></td>
+        <td><p>The full path of the document for <a class="xref" href="Figaro.Container.html">Container</a> to read as a stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the
+container,
+use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+</p>
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=1026">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_Figaro_XmlInputStream_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,System.String,Figaro.XmlInputStream,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(XmlTransaction, String, XmlInputStream, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a> into the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(XmlTransaction transaction, string name, XmlInputStream adoptedInput, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Provides the name of the document to insert into the container. This name must be unique in the container.
+If <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a> is set, a
+system-defined string is appended to create a unique name. This applies if the name
+parameter is provided or empty. If the name is not unique within the container, an exception is thrown.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></td>
+        <td><span class="parametername">adoptedInput</span></td>
+        <td><p>The stream object to insert into the container. The content read by the input stream must be
+well-formed XML, or an exception is thrown. The stream object provided is consumed (deleted) by this method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context for document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more options to use when inserting the document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=963">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(Figaro.XmlTransaction,System.String,System.String,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(XmlTransaction, String, String, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(XmlTransaction transaction, string name, string contents, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>If the operation is to be transaction-protected, the parameter is an <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a>
+handle returned from <a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_CreateTransaction">CreateTransaction()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the document you want to insert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">contents</span></td>
+        <td><p>The contents of the document as a <span class="xref">System.String</span> variable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_Figaro_XmlTransaction_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=443">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.PutDocument(System.String,Figaro.UpdateContext)">PutDocument(String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon 
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(string pathAndName, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathAndName</span></td>
+        <td><p>The full path of the document for <a class="xref" href="Figaro.Container.html">Container</a> to read as a stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the container or an exception is thrown. 
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the 
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p> 
+The document content is indexed according to the container indexing specification. The indexer supports the 
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p> </p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=419">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(System.String,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(String, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon 
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(string pathAndName, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathAndName</span></td>
+        <td><p>The full path of the document for <a class="xref" href="Figaro.Container.html">Container</a> to read as a stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the container or an exception is thrown. 
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can be used to generate a name. To change a document that already exists in the 
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p> 
+The document content is indexed according to the container indexing specification. The indexer supports the 
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p> </p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=461">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_System_String_Figaro_XmlInputStream_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(System.String,Figaro.XmlInputStream,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(String, XmlInputStream, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a> into the container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(string name, XmlInputStream adoptedInput, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Provides the name of the document to insert into the container. This name must be unique in the container.
+If <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a> is set, a
+system-defined string is appended to create a unique name. This applies if the name
+parameter is provided or empty. If the name is not unique within the container, an exception is thrown.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlInputStream.html">XmlInputStream</a></td>
+        <td><span class="parametername">adoptedInput</span></td>
+        <td><p>The stream object to insert into the container. The content read by the input stream must be
+well-formed XML, or an exception is thrown. The stream object provided is consumed (deleted) by this method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context for document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more options to use when inserting the document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=488">View Source</a>
+  </span>
+  <a id="Figaro_Container_PutDocument_" data-uid="Figaro.Container.PutDocument*"></a>
+  <h4 id="Figaro_Container_PutDocument_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions_" data-uid="Figaro.Container.PutDocument(System.String,System.String,Figaro.UpdateContext,Figaro.PutDocumentOptions)">PutDocument(String, String, UpdateContext, PutDocumentOptions)</h4>
+  <div class="markdown level1 summary"><p>Inserts an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> into the container. The value returned by this method is dependent upon
+the form of the method that you used to perform the insertion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PutDocument(string name, string contents, UpdateContext context, PutDocumentOptions putDocumentOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the document you want to insert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">contents</span></td>
+        <td><p>The contents of the document as a <span class="xref">System.String</span> variable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></td>
+        <td><span class="parametername">putDocumentOptions</span></td>
+        <td><p>One or more of the values specified in <a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name used for the new document.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_PutDocument_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that the name used for the document must be unique in the container or an exception is thrown.
+The flag, <a class="xref" href="Figaro.PutDocumentOptions.html#Figaro_PutDocumentOptions_GenerateFileName">GenerateFileName</a>, can
+be used to generate a name. To change a document that already exists in the
+container, use <a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a>.
+<p>
+The document content is indexed according to the container indexing specification. The indexer supports the
+Xerces content encodings and expects the content to be well-formed, but it need not be valid.
+</p></p>
+</div>
+  <h5 id="Figaro_Container_PutDocument_System_String_System_String_Figaro_UpdateContext_Figaro_PutDocumentOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.PutDocumentOptions.html">PutDocumentOptions</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+      <div><a class="xref" href="Figaro.Container.html#Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_">UpdateDocument(XmlDocument, UpdateContext)</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=502">View Source</a>
+  </span>
+  <a id="Figaro_Container_RemoveAlias_" data-uid="Figaro.Container.RemoveAlias*"></a>
+  <h4 id="Figaro_Container_RemoveAlias_System_String_" data-uid="Figaro.Container.RemoveAlias(System.String)">RemoveAlias(String)</h4>
+  <div class="markdown level1 summary"><p>Removes the named alias from the list maintained by the containing <a class="xref" href="Figaro.XmlManager.html">XmlManager</a>. If the alias does not exist, or matches a
+different <a class="xref" href="Figaro.Container.html">Container</a>, the call fails.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveAlias(string alias)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">alias</span></td>
+        <td><p>The alias to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> upon success, <code>false</code> upon failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_RemoveAlias_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=979">View Source</a>
+  </span>
+  <a id="Figaro_Container_ReplaceDefaultIndex_" data-uid="Figaro.Container.ReplaceDefaultIndex*"></a>
+  <h4 id="Figaro_Container_ReplaceDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.ReplaceDefaultIndex(Figaro.XmlTransaction,System.String,Figaro.UpdateContext)">ReplaceDefaultIndex(XmlTransaction, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Replaces the container&apos;s default index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceDefaultIndex(XmlTransaction transaction, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the index replacement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_ReplaceDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience --
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_ReplaceDefaultIndex_System_String_">ReplaceDefaultIndex(String)</a> for more information.</p>
+</div>
+  <h5 id="Figaro_Container_ReplaceDefaultIndex_Figaro_XmlTransaction_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=534">View Source</a>
+  </span>
+  <a id="Figaro_Container_ReplaceDefaultIndex_" data-uid="Figaro.Container.ReplaceDefaultIndex*"></a>
+  <h4 id="Figaro_Container_ReplaceDefaultIndex_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.ReplaceDefaultIndex(System.String,Figaro.UpdateContext)">ReplaceDefaultIndex(String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Replaces the container&apos;s default index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceDefaultIndex(string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the index replacement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_ReplaceDefaultIndex_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience --
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex_">ReplaceIndex(XmlIndex)</a> for more information.</p>
+</div>
+  <h5 id="Figaro_Container_ReplaceDefaultIndex_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=995">View Source</a>
+  </span>
+  <a id="Figaro_Container_ReplaceIndex_" data-uid="Figaro.Container.ReplaceIndex*"></a>
+  <h4 id="Figaro_Container_ReplaceIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.ReplaceIndex(Figaro.XmlTransaction,System.String,System.String,System.String,Figaro.UpdateContext)">ReplaceIndex(XmlTransaction, String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Replaces an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceIndex(XmlTransaction transaction, string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default namespace is selected by passing an empty string for the namespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>The name of the element or attribute node to be indexed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_ReplaceIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience --
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex_">ReplaceIndex(XmlIndex)</a>for more information.</p>
+</div>
+  <h5 id="Figaro_Container_ReplaceIndex_Figaro_XmlTransaction_System_String_System_String_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=520">View Source</a>
+  </span>
+  <a id="Figaro_Container_ReplaceIndex_" data-uid="Figaro.Container.ReplaceIndex*"></a>
+  <h4 id="Figaro_Container_ReplaceIndex_System_String_System_String_System_String_Figaro_UpdateContext_" data-uid="Figaro.Container.ReplaceIndex(System.String,System.String,System.String,Figaro.UpdateContext)">ReplaceIndex(String, String, String, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Replaces an index of the specified type for the named document node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceIndex(string nodeNamespace, string nodeName, string index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeNamespace</span></td>
+        <td><p>The namespace of the node to be indexed. The default namespace is selected by passing an empty string for the namespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">nodeName</span></td>
+        <td><p>Name of the node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A comma-separated list of strings that represent the indexing strategy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a> to use for this operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_ReplaceIndex_System_String_System_String_System_String_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is for convenience --
+see <a class="xref" href="Figaro.XmlIndexSpecification.html#Figaro_XmlIndexSpecification_ReplaceIndex_Figaro_XmlIndex_">ReplaceIndex(XmlIndex)</a> for more information.</p>
+</div>
+  <h5 id="Figaro_Container_ReplaceIndex_System_String_System_String_System_String_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></div>
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=549">View Source</a>
+  </span>
+  <a id="Figaro_Container_SetIndexSpecification_" data-uid="Figaro.Container.SetIndexSpecification*"></a>
+  <h4 id="Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext_" data-uid="Figaro.Container.SetIndexSpecification(Figaro.XmlIndexSpecification,Figaro.UpdateContext)">SetIndexSpecification(XmlIndexSpecification, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Defines the type of indexing to be maintained for a container of documents. The currently defined indexing
+specification can be retrieved with the <a class="xref" href="Figaro.Container.html#Figaro_Container_GetIndexSpecification">GetIndexSpecification()</a>
+method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndexSpecification(XmlIndexSpecification index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The indexing specification for the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the index modification.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the container is not empty then the contained documents are incrementally indexed. Index keys for disabled
+index strategies are removed and index keys for enabled index strategies are added. Note that the length of
+time taken to perform this re-indexing operation is proportional to the size of the container.</p>
+</div>
+  <h5 id="Figaro_Container_SetIndexSpecification_Figaro_XmlIndexSpecification_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=1011">View Source</a>
+  </span>
+  <a id="Figaro_Container_SetIndexSpecification_" data-uid="Figaro.Container.SetIndexSpecification*"></a>
+  <h4 id="Figaro_Container_SetIndexSpecification_Figaro_XmlTransaction_Figaro_XmlIndexSpecification_Figaro_UpdateContext_" data-uid="Figaro.Container.SetIndexSpecification(Figaro.XmlTransaction,Figaro.XmlIndexSpecification,Figaro.UpdateContext)">SetIndexSpecification(XmlTransaction, XmlIndexSpecification, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Defines the type of indexing to be maintained for a container of documents. The currently defined indexing
+specification can be retrieved with the <a class="xref" href="Figaro.Container.html#Figaro_Container_GetIndexSpecification">GetIndexSpecification()</a>
+method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndexSpecification(XmlTransaction transaction, XmlIndexSpecification index, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> to operate under.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlIndexSpecification.html">XmlIndexSpecification</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The indexing specification for the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the index modification.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_SetIndexSpecification_Figaro_XmlTransaction_Figaro_XmlIndexSpecification_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If the container is not empty then the contained documents are incrementally indexed. Index keys for disabled
+index strategies are removed and index keys for enabled index strategies are added. Note that the length of
+time taken to perform this re-indexing operation is proportional to the size of the container.</p>
+</div>
+  <h5 id="Figaro_Container_SetIndexSpecification_Figaro_XmlTransaction_Figaro_XmlIndexSpecification_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=552">View Source</a>
+  </span>
+  <a id="Figaro_Container_Sync_" data-uid="Figaro.Container.Sync*"></a>
+  <h4 id="Figaro_Container_Sync" data-uid="Figaro.Container.Sync">Sync()</h4>
+  <div class="markdown level1 summary"><p>Flushes database pages for the container to disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Sync()</code></pre>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=571">View Source</a>
+  </span>
+  <a id="Figaro_Container_UpdateDocument_" data-uid="Figaro.Container.UpdateDocument*"></a>
+  <h4 id="Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.UpdateDocument(Figaro.XmlDocument,Figaro.UpdateContext)">UpdateDocument(XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Updates an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>in the container. The document must have been
+retrieved from the container using <a class="xref" href="Figaro.Container.html#Figaro_Container_GetDocument_System_String_">GetDocument(String)</a>,
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Query_System_String_Figaro_QueryContext_Figaro_QueryOptions_">Query(String, QueryContext, QueryOptions)</a>, or
+<a class="xref" href="Figaro.XQueryExpression.html#Figaro_XQueryExpression_Execute_Figaro_QueryContext_">Execute(QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDocument(XmlDocument document, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">document</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be updated in
+the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>It is possible to use a constructed <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> object, if its
+name is set to a valid name in the container. The document must still exist within the container. The document
+content is indexed according to the container indexing specification, with index keys being removed for the
+previous document content, and added for the updated document content.</p>
+</div>
+  <h5 id="Figaro_Container_UpdateDocument_Figaro_XmlDocument_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=591">View Source</a>
+  </span>
+  <a id="Figaro_Container_UpdateDocument_" data-uid="Figaro.Container.UpdateDocument*"></a>
+  <h4 id="Figaro_Container_UpdateDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext_" data-uid="Figaro.Container.UpdateDocument(Figaro.XmlTransaction,Figaro.XmlDocument,Figaro.UpdateContext)">UpdateDocument(XmlTransaction, XmlDocument, UpdateContext)</h4>
+  <div class="markdown level1 summary"><p>Transactionally updates an <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a>in the container. The document must have been
+retrieved from the container using <a class="xref" href="Figaro.Container.html#Figaro_Container_GetDocument_System_String_">GetDocument(String)</a>,
+<a class="xref" href="Figaro.XmlManager.html#Figaro_XmlManager_Query_System_String_Figaro_QueryContext_Figaro_QueryOptions_">Query(String, QueryContext, QueryOptions)</a>, or
+<a class="xref" href="Figaro.XQueryExpression.html#Figaro_XQueryExpression_Execute_Figaro_QueryContext_">Execute(QueryContext)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDocument(XmlTransaction transaction, XmlDocument document, UpdateContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a></td>
+        <td><span class="parametername">transaction</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlTransaction.html">XmlTransaction</a> object to use in the transactional update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></td>
+        <td><span class="parametername">document</span></td>
+        <td><p>The <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> to be updated in
+the <a class="xref" href="Figaro.Container.html">Container</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Figaro.UpdateContext.html">UpdateContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The update context to use for the document insertion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Figaro_Container_UpdateDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>It is possible to use a constructed <a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a> object, if its
+name is set to a valid name in the container. The document must still exist within the container. The document
+content is indexed according to the container indexing specification, with index keys being removed for the
+previous document content, and added for the updated document content.</p>
+</div>
+  <h5 id="Figaro_Container_UpdateDocument_Figaro_XmlTransaction_Figaro_XmlDocument_Figaro_UpdateContext__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.XQueryExpression.html">XQueryExpression</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Figaro.FigaroEnv.html">FigaroEnv</a></div>
+      <div><a class="xref" href="Figaro.XmlManager.html">XmlManager</a></div>
+      <div><a class="xref" href="Figaro.XmlDocument.html">XmlDocument</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://endpointsystems.visualstudio.com/websites/_git/help.bdbxml.net?path=src/Figaro/Container.cs&amp;version=GBmaster&amp;line=39" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
